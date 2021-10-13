@@ -1,0 +1,39 @@
+.bg-footer {
+    background-color: #202040;
+    color: #FFF;
+}
+
+.footer-title {
+    color: #FFF;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.footer-title:hover {
+    color: #FFBD69;
+}
+
+.footer-desc {
+    color: #FFF;
+    font-size: 18px;
+}
+
+.footer-menu {
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.footer-list-ul {
+    list-style: none;
+    margin-left: -30px;
+}
+
+.footer-menu-list {
+    color: #FFF;
+    font-size: 18px;
+}
+
+.footer-menu-list:hover {
+    color: #FFBD69;
+}

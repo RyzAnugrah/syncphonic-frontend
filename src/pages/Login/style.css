@@ -1,0 +1,51 @@
+.bg-color-primary {
+    background-color: #202040;
+    color: #FFF;
+    height: fit-content;
+}
+
+.bg-color-white {
+    background-color: #FFF;
+    color: #202040;
+    border-radius: 5px;
+}
+
+.img-banner-login { 
+    margin-left: 4%;
+    border-radius: 5px;
+    height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+    .img-banner-login {
+        margin-left: 0%;
+    }
+}
+
+.login-title {
+    font-size: 2em;
+}
+
+.btn-login-google {
+    width: 100%;
+    background-color: #202040;
+    color: #FFF;
+}
+
+.btn-login-google:hover {
+    background-color: #202040;
+    color: #FFF;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px #202040;
+}
+
+.btn-login {
+    width: 100%;
+    background-color: #FFBD69;
+    color: #000;
+}
+
+.btn-login:hover {
+    box-shadow: inset 0 1px 1px #FFBD69,
+    0 0 8px #FFBD69;
+}
