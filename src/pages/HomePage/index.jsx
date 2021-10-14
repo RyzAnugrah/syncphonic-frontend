@@ -2,35 +2,163 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
+import { FaInstagram } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import imgBannerAyo from "../../assets/images/homepage-banner-ayo.png";
+import imgBannerPenyedia from "../../assets/images/homepage-banner-penyedia.png";
 
 const index = () => {
   return (
     <div>
       <div className="container-fluid bg-homepage p-4">
-        <div className="container">
+        <div className="container p-4">
           <div className="row justify-content-center">
             <div className="col-md-6">
               <p className="homepage-title">Ayo, Warnai Duniamu dengan Musik</p>
               <p className="homepage-desc mt-4">
                 Gabung dengan kami untuk meningkatkan kemampuan musik anda
               </p>
-              <button className="btn btn-homepage mt-4 py-3" type="button">
-                <Link
-                  className="btn-homepage-text"
-                  to="/syncphonic-frontend/signup"
-                >
+              <Link
+                className="btn-homepage-text"
+                to="/syncphonic-frontend/signup"
+              >
+                <button className="btn btn-homepage mt-4 py-3" type="button">
                   Bergabung Sekarang!
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
             <div className="col-md-6">
               <img
                 src={imgBannerAyo}
                 alt="homepage"
-                className="img-fluid img-banner-ayo mt-2"
+                className="img-fluid img-banner-ayo"
               />
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid bg-homepage-features p-4">
+        <div className="row justify-content-center p-4">
+          <div className="col-md-6 bg-homepage-features-img">
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+              <div className="col">
+                <Link to="/syncphonic-frontend/kursus">
+                  <div className="card homepage-card-bg-1">
+                    <div className="card-body d-flex align-items-center mx-auto">
+                      <p className="card-title homepage-card-text">
+                        Kursus Musik
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+              <div className="col">
+                <Link to="/syncphonic-frontend/alat">
+                  <div className="card homepage-card-bg-2">
+                    <div className="card-body d-flex align-items-center mx-auto">
+                      <p className="card-title homepage-card-text">
+                        Sewa Alat Musik
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+              <div className="col">
+                <Link to="/syncphonic-frontend/studio">
+                  <div className="card homepage-card-bg-3">
+                    <div className="card-body d-flex align-items-center mx-auto">
+                      <p className="card-title homepage-card-text">
+                        Sewa Studio
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-4 offset-md-1 my-auto">
+            <p className="homepage-title-sub mt-4">
+              Mulai latih dan kembangkan bakatmu
+            </p>
+            <p className="homepage-desc-sub mt-4">
+              Kami menyediakan beragam pelayanan untuk menunjang bakat musikmu
+              mulai dari sewa studio hingga kursus musik
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid bg-homepage p-4">
+        <div className="container p-4">
+          <div className="row justify-content-center">
+            <div className="col-md-4 my-auto">
+              <p className="homepage-title-sub mt-4">
+                Harga terjangkau dan pastinya berkualitas
+              </p>
+              <p className="homepage-desc-sub mt-4">
+                Kami menyediakan beberapa paket pilihan dengan harga yang lebih
+                terjangkau dan berkualitas
+              </p>
+            </div>
+            <div className="col-md-6">
+              <img
+                src={imgBannerAyo}
+                alt="homepage"
+                className="img-fluid img-banner-ayo"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid bg-homepage-features">
+        <div className="row">
+          <div className="col-md-6">
+            <img
+              src={imgBannerPenyedia}
+              alt="homepage"
+              className="img-fluid img-banner-contact"
+            />
+          </div>
+          <div className="col-md-4 offset-md-1 my-auto">
+            <p className="homepage-title-sub mt-4">Syncphonic Studio Musik</p>
+            <p className="homepage-desc-sub mt-4">
+              Penyedia penyewaan studio dan alat musik terlengkap di Cirebon
+              menyediakan juga kursus musik bagi pemula
+            </p>
+            <p className="mt-2">
+              <a href="https://instagram.com">
+                <span className="homepage-icon">
+                  <FaInstagram />
+                </span>
+              </a>
+              <a href="https://youtube.com">
+                <span className="homepage-icon">
+                  <FaYoutube />
+                </span>
+              </a>
+              <a href="https://gmail.com">
+                <span className="homepage-icon">
+                  <MdEmail />
+                </span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid bg-homepage-cta p-4">
+        <div className="row justify-content-center h-100">
+          <div className="col-md-10 my-auto text-center">
+            <p className="homepage-title-sub">
+              Warnai duniamu dengan musik dan gabung bersama kami
+            </p>
+            <Link
+              className="btn-homepage-text"
+              to="/syncphonic-frontend/signup"
+            >
+              <button className="btn btn-homepage-cta mt-4 py-3" type="button">
+                Bergabung Sekarang!
+              </button>
+            </Link>
           </div>
         </div>
       </div>

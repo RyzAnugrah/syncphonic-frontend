@@ -49,11 +49,11 @@ const index = () => {
                 Masuk
               </Link>
             </span>
-            <button className="btn btn-nav ml-3 px-3" type="button">
-              <Link className="btn-nav-text" to="/syncphonic-frontend/signup">
+            <Link className="btn-nav-text" to="/syncphonic-frontend/signup">
+              <button className="btn btn-nav ml-3 px-3" type="button">
                 Daftar
-              </Link>
-            </button>
+              </button>
+            </Link>
           </div>
         </div>
       </nav>
