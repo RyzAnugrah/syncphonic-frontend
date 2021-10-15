@@ -1,5 +1,5 @@
 .bg-footer {
-    background-color: #202040;
+    background-color: #24222E;
     color: #FFF;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .footer-title:hover {
-    color: #FFBD69;
+    color: #685FC9;
 }
 
 .footer-desc {
@@ -35,5 +35,5 @@
 }
 
 .footer-menu-list:hover {
-    color: #FFBD69;
+    color: #685FC9;
 }

@@ -1,35 +1,35 @@
 .bg-navbar {
-    background-color: #202040;
+  background-color: #24222E;
 }
 
 .active>.nav-link,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .nav-link.active {
-    color: #FFBD69 !important;
+  color: #685FC9 !important;
 }
 
 .nav-signup {
-    color: #FFF;
+  color: #FFF;
 }
 
 .nav-signup:hover {
-    color: #FFBD69;
+  color: #685FC9;
 }
 
 .btn-nav {
-    background-color: #FFBD69 !important;
-    color: #000;
+  background-color: #685FC9 !important;
+  color: #000;
 }
 
 .btn-nav:hover {
-    box-shadow: inset 0 1px 1px #FFBD69,
-    0 0 8px #FFBD69;
+  box-shadow: inset 0 1px 1px #685FC9,
+    0 0 8px #685FC9;
 }
 
 .btn-nav-text {
-    color: #000;
+  color: #000;
 }
 
 .btn-nav-text:hover {
-    color: #000;
+  color: #000;
 }

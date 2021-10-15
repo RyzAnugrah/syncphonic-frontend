@@ -15,7 +15,7 @@ import imgIconTestimoni from "../../assets/images/homepage-icon-testimoni.png";
 const index = () => {
   return (
     <div>
-      <div className="container-fluid bg-homepage p-4">
+      <div className="container-fluid bg-homepage-vektor p-4">
         <div className="container p-4">
           <div className="row justify-content-center">
             <div className="col-md-6">
@@ -92,7 +92,7 @@ const index = () => {
           </div>
         </div>
       </div>
-      <div className="container-fluid bg-homepage p-4">
+      <div className="container-fluid bg-homepage-vektor p-4">
         <div className="container p-4">
           <div className="row justify-content-center">
             <div className="col-md-4 my-auto">
@@ -187,7 +187,7 @@ const index = () => {
           </div>
         </div>
       </div>
-      <div className="container-fluid bg-homepage-testimoni p-4">
+      <div className="container-fluid bg-homepage-vektor p-4">
         <div className="container p-4">
           <div className="row justify-content-center">
             <div className="col-md-12 my-auto">

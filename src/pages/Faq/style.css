@@ -1,5 +1,5 @@
 .bg-color-primary {
-  background-color: #202040;
+  background-color: #24222E;
   color: #FFF;
   height: fit-content;
 }
@@ -12,23 +12,23 @@
 
 .nav-pills .nav-link {
   color: #000;
-  background-color: #FFBD69;
+  background-color: #685FC9;
 }
 
 .nav-pills .nav-link.active,
 .nav-pills .show>.nav-link {
   color: #FFF;
-  background-color: #543864;
+  background-color: #2B2C39;
 }
 
 .accordion-button {
   color: #000;
-  background-color: #FFBD69;
+  background-color: #685FC9;
 }
 
 .accordion-button:not(.collapsed) {
   color: #FFF;
-  background-color: #543864;
+  background-color: #2B2C39;
 }
 
 .accordion-button:not(.collapsed)::after {

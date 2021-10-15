@@ -1,12 +1,12 @@
 .bg-color-primary {
-    background-color: #202040;
+    background-color: #24222E;
     color: #FFF;
     height: fit-content;
 }
 
 .bg-color-white {
     background-color: #FFF;
-    color: #202040;
+    color: #24222E;
     border-radius: 5px;
 }
 
@@ -28,24 +28,24 @@
 
 .btn-login-google {
     width: 100%;
-    background-color: #202040;
+    background-color: #24222E;
     color: #FFF;
 }
 
 .btn-login-google:hover {
-    background-color: #202040;
+    background-color: #24222E;
     color: #FFF;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-    0 0 8px #202040;
+    0 0 8px #24222E;
 }
 
 .btn-login {
     width: 100%;
-    background-color: #FFBD69;
+    background-color: #685FC9;
     color: #000;
 }
 
 .btn-login:hover {
-    box-shadow: inset 0 1px 1px #FFBD69,
-    0 0 8px #FFBD69;
+    box-shadow: inset 0 1px 1px #685FC9,
+    0 0 8px #685FC9;
 }

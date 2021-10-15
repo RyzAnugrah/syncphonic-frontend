@@ -1,5 +1,5 @@
 .bg-homepage {
-  background-color: #202040;
+  background-color: #24222E;
   color: #FFF;
 }
 
@@ -15,14 +15,14 @@
 }
 
 .btn-homepage {
-  background-color: #FFBD69 !important;
+  background-color: #685FC9 !important;
   color: #000;
   width: 100%;
 }
 
 .btn-homepage:hover {
-  box-shadow: inset 0 1px 1px #FFBD69,
-    0 0 8px #FFBD69;
+  box-shadow: inset 0 1px 1px #685FC9,
+    0 0 8px #685FC9;
 }
 
 .btn-homepage-text {
@@ -40,13 +40,13 @@
 
 /* Homepage Features */
 .bg-homepage-features {
-  background-color: #543864;
+  background-color: #2B2C39;
   color: #FFF;
 }
 
 .bg-homepage-features-img {
   background-image: url("../../assets/images/homepage-banner-mulai.png");
-  background-color: #543864;
+  background-color: #2B2C39;
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -56,7 +56,7 @@
 .homepage-card-bg-1 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
     url("../../assets/images/homepage-card-mulai-1.png");
-  background-color: #543864;
+  background-color: #2B2C39;
   height: 250px;
   background-position: center;
   background-repeat: no-repeat;
@@ -68,7 +68,7 @@
 .homepage-card-bg-2 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
     url("../../assets/images/homepage-card-mulai-2.png");
-  background-color: #543864;
+  background-color: #2B2C39;
   height: 250px;
   background-position: center;
   background-repeat: no-repeat;
@@ -80,7 +80,7 @@
 .homepage-card-bg-3 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
     url("../../assets/images/homepage-card-mulai-3.png");
-  background-color: #543864;
+  background-color: #2B2C39;
   height: 250px;
   background-position: center;
   background-repeat: no-repeat;
@@ -162,16 +162,16 @@
 }
 
 .homepage-icon:hover {
-  box-shadow: inset 0 1px 1px #FFBD69,
-    0 0 8px #FFBD69;
+  box-shadow: inset 0 1px 1px #685FC9,
+    0 0 8px #685FC9;
 }
 
 /* Homepage Testimoni */
-
-.bg-homepage-testimoni {
-  background-image: url("../../assets/images/homepage-background-testimoni.png");
-  background-color: #202040;
-  height: 650px;
+.bg-homepage-vektor {
+  background-image: url("../../assets/images/homepage-background-vector.png");
+  background-color: #24222E;
+  color: #FFF;
+  min-height: 650px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -191,7 +191,7 @@
 /* Homepage CTA */
 .bg-homepage-cta {
   background-image: url("../../assets/images/homepage-banner-warnai.png");
-  background-color: #543864;
+  background-color: #2B2C39;
   height: 650px;
   background-position: center;
   background-repeat: no-repeat;
@@ -199,14 +199,14 @@
 }
 
 .btn-homepage-cta {
-  background-color: #FFBD69 !important;
+  background-color: #685FC9 !important;
   color: #000;
   width: 50%;
 }
 
 .btn-homepage-cta:hover {
-  box-shadow: inset 0 1px 1px #FFBD69,
-    0 0 8px #FFBD69;
+  box-shadow: inset 0 1px 1px #685FC9,
+    0 0 8px #685FC9;
 }
 
 @media only screen and (max-width: 768px) {
