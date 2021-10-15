@@ -124,11 +124,11 @@
 
 .btn-homepage-price-1 {
   margin-top: 150px;
-  margin-left: 40px;
+  margin-left: 10px;
 }
 
 .btn-homepage-price-2 {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .img-icon-price {
@@ -164,6 +164,28 @@
 .homepage-icon:hover {
   box-shadow: inset 0 1px 1px #FFBD69,
     0 0 8px #FFBD69;
+}
+
+/* Homepage Testimoni */
+
+.bg-homepage-testimoni {
+  background-image: url("../../assets/images/homepage-background-testimoni.png");
+  background-color: #202040;
+  height: 650px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.homepage-testimoni-desc {
+  color: #FFF;
+  font-size: 18px;
+}
+
+.homepage-testimoni-user {
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 600;
 }
 
 /* Homepage CTA */
@@ -217,6 +239,7 @@
 
   .btn-homepage-price-1 {
     margin-top: 10px;
+    margin-left: 0px;
   }
 
   .btn-homepage-price-2 {

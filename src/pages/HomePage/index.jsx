@@ -10,6 +10,7 @@ import imgIconYoutube from "../../assets/images/homepage-icon-youtube.png";
 import imgIconEmail from "../../assets/images/homepage-icon-email.png";
 import imgIconPrice1 from "../../assets/images/homepage-icon-price-1.png";
 import imgIconPrice2 from "../../assets/images/homepage-icon-price-2.png";
+import imgIconTestimoni from "../../assets/images/homepage-icon-testimoni.png";
 
 const index = () => {
   return (
@@ -183,6 +184,57 @@ const index = () => {
                 />
               </a>
             </p>
+          </div>
+        </div>
+      </div>
+      <div className="container-fluid bg-homepage-testimoni p-4">
+        <div className="container p-4">
+          <div className="row justify-content-center">
+            <div className="col-md-12 my-auto">
+              <p className="homepage-title-sub mt-4">Testimoni</p>
+              <div className="row mt-4">
+                <div className="col-md-6">
+                  <div className="row">
+                    <div className="col-md-4">
+                      <img
+                        src={imgIconTestimoni}
+                        alt="icon"
+                        className="img-fluid"
+                      />
+                    </div>
+                    <div className="col-md-8 my-auto">
+                      <p className="homepage-testimoni-desc">
+                        "Tempatnya nyaman dan fasilitasnya lengkap, cocok buat
+                        latihan band recommended banget ini sih"
+                      </p>
+                      <p className="homepage-testimoni-user">
+                        David Imanuel Manhattan
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="row">
+                    <div className="col-md-4">
+                      <img
+                        src={imgIconTestimoni}
+                        alt="icon"
+                        className="img-fluid"
+                      />
+                    </div>
+                    <div className="col-md-8 my-auto">
+                      <p className="homepage-testimoni-desc">
+                        "Tempatnya nyaman dan fasilitasnya lengkap, cocok buat
+                        latihan band recommended banget ini sih"
+                      </p>
+                      <p className="homepage-testimoni-user">
+                        David Imanuel Manhattan
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
