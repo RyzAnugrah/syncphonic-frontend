@@ -1,173 +1,241 @@
 .bg-homepage {
-    background-color: #202040;
-    color: #FFF;
+  background-color: #202040;
+  color: #FFF;
 }
 
 .homepage-title {
-    color: #FFF;
-    font-size: 60px;
-    font-weight: 600;
+  color: #FFF;
+  font-size: 60px;
+  font-weight: 600;
 }
 
 .homepage-desc {
-    color: #FFF;
-    font-size: 24px;
+  color: #FFF;
+  font-size: 24px;
 }
 
 .btn-homepage {
-    background-color: #FFBD69 !important;
-    color: #000;
-    width: 100%;
+  background-color: #FFBD69 !important;
+  color: #000;
+  width: 100%;
 }
 
 .btn-homepage:hover {
-    box-shadow: inset 0 1px 1px #FFBD69,
-        0 0 8px #FFBD69;
+  box-shadow: inset 0 1px 1px #FFBD69,
+    0 0 8px #FFBD69;
 }
 
 .btn-homepage-text {
-    color: #000;
+  color: #000;
 }
 
 .btn-homepage-text:hover {
-    color: #000;
+  color: #000;
 }
 
 .img-banner-ayo {
-    height: 100%;
-    margin-top: 45px;
+  height: 100%;
+  margin-top: 45px;
 }
 
 /* Homepage Features */
 .bg-homepage-features {
-    background-color: #543864;
-    color: #FFF;
+  background-color: #543864;
+  color: #FFF;
 }
 
 .bg-homepage-features-img {
-    background-image: url("../../assets/images/homepage-banner-mulai.png");
-    background-color: #543864;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url("../../assets/images/homepage-banner-mulai.png");
+  background-color: #543864;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .homepage-card-bg-1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-        url("../../assets/images/homepage-card-mulai-1.png");
-    background-color: #543864;
-    height: 250px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 50px;
-    margin-top: 300px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
+    url("../../assets/images/homepage-card-mulai-1.png");
+  background-color: #543864;
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50px;
+  margin-top: 300px;
 }
 
 .homepage-card-bg-2 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-        url("../../assets/images/homepage-card-mulai-2.png");
-    background-color: #543864;
-    height: 250px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 50px;
-    margin-top: 250px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
+    url("../../assets/images/homepage-card-mulai-2.png");
+  background-color: #543864;
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50px;
+  margin-top: 250px;
 }
 
 .homepage-card-bg-3 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-        url("../../assets/images/homepage-card-mulai-3.png");
-    background-color: #543864;
-    height: 250px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 50px;
-    margin-top: 200px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
+    url("../../assets/images/homepage-card-mulai-3.png");
+  background-color: #543864;
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50px;
+  margin-top: 200px;
 }
 
 .homepage-card-text {
-    color: #FFF;
-    font-size: 18px;
-    font-weight: 600;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .homepage-title-sub {
-    color: #FFF;
-    font-size: 44px;
-    font-weight: 600;
+  color: #FFF;
+  font-size: 44px;
+  font-weight: 600;
 }
 
 .homepage-desc-sub {
-    color: #FFF;
-    font-size: 18px;
+  color: #FFF;
+  font-size: 18px;
+}
+
+/* Homepage Price */
+.banner-price {
+  position: relative;
+}
+
+.btn-homepage-price {
+  background-color: #FFF !important;
+  color: #000;
+  width: 100%;
+  border-radius: 50px;
+}
+
+.btn-homepage-price:hover {
+  cursor: auto;
+}
+
+.btn-homepage-price-1 {
+  margin-top: 150px;
+  margin-left: 40px;
+}
+
+.btn-homepage-price-2 {
+  margin-top: 50px;
+}
+
+.img-icon-price {
+  height: 50px !important;
+  margin-right: 10px;
+}
+
+.homepage-price-text {
+  color: #000;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.img-banner-price {
+  height: 70%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 /* Homepage Contact */
 .img-banner-contact {
-    height: 100%;
-    margin-left: -12px;
+  height: 100%;
+  margin-left: -12px;
 }
 
 .homepage-icon {
-    width: 20%;
-    margin-right: 20px;
-    border-radius: 50%;
+  width: 20%;
+  margin-right: 20px;
+  border-radius: 50%;
 }
 
 .homepage-icon:hover {
-    box-shadow: inset 0 1px 1px #FFBD69,
+  box-shadow: inset 0 1px 1px #FFBD69,
     0 0 8px #FFBD69;
 }
 
 /* Homepage CTA */
 .bg-homepage-cta {
-    background-image: url("../../assets/images/homepage-banner-warnai.png");
-    background-color: #543864;
-    height: 650px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url("../../assets/images/homepage-banner-warnai.png");
+  background-color: #543864;
+  height: 650px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .btn-homepage-cta {
-    background-color: #FFBD69 !important;
-    color: #000;
-    width: 50%;
+  background-color: #FFBD69 !important;
+  color: #000;
+  width: 50%;
 }
 
 .btn-homepage-cta:hover {
-    box-shadow: inset 0 1px 1px #FFBD69,
-        0 0 8px #FFBD69;
+  box-shadow: inset 0 1px 1px #FFBD69,
+    0 0 8px #FFBD69;
 }
 
 @media only screen and (max-width: 768px) {
-    .bg-homepage-features-img {
-        background-image: none;
-    }
+  .bg-homepage-features-img {
+    background-image: none;
+  }
 
-    .homepage-card-bg-1 {
-        margin-top: 10px;
-    }
+  .homepage-card-bg-1 {
+    margin-top: 10px;
+  }
 
-    .homepage-card-bg-2 {
-        margin-top: 10px;
-    }
+  .homepage-card-bg-2 {
+    margin-top: 10px;
+  }
 
-    .homepage-card-bg-3 {
-        margin-top: 10px;
-    }
+  .homepage-card-bg-3 {
+    margin-top: 10px;
+  }
 
-    .img-banner-contact {
-        height: 100%;
-        margin-left: 0px;
-        margin-top: 5%;
-    }
+  .btn-homepage-price {
+    background-color: #FFF !important;
+    color: #000;
+    width: 100%;
+    border-radius: 50px;
+  }
 
-    .btn-homepage-cta {
-        width: 80%;
-    }
+  .btn-homepage-price:hover {
+    cursor: auto;
+  }
+
+  .btn-homepage-price-1 {
+    margin-top: 10px;
+  }
+
+  .btn-homepage-price-2 {
+    margin-top: 20px;
+    margin-bottom: 200px;
+  }
+
+  .img-banner-price {
+    height: 50%;
+    right: 25%;
+  }
+
+  .img-banner-contact {
+    height: 100%;
+    margin-left: 0px;
+    margin-top: 5%;
+  }
+
+  .btn-homepage-cta {
+    width: 80%;
+  }
 }

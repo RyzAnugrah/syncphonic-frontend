@@ -4,9 +4,12 @@ import "./style.css";
 
 import imgBannerAyo from "../../assets/images/homepage-banner-ayo.png";
 import imgBannerPenyedia from "../../assets/images/homepage-banner-penyedia.png";
+import imgBannerPrice from "../../assets/images/homepage-banner-price.png";
 import imgIconInstagram from "../../assets/images/homepage-icon-instagram.png";
 import imgIconYoutube from "../../assets/images/homepage-icon-youtube.png";
 import imgIconEmail from "../../assets/images/homepage-icon-email.png";
+import imgIconPrice1 from "../../assets/images/homepage-icon-price-1.png";
+import imgIconPrice2 from "../../assets/images/homepage-icon-price-2.png";
 
 const index = () => {
   return (
@@ -100,12 +103,44 @@ const index = () => {
                 terjangkau dan berkualitas
               </p>
             </div>
-            <div className="col-md-6">
-              <img
-                src={imgBannerAyo}
-                alt="homepage"
-                className="img-fluid img-banner-ayo"
-              />
+            <div className="col-md-6 banner-price">
+              <div className="row">
+                <div className="col-md-6">
+                  <button
+                    className="btn btn-homepage-price btn-homepage-price-1 py-2"
+                    type="button"
+                  >
+                    <img
+                      src={imgIconPrice1}
+                      alt="homepage"
+                      className="img-icon-price"
+                    />
+                    <span className="homepage-price-text">
+                      Harga Terjangkau
+                    </span>
+                  </button>
+                </div>
+                <div className="col-md-6">
+                  <button
+                    className="btn btn-homepage-price btn-homepage-price-2 py-2"
+                    type="button"
+                  >
+                    <img
+                      src={imgIconPrice2}
+                      alt="homepage"
+                      className="img-icon-price"
+                    />
+                    <span className="homepage-price-text">
+                      Kualitas Terbaik
+                    </span>
+                  </button>
+                  <img
+                    src={imgBannerPrice}
+                    alt="homepage"
+                    className="img-fluid img-banner-price"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
