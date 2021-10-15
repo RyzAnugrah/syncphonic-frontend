@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-import { FaInstagram } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
 import imgBannerAyo from "../../assets/images/homepage-banner-ayo.png";
 import imgBannerPenyedia from "../../assets/images/homepage-banner-penyedia.png";
+import imgIconInstagram from "../../assets/images/homepage-icon-instagram.png";
+import imgIconYoutube from "../../assets/images/homepage-icon-youtube.png";
+import imgIconEmail from "../../assets/images/homepage-icon-email.png";
 
 const index = () => {
   return (
@@ -125,21 +125,27 @@ const index = () => {
               Penyedia penyewaan studio dan alat musik terlengkap di Cirebon
               menyediakan juga kursus musik bagi pemula
             </p>
-            <p className="mt-2">
+            <p className="mt-4">
               <a href="https://instagram.com">
-                <span className="homepage-icon">
-                  <FaInstagram />
-                </span>
+                <img
+                  src={imgIconInstagram}
+                  alt="icon"
+                  className="img-fluid homepage-icon"
+                />
               </a>
               <a href="https://youtube.com">
-                <span className="homepage-icon">
-                  <FaYoutube />
-                </span>
+                <img
+                  src={imgIconYoutube}
+                  alt="icon"
+                  className="img-fluid homepage-icon"
+                />
               </a>
               <a href="https://gmail.com">
-                <span className="homepage-icon">
-                  <MdEmail />
-                </span>
+                <img
+                  src={imgIconEmail}
+                  alt="icon"
+                  className="img-fluid homepage-icon"
+                />
               </a>
             </p>
           </div>

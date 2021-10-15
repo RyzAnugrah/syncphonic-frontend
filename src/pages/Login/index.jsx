@@ -29,7 +29,7 @@ const index = () => {
                     id="emailInput"
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-3">
                   <label htmlFor="passwordInput">Password</label>
                   <input
                     type="password"
@@ -37,7 +37,7 @@ const index = () => {
                     id="passwordInput"
                   />
                 </div>
-                <div className="form-group form-check">
+                <div className="form-group form-check mt-3">
                   <input
                     type="checkbox"
                     className="form-check-input"
@@ -47,10 +47,10 @@ const index = () => {
                     Remember Me
                   </label>
                 </div>
-                <button className="btn btn-login-google">
+                <button className="btn btn-login-google mt-3">
                   <FcGoogle /> Google Login
                 </button>
-                <button type="submit" className="btn btn-login mt-4">
+                <button type="submit" className="btn btn-login mt-3">
                   Login
                 </button>
               </form>

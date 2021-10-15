@@ -7,6 +7,10 @@ import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 
+// Slick CSS
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 // Main Style
 import "./assets/styles/index.css";
 

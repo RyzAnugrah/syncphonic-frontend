@@ -35,6 +35,7 @@
 
 .img-banner-ayo {
     height: 100%;
+    margin-top: 45px;
 }
 
 /* Homepage Features */
@@ -112,13 +113,14 @@
 }
 
 .homepage-icon {
-    color: #FFBD69;
-    font-size: 56px;
+    width: 20%;
     margin-right: 20px;
+    border-radius: 50%;
 }
 
 .homepage-icon:hover {
-    color: #202040;
+    box-shadow: inset 0 1px 1px #FFBD69,
+    0 0 8px #FFBD69;
 }
 
 /* Homepage CTA */
@@ -143,10 +145,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .img-banner-ayo {
-        margin-top: 5%;
-    }
-
     .bg-homepage-features-img {
         background-image: none;
     }

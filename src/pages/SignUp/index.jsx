@@ -47,7 +47,7 @@ const index = () => {
                     id="emailInput"
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-3">
                   <label htmlFor="passwordInput">Password</label>
                   <input
                     type="password"
@@ -55,7 +55,7 @@ const index = () => {
                     id="passwordInput"
                   />
                 </div>
-                <div className="row mb-3">
+                <div className="row mt-3">
                   <div className="col-md-6">
                     <label htmlFor="telpNumberInput">Telp Number</label>
                     <input
@@ -74,7 +74,7 @@ const index = () => {
                     </select>
                   </div>
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-3">
                   <label htmlFor="inputAddress">Address</label>
                   <input
                     type="text"
@@ -82,15 +82,13 @@ const index = () => {
                     id="inputAddress"
                   />
                 </div>
-                <div className="form-group">
-                  <label htmlFor="photoInput">Photo Profile</label>
-                  <input
-                    type="file"
-                    className="form-control-file"
-                    id="photoInput"
-                  />
+                <div className="form-group mt-3">
+                  <label for="photoInput" class="form-label">
+                    Photo Profile
+                  </label>
+                  <input class="form-control" type="file" id="photoInput" />
                 </div>
-                <div className="form-group form-check">
+                <div className="form-group form-check mt-3">
                   <input
                     type="checkbox"
                     className="form-check-input"
@@ -100,14 +98,14 @@ const index = () => {
                     Remember Me
                   </label>
                 </div>
-                <button className="btn btn-signup-google">
+                <button className="btn btn-signup-google mt-3">
                   <FcGoogle /> Google Sign Up
                 </button>
                 <button type="submit" className="btn btn-signup mt-4">
                   Sign Up
                 </button>
               </form>
-              <div className="row mt-4 justify-content-center">
+              <div className="row justify-content-center mt-3">
                 <div className="col-md-3 text-center">
                   <Link to="/syncphonic-frontend/login">
                     <p>Login</p>
