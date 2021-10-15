@@ -19,6 +19,12 @@ const AppRoutes = [
     component: lazy(() => import("../pages/SignUp")),
     exact: true,
   },
+  {
+    name: "faq",
+    path: "/syncphonic-frontend/faq",
+    component: lazy(() => import("../pages/Faq")),
+    exact: true,
+  },
 ];
 
 export { AppRoutes };

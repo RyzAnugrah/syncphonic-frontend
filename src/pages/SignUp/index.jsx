@@ -21,25 +21,11 @@ const index = () => {
             <div className="col-md-6 bg-color-white p-4">
               <p className="signup-title">Sign Up</p>
               <form>
-                <div className="row mb-3">
-                  <div className="col-md-6">
-                    <label htmlFor="firstNameInput">First Name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="firstNameInput"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <label htmlFor="lastNameInput">Last Name</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="lastNameInput"
-                    />
-                  </div>
-                </div>
                 <div className="form-group">
+                  <label htmlFor="nameInput">Full Name</label>
+                  <input type="text" className="form-control" id="nameInput" />
+                </div>
+                <div className="form-group mt-3">
                   <label htmlFor="emailInput">Email Address</label>
                   <input
                     type="email"
@@ -67,10 +53,10 @@ const index = () => {
                   <div className="col-md-6">
                     <label htmlFor="genderInput">Gender</label>
                     <select id="genderInput" className="form-control">
-                      <option value="man" defaultValue>
-                        Man
+                      <option value="male" defaultValue>
+                        Male
                       </option>
-                      <option value="woman">Woman</option>
+                      <option value="female">Female</option>
                     </select>
                   </div>
                 </div>
