@@ -1,51 +1,63 @@
-.bg-color-primary {
-    background-color: #24222E;
-    color: #FFF;
-    height: fit-content;
+.bg-color-login {
+  background-image: url("../../assets/images/homepage-hero-bg.png");
+  background-color: #191A19;
+  color: #FFF;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.bg-color-white {
-    background-color: #FFF;
-    color: #24222E;
-    border-radius: 5px;
+.bg-color-login-row {
+  background-color: #242323;
+  color: #FFF;
 }
 
-.img-banner-login { 
-    margin-left: 4%;
-    border-radius: 5px;
-    height: 100%;
-}
-
-@media only screen and (max-width: 768px) {
-    .img-banner-login {
-        margin-left: 0%;
-    }
+.img-hero-login {
+  border-radius: 5px;
+  height: 100%;
 }
 
 .login-title {
-    font-size: 2em;
+  color: #FFF;
+  font-size: 50px;
+  font-weight: 600;
 }
 
-.btn-login-google {
-    width: 100%;
-    background-color: #24222E;
-    color: #FFF;
+.form-control-login {
+  background-color: #4B4747;
+  border: 2px solid #4B4747;
+  color: #FFF;
 }
 
-.btn-login-google:hover {
-    background-color: #24222E;
-    color: #FFF;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-    0 0 8px #24222E;
+.form-control-login:hover,
+.form-control-login:focus {
+  background-color: #4B4747;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+  color: #FFF;
 }
 
 .btn-login {
-    width: 100%;
-    background-color: #685FC9;
-    color: #000;
+  width: 100%;
+  background-color: #A6711F;
+  color: #FFF;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 10%;
 }
 
 .btn-login:hover {
-    box-shadow: inset 0 1px 1px #685FC9,
-    0 0 8px #685FC9;
+  color: #FFF;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+}
+
+.login-desc-text {
+  color: #FFF;
+  font-size: 18px;
+}
+
+.login-desc-text-signup {
+  color: #A6711F;
+  font-size: 18px;
 }

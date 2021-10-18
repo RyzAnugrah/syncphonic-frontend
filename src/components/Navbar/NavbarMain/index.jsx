@@ -25,7 +25,7 @@ const index = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarContentComponent">
             <ul className="navbar-nav mx-auto">
-              <li className="nav-item mx-3 active">
+              <li className="nav-item mx-3">
                 <Link className="nav-link" to="/syncphonic-frontend/">
                   Beranda
                 </Link>

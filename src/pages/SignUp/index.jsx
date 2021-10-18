@@ -2,107 +2,133 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-import { FcGoogle } from "react-icons/fc";
 import imgSignUp from "../../assets/images/signup-hero.png";
 
 const index = () => {
   return (
     <div>
-      <div className="container-fluid bg-color-primary p-4">
-        <div className="container p-4">
-          <div className="row">
+      <div className="container-fluid bg-color-login py-4">
+        <div className="container py-4">
+          <div className="row bg-color-login-row p-4">
             <div className="col-md-6">
               <img
                 src={imgSignUp}
                 alt="signup"
-                className="img-fluid img-banner-signup"
+                className="img-fluid img-hero-signup"
               />
             </div>
-            <div className="col-md-6 bg-color-white p-4">
-              <p className="signup-title">Sign Up</p>
+            <div className="col-md-6 p-4">
+              <p className="signup-title">Daftar</p>
               <form>
                 <div className="form-group">
-                  <label htmlFor="nameInput">Full Name</label>
-                  <input type="text" className="form-control" id="nameInput" />
-                </div>
-                <div className="form-group mt-3">
-                  <label htmlFor="emailInput">Email Address</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="emailInput"
-                  />
-                </div>
-                <div className="form-group mt-3">
-                  <label htmlFor="passwordInput">Password</label>
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="passwordInput"
-                  />
-                </div>
-                <div className="row mt-3">
-                  <div className="col-md-6">
-                    <label htmlFor="telpNumberInput">Telp Number</label>
-                    <input
-                      type="tel"
-                      className="form-control"
-                      id="telpNumberInput"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <label htmlFor="genderInput">Gender</label>
-                    <select id="genderInput" className="form-control">
-                      <option value="male" defaultValue>
-                        Male
-                      </option>
-                      <option value="female">Female</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="form-group mt-3">
-                  <label htmlFor="inputAddress">Address</label>
+                  <label htmlFor="inputNamaLengkap">Nama Lengkap</label>
                   <input
                     type="text"
-                    className="form-control"
-                    id="inputAddress"
+                    className="form-control form-control-signup"
+                    id="inputNamaLengkap"
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label for="photoInput" class="form-label">
-                    Photo Profile
-                  </label>
-                  <input class="form-control" type="file" id="photoInput" />
+                  <label htmlFor="inputEmail">Email</label>
+                  <input
+                    type="email"
+                    className="form-control form-control-signup"
+                    id="inputEmail"
+                  />
+                </div>
+                <div className="form-group mt-3">
+                  <label htmlFor="inputPassword">Password</label>
+                  <input
+                    type="password"
+                    className="form-control form-control-signup"
+                    id="inputPassword"
+                  />
+                </div>
+                <div className="form-group mt-3">
+                  <label htmlFor="inputNomorTelepon">Nomor Telepon</label>
+                  <input
+                    type="tel"
+                    className="form-control form-control-signup"
+                    id="inputNomorTelepon"
+                  />
+                </div>
+                <div className="form-group mt-3">
+                  <label htmlFor="inputJenisKelamin">Jenis Kelamin</label>
+                  <div className="row">
+                    <div className="col-6">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions"
+                          id="inlinePria"
+                          value="Pria"
+                          defaultChecked
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlinePria"
+                        >
+                          Pria
+                        </label>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <div className="form-check form-check-inline">
+                        <input
+                          className="form-check-input"
+                          type="radio"
+                          name="inlineRadioOptions"
+                          id="inlineWanita"
+                          value="Wanita"
+                        />
+                        <label
+                          className="form-check-label"
+                          htmlFor="inlineWanita"
+                        >
+                          Wanita
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="form-group mt-3">
+                  <label htmlFor="inputAlamat">Alamat</label>
+                  <input
+                    type="text"
+                    className="form-control form-control-signup"
+                    id="inputAlamat"
+                  />
                 </div>
                 <div className="form-group form-check mt-3">
                   <input
                     type="checkbox"
                     className="form-check-input"
-                    id="checkInput"
+                    id="inputCheck"
                   />
-                  <label className="form-check-label" htmlFor="checkInput">
-                    Remember Me
+                  <label
+                    className="form-check-label signup-desc-text"
+                    htmlFor="inputCheck"
+                  >
+                    Dengan mendaftar anda telah menyetujui
+                    <Link to="/syncphonic-frontend/faq">
+                      <span className="signup-desc-text-login">
+                        &#00; Kebijakan Pengguna dan Privasi
+                      </span>
+                    </Link>
+                    &#00; Syncphonic
                   </label>
                 </div>
-                <button className="btn btn-signup-google mt-3">
-                  <FcGoogle /> Google Sign Up
-                </button>
-                <button type="submit" className="btn btn-signup mt-4">
-                  Sign Up
+                <button type="submit" className="btn btn-signup py-2">
+                  Daftar
                 </button>
               </form>
-              <div className="row justify-content-center mt-3">
-                <div className="col-md-3 text-center">
-                  <Link to="/syncphonic-frontend/login">
-                    <p>Login</p>
-                  </Link>
-                </div>
-                <div className="col-md-4 text-center">
-                  <Link to="#">
-                    <p>Forgot Password</p>
-                  </Link>
-                </div>
-              </div>
+              <p className="signup-desc-text text-center mt-4">
+                Sudah mempunyai akun?
+                <Link to="/syncphonic-frontend/login">
+                  <span className="signup-desc-text-login">&#00; Masuk</span>
+                </Link>
+              </p>
             </div>
           </div>
         </div>

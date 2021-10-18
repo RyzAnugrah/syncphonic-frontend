@@ -2,70 +2,50 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-import { FcGoogle } from "react-icons/fc";
 import imgLogin from "../../assets/images/login-hero.png";
 
 const index = () => {
   return (
     <div>
-      <div className="container-fluid bg-color-primary p-4">
-        <div className="container p-4">
-          <div className="row">
+      <div className="container-fluid bg-color-login py-4">
+        <div className="container py-4">
+          <div className="row bg-color-login-row p-4">
             <div className="col-md-6">
               <img
                 src={imgLogin}
                 alt="login"
-                className="img-fluid img-banner-login"
+                className="img-fluid img-hero-login"
               />
             </div>
-            <div className="col-md-6 bg-color-white p-4">
-              <p className="login-title">Login</p>
+            <div className="col-md-6 p-4">
+              <p className="login-title">Masuk</p>
               <form>
                 <div className="form-group">
-                  <label htmlFor="emailInput">Email Address</label>
+                  <label htmlFor="emailInput">Email</label>
                   <input
                     type="email"
-                    className="form-control"
+                    className="form-control form-control-login"
                     id="emailInput"
                   />
                 </div>
-                <div className="form-group mt-3">
+                <div className="form-group mt-4">
                   <label htmlFor="passwordInput">Password</label>
                   <input
                     type="password"
-                    className="form-control"
+                    className="form-control form-control-login"
                     id="passwordInput"
                   />
                 </div>
-                <div className="form-group form-check mt-3">
-                  <input
-                    type="checkbox"
-                    className="form-check-input"
-                    id="exampleCheck1"
-                  />
-                  <label className="form-check-label" htmlFor="exampleCheck1">
-                    Remember Me
-                  </label>
-                </div>
-                <button className="btn btn-login-google mt-3">
-                  <FcGoogle /> Google Login
-                </button>
-                <button type="submit" className="btn btn-login mt-3">
-                  Login
+                <button type="submit" className="btn btn-login py-2">
+                  Masuk
                 </button>
               </form>
-              <div className="row mt-4 justify-content-center">
-                <div className="col-md-3 text-center">
-                  <Link to="/syncphonic-frontend/signup">
-                    <p>Sign Up</p>
-                  </Link>
-                </div>
-                <div className="col-md-4 text-center">
-                  <Link to="#">
-                    <p>Forgot Password</p>
-                  </Link>
-                </div>
-              </div>
+              <p className="login-desc-text text-center mt-4">
+                Belum mempunyai akun?
+                <Link to="/syncphonic-frontend/signup">
+                  <span className="login-desc-text-signup">&#00; Daftar</span>
+                </Link>
+              </p>
             </div>
           </div>
         </div>
