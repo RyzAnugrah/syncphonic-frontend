@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-import imgBannerAyo from "../../assets/images/homepage-banner-ayo.png";
-import imgBannerPenyedia from "../../assets/images/homepage-banner-penyedia.png";
-import imgBannerPrice from "../../assets/images/homepage-banner-price.png";
+import imgHero from "../../assets/images/homepage-hero.png";
+import imgAbout from "../../assets/images/homepage-about.png";
+import imgPrice from "../../assets/images/homepage-price.png";
 import imgIconInstagram from "../../assets/images/homepage-icon-instagram.png";
 import imgIconYoutube from "../../assets/images/homepage-icon-youtube.png";
 import imgIconEmail from "../../assets/images/homepage-icon-email.png";
@@ -34,7 +34,7 @@ const index = () => {
             </div>
             <div className="col-md-6">
               <img
-                src={imgBannerAyo}
+                src={imgHero}
                 alt="homepage"
                 className="img-fluid img-banner-ayo"
               />
@@ -136,7 +136,7 @@ const index = () => {
                     </span>
                   </button>
                   <img
-                    src={imgBannerPrice}
+                    src={imgPrice}
                     alt="homepage"
                     className="img-fluid img-banner-price"
                   />
@@ -150,7 +150,7 @@ const index = () => {
         <div className="row">
           <div className="col-md-6">
             <img
-              src={imgBannerPenyedia}
+              src={imgAbout}
               alt="homepage"
               className="img-fluid img-banner-contact"
             />

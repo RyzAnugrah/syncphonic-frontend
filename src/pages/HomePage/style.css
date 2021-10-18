@@ -45,48 +45,12 @@
 }
 
 .bg-homepage-features-img {
-  background-image: url("../../assets/images/homepage-banner-mulai.png");
+  background-image: url("../../assets/images/homepage-intro-bg.png");
   background-color: #2B2C39;
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.homepage-card-bg-1 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-    url("../../assets/images/homepage-card-mulai-1.png");
-  background-color: #2B2C39;
-  height: 250px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 50px;
-  margin-top: 300px;
-}
-
-.homepage-card-bg-2 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-    url("../../assets/images/homepage-card-mulai-2.png");
-  background-color: #2B2C39;
-  height: 250px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 50px;
-  margin-top: 250px;
-}
-
-.homepage-card-bg-3 {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
-    url("../../assets/images/homepage-card-mulai-3.png");
-  background-color: #2B2C39;
-  height: 250px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 50px;
-  margin-top: 200px;
 }
 
 .homepage-card-text {
@@ -168,7 +132,7 @@
 
 /* Homepage Testimoni */
 .bg-homepage-vektor {
-  background-image: url("../../assets/images/homepage-background-vector.png");
+  background-image: url("../../assets/images/homepage-testimoni-bg.png");
   background-color: #24222E;
   color: #FFF;
   min-height: 650px;
@@ -190,7 +154,7 @@
 
 /* Homepage CTA */
 .bg-homepage-cta {
-  background-image: url("../../assets/images/homepage-banner-warnai.png");
+  background-image: url("../../assets/images/homepage-cta.png");
   background-color: #2B2C39;
   height: 650px;
   background-position: center;

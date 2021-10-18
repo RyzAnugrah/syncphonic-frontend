@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 import { FcGoogle } from "react-icons/fc";
-import imgBannerPenyedia from "../../assets/images/homepage-banner-penyedia.png";
+import imgSignUp from "../../assets/images/signup-hero.png";
 
 const index = () => {
   return (
@@ -13,7 +13,7 @@ const index = () => {
           <div className="row">
             <div className="col-md-6">
               <img
-                src={imgBannerPenyedia}
+                src={imgSignUp}
                 alt="signup"
                 className="img-fluid img-banner-signup"
               />
