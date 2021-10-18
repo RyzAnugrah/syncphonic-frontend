@@ -1,6 +1,14 @@
-.bg-homepage {
-  background-color: #24222E;
+.bg-homepage-hero {
+  background-image: url("../../assets/images/homepage-hero-bg.png");
+  background-color: #191A19;
   color: #FFF;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.homepage-hero-row {
+  height: 90vh;
 }
 
 .homepage-title {
@@ -15,42 +23,125 @@
 }
 
 .btn-homepage {
-  background-color: #685FC9 !important;
-  color: #000;
+  background-color: #A6711F !important;
+  color: #FFF;
   width: 100%;
 }
 
 .btn-homepage:hover {
-  box-shadow: inset 0 1px 1px #685FC9,
-    0 0 8px #685FC9;
-}
-
-.btn-homepage-text {
-  color: #000;
-}
-
-.btn-homepage-text:hover {
-  color: #000;
-}
-
-.img-banner-ayo {
-  height: 100%;
-  margin-top: 45px;
-}
-
-/* Homepage Features */
-.bg-homepage-features {
-  background-color: #2B2C39;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
   color: #FFF;
 }
 
-.bg-homepage-features-img {
-  background-image: url("../../assets/images/homepage-intro-bg.png");
-  background-color: #2B2C39;
+.homepage-hero-img {
+  background-image: url("../../assets/images/homepage-hero.png");
+  background-color: #191A19;
+  color: #FFF;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 70%;
   height: 100%;
+}
+
+.homepage-hero-card {
+  background-color: #242323;
+  color: #FFF;
+  border-radius: 20px;
+  margin-top: 25%;
+  width: 90%;
+}
+
+.img-hero-card {
+  height: 100%;
+  width: 100%;
+}
+
+.homepage-hero-card-text-title {
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.homepage-hero-card-btn-user {
+  background-color: #191A19;
+  width: 100%;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 11px;
+}
+
+.homepage-hero-card-btn-user:hover {
+  box-shadow: inset 0 1px 1px #191A19,
+    0 0 8px #191A19;
+  color: #FFF;
+  cursor: auto;
+}
+
+.homepage-hero-card-btn-status {
+  background-color: #3D9635;
+  width: 100%;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 11px;
+}
+
+.homepage-hero-card-btn-status:hover {
+  box-shadow: inset 0 1px 1px #3D9635,
+    0 0 8px #3D9635;
+  color: #FFF;
+  cursor: auto;
+}
+
+.homepage-hero-card-text-spec {
+  color: #FFF;
+  font-size: 14px;
+  line-height: 20%;
+}
+
+.homepage-hero-card-text-spec-more {
+  color: #A6711F;
+  font-size: 14px;
+  line-height: 20%;
+}
+
+.homepage-hero-card-text-spec-more:hover {
+  color: #A6711F;
+}
+
+.homepage-hero-card-btn-sewa {
+  background-color: #A6711F !important;
+  color: #FFF;
+}
+
+.homepage-hero-card-btn-sewa:hover {
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+  color: #FFF;
+}
+
+/* Homepage Intro */
+.bg-homepage-intro {
+  background-image: url("../../assets/images/homepage-intro-bg.png");
+  background-color: #191A19;
+  color: #FFF;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.homepage-intro-row {
+  height: 100vh;
+}
+
+.homepage-intro-img {
+  background-image: url("../../assets/images/homepage-intro.png");
+  background-color: #191A19;
+  color: #FFF;
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  height: 100%;
 }
 
 .homepage-card-text {
@@ -59,20 +150,35 @@
   font-weight: 600;
 }
 
-.homepage-title-sub {
+.homepage-title-intro {
   color: #FFF;
   font-size: 44px;
   font-weight: 600;
 }
 
-.homepage-desc-sub {
+.homepage-desc-intro {
   color: #FFF;
   font-size: 18px;
 }
 
 /* Homepage Price */
-.banner-price {
-  position: relative;
+.bg-homepage-price {
+  background-color: #191A19;
+  color: #FFF;
+}
+
+.homepage-price-row {
+  height: 100vh;
+}
+
+.homepage-price-img {
+  background-image: url("../../assets/images/homepage-price.png");
+  background-color: #191A19;
+  color: #FFF;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  height: 100%;
 }
 
 .btn-homepage-price {
@@ -87,12 +193,12 @@
 }
 
 .btn-homepage-price-1 {
-  margin-top: 150px;
-  margin-left: 10px;
+  margin-top: 250px;
+  margin-left: 40px;
 }
 
 .btn-homepage-price-2 {
-  margin-top: 40px;
+  margin-top: 120px;
 }
 
 .img-icon-price {
@@ -113,32 +219,49 @@
   right: 0;
 }
 
-/* Homepage Contact */
-.img-banner-contact {
-  height: 100%;
-  margin-left: -12px;
+/* Homepage About */
+.bg-homepage-about {
+  background-color: #191A19;
+  color: #FFF;
 }
 
-.homepage-icon {
+.homepage-about-row {
+  height: 100vh;
+}
+
+.homepage-about-img {
+  background-image: url("../../assets/images/homepage-about.png");
+  background-color: #191A19;
+  color: #FFF;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 100%;
+}
+
+.homepage-about-icon {
   width: 20%;
   margin-right: 20px;
   border-radius: 50%;
 }
 
-.homepage-icon:hover {
-  box-shadow: inset 0 1px 1px #685FC9,
-    0 0 8px #685FC9;
+.homepage-about-icon:hover {
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
 }
 
 /* Homepage Testimoni */
-.bg-homepage-vektor {
+.bg-homepage-testimoni {
   background-image: url("../../assets/images/homepage-testimoni-bg.png");
-  background-color: #24222E;
+  background-color: #191A19;
   color: #FFF;
-  min-height: 650px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.homepage-testimoni-row {
+  height: 100vh;
 }
 
 .homepage-testimoni-desc {
@@ -156,38 +279,53 @@
 .bg-homepage-cta {
   background-image: url("../../assets/images/homepage-cta.png");
   background-color: #2B2C39;
-  height: 650px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
+.homepage-cta-row {
+  height: 100vh;
+}
+
 .btn-homepage-cta {
-  background-color: #685FC9 !important;
-  color: #000;
+  background-color: #A6711F !important;
+  color: #FFF;
   width: 50%;
 }
 
 .btn-homepage-cta:hover {
-  box-shadow: inset 0 1px 1px #685FC9,
-    0 0 8px #685FC9;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+  color: #FFF;
 }
 
 @media only screen and (max-width: 768px) {
-  .bg-homepage-features-img {
-    background-image: none;
+  .homepage-hero-row {
+    height: fit-content;
   }
 
-  .homepage-card-bg-1 {
-    margin-top: 10px;
+  .homepage-hero-img {
+    background-image: cover;
+    height: fit-content;
   }
 
-  .homepage-card-bg-2 {
-    margin-top: 10px;
+  .homepage-hero-card {
+    width: 100%;
   }
 
-  .homepage-card-bg-3 {
-    margin-top: 10px;
+  .homepage-intro-row {
+    height: fit-content;
+  }
+
+  .homepage-intro-img {
+    background-image: cover;
+    height: 50vh;
+  }
+
+  .homepage-price-img {
+    background-image: cover;
+    height: 50vh;
   }
 
   .btn-homepage-price {
@@ -211,15 +349,21 @@
     margin-bottom: 200px;
   }
 
-  .img-banner-price {
-    height: 50%;
-    right: 25%;
+  .homepage-about-row {
+    height: fit-content;
   }
 
-  .img-banner-contact {
-    height: 100%;
-    margin-left: 0px;
-    margin-top: 5%;
+  .homepage-about-img {
+    background-image: cover;
+    height: 50vh;
+  }
+
+  .homepage-testimoni-row {
+    height: fit-content;
+  }
+
+  .homepage-cta-row {
+    height: fit-content;
   }
 
   .btn-homepage-cta {

@@ -2,17 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
+import imgLogo from "../../../assets/images/logo-syncphonic.png";
+import imgLogoTab from "../../../assets/images/logo-syncphonic-tab.png";
+
 const index = () => {
   return (
     <div>
       <div className="container-fluid bg-footer py-3">
         <div className="row justify-content-center py-3">
           <div className="col-md-4 mt-4">
-            <span>
-              <Link className="footer-title" to="/syncphonic-frontend/">
-                Syncphonic
+            <p>
+              <Link to="/syncphonic-frontend/">
+                <img src={imgLogoTab} alt="logo" className="img-fluid" />
               </Link>
-            </span>
+            </p>
+            <p>
+              <Link to="/syncphonic-frontend/">
+                <img src={imgLogo} alt="logo" className="img-fluid" />
+              </Link>
+            </p>
             <p className="footer-desc mt-4">
               Penyedia penyewaan studio dan alat musik terlengkap di Cirebon
               menyediakan juga kursus musik bagi pemula.

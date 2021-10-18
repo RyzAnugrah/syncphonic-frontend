@@ -4,7 +4,7 @@ import "./style.css";
 const index = () => {
   return (
     <div>
-      <div className="container-fluid bg-color-primary p-4">
+      <div className="container-fluid bg-color-faq p-4">
         <div className="row justify-content-center">
           <div className="col-md-10 text-center">
             <p className="faq-title">FAQ</p>

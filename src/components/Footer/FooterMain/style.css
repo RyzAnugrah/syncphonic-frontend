@@ -1,39 +1,41 @@
 .bg-footer {
-    background-color: #24222E;
-    color: #FFF;
-}
-
-.footer-title {
-    color: #FFF;
-    font-size: 30px;
-    font-weight: 600;
-}
-
-.footer-title:hover {
-    color: #685FC9;
+  background-image: url("../../../assets/images/footer-bg.png");
+  background-color: #191A19;
+  color: #FFF;
+  height: 70vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .footer-desc {
-    color: #FFF;
-    font-size: 18px;
+  color: #FFF;
+  font-size: 18px;
 }
 
 .footer-menu {
-    color: #FFF;
-    font-size: 18px;
-    font-weight: 600;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .footer-list-ul {
-    list-style: none;
-    margin-left: -30px;
+  list-style: none;
+  margin-left: -30px;
 }
 
 .footer-menu-list {
-    color: #FFF;
-    font-size: 18px;
+  color: #FFF;
+  font-size: 18px;
 }
 
 .footer-menu-list:hover {
-    color: #685FC9;
+  color: #A6711F;
+}
+
+@media only screen and (max-width: 768px) {
+  .bg-footer {
+    height: 100%;
+  }
+
 }

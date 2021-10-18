@@ -2,13 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
+import imgLogo from "../../../assets/images/logo-syncphonic.png";
+
 const index = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-navbar py-3 px-4">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-navbar py-2 px-4">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/syncphonic-frontend/">
-            Syncphonic
+            <img src={imgLogo} alt="logo" className="img-fluid" />
           </Link>
           <button
             className="navbar-toggler"
@@ -49,7 +51,7 @@ const index = () => {
                 Masuk
               </Link>
             </span>
-            <Link className="btn-nav-text" to="/syncphonic-frontend/signup">
+            <Link to="/syncphonic-frontend/signup">
               <button className="btn btn-nav ml-3 px-3" type="button">
                 Daftar
               </button>
