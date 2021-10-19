@@ -91,21 +91,21 @@ const index = () => {
             </div>
           </div>
         </div>
-        <div className="row bg-color-studio-row m-4 p-4">
+        <div className="row m-4 studio-list-container">
           <div className="col-md-12">
-            <div className="row p-4">
+            <div className="row">
               <div className="col-md-12">
-                <p className="studio-list-title">List Studio</p>
+                <p className="studio-list-title">Studio</p>
               </div>
             </div>
-            <div className="row p-4">
+            <div className="row">
               <div className="col-md-3">
-                {/* <p className="studio-list-filter">List Studio</p> */}
+                <p className="studio-list-filter">Filter</p>
               </div>
               <div className="col-md-9">
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                   <div className="col">
-                    <div className="card studio-card p-4">
+                    <div className="card studio-card p-2">
                       <div className="row">
                         <div className="col-md-12">
                           <img
@@ -115,7 +115,7 @@ const index = () => {
                           />
                         </div>
                       </div>
-                      <div className="row">
+                      <div className="row p-2">
                         <div className="col-md-12 text-center mt-2">
                           <p className="studio-card-title">Studio 1</p>
                         </div>
@@ -129,39 +129,76 @@ const index = () => {
                             Available
                           </button>
                         </div>
-                        <div className="col-md-12 mt-2">
-                          <ul className="studio-card-list">
-                            <li className="studio-card-desc">
-                              Active Speaker Merk JK MHD 450
-                            </li>
-                            <li className="studio-card-desc">
-                              Subwoofer Single 18″ Merk JK
-                            </li>
-                            <li className="studio-card-desc">
-                              Mic Wireless (2 pcs)
-                            </li>
-                            <li className="studio-card-desc">
-                              Mic Cable (1 pcs)
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="col-md-12">
-                          <p className="studio-card-margin-top">
-                            <Link
-                              to="/syncphonic-frontend"
-                              className="studio-card-desc-more"
-                            >
-                              Lihat lainnya
-                            </Link>
-                          </p>
-                        </div>
-                        <div className="col-md-12 text-center">
+                        <div className="col-md-12 text-center mt-3">
                           <p className="studio-card-desc-price">
                             Rp.500.000/Jam
                           </p>
                         </div>
                         <div className="col-md-12 text-center">
-                          <Link to="/syncphonic-frontend">
+                          <Link to="/syncphonic-frontend/studio/1">
+                            <button
+                              className="btn studio-card-btn-detail px-4"
+                              type="button"
+                            >
+                              Detail
+                            </button>
+                          </Link>
+                        </div>
+                        <div className="col-md-12 text-center mt-3">
+                          <Link to="/syncphonic-frontend/studio/1">
+                            <button
+                              className="btn studio-card-btn-sewa px-4"
+                              type="button"
+                            >
+                              Sewa
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col">
+                    <div className="card studio-card p-2">
+                      <div className="row">
+                        <div className="col-md-12">
+                          <img
+                            src={imgStudioCard}
+                            alt="card"
+                            className="img-fluid studio-card-img"
+                          />
+                        </div>
+                      </div>
+                      <div className="row p-2">
+                        <div className="col-md-12 text-center mt-2">
+                          <p className="studio-card-title">Studio 1</p>
+                        </div>
+                        <div className="col-md-6">
+                          <button className="btn studio-card-btn-user">
+                            10 Orang
+                          </button>
+                        </div>
+                        <div className="col-md-6">
+                          <button className="btn studio-card-btn-status">
+                            Available
+                          </button>
+                        </div>
+                        <div className="col-md-12 text-center mt-3">
+                          <p className="studio-card-desc-price">
+                            Rp.500.000/Jam
+                          </p>
+                        </div>
+                        <div className="col-md-12 text-center">
+                          <Link to="/syncphonic-frontend/studio/1">
+                            <button
+                              className="btn studio-card-btn-detail px-4"
+                              type="button"
+                            >
+                              Detail
+                            </button>
+                          </Link>
+                        </div>
+                        <div className="col-md-12 text-center mt-3">
+                          <Link to="/syncphonic-frontend/studio/1">
                             <button
                               className="btn studio-card-btn-sewa px-4"
                               type="button"

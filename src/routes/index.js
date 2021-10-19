@@ -26,6 +26,12 @@ const AppRoutes = [
     exact: true,
   },
   {
+    name: "detail-studio",
+    path: "/syncphonic-frontend/studio/:id",
+    component: lazy(() => import("../pages/Studio/Detail")),
+    exact: true,
+  },
+  {
     name: "faq",
     path: "/syncphonic-frontend/faq",
     component: lazy(() => import("../pages/Faq")),
