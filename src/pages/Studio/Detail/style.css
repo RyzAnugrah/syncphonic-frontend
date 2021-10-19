@@ -6,3 +6,92 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.studio-detail-text-title {
+  color: #FFF;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.studio-detail-btn-user {
+  background-color: #191A19;
+  width: 100%;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 11px;
+  border: 2px solid #FFF;
+}
+
+.studio-detail-btn-user:hover {
+  box-shadow: inset 0 1px 1px #191A19,
+    0 0 8px #191A19;
+  color: #FFF;
+  cursor: auto;
+}
+
+.studio-detail-btn-status {
+  background-color: #3D9635;
+  width: 100%;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 11px;
+}
+
+.studio-detail-btn-status:hover {
+  box-shadow: inset 0 1px 1px #3D9635,
+    0 0 8px #3D9635;
+  color: #FFF;
+  cursor: auto;
+}
+
+.studio-detail-desc-price {
+  color: #FFF;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.studio-detail-desc-spec {
+  color: #FFF;
+  font-size: 16px;
+}
+
+.studio-detail-form-title {
+  color: #FFF;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.bg-color-form-row {
+  background-color: #242323;
+  color: #FFF;
+}
+
+.form-control-sewa {
+  background-color: #4B4747;
+  border: 2px solid #4B4747;
+  color: #FFF;
+}
+
+.form-control-sewa:hover,
+.form-control-sewa:focus {
+  background-color: #4B4747;
+  border: 2px solid #A6711F;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+  color: #FFF;
+}
+
+.btn-sewa {
+  width: 100%;
+  background-color: #A6711F;
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 10%;
+}
+
+.btn-sewa:hover {
+  color: #FFF;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+}

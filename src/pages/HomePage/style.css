@@ -48,16 +48,15 @@
   background-color: #242323;
   color: #FFF;
   border-radius: 20px;
-  margin-top: 25%;
-  width: 90%;
+  margin-top: 10%;
 }
 
-.img-hero-card {
+.homepage-hero-card-img {
   height: 100%;
   width: 100%;
 }
 
-.homepage-hero-card-text-title {
+.homepage-hero-card-title {
   color: #FFF;
   font-size: 24px;
   font-weight: 600;
@@ -69,6 +68,7 @@
   border-radius: 20px;
   color: #FFF;
   font-size: 11px;
+  margin-top: -10px;
 }
 
 .homepage-hero-card-btn-user:hover {
@@ -84,6 +84,7 @@
   border-radius: 20px;
   color: #FFF;
   font-size: 11px;
+  margin-top: -10px;
 }
 
 .homepage-hero-card-btn-status:hover {
@@ -93,25 +94,31 @@
   cursor: auto;
 }
 
-.homepage-hero-card-text-spec {
+.homepage-hero-card-desc-price {
   color: #FFF;
-  font-size: 14px;
-  line-height: 20%;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.homepage-hero-card-text-spec-more {
-  color: #A6711F;
-  font-size: 14px;
-  line-height: 20%;
+.homepage-hero-card-btn-detail {
+  background-color: #242323 !important;
+  border: 2px solid #A6711F;
+  color: #FFF;
+  width: 100%;
+  border-radius: 8px;
 }
 
-.homepage-hero-card-text-spec-more:hover {
-  color: #A6711F;
+.homepage-hero-card-btn-detail:hover {
+  box-shadow: inset 0 1px 1px #242323,
+    0 0 8px #A6711F;
+  color: #FFF;
 }
 
 .homepage-hero-card-btn-sewa {
   background-color: #A6711F !important;
   color: #FFF;
+  width: 100%;
+  border-radius: 8px;
 }
 
 .homepage-hero-card-btn-sewa:hover {
@@ -135,13 +142,7 @@
 }
 
 .homepage-intro-img {
-  background-image: url("../../assets/images/homepage-intro.png");
-  background-color: #191A19;
-  color: #FFF;
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 70%;
-  height: 100%;
+  margin-left: -10px;
 }
 
 .homepage-card-text {
@@ -172,51 +173,7 @@
 }
 
 .homepage-price-img {
-  background-image: url("../../assets/images/homepage-price.png");
-  background-color: #191A19;
-  color: #FFF;
-  background-position: right center;
-  background-repeat: no-repeat;
-  background-size: 50%;
-  height: 100%;
-}
-
-.btn-homepage-price {
-  background-color: #FFF !important;
-  color: #000;
-  width: 100%;
-  border-radius: 50px;
-}
-
-.btn-homepage-price:hover {
-  cursor: auto;
-}
-
-.btn-homepage-price-1 {
-  margin-top: 250px;
-  margin-left: 40px;
-}
-
-.btn-homepage-price-2 {
-  margin-top: 120px;
-}
-
-.img-icon-price {
-  height: 50px !important;
-  margin-right: 10px;
-}
-
-.homepage-price-text {
-  color: #000;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.img-banner-price {
-  height: 70%;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  margin-left: 10px;
 }
 
 /* Homepage About */
@@ -230,13 +187,7 @@
 }
 
 .homepage-about-img {
-  background-image: url("../../assets/images/homepage-about.png");
-  background-color: #191A19;
-  color: #FFF;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  height: 100%;
+  margin-left: -10px;
 }
 
 .homepage-about-icon {
@@ -288,6 +239,12 @@
   height: 100vh;
 }
 
+.homepage-cta-title {
+  color: #FFF;
+  font-size: 44px;
+  font-weight: 600;
+}
+
 .btn-homepage-cta {
   background-color: #A6711F !important;
   color: #FFF;
@@ -311,21 +268,11 @@
   }
 
   .homepage-hero-card {
-    width: 100%;
+    visibility: hidden;
   }
 
   .homepage-intro-row {
     height: fit-content;
-  }
-
-  .homepage-intro-img {
-    background-image: cover;
-    height: 50vh;
-  }
-
-  .homepage-price-img {
-    background-image: cover;
-    height: 50vh;
   }
 
   .btn-homepage-price {
@@ -363,10 +310,17 @@
   }
 
   .homepage-cta-row {
-    height: fit-content;
+    height: 70vh;
+  }
+
+  .homepage-cta-title {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
   }
 
   .btn-homepage-cta {
-    width: 80%;
+    width: 100%;
   }
 }

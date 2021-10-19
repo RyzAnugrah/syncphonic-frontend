@@ -32,9 +32,10 @@
 .form-control-login:hover,
 .form-control-login:focus {
   background-color: #4B4747;
+  border: 2px solid #A6711F;
+  color: #FFF;
   box-shadow: inset 0 1px 1px #A6711F,
     0 0 8px #A6711F;
-  color: #FFF;
 }
 
 .btn-login {

@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 import imgHeroCard from "../../assets/images/homepage-hero-card.png";
+import imgIntro from "../../assets/images/homepage-intro.png";
+import imgPrice from "../../assets/images/homepage-price.png";
+import imgAbout from "../../assets/images/homepage-about.png";
 import imgIconInstagram from "../../assets/images/homepage-icon-instagram.png";
 import imgIconYoutube from "../../assets/images/homepage-icon-youtube.png";
 import imgIconEmail from "../../assets/images/homepage-icon-email.png";
-import imgIconPrice1 from "../../assets/images/homepage-icon-price-1.png";
-import imgIconPrice2 from "../../assets/images/homepage-icon-price-2.png";
 import imgIconTestimoni from "../../assets/images/homepage-icon-testimoni.png";
 
 const index = () => {
@@ -27,63 +28,49 @@ const index = () => {
             </Link>
           </div>
           <div className="col-md-6 homepage-hero-img my-auto">
-            <div className="homepage-hero-card p-2">
-              <div className="row">
-                <div className="col-md-4">
-                  <img
-                    src={imgHeroCard}
-                    alt="card"
-                    className="img-fluid img-hero-card"
-                  />
-                </div>
-                <div className="col-md-8">
+            <div className="row">
+              <div className="col-md-5 offset-md-2">
+                <div className="card homepage-hero-card p-2">
                   <div className="row">
-                    <div className="col-md-6">
-                      <p className="homepage-hero-card-text-title mt-2">Studio 1</p>
+                    <div className="col-md-12">
+                      <img
+                        src={imgHeroCard}
+                        alt="card"
+                        className="img-fluid homepage-hero-card-img"
+                      />
                     </div>
-                    <div className="col-md-3">
+                  </div>
+                  <div className="row p-2">
+                    <div className="col-md-12 text-center mt-2">
+                      <p className="homepage-hero-card-title">Studio 1</p>
+                    </div>
+                    <div className="col-md-6">
                       <button className="btn homepage-hero-card-btn-user">
                         10 Orang
                       </button>
                     </div>
-                    <div className="col-md-3">
+                    <div className="col-md-6">
                       <button className="btn homepage-hero-card-btn-status">
                         Available
                       </button>
                     </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-12 mt-4">
-                      <p className="homepage-hero-card-text-spec">
-                        Active Speaker Merk JK MHD 450
-                      </p>
-                      <p className="homepage-hero-card-text-spec">
-                        Subwoofer Single 18″ Merk JK
-                      </p>
-                      <p className="homepage-hero-card-text-spec">
-                        Mic Wireless (2 pcs)
-                      </p>
-                      <p className="homepage-hero-card-text-spec">
-                        Mic Cable (1 pcs)
-                      </p>
-                      <p>
-                        <Link
-                          to="/syncphonic-frontend"
-                          className="homepage-hero-card-text-spec-more"
-                        >
-                          Lihat lainnya
-                        </Link>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-md-6">
-                      <p className="homepage-hero-card-text-title">
+                    <div className="col-md-12 text-center mt-3">
+                      <p className="homepage-hero-card-desc-price">
                         Rp.500.000/Jam
                       </p>
                     </div>
-                    <div className="col-md-6 text-center">
-                      <Link to="/syncphonic-frontend">
+                    <div className="col-md-12 text-center">
+                      <Link to="/syncphonic-frontend/studio/1">
+                        <button
+                          className="btn homepage-hero-card-btn-detail px-4"
+                          type="button"
+                        >
+                          Detail
+                        </button>
+                      </Link>
+                    </div>
+                    <div className="col-md-12 text-center mt-3">
+                      <Link to="/syncphonic-frontend/studio/1">
                         <button
                           className="btn homepage-hero-card-btn-sewa px-4"
                           type="button"
@@ -101,7 +88,13 @@ const index = () => {
       </div>
       <div className="container-fluid bg-homepage-intro">
         <div className="row homepage-intro-row">
-          <div className="col-md-6 homepage-intro-img my-auto"></div>
+          <div className="col-md-6 my-auto">
+            <img
+              src={imgIntro}
+              alt="card"
+              className="img-fluid homepage-intro-img"
+            />
+          </div>
           <div className="col-md-4 offset-md-1 my-auto">
             <p className="homepage-title-intro mt-4">
               Mulai latih dan kembangkan bakatmu
@@ -115,7 +108,7 @@ const index = () => {
       </div>
       <div className="container-fluid bg-homepage-price">
         <div className="row justify-content-center homepage-price-row">
-          <div className="col-md-4 my-auto">
+          <div className="col-md-4 my-auto order-2 order-md-1">
             <p className="homepage-title-intro mt-4">
               Harga terjangkau dan pastinya berkualitas
             </p>
@@ -124,41 +117,24 @@ const index = () => {
               terjangkau dan berkualitas
             </p>
           </div>
-          <div className="col-md-6 homepage-price-img">
-            <div className="row">
-              <div className="col-md-6">
-                <button
-                  className="btn btn-homepage-price btn-homepage-price-1 py-2"
-                  type="button"
-                >
-                  <img
-                    src={imgIconPrice1}
-                    alt="homepage"
-                    className="img-icon-price"
-                  />
-                  <span className="homepage-price-text">Harga Terjangkau</span>
-                </button>
-              </div>
-              <div className="col-md-6">
-                <button
-                  className="btn btn-homepage-price btn-homepage-price-2 py-2"
-                  type="button"
-                >
-                  <img
-                    src={imgIconPrice2}
-                    alt="homepage"
-                    className="img-icon-price"
-                  />
-                  <span className="homepage-price-text">Kualitas Terbaik</span>
-                </button>
-              </div>
-            </div>
+          <div className="col-md-6 my-auto order-1 order-md-2">
+            <img
+              src={imgPrice}
+              alt="card"
+              className="img-fluid homepage-price-img"
+            />
           </div>
         </div>
       </div>
       <div className="container-fluid bg-homepage-about">
         <div className="row homepage-about-row">
-          <div className="col-md-6 homepage-about-img my-auto"></div>
+          <div className="col-md-6 my-auto">
+            <img
+              src={imgAbout}
+              alt="card"
+              className="img-fluid homepage-about-img"
+            />
+          </div>
           <div className="col-md-4 offset-md-1 my-auto">
             <p className="homepage-title-intro mt-4">Syncphonic Studio Musik</p>
             <p className="homepage-desc-intro mt-4">
@@ -195,8 +171,8 @@ const index = () => {
         <div className="row justify-content-center homepage-testimoni-row">
           <div className="col-md-10 my-auto">
             <p className="homepage-title-intro mt-4">Testimoni</p>
-            <div className="row mt-4">
-              <div className="col-md-6">
+            <div className="row">
+              <div className="col-md-6 mt-4">
                 <div className="row">
                   <div className="col-md-4">
                     <img
@@ -216,7 +192,7 @@ const index = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 mt-4">
                 <div className="row">
                   <div className="col-md-4">
                     <img
@@ -243,7 +219,7 @@ const index = () => {
       <div className="container-fluid bg-homepage-cta">
         <div className="row justify-content-center homepage-cta-row">
           <div className="col-md-10 my-auto text-center">
-            <p className="homepage-title-intro">
+            <p className="homepage-cta-title">
               Warnai duniamu dengan musik dan gabung bersama kami
             </p>
             <Link to="/syncphonic-frontend/signup">

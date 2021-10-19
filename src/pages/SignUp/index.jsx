@@ -111,7 +111,7 @@ const index = () => {
                     htmlFor="inputCheck"
                   >
                     Dengan mendaftar anda telah menyetujui
-                    <Link to="/syncphonic-frontend/faq">
+                    <Link to="/syncphonic-frontend/kebijakan">
                       <span className="signup-desc-text-login">
                         &#00; Kebijakan Pengguna dan Privasi
                       </span>

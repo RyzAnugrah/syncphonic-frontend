@@ -22,6 +22,10 @@
   font-size: 18px;
 }
 
+.studio-list-container {
+  padding: 1.5rem;
+}
+
 .studio-list-title {
   color: #FFF;
   font-size: 30px;
@@ -115,11 +119,11 @@
   color: #FFF;
 }
 
-.studio-list-container {
-  padding: 1.5rem;
-}
-
 @media only screen and (max-width: 768px) {
+  .studio-list-container {
+    padding: 0rem;
+  }
+  
   .studio-card-btn-user {
     margin-top: 0px;
   }
@@ -127,9 +131,5 @@
 
   .studio-card-btn-status {
     margin-top: 10px;
-  }
-
-  .studio-list-container {
-    padding: 0rem;
   }
 }
