@@ -4,10 +4,10 @@ import "./style.css";
 const index = () => {
   return (
     <div>
-      <div className="container-fluid bg-color-faq p-4">
+      <div className="container-fluid bg-color-bantuan p-4">
         <div className="row justify-content-center">
           <div className="col-md-10 text-center">
-            <p className="faq-title">FAQ</p>
+            <p className="bantuan-title">Bantuan</p>
             <ul
               className="nav nav-pills nav-justified my-4"
               id="pills-tab"
@@ -30,43 +30,15 @@ const index = () => {
               <li className="nav-item" role="presentation">
                 <button
                   className="nav-link"
-                  id="pills-studio-tab"
+                  id="pills-contact-tab"
                   data-bs-toggle="pill"
-                  data-bs-target="#pills-studio"
+                  data-bs-target="#pills-contact"
                   type="button"
                   role="tab"
-                  aria-controls="pills-studio"
+                  aria-controls="pills-contact"
                   aria-selected="false"
                 >
-                  Sewa Studio
-                </button>
-              </li>
-              <li className="nav-item" role="presentation">
-                <button
-                  className="nav-link"
-                  id="pills-alat-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-alat"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-alat"
-                  aria-selected="false"
-                >
-                  Sewa Alat
-                </button>
-              </li>
-              <li className="nav-item" role="presentation">
-                <button
-                  className="nav-link"
-                  id="pills-kursus-tab"
-                  data-bs-toggle="pill"
-                  data-bs-target="#pills-kursus"
-                  type="button"
-                  role="tab"
-                  aria-controls="pills-kursus"
-                  aria-selected="false"
-                >
-                  Kursus Musik
+                  Informasi Kontak
                 </button>
               </li>
             </ul>
@@ -152,126 +124,58 @@ const index = () => {
               </div>
               <div
                 className="tab-pane fade"
-                id="pills-studio"
+                id="pills-contact"
                 role="tabpanel"
-                aria-labelledby="pills-studio-tab"
+                aria-labelledby="pills-contact-tab"
               >
                 <div className="row justify-content-center mt-4">
                   <div className="col-md-10 mt-4">
-                    <div className="accordion" id="accordionStudio">
+                    <div className="accordion" id="accordionContact">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
                           <button
                             className="accordion-button"
                             type="button"
                             data-bs-toggle="collapse"
-                            data-bs-target="#collapseOneStudio"
+                            data-bs-target="#collapseOneContact"
                             aria-expanded="true"
-                            aria-controls="collapseOneStudio"
+                            aria-controls="collapseOneContact"
                           >
-                            Bagaimana cara sewa studio di Syncphonic?
+                            Alamat
                           </button>
                         </h2>
                         <div
-                          id="collapseOneStudio"
+                          id="collapseOneContact"
                           className="accordion-collapse collapse show"
                           aria-labelledby="headingOne"
-                          data-bs-parent="#accordionStudio"
+                          data-bs-parent="#accordionContact"
                         >
                           <div className="accordion-body">
-                            Dalam melakukan hal tersebut pengguna harus
-                            terdaftar sebagai member studio dan setelah itu
-                            pengguna dapat memilih beberapa spesifikasi studio
-                            yang yang ada, pengguna akan diarahkan ke dalam
-                            formulir pendaftaran sewa serta memilih jadwal yang
-                            tersedia dan memilih metode pembayaran, setelah itu
-                            pengguna mengirimkan formulir tersebut dan pengguna
-                            akan mendapatkan invoice yang menjadi tanda bukti
-                            transaksi penyewaan.
+                            Jl. Pangeran Drajat Gg. Kr. Mulya V No.01, Drajat,
+                            Kesambi, Cirebon City, Jawa Barat 45133
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="pills-alat"
-                role="tabpanel"
-                aria-labelledby="pills-alat-tab"
-              >
-                <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
-                    <div className="accordion" id="accordionAlat">
                       <div className="accordion-item">
-                        <h2 className="accordion-header" id="headingOne">
+                        <h2 className="accordion-header" id="headingTwo">
                           <button
-                            className="accordion-button"
+                            className="accordion-button collapsed"
                             type="button"
                             data-bs-toggle="collapse"
-                            data-bs-target="#collapseOneAlat"
-                            aria-expanded="true"
-                            aria-controls="collapseOneAlat"
+                            data-bs-target="#collapseTwoContact"
+                            aria-expanded="false"
+                            aria-controls="collapseTwoContact"
                           >
-                            Bagaimana cara sewa alat musik di Syncphonic?
+                            Nomor Telepon
                           </button>
                         </h2>
                         <div
-                          id="collapseOneAlat"
-                          className="accordion-collapse collapse show"
-                          aria-labelledby="headingOne"
-                          data-bs-parent="#accordionAlat"
+                          id="collapseTwoContact"
+                          className="accordion-collapse collapse"
+                          aria-labelledby="headingTwo"
+                          data-bs-parent="#accordionContact"
                         >
-                          <div className="accordion-body">
-                            Sama halnya dengan sewa studio pengguna juga harus
-                            terdaftar sebagai member studio dan melakukan
-                            pengisian form penyewaan yang disediakan dalam
-                            website.
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="pills-kursus"
-                role="tabpanel"
-                aria-labelledby="pills-kursus-tab"
-              >
-                <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
-                    <div className="accordion" id="accordionKursus">
-                      <div className="accordion-item">
-                        <h2 className="accordion-header" id="headingOne">
-                          <button
-                            className="accordion-button"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapseOneKursus"
-                            aria-expanded="true"
-                            aria-controls="collapseOneKursus"
-                          >
-                            Bagaimana cara ikut kursus musik di Syncphonic?
-                          </button>
-                        </h2>
-                        <div
-                          id="collapseOneKursus"
-                          className="accordion-collapse collapse show"
-                          aria-labelledby="headingOne"
-                          data-bs-parent="#accordionKursus"
-                        >
-                          <div className="accordion-body">
-                            Di fitur ini pengguna juga wajib sudah terdaftar
-                            menjadi member studio, di dalam fitur ini pengguna
-                            dapat mendaftar untuk mengikuti kursus yang
-                            disediakan studio, bentuk kursus tersebut dapat
-                            berupa pelatihan offline maupun online melalui
-                            website, hal itu bergantung pada ketersedian dari
-                            studio itu sendiri.
-                          </div>
+                          <div className="accordion-body">0812-3456-7891</div>
                         </div>
                       </div>
                     </div>

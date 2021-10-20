@@ -1,0 +1,45 @@
+.bg-color-bantuan {
+  background-color: #191A19;
+  color: #FFF;
+  height: fit-content;
+}
+
+.bantuan-title {
+  color: #FFF;
+  font-size: 60px;
+  font-weight: 600;
+}
+
+.nav-pills .nav-link {
+  color: #FFF;
+  background-color: #242323;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+  color: #FFF;
+  background-color: #A6711F;
+}
+
+.accordion-button {
+  color: #FFF;
+  background-color: #242323;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #FFF;
+  background-color: #A6711F;
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.accordion-body {
+  color: #000;
+  text-align: justify;
+}

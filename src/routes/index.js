@@ -37,6 +37,18 @@ const AppRoutes = [
     component: lazy(() => import("../pages/Faq")),
     exact: true,
   },
+  {
+    name: "bantuan",
+    path: "/syncphonic-frontend/bantuan",
+    component: lazy(() => import("../pages/Bantuan")),
+    exact: true,
+  },
+  {
+    name: "kebijakan",
+    path: "/syncphonic-frontend/kebijakan",
+    component: lazy(() => import("../pages/Kebijakan")),
+    exact: true,
+  },
 ];
 
 export { AppRoutes };
