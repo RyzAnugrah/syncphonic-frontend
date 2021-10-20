@@ -10,23 +10,23 @@ import {
 } from "./style";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../../assets/styles/style";
-import ImgTestimonial1 from "../../../assets/images/landing-icon-testimoni.png";
-import ImgTestimonial2 from "../../../assets/images/landing-icon-testimoni.png";
-import ImgTestimonial3 from "../../../assets/images/landing-icon-testimoni.png";
-import ImgTestimonial4 from "../../../assets/images/landing-icon-testimoni.png";
+// import ImgTestimonial1 from "../../../assets/images/landing-icon-testimoni.png";
+// import ImgTestimonial2 from "../../../assets/images/landing-icon-testimoni.png";
+// import ImgTestimonial3 from "../../../assets/images/landing-icon-testimoni.png";
+// import ImgTestimonial4 from "../../../assets/images/landing-icon-testimoni.png";
 
 const TestimonialSection = ({
   lightBg,
   id,
   headline,
   description1,
-  description2,
-  description3,
-  description4,
+  // description2,
+  // description3,
+  // description4,
   person1,
-  person2,
-  person3,
-  person4,
+  // person2,
+  // person3,
+  // person4,
 }) => {
   return (
     <ThemeProvider theme={theme}>
