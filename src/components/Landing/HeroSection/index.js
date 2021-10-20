@@ -43,7 +43,7 @@ const HeroSection = ({
                 }}
                 className="btn"
                 type="button"
-                to="/syncphonic-frontend/daftar/"
+                to="/syncphonic-frontend/daftar"
               >
                 {buttonLabel}
               </HeroButton>

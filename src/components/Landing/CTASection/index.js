@@ -1,25 +1,15 @@
 import React from "react";
 import {
   CTAContainer,
-  CTAWrapper,
-  CTARow,
-  Column1,
-  Column2,
   Heading,
-  Subtitle,
-  Img,
 } from "./style";
 import { CTAButton } from "../../Button";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../../../assets/styles/style";
-import ImgCTA from "../../../assets/images/bg-landing-cta.png";
 
 const CTASection = ({
   lightBg,
-  id,
-  imgStart,
   headline,
-  description,
   buttonLabel,
 }) => {
   return (
@@ -38,7 +28,7 @@ const CTASection = ({
               }}
               className="btn"
               type="button"
-              to="/syncphonic-frontend/signup"
+              to="/syncphonic-frontend/daftar"
             >
               {buttonLabel}
             </CTAButton>

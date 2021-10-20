@@ -3,7 +3,7 @@ import { lazy } from "react";
 const AppRoutes = [
   {
     name: "home",
-    path: "/syncphonic-frontend/",
+    path: "/syncphonic-frontend",
     component: lazy(() => import("../pages/Home")),
     exact: true,
   },

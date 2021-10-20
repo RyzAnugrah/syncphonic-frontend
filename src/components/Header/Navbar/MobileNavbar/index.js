@@ -24,7 +24,7 @@ const MobileNavbar = ({ isOpen, toggle, lightTheme }) => {
           <Icon lightTheme={lightTheme} onClick={toggle}>
             <FaTimes />
           </Icon>
-          <NavLogo to="/syncphonic-frontend/">
+          <NavLogo to="/syncphonic-frontend">
             <img width="128px" src={logo} alt="logo" onClick={toggle} />
           </NavLogo>
           <MobileNavbarWrapper>
