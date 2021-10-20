@@ -49,6 +49,12 @@ const AppRoutes = [
     component: lazy(() => import("../pages/Kebijakan")),
     exact: true,
   },
+  {
+    name: "pengembang",
+    path: "/syncphonic-frontend/pengembang",
+    component: lazy(() => import("../pages/Pengembang")),
+    exact: true,
+  },
 ];
 
 export { AppRoutes };

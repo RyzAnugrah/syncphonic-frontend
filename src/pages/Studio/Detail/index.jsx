@@ -18,20 +18,20 @@ const index = () => {
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-md-2 my-auto">
+            <div className="col-md-2 mt-4">
               <button className="btn studio-detail-btn-user">10 Orang</button>
             </div>
-            <div className="col-md-2 my-auto">
+            <div className="col-md-2 mt-4">
               <button className="btn studio-detail-btn-status">
                 Available
               </button>
             </div>
-            <div className="col-md-4 my-auto">
+            <div className="col-md-4 mt-3">
               <p className="studio-detail-desc-price">Rp.500.000/Jam</p>
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-md-6 mt-4">
+            <div className="col-md-6">
               <p className="studio-detail-desc-spec">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor
                 nunc aenean netus leo placerat iaculis. Feugiat elementum vitae
