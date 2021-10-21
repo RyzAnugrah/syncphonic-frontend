@@ -36,7 +36,7 @@ const PriceSection = ({
             className="row container-fluid g-0 justify-content-center"
             imgStart={imgStart}
           >
-            <Column1 className="col-md-6">
+            <Column1 className="col-md-6" data-aos="fade-down-right">
               <Heading lightBg={lightBg}>{headline}</Heading>
               <Column3 className="col-md-6">
                 <div className="column">
@@ -59,7 +59,7 @@ const PriceSection = ({
               </Subtitle>
             </Column1>
 
-            <Column2 className="col-md-6">
+            <Column2 className="col-md-6" data-aos="fade-down-left">
               <div className="column">
                 <div className="float-end">
                   <PriceButton1 className="btn py-3" type="button">

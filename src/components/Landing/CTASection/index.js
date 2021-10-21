@@ -16,7 +16,10 @@ const CTASection = ({
     <ThemeProvider theme={theme}>
       <CTAContainer className="container-fluid bg-homepage-cta p-3">
         <div className="row justify-content-center h-100">
-          <div className="col-md-10 my-auto text-center">
+          <div
+            className="col-md-10 my-auto text-center"
+            data-aos="fade-down-right"
+          >
             <Heading className="row justify-content-center" lightBg={lightBg}>
               {headline}
             </Heading>

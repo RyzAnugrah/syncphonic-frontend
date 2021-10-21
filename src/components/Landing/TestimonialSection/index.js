@@ -36,7 +36,7 @@ const TestimonialSection = ({
           <TestimonialRow className="row container-fluid g-0 justify-content-center">
             <TestimonialContentRow className="row container-fluid g-0 justify-content-center">
               <div className="row mt-4">
-                <div className="col-md-6">
+                <div className="col-md-6" data-aos="fade-down-right">
                   <div className="row">
                     <div className="col-md-4">
                       <img
@@ -45,13 +45,13 @@ const TestimonialSection = ({
                         className="img-fluid"
                       />
                     </div>
-                    <div className="col-md-8 my-auto">
+                    <div className="col-md-8 my-auto" data-aos="fade-down-left">
                       <Quote>{description1}</Quote>
                       <Person>{person1}</Person>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6" data-aos="fade-down-right">
                   <div className="row">
                     <div className="col-md-4">
                       <img
@@ -60,7 +60,7 @@ const TestimonialSection = ({
                         className="img-fluid"
                       />
                     </div>
-                    <div className="col-md-8 my-auto">
+                    <div className="col-md-8 my-auto" data-aos="fade-down-left">
                       <Quote>{description1}</Quote>
                       <Person>{person1}</Person>
                     </div>
@@ -70,7 +70,7 @@ const TestimonialSection = ({
             </TestimonialContentRow>
             <TestimonialContentRow className="row container-fluid g-0 justify-content-center">
               <div className="row mt-4">
-                <div className="col-md-6">
+                <div className="col-md-6" data-aos="fade-down-right">
                   <div className="row">
                     <div className="col-md-4">
                       <img
@@ -79,7 +79,7 @@ const TestimonialSection = ({
                         className="img-fluid"
                       />
                     </div>
-                    <div className="col-md-8 my-auto">
+                    <div className="col-md-8 my-auto" data-aos="fade-down-left">
                       <Quote>{description1}</Quote>
                       <Person>{person1}</Person>
                     </div>
@@ -87,14 +87,17 @@ const TestimonialSection = ({
                 </div>
                 <div className="col-md-6">
                   <div className="row">
-                    <div className="col-md-4">
+                    <div className="col-md-4" data-aos="fade-down-left">
                       <img
                         src={ImgTestimonial1}
                         alt="icon"
                         className="img-fluid"
                       />
                     </div>
-                    <div className="col-md-8 my-auto">
+                    <div
+                      className="col-md-8 my-auto"
+                      data-aos="fade-down-left"
+                    >
                       <Quote>{description1}</Quote>
                       <Person>{person1}</Person>
                     </div>

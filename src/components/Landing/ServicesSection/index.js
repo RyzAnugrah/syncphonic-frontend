@@ -28,13 +28,13 @@ const ServicesSection = ({
             className="row container-fluid g-0 justify-content-end"
             imgStart={imgStart}
           >
-            <Column1 className="col-md-6">
+            <Column1 className="col-md-6" data-aos="fade-down-right">
               <Heading lightBg={lightBg}>{headline}</Heading>
               <Subtitle className="my-4" lightBg={lightBg}>
                 {description}
               </Subtitle>
             </Column1>
-            <Column2 className="col-md-6">
+            <Column2 className="col-md-6" data-aos="fade-down-left">
               <Img src={ImgServices} alt="Services" />
             </Column2>
           </ServicesRow>
