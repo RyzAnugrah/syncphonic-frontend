@@ -1,12 +1,12 @@
 import React from "react";
 import "./style.css";
 
-const index = () => {
+const Bantuan = () => {
   return (
     <div>
-      <div className="container-fluid bg-color-bantuan p-4">
-        <div className="row justify-content-center">
-          <div className="col-md-10 text-center">
+      <div className="bg-color-bantuan">
+        <div className="row justify-content-center g-0 px-3 py-4 container-content">
+          <div className="text-center">
             <p className="bantuan-title">Bantuan</p>
             <ul
               className="nav nav-pills nav-justified my-4"
@@ -24,7 +24,7 @@ const index = () => {
                   aria-controls="pills-general"
                   aria-selected="true"
                 >
-                  Umum
+                  Bantuan Umum
                 </button>
               </li>
               <li className="nav-item" role="presentation">
@@ -50,7 +50,7 @@ const index = () => {
                 aria-labelledby="pills-general-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionGeneral">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -129,7 +129,7 @@ const index = () => {
                 aria-labelledby="pills-contact-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionContact">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -152,7 +152,7 @@ const index = () => {
                         >
                           <div className="accordion-body">
                             Jl. Pangeran Drajat Gg. Kr. Mulya V No.01, Drajat,
-                            Kesambi, Cirebon City, Jawa Barat 45133
+                            Kesambi, Kota Cirebon, Jawa Barat 45133
                           </div>
                         </div>
                       </div>
@@ -175,7 +175,32 @@ const index = () => {
                           aria-labelledby="headingTwo"
                           data-bs-parent="#accordionContact"
                         >
-                          <div className="accordion-body">0812-3456-7891</div>
+                          <div className="accordion-body">
+                            <p>
+                              <a
+                                className="contact-menu-list"
+                                href="mailto:support@syncphonic.id"
+                              >
+                                info@syncphonic.id&ensp;(Email)
+                              </a>
+                            </p>
+                            <p>
+                              <a
+                                className="contact-menu-list"
+                                href="https://wa.me/6281250002000"
+                              >
+                                081250002000&ensp;(Whatsapp)
+                              </a>
+                            </p>
+                            <p>
+                              <a
+                                className="contact-menu-list"
+                                href="tel:0231500200"
+                              >
+                                (0231) 500200&ensp;(Telepon)
+                              </a>
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -190,4 +215,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Bantuan;

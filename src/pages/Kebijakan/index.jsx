@@ -1,12 +1,12 @@
 import React from "react";
 import "./style.css";
 
-const index = () => {
+const Kebijakan = () => {
   return (
     <div>
-      <div className="container-fluid bg-color-kebijakan p-4">
-        <div className="row justify-content-center">
-          <div className="col-md-10 text-center">
+      <div className="bg-color-kebijakan">
+        <div className="row justify-content-center g-0 px-3 py-4 container-content">
+          <div className="text-center">
             <p className="kebijakan-title">Kebijakan Pengguna</p>
             <ul
               className="nav nav-pills nav-justified my-4"
@@ -49,8 +49,8 @@ const index = () => {
                 role="tabpanel"
                 aria-labelledby="pills-general-tab"
               >
-                <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                <div className="row justify-content-center g-0 mt-4 container-content">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionGeneral">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -124,7 +124,7 @@ const index = () => {
                 aria-labelledby="pills-kebijakan-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionKebijakan">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -211,4 +211,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Kebijakan;

@@ -1,12 +1,12 @@
 import React from "react";
 import "./style.css";
 
-const index = () => {
+const FAQ = () => {
   return (
     <div>
-      <div className="container-fluid bg-color-faq p-4">
-        <div className="row justify-content-center">
-          <div className="col-md-10 text-center">
+      <div className="bg-color-faq">
+        <div className="row justify-content-center g-0 px-3 py-4 container-content">
+          <div className="text-center">
             <p className="faq-title">FAQ</p>
             <ul
               className="nav nav-pills nav-justified my-4"
@@ -24,7 +24,7 @@ const index = () => {
                   aria-controls="pills-general"
                   aria-selected="true"
                 >
-                  Umum
+                  FAQ Umum
                 </button>
               </li>
               <li className="nav-item" role="presentation">
@@ -78,12 +78,12 @@ const index = () => {
                 aria-labelledby="pills-general-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionGeneral">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
                           <button
-                            className="accordion-button"
+                            className="accordion-button fw-bolder"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#collapseOneGeneral"
@@ -117,7 +117,7 @@ const index = () => {
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingTwo">
                           <button
-                            className="accordion-button collapsed"
+                            className="accordion-button collapsed fw-bolder"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#collapseTwoGeneral"
@@ -157,12 +157,12 @@ const index = () => {
                 aria-labelledby="pills-studio-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionStudio">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
                           <button
-                            className="accordion-button"
+                            className="accordion-button fw-bolder"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#collapseOneStudio"
@@ -202,12 +202,12 @@ const index = () => {
                 aria-labelledby="pills-alat-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionAlat">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
                           <button
-                            className="accordion-button"
+                            className="accordion-button fw-bolder"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#collapseOneAlat"
@@ -242,12 +242,12 @@ const index = () => {
                 aria-labelledby="pills-kursus-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionKursus">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
                           <button
-                            className="accordion-button"
+                            className="accordion-button fw-bolder"
                             type="button"
                             data-bs-toggle="collapse"
                             data-bs-target="#collapseOneKursus"
@@ -286,4 +286,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default FAQ;

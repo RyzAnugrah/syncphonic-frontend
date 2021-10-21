@@ -4,9 +4,16 @@
   height: fit-content;
 }
 
+.container-content {
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .kebijakan-title {
   color: #FFF;
-  font-size: 60px;
+  font-size: 41.05px;
   font-weight: 600;
 }
 
@@ -26,6 +33,11 @@
   background-color: #242323;
 }
 
+.accordion-button:focus {
+  outline: 0 !important;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
 .accordion-button:not(.collapsed) {
   color: #FFF;
   background-color: #A6711F;
@@ -40,6 +52,14 @@
 }
 
 .accordion-body {
-  color: #000;
+  background-color: #242323;
+  color: #fff;
+  font-weight: 300;
   text-align: justify;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .kebijakan-title {
+    font-size: 28.83px;
+  }
 }

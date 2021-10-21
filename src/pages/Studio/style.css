@@ -1,10 +1,6 @@
 .bg-color-studio {
-  background-image: url("../../assets/images/homepage-hero-bg.png");
   background-color: #191A19;
   color: #FFF;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .studio-carousel-img {
@@ -123,7 +119,7 @@
   .studio-list-container {
     padding: 0rem;
   }
-  
+
   .studio-card-btn-user {
     margin-top: 0px;
   }

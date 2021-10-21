@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,9 +6,12 @@ import {
   Redirect,
 } from "react-router-dom";
 import { AppRoutes } from "./routes";
-
-import Navbar from "./components/Navbar/NavbarMain";
-import Footer from "./components/Footer/FooterMain";
+import { ThemeNavbar } from "./components/Header/Navbar/Navbar/index";
+import Navbar from "./components/Header/Navbar/Navbar/index";
+import MobileNavbar from "./components/Header/Navbar/MobileNavbar/index";
+import Footer from "./components/Footer";
+import "./App.css";
+import "./index.css";
 
 const App = () => {
   return (
@@ -31,16 +34,35 @@ const App = () => {
   );
 };
 
-const ProtectedAuth = ({ name, component: Component, ...rest }) => {
+const ProtectedAuth = ({ name, location, component: Component, ...rest }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <Route
       {...rest}
       render={() =>
         name !== "differentPage" ? (
           <>
-            <Navbar name={name} />
+            {location.pathname !== "/syncphonic-frontend/masuk" &&
+              location.pathname !== "/syncphonic-frontend/daftar" && (
+                <Navbar {...ThemeNavbar} name={name} toggle={toggle} />
+              )}
+            {location.pathname !== "/syncphonic-frontend/masuk" &&
+              location.pathname !== "/syncphonic-frontend/daftar" && (
+                <MobileNavbar
+                  {...ThemeNavbar}
+                  name={name}
+                  isOpen={isOpen}
+                  toggle={toggle}
+                />
+              )}
             <Component />
-            <Footer />
+            {location.pathname !== "/syncphonic-frontend/masuk" &&
+              location.pathname !== "/syncphonic-frontend/daftar" && <Footer />}
           </>
         ) : (
           <Component />

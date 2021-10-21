@@ -1,7 +1,8 @@
 import React from "react";
+// import { Link } from "react-router-dom";
 import "./style.css";
 
-import imgCta from "../../../assets/images/homepage-cta.png";
+import imgCta from "../../../assets/images/bg-landing-cta.png";
 
 const index = () => {
   return (
@@ -17,20 +18,20 @@ const index = () => {
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-md-2 mt-4">
+            <div className="col-md-2 my-auto">
               <button className="btn studio-detail-btn-user">10 Orang</button>
             </div>
-            <div className="col-md-2 mt-4">
+            <div className="col-md-2 my-auto">
               <button className="btn studio-detail-btn-status">
                 Available
               </button>
             </div>
-            <div className="col-md-4 mt-3">
+            <div className="col-md-4 my-auto">
               <p className="studio-detail-desc-price">Rp.500.000/Jam</p>
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-md-6">
+            <div className="col-md-6 mt-4">
               <p className="studio-detail-desc-spec">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor
                 nunc aenean netus leo placerat iaculis. Feugiat elementum vitae
@@ -50,7 +51,7 @@ const index = () => {
                 Ut molestie augue odio sit tempor. Porttitor dolor ac, nulla
                 integer at id. Proin aliquet fringilla at diam. At sem tortor
                 tempus est risus, mattis porta congue. Aliquet lorem eu nullam
-                donec purus arcu mattis sapien.
+                donec purus arcu mattis sapien. I
               </p>
             </div>
             <div className="col-md-5 offset-md-1 mt-4">
