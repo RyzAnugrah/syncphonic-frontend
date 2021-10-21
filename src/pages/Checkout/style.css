@@ -1,5 +1,5 @@
-.bg-color-studio-detail {
-  background-image: url("../../../assets/images/homepage-hero-bg.png");
+.bg-color-checkout {
+  background-image: url("../../assets/images/homepage-hero-bg.png");
   background-color: #191A19;
   color: #FFF;
   background-position: center;
@@ -7,13 +7,13 @@
   background-size: cover;
 }
 
-.studio-detail-text-title {
+.checkout-text-title {
   color: #FFF;
   font-size: 30px;
   font-weight: 600;
 }
 
-.studio-detail-btn-user {
+.checkout-btn-user {
   background-color: #191A19;
   width: 100%;
   border-radius: 20px;
@@ -22,14 +22,14 @@
   border: 2px solid #FFF;
 }
 
-.studio-detail-btn-user:hover {
+.checkout-btn-user:hover {
   box-shadow: inset 0 1px 1px #191A19,
     0 0 8px #191A19;
   color: #FFF;
   cursor: auto;
 }
 
-.studio-detail-btn-status {
+.checkout-btn-status {
   background-color: #3D9635;
   width: 100%;
   border-radius: 20px;
@@ -37,25 +37,25 @@
   font-size: 11px;
 }
 
-.studio-detail-btn-status:hover {
+.checkout-btn-status:hover {
   box-shadow: inset 0 1px 1px #3D9635,
     0 0 8px #3D9635;
   color: #FFF;
   cursor: auto;
 }
 
-.studio-detail-desc-price {
+.checkout-desc-price {
   color: #FFF;
   font-size: 28px;
   font-weight: 600;
 }
 
-.studio-detail-desc-spec {
+.checkout-desc-spec {
   color: #FFF;
   font-size: 16px;
 }
 
-.studio-detail-form-title {
+.checkout-form-title {
   color: #FFF;
   font-size: 28px;
   font-weight: 600;
@@ -66,31 +66,21 @@
   color: #FFF;
 }
 
-.form-control-sewa {
-  background-color: #4B4747;
-  border: 2px solid #4B4747;
+.checkout-text {
   color: #FFF;
+  font-size: 20px;
 }
 
-.form-control-sewa:hover,
-.form-control-sewa:focus {
-  background-color: #4B4747;
-  border: 2px solid #A6711F;
-  box-shadow: inset 0 1px 1px #A6711F,
-    0 0 8px #A6711F;
-  color: #FFF;
-}
-
-.btn-sewa {
+.btn-checkout {
   width: 100%;
   background-color: #A6711F;
   color: #FFF;
   font-size: 20px;
   font-weight: 600;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
-.btn-sewa:hover {
+.btn-checkout:hover {
   color: #FFF;
   box-shadow: inset 0 1px 1px #A6711F,
     0 0 8px #A6711F;

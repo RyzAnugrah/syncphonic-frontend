@@ -1,16 +1,16 @@
 import React from "react";
 import "./style.css";
 
-import imgCta from "../../../assets/images/homepage-cta.png";
+import imgCta from "../../assets/images/homepage-cta.png";
 
 const index = () => {
   return (
     <div>
-      <div className="container-fluid bg-color-studio-detail py-4">
+      <div className="container-fluid bg-color-checkout py-4">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <p className="studio-detail-text-title">Studio Jazz</p>
+              <p className="checkout-text-title">Checkout</p>
             </div>
             <div className="col-md-12">
               <img src={imgCta} alt="studio" className="img-fluid" />
@@ -18,20 +18,18 @@ const index = () => {
           </div>
           <div className="row mt-4">
             <div className="col-md-2 mt-4">
-              <button className="btn studio-detail-btn-user">10 Orang</button>
+              <button className="btn checkout-btn-user">10 Orang</button>
             </div>
             <div className="col-md-2 mt-4">
-              <button className="btn studio-detail-btn-status">
-                Available
-              </button>
+              <button className="btn checkout-btn-status">Available</button>
             </div>
             <div className="col-md-4 mt-3">
-              <p className="studio-detail-desc-price">Rp.500.000/Jam</p>
+              <p className="checkout-desc-price">Rp.500.000/Jam</p>
             </div>
           </div>
           <div className="row mt-4">
             <div className="col-md-6">
-              <p className="studio-detail-desc-spec">
+              <p className="checkout-desc-spec">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor
                 nunc aenean netus leo placerat iaculis. Feugiat elementum vitae
                 facilisis integer ac id donec cursus. Vulputate dolor fermentum
@@ -54,28 +52,34 @@ const index = () => {
               </p>
             </div>
             <div className="col-md-5 offset-md-1 mt-4">
-              <p className="studio-detail-form-title">Form Sewa</p>
+              <p className="checkout-form-title">Checkout Sewa</p>
               <div className="row bg-color-form-row p-4">
                 <div className="col-md-12">
+                  <div className="row">
+                    <div className="col-3">
+                      <p className="checkout-text">Hari</p>
+                    </div>
+                    <div className="col-1">
+                      <p className="checkout-text">:</p>
+                    </div>
+                    <div className="col-8">
+                      <p className="checkout-text">20-10-2021</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-3">
+                      <p className="checkout-text">Durasi</p>
+                    </div>
+                    <div className="col-1">
+                      <p className="checkout-text">:</p>
+                    </div>
+                    <div className="col-8">
+                      <p className="checkout-text">1 jam</p>
+                    </div>
+                  </div>
                   <form>
-                    <div className="form-group">
-                      <label htmlFor="inputPilihHari">Pilih Hari</label>
-                      <input
-                        type="date"
-                        className="form-control form-control-sewa"
-                        id="inputPilihHari"
-                      />
-                    </div>
-                    <div className="form-group mt-4">
-                      <label htmlFor="inputDurasi">Durasi</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sewa"
-                        id="inputDurasi"
-                      />
-                    </div>
-                    <button type="submit" className="btn btn-sewa">
-                      Sewa
+                    <button type="submit" className="btn btn-checkout">
+                      Checkout
                     </button>
                   </form>
                 </div>
