@@ -45,7 +45,7 @@ const Daftar = () => {
               </p>
               <form>
                 <div className="form-group">
-                  <label class="fw-bolder" htmlFor="inputNamaLengkap">
+                  <label className="fw-bolder" htmlFor="inputNamaLengkap">
                     Nama Lengkap
                   </label>
                   <input
@@ -55,7 +55,7 @@ const Daftar = () => {
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label class="fw-bolder" htmlFor="inputEmail">
+                  <label className="fw-bolder" htmlFor="inputEmail">
                     Email
                   </label>
                   <input
@@ -65,7 +65,7 @@ const Daftar = () => {
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label class="fw-bolder" htmlFor="inputPassword">
+                  <label className="fw-bolder" htmlFor="inputPassword">
                     Password
                   </label>
                   <input
@@ -75,7 +75,7 @@ const Daftar = () => {
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label class="fw-bolder" htmlFor="inputNomorTelepon">
+                  <label className="fw-bolder" htmlFor="inputNomorTelepon">
                     Nomor Telepon
                   </label>
                   <input
@@ -85,7 +85,7 @@ const Daftar = () => {
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label class="fw-bolder" htmlFor="inputJenisKelamin">
+                  <label className="fw-bolder" htmlFor="inputJenisKelamin">
                     Jenis Kelamin
                   </label>
                   <div className="row">
@@ -127,7 +127,7 @@ const Daftar = () => {
                   </div>
                 </div>
                 <div className="form-group mt-3">
-                  <label class="fw-bolder" htmlFor="inputAlamat">
+                  <label className="fw-bolder" htmlFor="inputAlamat">
                     Alamat
                   </label>
                   <input

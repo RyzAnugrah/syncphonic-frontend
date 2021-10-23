@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../../../redux/apiCalls";
 import "./style.css";
 import imgLogoTab from "../../../logo-light.svg";
 import imgLogin from "../../../assets/images/masuk.png";
 
 const Masuk = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    login(dispatch, { email, password });
+  };
+
+  const handleClickTemp = (e) => {
+    e.preventDefault();
+    logout(dispatch);
+  };
+
   return (
     <div id="main-container">
       <section
@@ -38,25 +55,27 @@ const Masuk = () => {
               </a>
               kami.
             </p>
-            <form>
+            <form onSubmit={handleClick} disabled={isFetching}>
               <div className="form-group">
-                <label class="fw-bolder" htmlFor="emailInput">
+                <label className="fw-bolder" htmlFor="emailInput">
                   Email
                 </label>
                 <input
                   type="email"
                   className="form-control form-control-login"
                   id="emailInput"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-group mt-4">
-                <label class="fw-bolder" htmlFor="passwordInput">
+                <label className="fw-bolder" htmlFor="passwordInput">
                   Password
                 </label>
                 <input
                   type="password"
                   className="form-control form-control-login mb-2"
                   id="passwordInput"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <Link
                   style={{ textDecoration: "none" }}
@@ -69,6 +88,7 @@ const Masuk = () => {
               <button type="submit" className="btn btn-login py-2">
                 Masuk
               </button>
+              {error && <p>Something went wrong...</p>}
             </form>
             <p className="login-desc-text text-left mt-4">
               Belum punya akun?
@@ -79,6 +99,7 @@ const Masuk = () => {
                 <span className="login-desc-text-login">&#00; Daftar</span>
               </Link>
             </p>
+            <button onClick={handleClickTemp}>Logout</button>
           </div>
         </main>
       </section>

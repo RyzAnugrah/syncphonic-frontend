@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import { AppRoutes } from "./routes";
+import { useSelector } from "react-redux";
 import { ThemeNavbar } from "./components/Header/Navbar/Navbar/index";
 import Navbar from "./components/Header/Navbar/Navbar/index";
 import MobileNavbar from "./components/Header/Navbar/MobileNavbar/index";
@@ -14,6 +15,9 @@ import "./App.css";
 import "./index.css";
 
 const App = () => {
+  const user = useSelector((state) => state.user.currentUser);
+  console.log(`App ${user}`);
+
   return (
     <Router>
       <Suspense fallback={<></>}>
