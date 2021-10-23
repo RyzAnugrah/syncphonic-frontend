@@ -1,10 +1,34 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import "./style.css";
 import imgLogoTab from "../../../logo-light.svg";
 import imgLogin from "../../../assets/images/masuk.png";
+import { loginAPI } from "../../../axios/authAPI";
 
 const Masuk = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const [data, setPassword] = useState("");
+
+  let history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const payload = {
+      email,
+      password,
+    };
+    loginAPI
+      .post("/login", payload)
+      .then((res) => {
+        console.log(res.data);
+        history.push("/syncphonic-frontend/");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
   return (
     <div id="main-container">
       <section className="auth-sidebar">
@@ -28,25 +52,29 @@ const Masuk = () => {
               </a>
               kami.
             </p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label class="fw-bolder" htmlFor="emailInput">
+                <label className="fw-bolder" htmlFor="emailInput">
                   Email
                 </label>
                 <input
                   type="email"
                   className="form-control form-control-login"
                   id="emailInput"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-group mt-4">
-                <label class="fw-bolder" htmlFor="passwordInput">
+                <label className="fw-bolder" htmlFor="passwordInput">
                   Password
                 </label>
                 <input
                   type="password"
                   className="form-control form-control-login mb-2"
                   id="passwordInput"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <Link
                   style={{ textDecoration: "none" }}

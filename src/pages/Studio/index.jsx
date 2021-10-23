@@ -126,7 +126,7 @@ const index = () => {
                         </div>
                         <div className="col-md-6">
                           <button className="btn studio-card-btn-status">
-                            Available
+                            Open
                           </button>
                         </div>
                         <div className="col-md-12 text-center mt-3">
@@ -179,7 +179,7 @@ const index = () => {
                         </div>
                         <div className="col-md-6">
                           <button className="btn studio-card-btn-status">
-                            Available
+                            Open
                           </button>
                         </div>
                         <div className="col-md-12 text-center mt-3">
