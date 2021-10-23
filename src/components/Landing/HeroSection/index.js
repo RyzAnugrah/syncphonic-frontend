@@ -30,7 +30,12 @@ const HeroSection = ({
             className="row container-fluid g-0 justify-content-end"
             imgStart={imgStart}
           >
-            <Column1 className="col-md-6">
+            <Column1
+              className="col-md-6"
+              data-aos="zoom-in"
+              data-aos-duration="2000"
+              data-aos-delay="300"
+            >
               <Heading lightBg={lightBg}>{headline}</Heading>
               <Subtitle className="my-4" lightBg={lightBg}>
                 {description}
@@ -48,7 +53,12 @@ const HeroSection = ({
                 {buttonLabel}
               </HeroButton>
             </Column1>
-            <Column2 className="col-md-6">
+            <Column2
+              className="col-md-6"
+              data-aos="zoom-in"
+              data-aos-duration="2000"
+              data-aos-delay="300"
+            >
               <Img src={ImgHero} alt="hero" />
             </Column2>
           </HeroRow>

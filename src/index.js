@@ -12,6 +12,11 @@ import "bootstrap/dist/js/bootstrap.js";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+// AOS
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

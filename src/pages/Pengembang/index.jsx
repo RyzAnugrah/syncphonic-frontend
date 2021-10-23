@@ -10,7 +10,12 @@ const index = () => {
     <div>
       <div className="container-fluid bg-color-pengembang p-4">
         <div className="row justify-content-center">
-          <div className="col-md-10 text-center">
+          <div
+            className="col-md-10 text-center"
+            data-aos="zoom-in"
+            data-aos-duration="2000"
+            data-aos-delay="300"
+          >
             <p className="pengembang-title">Tim Pengembang</p>
             <ul
               className="nav nav-pills nav-justified my-4"

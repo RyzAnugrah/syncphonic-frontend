@@ -19,13 +19,7 @@ import imgIconInstagram from "../../../assets/images/landing-icon-instagram.png"
 import imgIconYoutube from "../../../assets/images/landing-icon-youtube.png";
 import imgIconEmail from "../../../assets/images/landing-icon-email.png";
 
-const ContactSection = ({
-  lightBg,
-  id,
-  imgStart,
-  headline,
-  description,
-}) => {
+const ContactSection = ({ lightBg, id, imgStart, headline, description }) => {
   return (
     <ThemeProvider theme={theme}>
       <ContactContainer id={id} lightBg={lightBg}>
@@ -34,7 +28,12 @@ const ContactSection = ({
             className="row container-fluid g-0 justify-content-end"
             imgStart={imgStart}
           >
-            <Column1 className="col-md-6">
+            <Column1
+              className="col-md-6"
+              data-aos="zoom-in"
+              data-aos-duration="2000"
+              data-aos-delay="300"
+            >
               <Heading lightBg={lightBg}>{headline}</Heading>
               <Subtitle className="my-4" lightBg={lightBg}>
                 {description}
@@ -63,7 +62,12 @@ const ContactSection = ({
                 </ContactLink>
               </ContactInfo>
             </Column1>
-            <Column2 className="col-md-6">
+            <Column2
+              className="col-md-6"
+              data-aos="zoom-in"
+              data-aos-duration="2000"
+              data-aos-delay="300"
+            >
               <Img src={ImgContact} alt="Contact" />
             </Column2>
           </ContactRow>

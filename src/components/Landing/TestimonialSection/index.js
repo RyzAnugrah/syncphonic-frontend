@@ -36,31 +36,61 @@ const TestimonialSection = ({
           <TestimonialRow className="row container-fluid g-0 justify-content-center">
             <TestimonialContentRow className="row container-fluid g-0 justify-content-center">
               <div className="row mt-4">
-                <div className="col-md-6">
+                <div
+                  className="col-md-6"
+                  data-aos="zoom-in"
+                  data-aos-duration="2000"
+                  data-aos-delay="300"
+                >
                   <div className="row">
-                    <div className="col-md-4">
+                    <div
+                      className="col-md-4"
+                      data-aos="zoom-in"
+                      data-aos-duration="2000"
+                      data-aos-delay="300"
+                    >
                       <img
                         src={ImgTestimonial1}
                         alt="icon"
                         className="img-fluid"
                       />
                     </div>
-                    <div className="col-md-8 my-auto">
+                    <div
+                      className="col-md-8 my-auto"
+                      data-aos="zoom-in"
+                      data-aos-duration="2000"
+                      data-aos-delay="300"
+                    >
                       <Quote>{description1}</Quote>
                       <Person>{person1}</Person>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div
+                  className="col-md-6"
+                  data-aos="zoom-in"
+                  data-aos-duration="2000"
+                  data-aos-delay="300"
+                >
                   <div className="row">
-                    <div className="col-md-4">
+                    <div
+                      className="col-md-4"
+                      data-aos="zoom-in"
+                      data-aos-duration="2000"
+                      data-aos-delay="300"
+                    >
                       <img
                         src={ImgTestimonial1}
                         alt="icon"
                         className="img-fluid"
                       />
                     </div>
-                    <div className="col-md-8 my-auto">
+                    <div
+                      className="col-md-8 my-auto"
+                      data-aos="zoom-in"
+                      data-aos-duration="2000"
+                      data-aos-delay="300"
+                    >
                       <Quote>{description1}</Quote>
                       <Person>{person1}</Person>
                     </div>
@@ -70,31 +100,61 @@ const TestimonialSection = ({
             </TestimonialContentRow>
             <TestimonialContentRow className="row container-fluid g-0 justify-content-center">
               <div className="row mt-4">
-                <div className="col-md-6">
+                <div
+                  className="col-md-6"
+                  data-aos="zoom-in"
+                  data-aos-duration="2000"
+                  data-aos-delay="300"
+                >
                   <div className="row">
-                    <div className="col-md-4">
+                    <div
+                      className="col-md-4"
+                      data-aos="zoom-in"
+                      data-aos-duration="2000"
+                      data-aos-delay="300"
+                    >
                       <img
                         src={ImgTestimonial1}
                         alt="icon"
                         className="img-fluid"
                       />
                     </div>
-                    <div className="col-md-8 my-auto">
+                    <div
+                      className="col-md-8 my-auto"
+                      data-aos="zoom-in"
+                      data-aos-duration="2000"
+                      data-aos-delay="300"
+                    >
                       <Quote>{description1}</Quote>
                       <Person>{person1}</Person>
                     </div>
                   </div>
                 </div>
-                <div className="col-md-6">
+                <div
+                  className="col-md-6"
+                  data-aos="zoom-in"
+                  data-aos-duration="2000"
+                  data-aos-delay="300"
+                >
                   <div className="row">
-                    <div className="col-md-4">
+                    <div
+                      className="col-md-4"
+                      data-aos="zoom-in"
+                      data-aos-duration="2000"
+                      data-aos-delay="300"
+                    >
                       <img
                         src={ImgTestimonial1}
                         alt="icon"
                         className="img-fluid"
                       />
                     </div>
-                    <div className="col-md-8 my-auto">
+                    <div
+                      className="col-md-8 my-auto"
+                      data-aos="zoom-in"
+                      data-aos-duration="2000"
+                      data-aos-delay="300"
+                    >
                       <Quote>{description1}</Quote>
                       <Person>{person1}</Person>
                     </div>

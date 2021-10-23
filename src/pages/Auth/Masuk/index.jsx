@@ -7,14 +7,24 @@ import imgLogin from "../../../assets/images/masuk.png";
 const Masuk = () => {
   return (
     <div id="main-container">
-      <section className="auth-sidebar">
+      <section
+        className="auth-sidebar"
+        data-aos="zoom-in"
+        data-aos-duration="2000"
+        data-aos-delay="300"
+      >
         <main className="auth-form-sidebar">
           <div className="auth-sidebar-content">
             <img src={imgLogin} alt="login" className="img-fluid img-sidebar" />
           </div>
         </main>
       </section>
-      <section className="auth-form">
+      <section
+        className="auth-form"
+        data-aos="zoom-in"
+        data-aos-duration="2000"
+        data-aos-delay="300"
+      >
         <main className="auth-form-main">
           <div className="auth-form-content">
             <Link to="/syncphonic-frontend/">
