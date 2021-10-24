@@ -22,6 +22,7 @@ export const login = async (dispatch, user) => {
 export const register = async (dispatch, user) => {
   dispatch(registerStart());
   try {
+    console.log(user);
     const res = await publicRequest.post("/register", user);
     dispatch(registerSuccess(res.data));
   } catch (err) {

@@ -6,11 +6,11 @@ const TOKEN =
     .currentUser === null
     ? ""
     : JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-        .currentUser.accessToken;
+        .currentUser.token;
 
-console.log(
-  JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
-);
+// console.log(
+//   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
+// );
 
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
@@ -18,5 +18,7 @@ export const publicRequest = axios.create({
 
 export const userRequest = axios.create({
   baseURL: BASE_URL,
-  header: { token: `Bearer ${TOKEN}` },
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+  },
 });

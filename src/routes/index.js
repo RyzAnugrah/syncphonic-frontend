@@ -8,7 +8,7 @@ const AppRoutes = [
     exact: true,
   },
   {
-    name: "login",
+    name: "masuk",
     path: "/syncphonic-frontend/masuk",
     component: lazy(() => import("../pages/Auth/Masuk")),
     exact: true,

@@ -5,8 +5,8 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import { AppRoutes } from "./routes";
 import { useSelector } from "react-redux";
+import { AppRoutes } from "./routes";
 import { ThemeNavbar } from "./components/Header/Navbar/Navbar/index";
 import Navbar from "./components/Header/Navbar/Navbar/index";
 import MobileNavbar from "./components/Header/Navbar/MobileNavbar/index";
@@ -16,7 +16,7 @@ import "./index.css";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
-  console.log(`App ${user}`);
+  console.log(user);
 
   return (
     <Router>
@@ -38,7 +38,7 @@ const App = () => {
   );
 };
 
-const ProtectedAuth = ({ name, location, component: Component, ...rest }) => {
+const ProtectedAuth = ({ name, component: Component, ...rest }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
@@ -49,24 +49,17 @@ const ProtectedAuth = ({ name, location, component: Component, ...rest }) => {
     <Route
       {...rest}
       render={() =>
-        name !== "differentPage" ? (
+        name !== "masuk" && name !== "daftar" ? (
           <>
-            {location.pathname !== "/syncphonic-frontend/masuk" &&
-              location.pathname !== "/syncphonic-frontend/daftar" && (
-                <Navbar {...ThemeNavbar} name={name} toggle={toggle} />
-              )}
-            {location.pathname !== "/syncphonic-frontend/masuk" &&
-              location.pathname !== "/syncphonic-frontend/daftar" && (
-                <MobileNavbar
-                  {...ThemeNavbar}
-                  name={name}
-                  isOpen={isOpen}
-                  toggle={toggle}
-                />
-              )}
+            <Navbar {...ThemeNavbar} name={name} toggle={toggle} />
+            <MobileNavbar
+              {...ThemeNavbar}
+              name={name}
+              isOpen={isOpen}
+              toggle={toggle}
+            />
             <Component />
-            {location.pathname !== "/syncphonic-frontend/masuk" &&
-              location.pathname !== "/syncphonic-frontend/daftar" && <Footer />}
+            <Footer />
           </>
         ) : (
           <Component />

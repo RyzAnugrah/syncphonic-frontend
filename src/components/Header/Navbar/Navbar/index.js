@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { FaBars } from "react-icons/fa";
+import { logout } from "../../../../redux/apiCalls";
 import { NavButton } from "../../../Button";
 import {
   Nav,
@@ -20,6 +22,14 @@ export const ThemeNavbar = {
 };
 
 const Navbar = ({ toggle, lightTheme }) => {
+  const user = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+
+  const handleClickLogout = (e) => {
+    e.preventDefault();
+    logout(dispatch);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Nav lightTheme={lightTheme}>
@@ -32,18 +42,12 @@ const Navbar = ({ toggle, lightTheme }) => {
           </NavLogo>
           <NavMenu>
             <NavItem>
-              <NavLink
-                lightTheme={lightTheme}
-                to="/syncphonic-frontend/studio"
-              >
+              <NavLink lightTheme={lightTheme} to="/syncphonic-frontend/studio">
                 Sewa Studio
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                lightTheme={lightTheme}
-                to="/syncphonic-frontend/alat"
-              >
+              <NavLink lightTheme={lightTheme} to="/syncphonic-frontend/alat">
                 Sewa Alat
               </NavLink>
             </NavItem>
@@ -53,23 +57,41 @@ const Navbar = ({ toggle, lightTheme }) => {
               </NavLink>
             </NavItem>
           </NavMenu>
-          <NavBtn>
-            <NavLink lightTheme={lightTheme} to="/syncphonic-frontend/masuk">
-              Masuk
-            </NavLink>
-            <NavButton
-              theme={{
-                bgColor: theme.colors.accent,
-                color: theme.colors.light,
-                hoverColor: theme.colors.hover,
-              }}
-              to="/syncphonic-frontend/daftar"
-              className="btn"
-              type="button"
-            >
-              Daftar
-            </NavButton>
-          </NavBtn>
+          {!user ? (
+            <NavBtn>
+              <NavLink lightTheme={lightTheme} to="/syncphonic-frontend/masuk">
+                Masuk
+              </NavLink>
+              <NavButton
+                theme={{
+                  bgColor: theme.colors.accent,
+                  color: theme.colors.light,
+                  hoverColor: theme.colors.hover,
+                }}
+                to="/syncphonic-frontend/daftar"
+                className="btn"
+                type="button"
+              >
+                Daftar
+              </NavButton>
+            </NavBtn>
+          ) : (
+            <NavBtn>
+              <NavButton
+                theme={{
+                  bgColor: theme.colors.accent,
+                  color: theme.colors.light,
+                  hoverColor: theme.colors.hover,
+                }}
+                className="btn"
+                type="button"
+                to="#"
+                onClick={handleClickLogout}
+              >
+                Logout
+              </NavButton>
+            </NavBtn>
+          )}
         </NavbarContainer>
       </Nav>
     </ThemeProvider>

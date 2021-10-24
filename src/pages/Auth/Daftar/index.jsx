@@ -1,10 +1,42 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../../redux/apiCalls";
 import "./style.css";
 import imgLogoTab from "../../../logo-light.svg";
 import imgSignUp from "../../../assets/images/daftar.png";
 
 const Daftar = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [gender, setGender] = useState("");
+  const [telp, setTelp] = useState("");
+  const [address, setAddress] = useState("");
+  const user = useSelector((state) => state.user.currentUser);
+  const isFetching = useSelector((state) => state.user.isFetching);
+  const error = useSelector((state) => state.user.error);
+  const dispatch = useDispatch();
+  let history = useHistory();
+
+  const handleClickRegister = (e) => {
+    e.preventDefault();
+    register(dispatch, {
+      name,
+      email,
+      password,
+      gender,
+      telp_number: telp,
+      address,
+    });
+  };
+
+  useEffect(() => {
+    if (user) {
+      history.push("/syncphonic-frontend");
+    }
+  }, [history, user, error, isFetching]);
+
   return (
     <div>
       <div id="main-container">
@@ -35,7 +67,7 @@ const Daftar = () => {
               <Link to="/syncphonic-frontend/">
                 <img src={imgLogoTab} alt="logo" className="mb-4 img-footer" />
               </Link>
-              <h1 className="login-title">Masuk</h1>
+              <h1 className="login-title">Daftar</h1>
               <p className="agreement">
                 Dengan melanjutkan, Anda menyetujui&nbsp;
                 <a href="/syncphonic-frontend/kebijakan">
@@ -43,7 +75,7 @@ const Daftar = () => {
                 </a>
                 kami.
               </p>
-              <form>
+              <form onSubmit={handleClickRegister} disabled={isFetching}>
                 <div className="form-group">
                   <label className="fw-bolder" htmlFor="inputNamaLengkap">
                     Nama Lengkap
@@ -52,6 +84,7 @@ const Daftar = () => {
                     type="text"
                     className="form-control form-control-signup"
                     id="inputNamaLengkap"
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="form-group mt-3">
@@ -62,6 +95,7 @@ const Daftar = () => {
                     type="email"
                     className="form-control form-control-signup"
                     id="inputEmail"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className="form-group mt-3">
@@ -72,6 +106,7 @@ const Daftar = () => {
                     type="password"
                     className="form-control form-control-signup"
                     id="inputPassword"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 <div className="form-group mt-3">
@@ -82,6 +117,7 @@ const Daftar = () => {
                     type="tel"
                     className="form-control form-control-signup"
                     id="inputNomorTelepon"
+                    onChange={(e) => setTelp(e.target.value)}
                   />
                 </div>
                 <div className="form-group mt-3">
@@ -98,6 +134,7 @@ const Daftar = () => {
                           id="inlinePria"
                           value="Pria"
                           defaultChecked
+                          onChange={(e) => setGender(e.target.value)}
                         />
                         <label
                           className="form-check-label"
@@ -115,6 +152,7 @@ const Daftar = () => {
                           name="inlineRadioOptions"
                           id="inlineWanita"
                           value="Wanita"
+                          onChange={(e) => setGender(e.target.value)}
                         />
                         <label
                           className="form-check-label"
@@ -134,6 +172,7 @@ const Daftar = () => {
                     type="text"
                     className="form-control form-control-signup"
                     id="inputAlamat"
+                    onChange={(e) => setAddress(e.target.value)}
                   />
                 </div>
                 <hr className="divider mt-5" />
