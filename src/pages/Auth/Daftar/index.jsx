@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 import { publicRequest } from "../../../requestMethods";
@@ -11,19 +12,19 @@ import imgLogoTab from "../../../logo-light.svg";
 import imgSignUp from "../../../assets/images/daftar.png";
 
 const Daftar = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [gender, setGender] = useState("Pria");
-  const [telp, setTelp] = useState("");
-  const [address, setAddress] = useState("");
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
 
   const user = useSelector((state) => state.user.currentUser);
   const isFetching = useSelector((state) => state.user.isFetching);
   const dispatch = useDispatch();
   let history = useHistory();
 
-  const register = async (dispatch, user) => {
+  const registered = async (dispatch, user) => {
     dispatch(registerStart());
     console.log(user);
     try {
@@ -38,6 +39,7 @@ const Daftar = () => {
         confirmButtonText: "Silahkan masuk",
         timer: 1500,
       });
+      reset();
       history.push("/syncphonic-frontend/masuk");
     } catch (err) {
       dispatch(registerFailure());
@@ -53,14 +55,20 @@ const Daftar = () => {
     }
   };
 
-  const handleClickRegister = (e) => {
-    e.preventDefault();
-    register(dispatch, {
+  const handleClickRegister = ({
+    name,
+    email,
+    password,
+    gender,
+    telp_number,
+    address,
+  }) => {
+    registered(dispatch, {
       name,
       email,
       password,
       gender,
-      telp_number: telp,
+      telp_number,
       address,
     });
   };
@@ -102,14 +110,10 @@ const Daftar = () => {
                 <img src={imgLogoTab} alt="logo" className="mb-4 img-footer" />
               </Link>
               <h1 className="login-title">Daftar</h1>
-              <p className="agreement">
-                Dengan melanjutkan, Anda menyetujui&nbsp;
-                <a href="/syncphonic-frontend/kebijakan">
-                  Perjanjian Pengguna dan Kebijakan Privasi&nbsp;
-                </a>
-                kami.
-              </p>
-              <form onSubmit={handleClickRegister} disabled={isFetching}>
+              <form
+                onSubmit={handleSubmit(handleClickRegister)}
+                disabled={isFetching}
+              >
                 <div className="form-group">
                   <label className="fw-bolder" htmlFor="inputNamaLengkap">
                     Nama Lengkap
@@ -118,8 +122,21 @@ const Daftar = () => {
                     type="text"
                     className="form-control form-control-signup"
                     id="inputNamaLengkap"
-                    onChange={(e) => setName(e.target.value)}
+                    {...register("name", {
+                      required: true,
+                      pattern: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/i,
+                      maxLength: 100,
+                    })}
                   />
+                  {errors.name && errors.name.type === "required" && (
+                    <p className="error">Nama lengkap wajib diisi</p>
+                  )}
+                  {errors.name && errors.name.type === "pattern" && (
+                    <p className="error">Nama lengkap hanya berisi huruf</p>
+                  )}
+                  {errors.name && errors.name.type === "maxLength" && (
+                    <p className="error">Nama lengkap maksimal 100 karakter</p>
+                  )}
                 </div>
                 <div className="form-group mt-3">
                   <label className="fw-bolder" htmlFor="inputEmail">
@@ -129,8 +146,17 @@ const Daftar = () => {
                     type="email"
                     className="form-control form-control-signup"
                     id="inputEmail"
-                    onChange={(e) => setEmail(e.target.value)}
+                    {...register("email", {
+                      required: true,
+                      pattern: /^\S+@\S+$/i,
+                    })}
                   />
+                  {errors.email && errors.email.type === "required" && (
+                    <p className="error">Email wajib diisi</p>
+                  )}
+                  {errors.email && errors.email.type === "pattern" && (
+                    <p className="error">Email tidak valid</p>
+                  )}
                 </div>
                 <div className="form-group mt-3">
                   <label className="fw-bolder" htmlFor="inputPassword">
@@ -140,8 +166,13 @@ const Daftar = () => {
                     type="password"
                     className="form-control form-control-signup"
                     id="inputPassword"
-                    onChange={(e) => setPassword(e.target.value)}
+                    {...register("password", {
+                      required: true,
+                    })}
                   />
+                  {errors.password && errors.password.type === "required" && (
+                    <p className="error">Password wajib diisi</p>
+                  )}
                 </div>
                 <div className="form-group mt-3">
                   <label className="fw-bolder" htmlFor="inputNomorTelepon">
@@ -151,8 +182,29 @@ const Daftar = () => {
                     type="tel"
                     className="form-control form-control-signup"
                     id="inputNomorTelepon"
-                    onChange={(e) => setTelp(e.target.value)}
+                    {...register("telp_number", {
+                      required: true,
+                      pattern: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s/0-9]*$/i,
+                      minLength: 6,
+                      maxLength: 12,
+                    })}
                   />
+                  {errors.telp_number &&
+                    errors.telp_number.type === "required" && (
+                      <p className="error">Nomor telepon wajib diisi</p>
+                    )}
+                  {errors.telp_number &&
+                    errors.telp_number.type === "pattern" && (
+                      <p className="error">Nomor telepon hanya berisi angka</p>
+                    )}
+                  {errors.telp_number &&
+                    errors.telp_number.type === "minLength" && (
+                      <p className="error">Nomor telepon minimal 6 angka</p>
+                    )}
+                  {errors.telp_number &&
+                    errors.telp_number.type === "maxLength" && (
+                      <p className="error">Nomor telepon maksimal 12 angka</p>
+                    )}
                 </div>
                 <div className="form-group mt-3">
                   <label className="fw-bolder" htmlFor="inputJenisKelamin">
@@ -168,7 +220,7 @@ const Daftar = () => {
                           id="inlinePria"
                           value="Pria"
                           defaultChecked
-                          onChange={(e) => setGender(e.target.value)}
+                          {...register("gender", { required: true })}
                         />
                         <label
                           className="form-check-label"
@@ -186,7 +238,7 @@ const Daftar = () => {
                           name="inlineRadioOptions"
                           id="inlineWanita"
                           value="Wanita"
-                          onChange={(e) => setGender(e.target.value)}
+                          {...register("gender", { required: true })}
                         />
                         <label
                           className="form-check-label"
@@ -206,8 +258,40 @@ const Daftar = () => {
                     type="text"
                     className="form-control form-control-signup"
                     id="inputAlamat"
-                    onChange={(e) => setAddress(e.target.value)}
+                    {...register("address", {
+                      required: true,
+                      maxLength: 200,
+                    })}
                   />
+                  {errors.address && errors.address.type === "required" && (
+                    <p className="error">Alamat wajib diisi</p>
+                  )}
+                  {errors.address && errors.address.type === "maxLength" && (
+                    <p className="error">Alamat maksimal 200 karakter</p>
+                  )}
+                </div>
+                <div className="form-group form-check mt-3">
+                  <input
+                    type="checkbox"
+                    className="form-check-input"
+                    id="inputCheck"
+                    {...register("agree", {
+                      required: true,
+                    })}
+                  />
+                  <label
+                    className="form-check-label agreement"
+                    htmlFor="inputCheck"
+                  >
+                    Dengan melanjutkan, Anda menyetujui
+                    <Link to="/syncphonic-frontend/kebijakan">
+                      &#00; Perjanjian Pengguna dan Kebijakan Privasi
+                    </Link>
+                    &#00; kami.
+                  </label>
+                  {errors.agree && errors.agree.type === "required" && (
+                    <p className="error">Pernyataan tersebut harus disetujui</p>
+                  )}
                 </div>
                 <hr className="divider mt-5" />
                 <button type="submit" className="btn btn-signup py-2">

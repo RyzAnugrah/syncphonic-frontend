@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 import { publicRequest } from "../../../requestMethods";
@@ -15,9 +16,13 @@ import imgLogoTab from "../../../logo-light.svg";
 import imgLogin from "../../../assets/images/masuk.png";
 
 const Masuk = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
   const user = useSelector((state) => state.user.currentUser);
   const isFetching = useSelector((state) => state.user.isFetching);
   const dispatch = useDispatch();
@@ -25,10 +30,11 @@ const Masuk = () => {
 
   const login = async (dispatch, user) => {
     dispatch(loginStart());
+    console.log(user);
     try {
       const res = await publicRequest.post("/login", user);
       dispatch(loginSuccess(res.data));
-      // console.log(res.data);
+      console.log(res.data);
       Swal.fire({
         icon: "success",
         title: "Yes...",
@@ -37,6 +43,7 @@ const Masuk = () => {
         confirmButtonText: "Ke home",
         timer: 1500,
       });
+      reset();
     } catch (err) {
       dispatch(loginFailure());
       console.log(err.message);
@@ -51,8 +58,7 @@ const Masuk = () => {
     }
   };
 
-  const handleClickLogin = (e) => {
-    e.preventDefault();
+  const handleClickLogin = ({ email, password }) => {
     login(dispatch, { email, password });
   };
 
@@ -100,7 +106,10 @@ const Masuk = () => {
                 </a>
                 kami.
               </p>
-              <form onSubmit={handleClickLogin} disabled={isFetching}>
+              <form
+                onSubmit={handleSubmit(handleClickLogin)}
+                disabled={isFetching}
+              >
                 <div className="form-group">
                   <label className="fw-bolder" htmlFor="emailInput">
                     Email
@@ -109,8 +118,17 @@ const Masuk = () => {
                     type="email"
                     className="form-control form-control-login"
                     id="emailInput"
-                    onChange={(e) => setEmail(e.target.value)}
+                    {...register("email", {
+                      required: true,
+                      pattern: /^\S+@\S+$/i,
+                    })}
                   />
+                  {errors.email && errors.email.type === "required" && (
+                    <p className="error">Email wajib diisi</p>
+                  )}
+                  {errors.email && errors.email.type === "pattern" && (
+                    <p className="error">Email tidak valid</p>
+                  )}
                 </div>
                 <div className="form-group mt-4">
                   <label className="fw-bolder" htmlFor="passwordInput">
@@ -120,8 +138,13 @@ const Masuk = () => {
                     type="password"
                     className="form-control form-control-login mb-2"
                     id="passwordInput"
-                    onChange={(e) => setPassword(e.target.value)}
+                    {...register("password", {
+                      required: true,
+                    })}
                   />
+                  {errors.password && errors.password.type === "required" && (
+                    <p className="error">Password wajib diisi</p>
+                  )}
                   <Link
                     style={{ textDecoration: "none" }}
                     to="/syncphonic-frontend/daftar"
