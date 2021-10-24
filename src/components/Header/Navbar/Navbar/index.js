@@ -17,11 +17,9 @@ import { ThemeProvider } from "styled-components";
 import theme from "../../../../assets/styles/style";
 import logo from "../../../../logo-light.svg";
 
-export const ThemeNavbar = {
-  lightTheme: false,
-};
+export const LightTheme = false;
 
-const Navbar = ({ toggle, lightTheme }) => {
+const Navbar = ({ toggle, light }) => {
   const user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
 
@@ -32,9 +30,9 @@ const Navbar = ({ toggle, lightTheme }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Nav lightTheme={lightTheme}>
-        <NavbarContainer lightTheme={lightTheme}>
-          <MobileIcon lightTheme={lightTheme} onClick={toggle}>
+      <Nav light={light}>
+        <NavbarContainer light={light}>
+          <MobileIcon light={light} onClick={toggle}>
             <FaBars />
           </MobileIcon>
           <NavLogo to="/syncphonic-frontend">
@@ -42,24 +40,24 @@ const Navbar = ({ toggle, lightTheme }) => {
           </NavLogo>
           <NavMenu>
             <NavItem>
-              <NavLink lightTheme={lightTheme} to="/syncphonic-frontend/studio">
+              <NavLink light={light} to="/syncphonic-frontend/studio">
                 Sewa Studio
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink lightTheme={lightTheme} to="/syncphonic-frontend/alat">
+              <NavLink light={light} to="/syncphonic-frontend/alat">
                 Sewa Alat
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink lightTheme={lightTheme} to="/syncphonic-frontend/kursus">
+              <NavLink light={light} to="/syncphonic-frontend/kursus">
                 Kursus
               </NavLink>
             </NavItem>
           </NavMenu>
           {!user ? (
             <NavBtn>
-              <NavLink lightTheme={lightTheme} to="/syncphonic-frontend/masuk">
+              <NavLink light={light} to="/syncphonic-frontend/masuk">
                 Masuk
               </NavLink>
               <NavButton

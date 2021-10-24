@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AppRoutes } from "./routes";
-import { ThemeNavbar } from "./components/Header/Navbar/Navbar/index";
+import { LightTheme } from "./components/Header/Navbar/Navbar/index";
 import Navbar from "./components/Header/Navbar/Navbar/index";
 import MobileNavbar from "./components/Header/Navbar/MobileNavbar/index";
 import Footer from "./components/Footer";
@@ -51,9 +51,9 @@ const ProtectedAuth = ({ name, component: Component, ...rest }) => {
       render={() =>
         name !== "masuk" && name !== "daftar" ? (
           <>
-            <Navbar {...ThemeNavbar} name={name} toggle={toggle} />
+            <Navbar light={LightTheme ? 1 : 0} name={name} toggle={toggle} />
             <MobileNavbar
-              {...ThemeNavbar}
+              light={LightTheme ? 1 : 0}
               name={name}
               isOpen={isOpen}
               toggle={toggle}

@@ -6,7 +6,7 @@ import {
   logoutStart,
   registerFailure,
   registerStart,
-  registerSuccess,
+  // registerSuccess,
 } from "./userRedux";
 
 export const login = async (dispatch, user) => {
@@ -21,12 +21,14 @@ export const login = async (dispatch, user) => {
 
 export const register = async (dispatch, user) => {
   dispatch(registerStart());
+  console.log(user);
   try {
-    console.log(user);
     const res = await publicRequest.post("/register", user);
-    dispatch(registerSuccess(res.data));
+    // dispatch(registerSuccess(res.data));
+    console.log(res.data);
   } catch (err) {
     dispatch(registerFailure());
+    console.log(err.message);
   }
 };
 

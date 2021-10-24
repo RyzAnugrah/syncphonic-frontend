@@ -11,7 +11,6 @@ const Masuk = () => {
   const [password, setPassword] = useState("");
   const user = useSelector((state) => state.user.currentUser);
   const isFetching = useSelector((state) => state.user.isFetching);
-  const error = useSelector((state) => state.user.error);
   const dispatch = useDispatch();
   let history = useHistory();
 
@@ -24,7 +23,7 @@ const Masuk = () => {
     if (user) {
       history.push("/syncphonic-frontend");
     }
-  }, [history, user, error, isFetching]);
+  }, [history, user]);
 
   return (
     <>

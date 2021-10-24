@@ -16,12 +16,12 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "../../../../assets/styles/style";
 import logo from "../../../../logo-light.svg";
 
-const MobileNavbar = ({ isOpen, toggle, lightTheme }) => {
+const MobileNavbar = ({ isOpen, toggle, light }) => {
   return (
     <ThemeProvider theme={theme}>
       <Overlay isOpen={isOpen}>
-        <MobileNavbarContainer lightTheme={lightTheme} isOpen={isOpen}>
-          <Icon lightTheme={lightTheme} onClick={toggle}>
+        <MobileNavbarContainer light={light} isOpen={isOpen}>
+          <Icon light={light} onClick={toggle}>
             <FaTimes />
           </Icon>
           <NavLogo to="/syncphonic-frontend">
@@ -30,21 +30,21 @@ const MobileNavbar = ({ isOpen, toggle, lightTheme }) => {
           <MobileNavbarWrapper>
             <MobileNavbarMenu>
               <MobileNavbarLink
-                lightTheme={lightTheme}
+                light={light}
                 to="/syncphonic-frontend/studio"
                 onClick={toggle}
               >
                 Sewa Studio
               </MobileNavbarLink>
               <MobileNavbarLink
-                lightTheme={lightTheme}
+                light={light}
                 to="/syncphonic-frontend/alat"
                 onClick={toggle}
               >
                 Sewa Alat
               </MobileNavbarLink>
               <MobileNavbarLink
-                lightTheme={lightTheme}
+                light={light}
                 to="/syncphonic-frontend/kursus"
                 onClick={toggle}
               >
@@ -58,7 +58,7 @@ const MobileNavbar = ({ isOpen, toggle, lightTheme }) => {
                   color: theme.colors.light,
                   hoverColor: theme.colors.hover,
                 }}
-                lightTheme={lightTheme}
+                light={light}
                 to="/syncphonic-frontend/masuk"
                 onClick={toggle}
               >

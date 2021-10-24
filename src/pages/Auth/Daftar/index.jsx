@@ -10,32 +10,35 @@ const Daftar = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("Pria");
   const [telp, setTelp] = useState("");
   const [address, setAddress] = useState("");
   const user = useSelector((state) => state.user.currentUser);
   const isFetching = useSelector((state) => state.user.isFetching);
-  const error = useSelector((state) => state.user.error);
   const dispatch = useDispatch();
   let history = useHistory();
 
   const handleClickRegister = (e) => {
     e.preventDefault();
-    register(dispatch, {
-      name,
-      email,
-      password,
-      gender,
-      telp_number: telp,
-      address,
-    });
+    if (
+      register(dispatch, {
+        name,
+        email,
+        password,
+        gender,
+        telp_number: telp,
+        address,
+      })
+    ) {
+      history.push("/syncphonic-frontend/masuk");
+    }
   };
 
   useEffect(() => {
     if (user) {
       history.push("/syncphonic-frontend");
     }
-  }, [history, user, error, isFetching]);
+  }, [history, user]);
 
   return (
     <div>

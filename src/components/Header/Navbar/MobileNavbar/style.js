@@ -18,8 +18,8 @@ export const MobileNavbarContainer = styled.aside`
   z-index: 999;
   width: 80%;
   height: 100%;
-  background-color: ${({ lightTheme, theme: { backgroundColors } }) =>
-    lightTheme ? "#fff" : backgroundColors.secondary};
+  background-color: ${({ light, theme: { backgroundColors } }) =>
+    light ? "#fff" : backgroundColors.secondary};
   transition: 0.3s ease-in-out;
   opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
   left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
@@ -33,8 +33,8 @@ export const Icon = styled.div`
   font-size: 2rem;
   cursor: pointer;
   outline: none;
-  color: ${({ lightTheme, theme: { colors } }) =>
-    lightTheme ? colors.dark : colors.light};
+  color: ${({ light, theme: { colors } }) =>
+    light ? colors.dark : colors.light};
 `;
 
 export const NavLogo = styled(RouterLink)`
@@ -68,8 +68,8 @@ export const MobileNavbarLink = styled(RouterLink)`
   list-style: none;
   transition: 0.2s ease-in-out;
   text-decoration: none;
-  color: ${({ lightTheme, theme: { colors } }) =>
-    lightTheme ? colors.dark : colors.light};
+  color: ${({ light, theme: { colors } }) =>
+    light ? colors.dark : colors.light};
   cursor: pointer;
 
   &:hover {
