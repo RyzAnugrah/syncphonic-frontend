@@ -198,3 +198,8 @@ hr.divider:after {
   color: #A6711F;
   font-size: 14.22px;
 }
+
+i:hover {
+  color: #A6711F;
+  cursor: pointer;
+}

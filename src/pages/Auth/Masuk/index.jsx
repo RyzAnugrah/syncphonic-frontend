@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -15,7 +15,16 @@ import "./style.css";
 import imgLogoTab from "../../../logo-light.svg";
 import imgLogin from "../../../assets/images/masuk.png";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+const eye = <FontAwesomeIcon icon={faEye} />;
+
 const Masuk = () => {
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePasswordVisiblity = () => {
+    setPasswordShown(passwordShown ? false : true);
+  };
+  
   const {
     register,
     formState: { errors },
@@ -69,110 +78,102 @@ const Masuk = () => {
   }, [history, user]);
 
   return (
-    <>
-      <div id="main-container">
-        <section
-          className="auth-sidebar"
-          data-aos="zoom-in"
-          data-aos-duration="2000"
-          data-aos-delay="300"
-        >
-          <main className="auth-form-sidebar">
-            <div className="auth-sidebar-content">
-              <img
-                src={imgLogin}
-                alt="login"
-                className="img-fluid img-sidebar"
-              />
-            </div>
-          </main>
-        </section>
-        <section
-          className="auth-form"
-          data-aos="zoom-in"
-          data-aos-duration="2000"
-          data-aos-delay="300"
-        >
-          <main className="auth-form-main">
-            <div className="auth-form-content">
-              <Link to="/syncphonic-frontend/">
-                <img src={imgLogoTab} alt="logo" className="my-4 img-footer" />
-              </Link>
-              <h1 className="login-title">Masuk</h1>
-              <p className="agreement">
-                Dengan melanjutkan, Anda menyetujui&nbsp;
-                <a href="/syncphonic-frontend/kebijakan">
-                  Perjanjian Pengguna dan Kebijakan Privasi&nbsp;
-                </a>
-                kami.
-              </p>
-              <form
-                onSubmit={handleSubmit(handleClickLogin)}
-                disabled={isFetching}
-              >
-                <div className="form-group">
-                  <label className="fw-bolder" htmlFor="emailInput">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control form-control-login"
-                    id="emailInput"
-                    {...register("email", {
-                      required: true,
-                      pattern: /^\S+@\S+$/i,
-                    })}
-                  />
-                  {errors.email && errors.email.type === "required" && (
-                    <p className="error">Email wajib diisi</p>
-                  )}
-                  {errors.email && errors.email.type === "pattern" && (
-                    <p className="error">Email tidak valid</p>
-                  )}
-                </div>
-                <div className="form-group mt-4">
-                  <label className="fw-bolder" htmlFor="passwordInput">
-                    Password
-                  </label>
-                  <input
-                    type="password"
-                    className="form-control form-control-login mb-2"
-                    id="passwordInput"
-                    {...register("password", {
-                      required: true,
-                    })}
-                  />
-                  {errors.password && errors.password.type === "required" && (
-                    <p className="error">Password wajib diisi</p>
-                  )}
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    to="/syncphonic-frontend/daftar"
-                  >
-                    <span className="login-desc-text-login">
-                      Lupa password?
-                    </span>
-                  </Link>
-                </div>
-                <hr className="divider mt-5" />
-                <button type="submit" className="btn btn-login py-2">
-                  Masuk
-                </button>
-              </form>
-              <p className="login-desc-text text-left mt-4">
-                Belum punya akun?
+    <div id="main-container">
+      <section
+        className="auth-sidebar"
+        data-aos="zoom-in"
+        data-aos-duration="2000"
+        data-aos-delay="300"
+      >
+        <main className="auth-form-sidebar">
+          <div className="auth-sidebar-content">
+            <img src={imgLogin} alt="login" className="img-fluid img-sidebar" />
+          </div>
+        </main>
+      </section>
+      <section
+        className="auth-form"
+        data-aos="zoom-in"
+        data-aos-duration="2000"
+        data-aos-delay="300"
+      >
+        <main className="auth-form-main">
+          <div className="auth-form-content">
+            <Link to="/syncphonic-frontend/">
+              <img src={imgLogoTab} alt="logo" className="my-4 img-footer" />
+            </Link>
+            <h1 className="login-title">Masuk</h1>
+            <p className="agreement">
+              Dengan melanjutkan, Anda menyetujui&nbsp;
+              <a href="/syncphonic-frontend/kebijakan">
+                Perjanjian Pengguna dan Kebijakan Privasi&nbsp;
+              </a>
+              kami.
+            </p>
+            <form
+              onSubmit={handleSubmit(handleClickLogin)}
+              disabled={isFetching}
+            >
+              <div className="form-group">
+                <label className="fw-bolder" htmlFor="emailInput">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control form-control-login"
+                  id="emailInput"
+                  {...register("email", {
+                    required: true,
+                    pattern: /^\S+@\S+$/i,
+                  })}
+                />
+                {errors.email && errors.email.type === "required" && (
+                  <p className="error">Email wajib diisi</p>
+                )}
+                {errors.email && errors.email.type === "pattern" && (
+                  <p className="error">Email tidak valid</p>
+                )}
+              </div>
+              <div className="form-group mt-4">
+                <label className="fw-bolder" htmlFor="passwordInput">
+                  Password &nbsp; <i onClick={togglePasswordVisiblity}>{eye}</i>
+                </label>
+                <input
+                  type={passwordShown ? "text" : "password"}
+                  className="form-control form-control-login mb-2"
+                  id="passwordInput"
+                  {...register("password", {
+                    required: true,
+                  })}
+                />
+                {errors.password && errors.password.type === "required" && (
+                  <p className="error">Password wajib diisi</p>
+                )}
                 <Link
                   style={{ textDecoration: "none" }}
                   to="/syncphonic-frontend/daftar"
                 >
-                  <span className="login-desc-text-login">&#00; Daftar</span>
+                  <span className="login-desc-text-login">Lupa password?</span>
                 </Link>
-              </p>
-            </div>
-          </main>
-        </section>
-      </div>
-    </>
+              </div>
+              <hr className="divider mt-5" />
+              <button type="submit" className="btn btn-login py-2">
+                Masuk
+              </button>
+            </form>
+            <p className="login-desc-text text-left mt-4">
+              Belum punya akun?
+              <Link
+                style={{ textDecoration: "none" }}
+                to="/syncphonic-frontend/daftar"
+              >
+                <span className="login-desc-text-login">&#00; Daftar</span>
+              </Link>
+            </p>
+          </div>
+        </main>
+      </section>
+    </div>
   );
 };
 

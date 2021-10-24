@@ -181,3 +181,8 @@ hr.divider:after {
   display: inline;
   content: "⚠ ";
 }
+
+i:hover {
+  color: #A6711F;
+  cursor: pointer;
+}
