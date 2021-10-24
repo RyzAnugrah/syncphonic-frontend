@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../../redux/apiCalls";
+import Swal from "sweetalert2";
+
+import { publicRequest } from "../../../requestMethods";
+import { registerStart, registerFailure } from "../../../redux/userRedux";
+
 import "./style.css";
 import imgLogoTab from "../../../logo-light.svg";
 import imgSignUp from "../../../assets/images/daftar.png";
@@ -13,25 +17,52 @@ const Daftar = () => {
   const [gender, setGender] = useState("Pria");
   const [telp, setTelp] = useState("");
   const [address, setAddress] = useState("");
+
   const user = useSelector((state) => state.user.currentUser);
   const isFetching = useSelector((state) => state.user.isFetching);
   const dispatch = useDispatch();
   let history = useHistory();
 
+  const register = async (dispatch, user) => {
+    dispatch(registerStart());
+    console.log(user);
+    try {
+      const res = await publicRequest.post("/register", user);
+      // dispatch(registerSuccess(res.data));
+      console.log(res.data);
+      Swal.fire({
+        icon: "success",
+        title: "Yes...",
+        text: "Berhasil daftar akun!",
+        confirmButtonColor: "#A6711F",
+        confirmButtonText: "Silahkan masuk",
+        timer: 1500,
+      });
+      history.push("/syncphonic-frontend/masuk");
+    } catch (err) {
+      dispatch(registerFailure());
+      console.log(err.message);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Gagal daftar akun!",
+        confirmButtonColor: "#A6711F",
+        confirmButtonText: "Coba lagi",
+        timer: 3000,
+      });
+    }
+  };
+
   const handleClickRegister = (e) => {
     e.preventDefault();
-    if (
-      register(dispatch, {
-        name,
-        email,
-        password,
-        gender,
-        telp_number: telp,
-        address,
-      })
-    ) {
-      history.push("/syncphonic-frontend/masuk");
-    }
+    register(dispatch, {
+      name,
+      email,
+      password,
+      gender,
+      telp_number: telp,
+      address,
+    });
   };
 
   useEffect(() => {

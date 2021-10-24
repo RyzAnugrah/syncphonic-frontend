@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../../redux/apiCalls";
+import Swal from "sweetalert2";
+
+import { publicRequest } from "../../../requestMethods";
+import {
+  loginFailure,
+  loginStart,
+  loginSuccess,
+} from "../../../redux/userRedux";
+
 import "./style.css";
 import imgLogoTab from "../../../logo-light.svg";
 import imgLogin from "../../../assets/images/masuk.png";
@@ -9,10 +17,39 @@ import imgLogin from "../../../assets/images/masuk.png";
 const Masuk = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
   const user = useSelector((state) => state.user.currentUser);
   const isFetching = useSelector((state) => state.user.isFetching);
   const dispatch = useDispatch();
   let history = useHistory();
+
+  const login = async (dispatch, user) => {
+    dispatch(loginStart());
+    try {
+      const res = await publicRequest.post("/login", user);
+      dispatch(loginSuccess(res.data));
+      // console.log(res.data);
+      Swal.fire({
+        icon: "success",
+        title: "Yes...",
+        text: "Berhasil masuk akun!",
+        confirmButtonColor: "#A6711F",
+        confirmButtonText: "Ke home",
+        timer: 1500,
+      });
+    } catch (err) {
+      dispatch(loginFailure());
+      console.log(err.message);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Gagal masuk akun!",
+        confirmButtonColor: "#A6711F",
+        confirmButtonText: "Coba lagi",
+        timer: 3000,
+      });
+    }
+  };
 
   const handleClickLogin = (e) => {
     e.preventDefault();
