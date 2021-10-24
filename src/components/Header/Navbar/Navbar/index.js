@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
 import { FaBars } from "react-icons/fa";
 import { ThemeProvider } from "styled-components";
 import Swal from "sweetalert2";
@@ -122,7 +123,7 @@ const Navbar = ({ toggle, light }) => {
                 to="#"
                 onClick={handleClickLogout}
               >
-                Logout
+                Keluar
               </NavButton>
             </NavBtn>
           )}
