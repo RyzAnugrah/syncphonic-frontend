@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,7 +16,10 @@ import "./index.css";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
-  console.log(user);
+
+  useEffect(() => {
+    console.log(user && user);
+  }, [user]);
 
   return (
     <Router>

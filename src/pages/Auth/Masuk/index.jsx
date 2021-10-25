@@ -43,7 +43,7 @@ const Masuk = () => {
     try {
       const res = await publicRequest.post("/login", user);
       dispatch(loginSuccess(res.data));
-      console.log(res.data);
+      // console.log(res.data);
       Swal.fire({
         icon: "success",
         title: "Yes...",
@@ -74,6 +74,7 @@ const Masuk = () => {
   useEffect(() => {
     if (user) {
       history.push("/syncphonic-frontend");
+      window.location.reload();
     }
   }, [history, user]);
 
