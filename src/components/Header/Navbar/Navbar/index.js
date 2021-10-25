@@ -87,8 +87,8 @@ const Navbar = ({ toggle, light }) => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink light={light} to="/syncphonic-frontend/kursus">
-                Kursus
+              <NavLink light={light} to="/syncphonic-frontend/blog">
+                Blog
               </NavLink>
             </NavItem>
           </NavMenu>

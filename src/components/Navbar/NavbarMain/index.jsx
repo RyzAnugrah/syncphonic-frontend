@@ -41,8 +41,8 @@ const index = () => {
                 </Link>
               </li>
               <li className="nav-item mx-3">
-                <Link className="nav-link" to="/syncphonic-frontend/kursus">
-                  Kursus Musik
+                <Link className="nav-link" to="/syncphonic-frontend/blog">
+                  Blog Musik
                 </Link>
               </li>
             </ul>

@@ -93,10 +93,10 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
               </MobileNavbarLink>
               <MobileNavbarLink
                 light={light}
-                to="/syncphonic-frontend/kursus"
+                to="/syncphonic-frontend/blog"
                 onClick={toggle}
               >
-                Kursus
+                Blog
               </MobileNavbarLink>
             </MobileNavbarMenu>
             {!user ? (

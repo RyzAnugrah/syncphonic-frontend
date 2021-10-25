@@ -1,0 +1,81 @@
+.bg-color-checkout {
+  background-image: url("../../../assets/images/homepage-hero-bg.png");
+  background-color: #191A19;
+  color: #FFF;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-color-checkout-row {
+  background-color: #242323;
+  color: #FFF;
+}
+
+.img-hero-checkout {
+  border-radius: 5px;
+  height: 100%;
+}
+
+.checkout-title {
+  color: #FFF;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.form-control-checkout {
+  background-color: #4B4747;
+  border: 2px solid #4B4747;
+  color: #FFF;
+}
+
+.form-control-checkout:hover,
+.form-control-checkout:focus {
+  background-color: #4B4747;
+  border: 2px solid #A6711F;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+  color: #FFF;
+}
+
+.form-select {
+  background-color: #4B4747;
+  border: 2px solid #4B4747;
+  color: #FFF;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.btn-checkout {
+  width: 100%;
+  background-color: #A6711F;
+  color: #FFF;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 10%;
+}
+
+.btn-checkout:hover {
+  color: #FFF;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+}
+
+.btn-batal {
+  width: 100%;
+  background-color: #242323;
+  border: 2px solid #A6711F;
+  color: #FFF;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 10%;
+}
+
+.btn-batal:hover {
+  color: #FFF;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+}
+
+select:focus>option:checked {
+  background: #A6711F !important;
+}

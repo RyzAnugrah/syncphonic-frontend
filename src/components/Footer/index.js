@@ -19,7 +19,7 @@ const Footer = () => {
             </p>
             <p className="footer-desc mt-4">
               Penyedia penyewaan studio dan alat musik terlengkap di Cirebon.
-              Menyediakan juga kursus musik bagi pemula.
+              Menyediakan juga blog musik bagi pemula.
             </p>
             <div className="mt-5">
               <p className="footer-menu">Alamat</p>
@@ -51,9 +51,9 @@ const Footer = () => {
               <li className="mt-3">
                 <Link
                   className="footer-menu-list"
-                  to="/syncphonic-frontend/kursus"
+                  to="/syncphonic-frontend/blog"
                 >
-                  Kursus Musik
+                  Blog Musik
                 </Link>
               </li>
             </ul>

@@ -1,86 +1,91 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./style.css";
 
-import imgCta from "../../../assets/images/bg-landing-cta.png";
+import imgStudioDetailBanner from "../../../assets/images/studio-detail-banner.png";
 
 const index = () => {
   return (
     <div>
       <div className="container-fluid bg-color-studio-detail py-4">
         <div className="container">
+          <div className="row justify-content-between">
+            <div className="col-8 col-md-3">
+              <p className="studio-detail-text-title">Studio Rock</p>
+            </div>
+            <div className="col-4 col-md-2 text-end">
+              <button className="btn studio-detail-btn-status">Buka</button>
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-12">
-              <p className="studio-detail-text-title">Studio Jazz</p>
-            </div>
-            <div className="col-md-12">
-              <img src={imgCta} alt="studio" className="img-fluid" />
-            </div>
-          </div>
-          <div className="row mt-4">
-            <div className="col-md-2 my-auto">
-              <button className="btn studio-detail-btn-user">10 Orang</button>
-            </div>
-            <div className="col-md-2 my-auto">
-              <button className="btn studio-detail-btn-status">
-                Available
-              </button>
-            </div>
-            <div className="col-md-4 my-auto">
-              <p className="studio-detail-desc-price">Rp.500.000/Jam</p>
+              <img
+                src={imgStudioDetailBanner}
+                alt="studio"
+                className="img-fluid studio-detail-img-banner"
+              />
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-md-6 mt-4">
-              <p className="studio-detail-desc-spec">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor
-                nunc aenean netus leo placerat iaculis. Feugiat elementum vitae
-                facilisis integer ac id donec cursus. Vulputate dolor fermentum
-                scelerisque dui, porta dolor velit. Sit non ut lorem orci
-                lectus. Vivamus tellus amet, integer et elementum lacinia quam
-                convallis arcu. Aliquet non suspendisse odio iaculis donec ut
-                volutpat eu pellentesque. Nec etiam eget congue at etiam purus.
-                Risus diam elementum pellentesque vitae euismod vitae donec
-                orci. Nibh purus libero integer ipsum diam sit nunc. Erat
-                blandit nullam lectus massa nulla non accumsan. Nulla posuere
-                dignissim morbi eget vitae. Elementum varius bibendum ultrices
-                sit convallis. Metus nunc, sapien tempor velit nibh viverra
-                sapien augue. In sit in dui amet fames auctor. Aliquet eu
-                volutpat at non vel. Pulvinar ac id tristique diam in ultricies.
-                Eu odio nulla elit velit. Vitae sollicitudin vel aliquet nibh.
-                Ut molestie augue odio sit tempor. Porttitor dolor ac, nulla
-                integer at id. Proin aliquet fringilla at diam. At sem tortor
-                tempus est risus, mattis porta congue. Aliquet lorem eu nullam
-                donec purus arcu mattis sapien. I
-              </p>
-            </div>
-            <div className="col-md-5 offset-md-1 mt-4">
-              <p className="studio-detail-form-title">Form Sewa</p>
-              <div className="row bg-color-form-row p-4">
+            <div className="col-md-5">
+              <div className="row">
                 <div className="col-md-12">
-                  <form>
-                    <div className="form-group">
-                      <label htmlFor="inputPilihHari">Pilih Hari</label>
-                      <input
-                        type="date"
-                        className="form-control form-control-sewa"
-                        id="inputPilihHari"
-                      />
-                    </div>
-                    <div className="form-group mt-4">
-                      <label htmlFor="inputDurasi">Durasi</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sewa"
-                        id="inputDurasi"
-                      />
-                    </div>
-                    <button type="submit" className="btn btn-sewa">
-                      Sewa
-                    </button>
-                  </form>
+                  <p className="studio-detail-text-desc">Harga</p>
                 </div>
               </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <p className="studio-detail-text-title margin-up">
+                    Rp.500.000/Jam
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="row">
+                <div className="col-md-12">
+                  <p className="studio-detail-text-desc">
+                    Tersedia setiap hari
+                  </p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <p className="studio-detail-text-title margin-up">Rabu</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3">
+              <Link to="/syncphonic-frontend/studio/checkout/1">
+                <button
+                  type="button"
+                  className="btn studio-detail-btn-sewa py-3"
+                >
+                  Sewa Studio
+                </button>
+              </Link>
+            </div>
+          </div>
+          <div className="row my-4">
+            <div className="col-md-12">
+              <p className="studio-detail-text-desc">
+                Alat musik dan band bisa disewa secara satuan ataupun secara
+                lengkap full band. Biaya sewa alat musik itu bervariasi dengan
+                selisih harga yang tidak terlalu besar, yakni di kisaran 100
+                ribu Rupiah per hari per satuan alat band, tergantung pada
+                merknya. Berikut rincian perkiraan harganya.
+              </p>
+              <p className="studio-detail-text-desc">Kelengkapan:</p>
+              <ul className="studio-detail-text-list">
+                <li>Ground Stage 8 Box</li>
+                <li>Subwoofer Double 18″ (4 pcs)</li>
+                <li>Monitor Active (2 pcs)</li>
+                <li>Mikrofon Wireless (2 pcs)</li>
+                <li>Mic Cable (4 pcs)</li>
+                <li>Mixer Digital</li>
+                <li>Stand Mic (4 pcs)</li>
+                <li>DI Box Behringer (4 pcs)</li>
+              </ul>
             </div>
           </div>
         </div>

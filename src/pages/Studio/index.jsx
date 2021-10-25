@@ -63,7 +63,7 @@ const Studio = () => {
             </div>
           </div>
         </div>
-        <div className="row m-4 studio-list-container">
+        <div className="row mt-4 studio-list-container">
           <div className="col-md-12">
             <div className="row">
               <div className="col-md-3 mx-auto mt-4 text-center">
@@ -125,68 +125,73 @@ const Studio = () => {
                 </form>
               </div>
             </div>
-            <div className="row mt-4">
-              <div className="col-md-12">
-                <div className="row row-cols-1 row-cols-md-3 g-4">
-                  <div className="col">
-                    <div className="card studio-card p-2">
-                      <div className="row px-2 mt-2">
+          </div>
+        </div>
+        <div className="row mt-4 studio-list-container">
+          <div className="col-md-12">
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+              <div className="col">
+                <div className="card studio-card p-2 m-2">
+                  <div className="row px-2 mt-2">
+                    <div className="col-md-12">
+                      <p className="studio-card-title">Studio Rock</p>
+                    </div>
+                  </div>
+                  <div className="row px-2">
+                    <div className="col-4">
+                      <button className="btn studio-card-btn-status">
+                        Buka
+                      </button>
+                    </div>
+                    <div className="col-8 text-end">
+                      <p className="studio-card-capacity">Kapasitas 10 Orang</p>
+                    </div>
+                  </div>
+                  <div className="row px-2 mt-2">
+                    <div className="col-md-12">
+                      <img
+                        src={imgStudioCard1}
+                        alt="card"
+                        className="img-fluid studio-card-img"
+                      />
+                    </div>
+                  </div>
+                  <div className="row px-2 mt-2">
+                    <div className="col-7">
+                      <div className="row">
                         <div className="col-md-12">
-                          <p className="studio-card-title">Studio Rock</p>
+                          <p className="studio-card-capacity">Harga</p>
                         </div>
                       </div>
-                      <div className="row px-2">
-                        <div className="col-4">
-                          <button className="btn studio-card-btn-status">
-                            Buka
-                          </button>
-                        </div>
-                        <div className="col-8 text-end">
-                          <p className="studio-card-capacity">
-                            Kapasitas 10 Orang
+                      <div className="row">
+                        <div className="col-md-12">
+                          <p className="studio-card-desc-price">
+                            Rp.500.000/Jam
                           </p>
                         </div>
                       </div>
-                      <div className="row px-2 mt-2">
-                        <div className="col-md-12">
-                          <img
-                            src={imgStudioCard1}
-                            alt="card"
-                            className="img-fluid studio-card-img"
-                          />
-                        </div>
-                      </div>
-                      <div className="row px-2 mt-2">
-                        <div className="col-8">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <p className="studio-card-capacity">Harga</p>
-                            </div>
-                          </div>
-                          <div className="row">
-                            <div className="col-md-12">
-                              <p className="studio-card-desc-price">
-                                Rp.500.000/Jam
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="col-4 text-end">
-                          <Link to="/syncphonic-frontend/studio/1">
-                            <button
-                              className="btn studio-card-btn-detail"
-                              type="button"
-                            >
-                              Detail
-                            </button>
-                          </Link>
-                        </div>
-                      </div>
+                    </div>
+                    <div className="col-5 text-end">
+                      <Link to="/syncphonic-frontend/studio/1">
+                        <button
+                          className="btn studio-card-btn-detail"
+                          type="button"
+                        >
+                          Detail
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="row mt-4 studio-list-container">
+          <div className="col-md-2 mx-auto text-center">
+            <button className="btn studio-load-more py-3" type="button">
+              Load more
+            </button>
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@ const index = () => {
             </p>
             <p className="footer-desc mt-4">
               Penyedia penyewaan studio dan alat musik terlengkap di Cirebon
-              menyediakan juga kursus musik bagi pemula.
+              menyediakan juga blog musik bagi pemula.
             </p>
           </div>
           <div className="col-md-2 mt-4">
@@ -48,9 +48,9 @@ const index = () => {
               <li className="mt-3">
                 <Link
                   className="footer-menu-list"
-                  to="/syncphonic-frontend/kursus"
+                  to="/syncphonic-frontend/blog"
                 >
-                  Kursus Musik
+                  Blog Musik
                 </Link>
               </li>
             </ul>

@@ -63,15 +63,15 @@ const FAQ = () => {
               <li className="nav-item" role="presentation">
                 <button
                   className="nav-link"
-                  id="pills-kursus-tab"
+                  id="pills-blog-tab"
                   data-bs-toggle="pill"
-                  data-bs-target="#pills-kursus"
+                  data-bs-target="#pills-blog"
                   type="button"
                   role="tab"
-                  aria-controls="pills-kursus"
+                  aria-controls="pills-blog"
                   aria-selected="false"
                 >
-                  Kursus Musik
+                  Blog Musik
                 </button>
               </li>
             </ul>
@@ -109,7 +109,7 @@ const FAQ = () => {
                             one yang akan memenuhi berbagai kebutuhan
                             orang-orang akan dunia musik, karena website ini
                             dapat memfasilitasi orang-orang yang ingin menyewa
-                            alat musik, menyewa studio musik, dan kursus
+                            alat musik, menyewa studio musik, dan blog
                             memainkan alat musik. Hanya dalam satu platform,
                             tentunya website ini juga memberikan banyak
                             kemudahan baik bagi pengelola studio musik maupun
@@ -242,37 +242,37 @@ const FAQ = () => {
               </div>
               <div
                 className="tab-pane fade"
-                id="pills-kursus"
+                id="pills-blog"
                 role="tabpanel"
-                aria-labelledby="pills-kursus-tab"
+                aria-labelledby="pills-blog-tab"
               >
                 <div className="row justify-content-center mt-4">
                   <div className="mt-4">
-                    <div className="accordion" id="accordionKursus">
+                    <div className="accordion" id="accordionBlog">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
                           <button
                             className="accordion-button fw-bolder"
                             type="button"
                             data-bs-toggle="collapse"
-                            data-bs-target="#collapseOneKursus"
+                            data-bs-target="#collapseOneBlog"
                             aria-expanded="true"
-                            aria-controls="collapseOneKursus"
+                            aria-controls="collapseOneBlog"
                           >
-                            Bagaimana cara ikut kursus musik di Syncphonic?
+                            Bagaimana cara ikut blog musik di Syncphonic?
                           </button>
                         </h2>
                         <div
-                          id="collapseOneKursus"
+                          id="collapseOneBlog"
                           className="accordion-collapse collapse show"
                           aria-labelledby="headingOne"
-                          data-bs-parent="#accordionKursus"
+                          data-bs-parent="#accordionBlog"
                         >
                           <div className="accordion-body">
                             Di fitur ini pengguna juga wajib sudah terdaftar
                             menjadi member studio, di dalam fitur ini pengguna
-                            dapat mendaftar untuk mengikuti kursus yang
-                            disediakan studio, bentuk kursus tersebut dapat
+                            dapat mendaftar untuk mengikuti blog yang
+                            disediakan studio, bentuk blog tersebut dapat
                             berupa pelatihan offline maupun online melalui
                             website, hal itu bergantung pada ketersedian dari
                             studio itu sendiri.

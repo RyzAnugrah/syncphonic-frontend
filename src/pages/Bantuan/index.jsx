@@ -81,7 +81,7 @@ const Bantuan = () => {
                             one yang akan memenuhi berbagai kebutuhan
                             orang-orang akan dunia musik, karena website ini
                             dapat memfasilitasi orang-orang yang ingin menyewa
-                            alat musik, menyewa studio musik, dan kursus
+                            alat musik, menyewa studio musik, dan blog
                             memainkan alat musik. Hanya dalam satu platform,
                             tentunya website ini juga memberikan banyak
                             kemudahan baik bagi pengelola studio musik maupun

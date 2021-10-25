@@ -101,7 +101,7 @@ const index = () => {
             </p>
             <p className="homepage-desc-intro mt-4">
               Kami menyediakan beragam pelayanan untuk menunjang bakat musikmu
-              mulai dari sewa studio hingga kursus musik
+              mulai dari sewa studio hingga blog musik
             </p>
           </div>
         </div>
@@ -139,7 +139,7 @@ const index = () => {
             <p className="homepage-title-intro mt-4">Syncphonic Studio Musik</p>
             <p className="homepage-desc-intro mt-4">
               Penyedia penyewaan studio dan alat musik terlengkap di Cirebon
-              menyediakan juga kursus musik bagi pemula
+              menyediakan juga blog musik bagi pemula
             </p>
             <p className="mt-4">
               <a href="https://instagram.com">
