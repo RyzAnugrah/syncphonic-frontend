@@ -18,6 +18,7 @@ const App = () => {
   const user = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
+    console.log("App.js:");
     console.log(user && user);
   }, [user]);
 

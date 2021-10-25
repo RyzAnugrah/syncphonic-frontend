@@ -24,7 +24,7 @@ const Masuk = () => {
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
-  
+
   const {
     register,
     formState: { errors },

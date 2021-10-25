@@ -8,7 +8,7 @@ const TOKEN =
     : JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
         .currentUser.token;
 
-console.log(`Token: ${TOKEN}`);
+console.log(`requestMethods Token: ${TOKEN}`);
 // console.log(
 //   JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser
 // );

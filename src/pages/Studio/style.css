@@ -92,6 +92,21 @@
   cursor: auto;
 }
 
+.studio-card-btn-status-close {
+  background-color: #C6282B;
+  width: 100%;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 16px;
+}
+
+.studio-card-btn-status-close:hover {
+  box-shadow: inset 0 1px 1px #C6282B,
+    0 0 8px #C6282B;
+  color: #FFF;
+  cursor: auto;
+}
+
 .studio-card-capacity {
   color: #FFF;
   font-size: 16px;
@@ -147,6 +162,10 @@ select:focus > option:checked {
   }
 
   .studio-card-btn-status {
+    font-size: 12px;
+  }
+
+  .studio-card-btn-status-close {
     font-size: 12px;
   }
 

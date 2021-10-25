@@ -47,7 +47,7 @@ const Checkout = () => {
                 <div className="form-group mt-3">
                   <label htmlFor="inputDurasi">Durasi</label>
                   <select
-                    class="form-select form-control-checkout"
+                    className="form-select form-control-checkout"
                     aria-label="durasi-label"
                     id="inputDurasi"
                   >

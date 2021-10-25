@@ -1,18 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./style.css";
+import { useDispatch, useSelector } from "react-redux";
 
+import { publicRequest } from "../../requestMethods";
+import { studioStart } from "../../redux/studioRedux";
+
+import "./style.css";
 import { FaSearch } from "react-icons/fa";
 import imgStudioBanner from "../../assets/images/studio-banner.png";
 import imgAlatBanner from "../../assets/images/alat-banner.png";
 import imgStudioCard1 from "../../assets/images/studio-card-1.png";
+// import axios from "axios";
 // import imgStudioCard from "../../assets/images/studio-card-2.png";
 // import imgStudioCard from "../../assets/images/studio-card-3.png";
 
 const Studio = () => {
+  const studios = useSelector((state) => state.studio.currentStudio);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getStudio = async (dispatch) => {
+      try {
+        const res = await publicRequest.get("/studio");
+        dispatch(studioStart(res.data));
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+
+    getStudio(dispatch);
+  }, [dispatch]);
+
   return (
     <div>
       <div className="container-fluid bg-color-studio py-4">
+        {studios && console.log(studios)}
         <div className="row">
           <div className="col-md-12">
             <div
@@ -130,60 +152,74 @@ const Studio = () => {
         <div className="row mt-4 studio-list-container">
           <div className="col-md-12">
             <div className="row row-cols-1 row-cols-md-3 g-4">
-              <div className="col">
-                <div className="card studio-card p-2 m-2">
-                  <div className="row px-2 mt-2">
-                    <div className="col-md-12">
-                      <p className="studio-card-title">Studio Rock</p>
-                    </div>
-                  </div>
-                  <div className="row px-2">
-                    <div className="col-4">
-                      <button className="btn studio-card-btn-status">
-                        Buka
-                      </button>
-                    </div>
-                    <div className="col-8 text-end">
-                      <p className="studio-card-capacity">Kapasitas 10 Orang</p>
-                    </div>
-                  </div>
-                  <div className="row px-2 mt-2">
-                    <div className="col-md-12">
-                      <img
-                        src={imgStudioCard1}
-                        alt="card"
-                        className="img-fluid studio-card-img"
-                      />
-                    </div>
-                  </div>
-                  <div className="row px-2 mt-2">
-                    <div className="col-7">
-                      <div className="row">
+              {studios &&
+                studios.map((studio) => (
+                  <div className="col" key={studio.id}>
+                    <div className="card studio-card p-2 m-2">
+                      <div className="row px-2 mt-2">
                         <div className="col-md-12">
-                          <p className="studio-card-capacity">Harga</p>
-                        </div>
-                      </div>
-                      <div className="row">
-                        <div className="col-md-12">
-                          <p className="studio-card-desc-price">
-                            Rp.500.000/Jam
+                          <p className="studio-card-title">
+                            {studio.studio_name}
                           </p>
                         </div>
                       </div>
-                    </div>
-                    <div className="col-5 text-end">
-                      <Link to="/syncphonic-frontend/studio/1">
-                        <button
-                          className="btn studio-card-btn-detail"
-                          type="button"
-                        >
-                          Detail
-                        </button>
-                      </Link>
+                      <div className="row px-2">
+                        <div className="col-4">
+                          <button
+                            className={`btn ${
+                              studio.studio_status.toLowerCase() === "open" ||
+                              studio.studio_status.toLowerCase() === "buka"
+                                ? "studio-card-btn-status"
+                                : "studio-card-btn-status-close"
+                            }`}
+                          >
+                            {studio.studio_status}
+                          </button>
+                        </div>
+                        <div className="col-8 text-end">
+                          <p className="studio-card-capacity">
+                            {`Kapasitas ${studio.studio_capacity} Orang`}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="row px-2 mt-2">
+                        <div className="col-md-12">
+                          <img
+                            src={imgStudioCard1}
+                            alt="card"
+                            className="img-fluid studio-card-img"
+                          />
+                        </div>
+                      </div>
+                      <div className="row px-2 mt-2">
+                        <div className="col-7">
+                          <div className="row">
+                            <div className="col-md-12">
+                              <p className="studio-card-capacity">Harga</p>
+                            </div>
+                          </div>
+                          <div className="row">
+                            <div className="col-md-12">
+                              <p className="studio-card-desc-price">
+                                {`Rp.${studio.studio_price}/Jam`}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-5 text-end">
+                          <Link to={`/syncphonic-frontend/studio/${studio.id}`}>
+                            <button
+                              className="btn studio-card-btn-detail"
+                              type="button"
+                            >
+                              Detail
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                ))}
             </div>
           </div>
         </div>
