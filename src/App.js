@@ -11,8 +11,6 @@ import { LightTheme } from "./components/Header/Navbar/Navbar/index";
 import Navbar from "./components/Header/Navbar/Navbar/index";
 import MobileNavbar from "./components/Header/Navbar/MobileNavbar/index";
 import Footer from "./components/Footer";
-import "./App.css";
-import "./index.css";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
