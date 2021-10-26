@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 
 import imgProduct from "../../assets/images/pengembang-product.jpg";
 import imgFrontend from "../../assets/images/pengembang-frontend.jpg";
 import imgBackend from "../../assets/images/pengembang-backend.jpg";
 
-const index = () => {
+const Pengembang = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <div className="container-fluid bg-color-pengembang p-4">
@@ -303,4 +307,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Pengembang;

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 
 const Bantuan = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <div className="bg-color-bantuan">
@@ -81,11 +85,11 @@ const Bantuan = () => {
                             one yang akan memenuhi berbagai kebutuhan
                             orang-orang akan dunia musik, karena website ini
                             dapat memfasilitasi orang-orang yang ingin menyewa
-                            alat musik, menyewa studio musik, dan blog
-                            memainkan alat musik. Hanya dalam satu platform,
-                            tentunya website ini juga memberikan banyak
-                            kemudahan baik bagi pengelola studio musik maupun
-                            para pengguna/pelanggan karena dapat diakses dengan
+                            alat musik, menyewa studio musik, dan blog memainkan
+                            alat musik. Hanya dalam satu platform, tentunya
+                            website ini juga memberikan banyak kemudahan baik
+                            bagi pengelola studio musik maupun para
+                            pengguna/pelanggan karena dapat diakses dengan
                             berbagai perangkat dan dapat diakses dimana saja dan
                             kapan saja.
                           </div>

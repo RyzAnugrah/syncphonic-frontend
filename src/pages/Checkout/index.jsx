@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 
 import imgCta from "../../assets/images/homepage-cta.png";
 
-const index = () => {
+const Checkout = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <div className="container-fluid bg-color-checkout py-4">
@@ -92,4 +96,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Checkout;

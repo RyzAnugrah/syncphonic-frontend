@@ -30,6 +30,10 @@ const Studio = () => {
     getStudio(dispatch);
   }, [dispatch]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <div className="container-fluid bg-color-studio py-4">

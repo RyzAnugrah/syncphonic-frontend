@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../App.css";
 import HeroSection from "../../components/Landing/HeroSection";
 import ServicesSection from "../../components/Landing/ServicesSection";
@@ -14,6 +14,10 @@ import { Contact } from "../../components/Landing/Data";
 import { CTA } from "../../components/Landing/Data";
 
 function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <HeroSection {...Hero} />

@@ -27,6 +27,10 @@ const Detail = () => {
     getStudioDetail(dispatch);
   }, [dispatch, id]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <div className="container-fluid bg-color-studio-detail py-4">
