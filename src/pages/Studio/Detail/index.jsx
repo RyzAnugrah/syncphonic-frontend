@@ -22,7 +22,6 @@ const Detail = () => {
         console.log(err.message);
       }
     };
-
     getStudioDetail(dispatch);
   }, [dispatch, id]);
 

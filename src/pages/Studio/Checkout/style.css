@@ -38,6 +38,14 @@
   color: #FFF;
 }
 
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #4B4747;
+  border: 2px solid #4B4747;
+  color: #FFF;
+  opacity: 0.5;
+}
+
 .form-select {
   background-color: #4B4747;
   border: 2px solid #4B4747;
@@ -78,4 +86,13 @@
 
 select:focus>option:checked {
   background: #A6711F !important;
+}
+
+.error {
+  color: #bf1650;
+}
+
+.error::before {
+  display: inline;
+  content: "⚠ ";
 }

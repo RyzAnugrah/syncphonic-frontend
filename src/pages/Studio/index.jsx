@@ -10,7 +10,6 @@ import { FaSearch } from "react-icons/fa";
 import imgStudioBanner from "../../assets/images/studio-banner.png";
 import imgAlatBanner from "../../assets/images/alat-banner.png";
 import imgStudioCard1 from "../../assets/images/studio-card-1.png";
-// import axios from "axios";
 // import imgStudioCard from "../../assets/images/studio-card-2.png";
 // import imgStudioCard from "../../assets/images/studio-card-3.png";
 

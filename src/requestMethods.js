@@ -23,3 +23,11 @@ export const userRequest = axios.create({
     Authorization: `Bearer ${TOKEN}`,
   },
 });
+
+export const bookingRequest = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+});

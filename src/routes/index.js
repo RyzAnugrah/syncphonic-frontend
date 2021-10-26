@@ -32,7 +32,7 @@ const AppRoutes = [
     exact: true,
   },
   {
-    name: "studio-detail",
+    name: "studio-checkout",
     path: "/syncphonic-frontend/studio/checkout/:id",
     component: lazy(() => import("../pages/Studio/Checkout")),
     exact: true,
