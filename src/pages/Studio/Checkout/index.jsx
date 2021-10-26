@@ -10,6 +10,7 @@ import {
   studioDetailStart,
   studioBookingStart,
 } from "../../../redux/studioRedux";
+import Spinner from "../../../components/Spinner";
 
 import "./style.css";
 import imgStudioCheckoutBanner from "../../../assets/images/studio-checkout-banner.png";
@@ -23,6 +24,7 @@ const Checkout = () => {
   } = useForm();
 
   const [durationSelector, setDurationSelector] = useState(1);
+  const [spinner, setSpinner] = useState(true);
 
   const user = useSelector(
     (state) => state.user.currentUser && state.user.currentUser.users
@@ -117,9 +119,12 @@ const Checkout = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setTimeout(() => setSpinner(false), 1000);
   }, []);
 
-  return (
+  return spinner ? (
+    <Spinner />
+  ) : (
     <div>
       <div className="container-fluid bg-color-checkout py-2">
         <div className="container py-4">

@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { publicRequest } from "../../requestMethods";
 import { studioStart } from "../../redux/studioRedux";
+import Spinner from "../../components/Spinner";
 
 import "./style.css";
 import { FaSearch } from "react-icons/fa";
@@ -16,6 +17,7 @@ import imgStudioCard1 from "../../assets/images/studio-card-1.png";
 const Studio = () => {
   const studios = useSelector((state) => state.studio.allStudio);
   const dispatch = useDispatch();
+  const [spinner, setSpinner] = useState(true);
 
   useEffect(() => {
     const getStudio = async (dispatch) => {
@@ -32,9 +34,12 @@ const Studio = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setTimeout(() => setSpinner(false), 1000);
   }, []);
 
-  return (
+  return spinner ? (
+    <Spinner />
+  ) : (
     <div>
       <div className="container-fluid bg-color-studio py-4">
         {studios && console.log(studios)}

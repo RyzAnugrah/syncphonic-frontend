@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { publicRequest } from "../../../requestMethods";
 import { studioDetailStart } from "../../../redux/studioRedux";
+import Spinner from "../../../components/Spinner";
 
 import "./style.css";
 import imgStudioDetailBanner from "../../../assets/images/studio-detail-banner.png";
@@ -14,6 +15,8 @@ const Detail = () => {
   );
   const dispatch = useDispatch();
   let { id } = useParams();
+
+  const [spinner, setSpinner] = useState(true);
 
   useEffect(() => {
     const getStudioDetail = async (dispatch) => {
@@ -29,9 +32,12 @@ const Detail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setTimeout(() => setSpinner(false), 1000);
   }, []);
 
-  return (
+  return spinner ? (
+    <Spinner />
+  ) : (
     <div>
       <div className="container-fluid bg-color-studio-detail py-4">
         <div className="container">
