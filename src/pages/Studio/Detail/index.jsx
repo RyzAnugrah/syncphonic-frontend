@@ -9,7 +9,9 @@ import "./style.css";
 import imgStudioDetailBanner from "../../../assets/images/studio-detail-banner.png";
 
 const Detail = () => {
-  const studio = useSelector((state) => state.studio.detailStudio.result);
+  const studio = useSelector(
+    (state) => state.studio.detailStudio && state.studio.detailStudio.result
+  );
   const dispatch = useDispatch();
   let { id } = useParams();
 
@@ -39,8 +41,8 @@ const Detail = () => {
             <div className="col-4 col-md-2 text-end">
               <button
                 className={`btn ${
-                  studio.studio_status.toLowerCase() === "open" ||
-                  studio.studio_status.toLowerCase() === "buka"
+                  (studio && studio.studio_status.toLowerCase() === "open") ||
+                  (studio && studio.studio_status.toLowerCase() === "buka")
                     ? "studio-card-btn-status"
                     : "studio-card-btn-status-close"
                 }`}
@@ -92,8 +94,8 @@ const Detail = () => {
             <div className="col-md-3">
               <Link
                 to={`${
-                  studio.studio_status.toLowerCase() === "open" ||
-                  studio.studio_status.toLowerCase() === "buka"
+                  (studio && studio.studio_status.toLowerCase() === "open") ||
+                  (studio && studio.studio_status.toLowerCase() === "buka")
                     ? `/syncphonic-frontend/studio/checkout/${id}`
                     : `/syncphonic-frontend/studio/${id}`
                 }`}
@@ -101,8 +103,8 @@ const Detail = () => {
                 <button
                   type="button"
                   className={`btn py-3 ${
-                    studio.studio_status.toLowerCase() === "open" ||
-                    studio.studio_status.toLowerCase() === "buka"
+                    (studio && studio.studio_status.toLowerCase() === "open") ||
+                    (studio && studio.studio_status.toLowerCase() === "buka")
                       ? "studio-detail-btn-sewa"
                       : "studio-detail-btn-sewa-close"
                   }`}

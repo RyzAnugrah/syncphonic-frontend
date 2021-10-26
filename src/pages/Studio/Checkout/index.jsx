@@ -24,8 +24,12 @@ const Checkout = () => {
 
   const [durationSelector, setDurationSelector] = useState(1);
 
-  const user = useSelector((state) => state.user.currentUser.users);
-  const studio = useSelector((state) => state.studio.detailStudio.result);
+  const user = useSelector(
+    (state) => state.user.currentUser && state.user.currentUser.users
+  );
+  const studio = useSelector(
+    (state) => state.studio.detailStudio && state.studio.detailStudio.result
+  );
   const dispatch = useDispatch();
   let history = useHistory();
   let { id } = useParams();
@@ -33,13 +37,33 @@ const Checkout = () => {
   const booked = async (dispatch, data) => {
     console.log(data);
     try {
-      const res = await bookingRequest.post("/booking/studio/add", qs.stringify(data));
+      const res = await bookingRequest.post(
+        "/booking/studio/add",
+        qs.stringify(data)
+      );
       console.log(qs.stringify(data));
       dispatch(studioBookingStart(res.data));
       console.log(res.data);
+      Swal.fire({
+        icon: "success",
+        title: "Yes...",
+        text: "Berhasil booking studio!",
+        confirmButtonColor: "#A6711F",
+        confirmButtonText: "Ke home",
+        timer: 1500,
+      });
       reset();
+      history.push("/syncphonic-frontend");
     } catch (err) {
-      console.log(err.response);
+      console.log(err.message);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Gagal booking!",
+        confirmButtonColor: "#A6711F",
+        confirmButtonText: "Coba lagi",
+        timer: 3000,
+      });
     }
   };
 
@@ -113,7 +137,7 @@ const Checkout = () => {
                     className="form-control form-control-checkout"
                     id="inputNamaLengkap"
                     disabled
-                    value={user && user.name}
+                    value={(user && user.name) || ""}
                   />
                 </div>
                 <div className="form-group mt-3">
@@ -124,7 +148,7 @@ const Checkout = () => {
                     id="inputNamaStudio"
                     name="studio_name"
                     disabled
-                    value={studio && studio.studio_name}
+                    value={(studio && studio.studio_name) || ""}
                   />
                 </div>
                 <div className="form-group mt-3">
@@ -134,7 +158,7 @@ const Checkout = () => {
                     className="form-control form-control-checkout"
                     id="inputNamaStudio"
                     disabled
-                    value={studio && studio.studio_price}
+                    value={(studio && studio.studio_price) || ""}
                   />
                 </div>
                 <div className="form-group mt-3">
@@ -177,7 +201,9 @@ const Checkout = () => {
                     id="inputNamaStudio"
                     name="total"
                     disabled
-                    value={studio && studio.studio_price * durationSelector}
+                    value={
+                      (studio && studio.studio_price * durationSelector) || ""
+                    }
                   />
                 </div>
                 <div className="row mt-3">

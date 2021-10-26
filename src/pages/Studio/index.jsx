@@ -14,7 +14,7 @@ import imgStudioCard1 from "../../assets/images/studio-card-1.png";
 // import imgStudioCard from "../../assets/images/studio-card-3.png";
 
 const Studio = () => {
-  const studios = useSelector((state) => state.studio.currentStudio);
+  const studios = useSelector((state) => state.studio.allStudio);
   const dispatch = useDispatch();
 
   useEffect(() => {

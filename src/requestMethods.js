@@ -2,11 +2,27 @@ import axios from "axios";
 
 const BASE_URL = "https://server-syncphonic.herokuapp.com/api/";
 const TOKEN =
-  JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-    .currentUser === null
+  JSON.parse(
+    JSON.parse(localStorage.getItem("persist:root")) &&
+      JSON.parse(localStorage.getItem("persist:root")).user
+  ) &&
+  JSON.parse(
+    JSON.parse(localStorage.getItem("persist:root")) &&
+      JSON.parse(localStorage.getItem("persist:root")).user
+  ).currentUser === null
     ? ""
-    : JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-        .currentUser.token;
+    : JSON.parse(
+        JSON.parse(localStorage.getItem("persist:root")) &&
+          JSON.parse(localStorage.getItem("persist:root")).user
+      ) &&
+      JSON.parse(
+        JSON.parse(localStorage.getItem("persist:root")) &&
+          JSON.parse(localStorage.getItem("persist:root")).user
+      ).currentUser &&
+      JSON.parse(
+        JSON.parse(localStorage.getItem("persist:root")) &&
+          JSON.parse(localStorage.getItem("persist:root")).user
+      ).currentUser.token;
 
 console.log(`requestMethods Token: ${TOKEN}`);
 // console.log(
