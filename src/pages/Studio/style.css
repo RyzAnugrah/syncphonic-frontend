@@ -51,18 +51,9 @@
   width: 100%;
 }
 
-.input-group-text {
-  background-color: #A6711F;
-  border: 2px solid #A6711F;
-  color: #FFF;
-  cursor: pointer;
-  padding: .375rem 1rem;
-}
-
-.input-group-text:hover {
-  background-color: #4B4747;
-  border: 2px solid #A6711F;
-  color: #FFF;
+.studio-icon-search {
+  color: #A6711F;
+  margin-left: 20%;
 }
 
 .studio-card {
@@ -115,6 +106,7 @@
 
 .studio-card-img {
   width: 100%;
+  border-radius: 20px;
 }
 
 .studio-card-desc-price {

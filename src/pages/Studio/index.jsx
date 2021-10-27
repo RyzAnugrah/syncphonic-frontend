@@ -10,7 +10,7 @@ import "./style.css";
 import { FaSearch } from "react-icons/fa";
 import imgStudioBanner from "../../assets/images/studio-banner.png";
 import imgAlatBanner from "../../assets/images/alat-banner.png";
-import imgStudioCard1 from "../../assets/images/studio-card-1.png";
+// import imgStudioCard1 from "../../assets/images/studio-card-1.png";
 // import imgStudioCard from "../../assets/images/studio-card-2.png";
 // import imgStudioCard from "../../assets/images/studio-card-3.png";
 
@@ -43,6 +43,19 @@ const Studio = () => {
             (studio) =>
               studio.studio_available_day.toLowerCase() ===
               e.target.value.toLowerCase()
+          )
+      );
+    }
+  };
+
+  const handleChangeCapacity = (e) => {
+    console.log(e.target.value);
+    setStudiosResults(studios && studios);
+    if (e.target.value) {
+      setStudiosResults(
+        studios &&
+          studios.filter(
+            (studio) => studio.studio_capacity <= parseInt(e.target.value)
           )
       );
     }
@@ -90,8 +103,7 @@ const Studio = () => {
   ) : (
     <div>
       <div className="container-fluid bg-color-studio py-4">
-        {/* {studios && console.log(studios)}
-        {studios && console.log(studiosResults)} */}
+        {studios && console.log(studiosResults)}
         <div className="row">
           <div className="col-md-12">
             <div
@@ -166,8 +178,8 @@ const Studio = () => {
                 <div className="form-floating">
                   <select
                     className="form-select text-center"
-                    id="studioHari"
-                    aria-label="studio-hari"
+                    id="studioDay"
+                    aria-label="studio-day"
                     onChange={handleChangeDay}
                   >
                     <option defaultValue value="">
@@ -181,31 +193,44 @@ const Studio = () => {
                     <option value="sabtu">Sabtu</option>
                     <option value="minggu">Minggu</option>
                   </select>
-                  <label htmlFor="studioHari">Pilih Ketersediaan Hari</label>
+                  <label htmlFor="studioDay">Pilih Ketersediaan Hari</label>
                 </div>
               </div>
               <div className="col-md-3 mx-auto mt-4 text-center">
-                <form>
-                  <div className="form-group">
-                    <div className="input-group mb-3">
-                      <div className="form-floating">
-                        <input
-                          type="text"
-                          className="form-control form-control-search"
-                          id="inputSearch"
-                          placeholder="studio-rock"
-                          onChange={handleChangeName}
-                        />
-                        <label htmlFor="inputSearch">
-                          Coba Cari "Studio Rock"
-                        </label>
-                      </div>
-                      <span className="input-group-text">
-                        <FaSearch />
-                      </span>
-                    </div>
-                  </div>
-                </form>
+                <div className="form-floating">
+                  <select
+                    className="form-select text-center"
+                    id="studioCapacity"
+                    aria-label="studio-capacity"
+                    onChange={handleChangeCapacity}
+                  >
+                    <option defaultValue value="">
+                      Semua
+                    </option>
+                    <option value="10">{"<"} 10 Orang</option>
+                    <option value="20">{"<"} 20 Orang</option>
+                    <option value="30">{"<"} 30 Orang</option>
+                    <option value="40">{"<"} 40 Orang</option>
+                    <option value="50">{"<"} 50 Orang</option>
+                    <option value="100">{"<"} 100 Orang</option>
+                  </select>
+                  <label htmlFor="studioCapacity">Pilih Kapasitas</label>
+                </div>
+              </div>
+              <div className="col-md-3 mx-auto mt-4 text-center">
+                <div className="form-floating">
+                  <input
+                    type="text"
+                    className="form-control form-control-search"
+                    id="inputSearch"
+                    placeholder="studio-rock"
+                    onChange={handleChangeName}
+                  />
+                  <label htmlFor="inputSearch">
+                    Coba Cari "Studio Rock"
+                    <FaSearch className="studio-icon-search" />
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -246,7 +271,7 @@ const Studio = () => {
                       <div className="row px-2 mt-2">
                         <div className="col-md-12">
                           <img
-                            src={imgStudioCard1}
+                            src={studio.studio_img.replace('"', "")}
                             alt="card"
                             className="img-fluid studio-card-img"
                           />
