@@ -25,7 +25,40 @@ const Studio = () => {
     if (e.target.value) {
       setStudiosResults(
         studios &&
-          studios.filter((studio) => studio.studio_status === e.target.value)
+          studios.filter(
+            (studio) =>
+              studio.studio_status.toLowerCase() ===
+              e.target.value.toLowerCase()
+          )
+      );
+    }
+  };
+
+  const handleChangeDay = (e) => {
+    setStudiosResults(studios && studios);
+    if (e.target.value) {
+      setStudiosResults(
+        studios &&
+          studios.filter(
+            (studio) =>
+              studio.studio_available_day.toLowerCase() ===
+              e.target.value.toLowerCase()
+          )
+      );
+    }
+  };
+
+  const handleChangeName = (e) => {
+    console.log(e.target.value);
+    setStudiosResults(studios && studios);
+    if (e.target.value) {
+      setStudiosResults(
+        studios &&
+          studios.filter((studio) =>
+            studio.studio_name
+              .toLowerCase()
+              .includes(e.target.value.toLowerCase())
+          )
       );
     }
   };
@@ -57,8 +90,8 @@ const Studio = () => {
   ) : (
     <div>
       <div className="container-fluid bg-color-studio py-4">
-        {studios && console.log(studios)}
-        {studios && console.log(studiosResults)}
+        {/* {studios && console.log(studios)}
+        {studios && console.log(studiosResults)} */}
         <div className="row">
           <div className="col-md-12">
             <div
@@ -123,8 +156,8 @@ const Studio = () => {
                     <option defaultValue value="">
                       Semua
                     </option>
-                    <option value="Open">Buka</option>
-                    <option value="Close">Tutup</option>
+                    <option value="buka">Buka</option>
+                    <option value="tutup">Tutup</option>
                   </select>
                   <label htmlFor="studioStatus">Pilih Status Studio</label>
                 </div>
@@ -135,8 +168,9 @@ const Studio = () => {
                     className="form-select text-center"
                     id="studioHari"
                     aria-label="studio-hari"
+                    onChange={handleChangeDay}
                   >
-                    <option defaultValue value="semua">
+                    <option defaultValue value="">
                       Semua
                     </option>
                     <option value="senin">Senin</option>
@@ -145,6 +179,7 @@ const Studio = () => {
                     <option value="kamis">Kamis</option>
                     <option value="jumat">Jumat</option>
                     <option value="sabtu">Sabtu</option>
+                    <option value="minggu">Minggu</option>
                   </select>
                   <label htmlFor="studioHari">Pilih Ketersediaan Hari</label>
                 </div>
@@ -159,6 +194,7 @@ const Studio = () => {
                           className="form-control form-control-search"
                           id="inputSearch"
                           placeholder="studio-rock"
+                          onChange={handleChangeName}
                         />
                         <label htmlFor="inputSearch">
                           Coba Cari "Studio Rock"
