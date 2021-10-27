@@ -103,6 +103,11 @@ const Checkout = () => {
       });
       history.push("/syncphonic-frontend/masuk");
     }
+
+    if (user) {
+      window.scrollTo(0, 0);
+      setTimeout(() => setSpinner(false), 1000);
+    }
   }, [history, user]);
 
   useEffect(() => {
@@ -116,11 +121,6 @@ const Checkout = () => {
     };
     getStudioDetail(dispatch);
   }, [dispatch, id]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    setTimeout(() => setSpinner(false), 1000);
-  }, []);
 
   return spinner ? (
     <Spinner />
