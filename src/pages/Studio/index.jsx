@@ -18,6 +18,17 @@ const Studio = () => {
   const studios = useSelector((state) => state.studio.allStudio);
   const dispatch = useDispatch();
   const [spinner, setSpinner] = useState(true);
+  const [studiosResults, setStudiosResults] = useState([]);
+
+  const handleChangeStatus = (e) => {
+    setStudiosResults(studios && studios);
+    if (e.target.value) {
+      setStudiosResults(
+        studios &&
+          studios.filter((studio) => studio.studio_status === e.target.value)
+      );
+    }
+  };
 
   useEffect(() => {
     const getStudio = async (dispatch) => {
@@ -37,12 +48,17 @@ const Studio = () => {
     setTimeout(() => setSpinner(false), 1000);
   }, []);
 
+  useEffect(() => {
+    setStudiosResults(studios && studios);
+  }, [studios]);
+
   return spinner ? (
     <Spinner />
   ) : (
     <div>
       <div className="container-fluid bg-color-studio py-4">
         {studios && console.log(studios)}
+        {studios && console.log(studiosResults)}
         <div className="row">
           <div className="col-md-12">
             <div
@@ -102,12 +118,13 @@ const Studio = () => {
                     className="form-select text-center"
                     id="studioStatus"
                     aria-label="studio-status"
+                    onChange={handleChangeStatus}
                   >
-                    <option defaultValue value="semua">
+                    <option defaultValue value="">
                       Semua
                     </option>
-                    <option value="buka">Buka</option>
-                    <option value="tutup">Tutup</option>
+                    <option value="Open">Buka</option>
+                    <option value="Close">Tutup</option>
                   </select>
                   <label htmlFor="studioStatus">Pilih Status Studio</label>
                 </div>
@@ -160,8 +177,8 @@ const Studio = () => {
         <div className="row mt-4 studio-list-container">
           <div className="col-md-12">
             <div className="row row-cols-1 row-cols-md-3 g-4">
-              {studios &&
-                studios.map((studio) => (
+              {studiosResults &&
+                studiosResults.map((studio) => (
                   <div className="col" key={studio.id}>
                     <div className="card studio-card p-2 m-2">
                       <div className="row px-2 mt-2">
