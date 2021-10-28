@@ -127,6 +127,11 @@ hr.divider:after {
   color: #DD911A;
 }
 
+.login-desc-text {
+  color: #FFF;
+  font-size: 16px;
+}
+
 .login-desc-text-signup {
   color: #A6711F;
   font-size: 16px;
@@ -162,7 +167,7 @@ hr.divider:after {
     flex: 1;
     flex-direction: column;
     overflow: auto;
-    width : 100%;
+    width: 100%;
   }
 
   .img-sidebar {

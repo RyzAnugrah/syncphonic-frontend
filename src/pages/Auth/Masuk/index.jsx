@@ -46,20 +46,23 @@ const Masuk = () => {
       // console.log(res.data);
       Swal.fire({
         icon: "success",
-        title: "Yes...",
-        text: "Berhasil masuk akun!",
-        confirmButtonColor: "#A6711F",
-        confirmButtonText: "Ke home",
+        title: "Berhasil masuk akun!",
+        text: "Pergi ke home",
+        showConfirmButton: false,
         timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
+        reset();
       });
-      reset();
     } catch (err) {
       dispatch(loginFailure());
       console.log(err.message);
       Swal.fire({
         icon: "error",
-        title: "Oops...",
-        text: "Gagal masuk akun!",
+        title: "Gagal masuk akun!",
+        text: "Password tidak cocok",
         confirmButtonColor: "#A6711F",
         confirmButtonText: "Coba lagi",
         timer: 3000,
@@ -73,8 +76,9 @@ const Masuk = () => {
 
   useEffect(() => {
     if (user) {
-      history.push("/syncphonic-frontend");
-      window.location.reload();
+      setTimeout(() => {
+        history.push("/syncphonic-frontend");
+      }, 1500);
     }
   }, [history, user]);
 
@@ -115,10 +119,7 @@ const Masuk = () => {
               </a>
               kami.
             </p>
-            <form
-              onSubmit={handleSubmit(handleClickLogin)}
-              disabled={isFetching}
-            >
+            <form onSubmit={handleSubmit(handleClickLogin)}>
               <div className="form-group">
                 <label className="fw-bolder" htmlFor="emailInput">
                   Email
@@ -162,7 +163,11 @@ const Masuk = () => {
                 </Link>
               </div>
               <hr className="divider mt-5" />
-              <button type="submit" className="btn btn-login py-2">
+              <button
+                type="submit"
+                className="btn btn-login py-2"
+                disabled={isFetching}
+              >
                 Masuk
               </button>
             </form>
