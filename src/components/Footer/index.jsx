@@ -34,24 +34,41 @@ const Footer = () => {
             <ul className="footer-list-ul mt-4">
               <li className="mt-3">
                 <Link
-                  className="footer-menu-list"
                   to="/syncphonic-frontend/studio"
+                  className={
+                    "footer-menu-list " +
+                    (window.location.href.includes(
+                      "/syncphonic-frontend/studio"
+                    )
+                      ? "footer-menu-list-active"
+                      : "")
+                  }
                 >
                   Sewa Studio
                 </Link>
               </li>
               <li className="mt-3">
                 <Link
-                  className="footer-menu-list"
                   to="/syncphonic-frontend/alat"
+                  className={
+                    "footer-menu-list " +
+                    (window.location.href.includes("/syncphonic-frontend/alat")
+                      ? "footer-menu-list-active"
+                      : "")
+                  }
                 >
                   Sewa Alat
                 </Link>
               </li>
               <li className="mt-3">
                 <Link
-                  className="footer-menu-list"
                   to="/syncphonic-frontend/blog"
+                  className={
+                    "footer-menu-list " +
+                    (window.location.href.includes("/syncphonic-frontend/blog")
+                      ? "footer-menu-list-active"
+                      : "")
+                  }
                 >
                   Blog Musik
                 </Link>
@@ -63,32 +80,58 @@ const Footer = () => {
             <ul className="footer-list-ul mt-4">
               <li className="mt-3">
                 <Link
-                  className="footer-menu-list"
                   to="/syncphonic-frontend/faq"
+                  className={
+                    "footer-menu-list " +
+                    (window.location.href.includes("/syncphonic-frontend/faq")
+                      ? "footer-menu-list-active"
+                      : "")
+                  }
                 >
                   FAQ
                 </Link>
               </li>
               <li className="mt-3">
                 <Link
-                  className="footer-menu-list"
                   to="/syncphonic-frontend/bantuan"
+                  className={
+                    "footer-menu-list " +
+                    (window.location.href.includes(
+                      "/syncphonic-frontend/bantuan"
+                    )
+                      ? "footer-menu-list-active"
+                      : "")
+                  }
                 >
                   Bantuan
                 </Link>
               </li>
               <li className="mt-3">
                 <Link
-                  className="footer-menu-list"
                   to="/syncphonic-frontend/kebijakan"
+                  className={
+                    "footer-menu-list " +
+                    (window.location.href.includes(
+                      "/syncphonic-frontend/kebijakan"
+                    )
+                      ? "footer-menu-list-active"
+                      : "")
+                  }
                 >
                   Kebijakan Pengguna
                 </Link>
               </li>
               <li className="mt-3">
                 <Link
-                  className="footer-menu-list"
                   to="/syncphonic-frontend/pengembang"
+                  className={
+                    "footer-menu-list " +
+                    (window.location.href.includes(
+                      "/syncphonic-frontend/pengembang"
+                    )
+                      ? "footer-menu-list-active"
+                      : "")
+                  }
                 >
                   Tim Pengembang
                 </Link>

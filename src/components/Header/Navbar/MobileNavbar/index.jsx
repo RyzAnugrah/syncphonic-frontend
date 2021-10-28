@@ -81,6 +81,11 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
                 light={light}
                 to="/syncphonic-frontend/studio"
                 onClick={toggle}
+                className={
+                  window.location.href.includes("/syncphonic-frontend/studio")
+                    ? "active"
+                    : ""
+                }
               >
                 Sewa Studio
               </MobileNavbarLink>
@@ -88,6 +93,11 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
                 light={light}
                 to="/syncphonic-frontend/alat"
                 onClick={toggle}
+                className={
+                  window.location.href.includes("/syncphonic-frontend/alat")
+                    ? "active"
+                    : ""
+                }
               >
                 Sewa Alat
               </MobileNavbarLink>
@@ -95,6 +105,11 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
                 light={light}
                 to="/syncphonic-frontend/blog"
                 onClick={toggle}
+                className={
+                  window.location.href.includes("/syncphonic-frontend/blog")
+                    ? "active"
+                    : ""
+                }
               >
                 Blog
               </MobileNavbarLink>

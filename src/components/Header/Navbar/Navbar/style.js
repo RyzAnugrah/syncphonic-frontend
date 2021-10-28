@@ -55,7 +55,8 @@ export const MobileIcon = styled.div`
     right: 0;
     font-size: 2rem;
     cursor: pointer;
-    color: ${({ light, theme: { colors } }) => (light ? colors.dark : colors.light)};
+    color: ${({ light, theme: { colors } }) =>
+      light ? colors.dark : colors.light};
   }
 `;
 
@@ -90,6 +91,10 @@ export const NavLink = styled(RouterLink)`
 
   &:hover {
     color: ${({ theme: { colors } }) => colors.accent};
+  }
+
+  &.active {
+    color: #a6711f;
   }
 `;
 

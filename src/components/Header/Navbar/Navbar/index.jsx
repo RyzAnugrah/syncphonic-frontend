@@ -77,17 +77,41 @@ const Navbar = ({ toggle, light }) => {
           </NavLogo>
           <NavMenu>
             <NavItem>
-              <NavLink light={light} to="/syncphonic-frontend/studio">
+              <NavLink
+                light={light}
+                to="/syncphonic-frontend/studio"
+                className={
+                  window.location.href.includes("/syncphonic-frontend/studio")
+                    ? "active"
+                    : ""
+                }
+              >
                 Sewa Studio
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink light={light} to="/syncphonic-frontend/alat">
+              <NavLink
+                light={light}
+                to="/syncphonic-frontend/alat"
+                className={
+                  window.location.href.includes("/syncphonic-frontend/alat")
+                    ? "active"
+                    : ""
+                }
+              >
                 Sewa Alat
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink light={light} to="/syncphonic-frontend/blog">
+              <NavLink
+                light={light}
+                to="/syncphonic-frontend/blog"
+                className={
+                  window.location.href.includes("/syncphonic-frontend/blog")
+                    ? "active"
+                    : ""
+                }
+              >
                 Blog
               </NavLink>
             </NavItem>

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Link as RouterLink } from 'react-router-dom';
+import styled from "styled-components";
+import { Link as RouterLink } from "react-router-dom";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -8,8 +8,8 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  opacity: ${({ isOpen }) => (isOpen ? '100%' : '100%')};
-  left: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
+  opacity: ${({ isOpen }) => (isOpen ? "100%" : "100%")};
+  left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
   z-index: 100;
 `;
 
@@ -75,6 +75,10 @@ export const MobileNavbarLink = styled(RouterLink)`
   &:hover {
     color: ${({ theme: { colors } }) => colors.accent};
     transition: 0.2s ease-in-out;
+  }
+
+  &.active {
+    color: #a6711f;
   }
 `;
 

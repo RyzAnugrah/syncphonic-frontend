@@ -7,9 +7,9 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AppRoutes } from "./routes";
-import { LightTheme } from "./components/Header/Navbar/Navbar/index";
-import Navbar from "./components/Header/Navbar/Navbar/index";
-import MobileNavbar from "./components/Header/Navbar/MobileNavbar/index";
+import { LightTheme } from "./components/Header/Navbar/Navbar";
+import Navbar from "./components/Header/Navbar/Navbar";
+import MobileNavbar from "./components/Header/Navbar/MobileNavbar";
 import Footer from "./components/Footer";
 
 const App = () => {
