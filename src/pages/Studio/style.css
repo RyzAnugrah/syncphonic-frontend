@@ -144,8 +144,14 @@
   color: #FFF;
 }
 
-select:focus > option:checked {
+select:focus>option:checked {
   background: #A6711F !important;
+}
+
+.studio-data-null {
+  color: #FFF;
+  font-size: 30px;
+  font-weight: 600;
 }
 
 @media only screen and (max-width: 768px) {

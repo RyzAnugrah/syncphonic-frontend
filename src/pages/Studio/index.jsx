@@ -18,12 +18,14 @@ const Studio = () => {
   const studios = useSelector((state) => state.studio.allStudio);
   const dispatch = useDispatch();
   const [spinner, setSpinner] = useState(true);
-  const [studiosResults, setStudiosResults] = useState([]);
+  const [results, setResults] = useState(studios);
+  const countPerPage = 3;
+  const [count, setCount] = useState(countPerPage);
 
   const handleChangeStatus = (e) => {
-    setStudiosResults(studios && studios);
+    setResults(studios && studios);
     if (e.target.value) {
-      setStudiosResults(
+      setResults(
         studios &&
           studios.filter(
             (studio) =>
@@ -32,12 +34,13 @@ const Studio = () => {
           )
       );
     }
+    setCount(countPerPage);
   };
 
   const handleChangeDay = (e) => {
-    setStudiosResults(studios && studios);
+    setResults(studios && studios);
     if (e.target.value) {
-      setStudiosResults(
+      setResults(
         studios &&
           studios.filter(
             (studio) =>
@@ -46,26 +49,28 @@ const Studio = () => {
           )
       );
     }
+    setCount(countPerPage);
   };
 
   const handleChangeCapacity = (e) => {
     console.log(e.target.value);
-    setStudiosResults(studios && studios);
+    setResults(studios && studios);
     if (e.target.value) {
-      setStudiosResults(
+      setResults(
         studios &&
           studios.filter(
             (studio) => studio.studio_capacity <= parseInt(e.target.value)
           )
       );
     }
+    setCount(countPerPage);
   };
 
   const handleChangeName = (e) => {
     console.log(e.target.value);
-    setStudiosResults(studios && studios);
+    setResults(studios && studios);
     if (e.target.value) {
-      setStudiosResults(
+      setResults(
         studios &&
           studios.filter((studio) =>
             studio.studio_name
@@ -74,6 +79,11 @@ const Studio = () => {
           )
       );
     }
+    setCount(countPerPage);
+  };
+
+  const handleLoadMore = () => {
+    setCount(studios && count < results.length && count + countPerPage);
   };
 
   useEffect(() => {
@@ -95,7 +105,7 @@ const Studio = () => {
   }, []);
 
   useEffect(() => {
-    setStudiosResults(studios && studios);
+    setResults(studios && studios);
   }, [studios]);
 
   return spinner ? (
@@ -103,7 +113,9 @@ const Studio = () => {
   ) : (
     <div>
       <div className="container-fluid bg-color-studio py-4">
-        {studios && console.log(studiosResults)}
+        {studios && console.log(results)}
+        {/* {studios && console.log(results.length)}
+        {studios && console.log(count)} */}
         <div className="row">
           <div className="col-md-12">
             <div
@@ -238,8 +250,8 @@ const Studio = () => {
         <div className="row mt-4 studio-list-container">
           <div className="col-md-12">
             <div className="row row-cols-1 row-cols-md-3 g-4">
-              {studiosResults &&
-                studiosResults.map((studio) => (
+              {results && results.length !== 0 ? (
+                results.slice(0, count).map((studio) => (
                   <div className="col" key={studio.id}>
                     <div className="card studio-card p-2 m-2">
                       <div className="row px-2 mt-2">
@@ -305,15 +317,30 @@ const Studio = () => {
                       </div>
                     </div>
                   </div>
-                ))}
+                ))
+              ) : (
+                <div className="col">
+                  <div className="row">
+                    <div className="col-md-12 text-center">
+                      <p className="studio-data-null">Tidak ada data</p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
         <div className="row mt-4 studio-list-container">
           <div className="col-md-2 mx-auto text-center">
-            <button className="btn studio-load-more py-3" type="button">
-              Load more
-            </button>
+            {count < results.length && (
+              <button
+                className="btn studio-load-more py-3"
+                type="button"
+                onClick={handleLoadMore}
+              >
+                Load more
+              </button>
+            )}
           </div>
         </div>
       </div>
