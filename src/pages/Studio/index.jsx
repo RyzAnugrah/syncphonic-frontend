@@ -8,6 +8,7 @@ import Spinner from "../../components/Spinner";
 
 import "./style.css";
 import { FaSearch } from "react-icons/fa";
+import { FcClearFilters } from "react-icons/fc";
 import imgStudioBanner from "../../assets/images/studio-banner.png";
 import imgAlatBanner from "../../assets/images/alat-banner.png";
 // import imgStudioCard1 from "../../assets/images/studio-card-1.png";
@@ -23,63 +24,73 @@ const Studio = () => {
   const [count, setCount] = useState(countPerPage);
 
   const handleChangeStatus = (e) => {
-    setResults(studios && studios);
     if (e.target.value) {
       setResults(
-        studios &&
-          studios.filter(
-            (studio) =>
-              studio.studio_status.toLowerCase() ===
+        results &&
+          results.filter(
+            (result) =>
+              result.studio_status.toLowerCase() ===
               e.target.value.toLowerCase()
           )
       );
+    } else {
+      setResults(studios && studios);
     }
     setCount(countPerPage);
   };
 
   const handleChangeDay = (e) => {
-    setResults(studios && studios);
     if (e.target.value) {
       setResults(
-        studios &&
-          studios.filter(
-            (studio) =>
-              studio.studio_available_day.toLowerCase() ===
+        results &&
+          results.filter(
+            (result) =>
+              result.studio_available_day.toLowerCase() ===
               e.target.value.toLowerCase()
           )
       );
+    } else {
+      setResults(studios && studios);
     }
     setCount(countPerPage);
   };
 
   const handleChangeCapacity = (e) => {
-    console.log(e.target.value);
-    setResults(studios && studios);
     if (e.target.value) {
       setResults(
-        studios &&
-          studios.filter(
-            (studio) => studio.studio_capacity <= parseInt(e.target.value)
+        results &&
+          results.filter(
+            (result) => result.studio_capacity <= parseInt(e.target.value)
           )
       );
+    } else {
+      setResults(studios && studios);
     }
     setCount(countPerPage);
   };
 
   const handleChangeName = (e) => {
-    console.log(e.target.value);
     setResults(studios && studios);
     if (e.target.value) {
-      setResults(
-        studios &&
-          studios.filter((studio) =>
-            studio.studio_name
-              .toLowerCase()
-              .includes(e.target.value.toLowerCase())
-          )
-      );
+      setTimeout(() => {
+        setResults(
+          results &&
+            results.filter((result) =>
+              result.studio_name
+                .toLowerCase()
+                .includes(e.target.value.toLowerCase())
+            )
+        );
+      }, 500);
     }
     setCount(countPerPage);
+  };
+
+  const handleLoadReset = () => {
+    setResults(studios && studios);
+    setCount(countPerPage);
+    setSpinner(true);
+    setTimeout(() => setSpinner(false), 1000);
   };
 
   const handleLoadMore = () => {
@@ -169,7 +180,7 @@ const Studio = () => {
         <div className="row mt-4 studio-list-container">
           <div className="col-md-12">
             <div className="row">
-              <div className="col-md-3 mx-auto mt-4 text-center">
+              <div className="col-md-2 mx-auto mt-4 text-center">
                 <div className="form-floating">
                   <select
                     className="form-select text-center"
@@ -208,7 +219,7 @@ const Studio = () => {
                   <label htmlFor="studioDay">Pilih Ketersediaan Hari</label>
                 </div>
               </div>
-              <div className="col-md-3 mx-auto mt-4 text-center">
+              <div className="col-md-2 mx-auto mt-4 text-center">
                 <div className="form-floating">
                   <select
                     className="form-select text-center"
@@ -243,6 +254,16 @@ const Studio = () => {
                     <FaSearch className="studio-icon-search" />
                   </label>
                 </div>
+              </div>
+              <div className="col-md-2 mx-auto mt-4 text-center">
+                <button
+                  className="btn studio-load-more py-3"
+                  type="button"
+                  onClick={handleLoadReset}
+                >
+                  Reset
+                  <FcClearFilters className="studio-icon-search" />
+                </button>
               </div>
             </div>
           </div>
