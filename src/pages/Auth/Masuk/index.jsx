@@ -62,7 +62,7 @@ const Masuk = () => {
       Swal.fire({
         icon: "error",
         title: "Gagal masuk akun!",
-        text: "Password tidak cocok",
+        text: "Email dan password tidak cocok",
         confirmButtonColor: "#A6711F",
         confirmButtonText: "Coba lagi",
         timer: 3000,

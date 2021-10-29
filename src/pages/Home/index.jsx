@@ -24,6 +24,13 @@ function Home() {
     setTimeout(() => setSpinner(false), 1000);
   }, []);
 
+  // Use this function only to clear the local storage
+  // useEffect(() => {
+  //   window.onbeforeunload = () => {
+  //     localStorage.clear();
+  //   };
+  // }, []);
+
   return spinner ? (
     <Spinner />
   ) : (
