@@ -91,15 +91,15 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
               </MobileNavbarLink>
               <MobileNavbarLink
                 light={light}
-                to="/syncphonic-frontend/alat"
+                to="/syncphonic-frontend/instrument"
                 onClick={toggle}
                 className={
-                  window.location.href.includes("/syncphonic-frontend/alat")
+                  window.location.href.includes("/syncphonic-frontend/instrument")
                     ? "active"
                     : ""
                 }
               >
-                Sewa Alat
+                Sewa Instrument
               </MobileNavbarLink>
               <MobileNavbarLink
                 light={light}

@@ -49,15 +49,15 @@ const Footer = () => {
               </li>
               <li className="mt-3">
                 <Link
-                  to="/syncphonic-frontend/alat"
+                  to="/syncphonic-frontend/instrument"
                   className={
                     "footer-menu-list " +
-                    (window.location.href.includes("/syncphonic-frontend/alat")
+                    (window.location.href.includes("/syncphonic-frontend/instrument")
                       ? "footer-menu-list-active"
                       : "")
                   }
                 >
-                  Sewa Alat
+                  Sewa Instrument
                 </Link>
               </li>
               <li className="mt-3">

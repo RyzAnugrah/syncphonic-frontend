@@ -92,14 +92,14 @@ const Navbar = ({ toggle, light }) => {
             <NavItem>
               <NavLink
                 light={light}
-                to="/syncphonic-frontend/alat"
+                to="/syncphonic-frontend/instrument"
                 className={
-                  window.location.href.includes("/syncphonic-frontend/alat")
+                  window.location.href.includes("/syncphonic-frontend/instrument")
                     ? "active"
                     : ""
                 }
               >
-                Sewa Alat
+                Sewa Instrument
               </NavLink>
             </NavItem>
             <NavItem>

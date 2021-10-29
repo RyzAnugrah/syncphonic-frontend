@@ -38,6 +38,24 @@ const AppRoutes = [
     exact: true,
   },
   {
+    name: "instrument",
+    path: "/syncphonic-frontend/instrument",
+    component: lazy(() => import("../pages/Instrument")),
+    exact: true,
+  },
+  {
+    name: "instrument-detail",
+    path: "/syncphonic-frontend/instrument/:id",
+    component: lazy(() => import("../pages/Instrument/Detail")),
+    exact: true,
+  },
+  {
+    name: "instrument-checkout",
+    path: "/syncphonic-frontend/instrument/checkout/:id",
+    component: lazy(() => import("../pages/Instrument/Checkout")),
+    exact: true,
+  },
+  {
     name: "blog",
     path: "/syncphonic-frontend/blog",
     component: lazy(() => import("../pages/Blog")),

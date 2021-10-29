@@ -1,0 +1,187 @@
+.bg-color-instrument {
+  background-color: #191A19;
+  color: #FFF;
+}
+
+.instrument-carousel-img {
+  width: 90vw;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  visibility: hidden;
+}
+
+.instrument-list-container {
+  padding: 1.5rem;
+}
+
+.form-select {
+  background-color: #4B4747;
+  border: 2px solid #4B4747;
+  color: #FFF;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.form-select:hover,
+.form-select:focus {
+  background-color: #4B4747;
+  border: 2px solid #A6711F;
+  color: #FFF;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+}
+
+.form-floating>label {
+  width: 100%;
+}
+
+.form-control-search {
+  background-color: #4B4747;
+  border: 2px solid #4B4747;
+  color: #FFF;
+  margin-top: 5px;
+}
+
+.form-control-search:hover,
+.form-control-search:focus {
+  background-color: #4B4747;
+  border: 2px solid #A6711F;
+  color: #FFF;
+  box-shadow: inset 0 1px 1px #A6711F,
+    0 0 8px #A6711F;
+}
+
+.form-control-search::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  background: #A6711F;
+}
+
+.instrument-icon-filter {
+  color: #A6711F;
+  margin-left: 10%;
+}
+
+.instrument-card {
+  background-color: #4B4747;
+  color: #FFF;
+  border-radius: 8px;
+}
+
+.instrument-card-title {
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.instrument-card-btn-status {
+  background-color: #00897B;
+  width: 100%;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 16px;
+}
+
+.instrument-card-btn-status:hover {
+  box-shadow: inset 0 1px 1px #00897B,
+    0 0 8px #00897B;
+  color: #FFF;
+  cursor: auto;
+}
+
+.instrument-card-btn-status-close {
+  background-color: #C6282B;
+  width: 100%;
+  border-radius: 20px;
+  color: #FFF;
+  font-size: 16px;
+}
+
+.instrument-card-btn-status-close:hover {
+  box-shadow: inset 0 1px 1px #C6282B,
+    0 0 8px #C6282B;
+  color: #FFF;
+  cursor: auto;
+}
+
+.instrument-card-capacity {
+  color: #FFF;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.instrument-card-img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.instrument-card-desc-price {
+  color: #FFF;
+  font-size: 20px;
+  margin-top: -20px;
+}
+
+.instrument-card-btn-detail {
+  background-color: #4B4747 !important;
+  border: 2px solid #A6711F;
+  color: #FFF;
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.instrument-card-btn-detail:hover {
+  box-shadow: inset 0 1px 1px #4B4747,
+    0 0 8px #A6711F;
+  color: #FFF;
+}
+
+.instrument-load-more {
+  background-color: #191A19 !important;
+  border: 2px solid #A6711F;
+  color: #FFF;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.instrument-load-more:hover {
+  box-shadow: inset 0 1px 1px #191A19,
+    0 0 8px #A6711F;
+  color: #FFF;
+}
+
+select:focus>option:checked {
+  background: #A6711F !important;
+}
+
+.instrument-data-null {
+  color: #FFF;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 768px) {
+  .instrument-list-container {
+    padding: 0rem;
+  }
+
+  .instrument-card-btn-status {
+    font-size: 12px;
+  }
+
+  .instrument-card-btn-status-close {
+    font-size: 12px;
+  }
+
+  .instrument-card-capacity {
+    font-size: 12px;
+  }
+
+  .instrument-card-desc-price {
+    font-size: 14px;
+    margin-top: -10px;
+  }
+}
