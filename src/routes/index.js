@@ -38,6 +38,18 @@ const AppRoutes = [
     exact: true,
   },
   {
+    name: "blog",
+    path: "/syncphonic-frontend/blog",
+    component: lazy(() => import("../pages/Blog")),
+    exact: true,
+  },
+  {
+    name: "blog-detail",
+    path: "/syncphonic-frontend/blog/:id",
+    component: lazy(() => import("../pages/Blog/Detail")),
+    exact: true,
+  },
+  {
     name: "FAQ",
     path: "/syncphonic-frontend/faq",
     component: lazy(() => import("../pages/FAQ")),

@@ -7,7 +7,6 @@ import { studioStart } from "../../redux/studioRedux";
 import Spinner from "../../components/Spinner";
 
 import "./style.css";
-import { FaSearch } from "react-icons/fa";
 import { FcClearFilters } from "react-icons/fc";
 import imgStudioBanner from "../../assets/images/studio-banner.png";
 import imgAlatBanner from "../../assets/images/alat-banner.png";
@@ -135,14 +134,14 @@ const Studio = () => {
               data-bs-ride="carousel"
             >
               <div className="carousel-inner">
-                <div className="carousel-item active">
+                <div className="carousel-item active" data-bs-interval="1500">
                   <img
                     src={imgStudioBanner}
                     alt="carousel"
                     className="d-block studio-carousel-img mx-auto"
                   />
                 </div>
-                <div className="carousel-item">
+                <div className="carousel-item" data-bs-interval="1500">
                   <img
                     src={imgAlatBanner}
                     alt="carousel"
@@ -241,19 +240,13 @@ const Studio = () => {
                 </div>
               </div>
               <div className="col-md-3 mx-auto mt-4 text-center">
-                <div className="form-floating">
-                  <input
-                    type="text"
-                    className="form-control form-control-search"
-                    id="inputSearch"
-                    placeholder="studio-rock"
-                    onChange={handleChangeName}
-                  />
-                  <label htmlFor="inputSearch">
-                    Coba Cari "Studio Rock"
-                    <FaSearch className="studio-icon-search" />
-                  </label>
-                </div>
+                <input
+                  type="search"
+                  className="form-control form-control-lg form-control-search"
+                  id="inputSearch"
+                  placeholder='Cari "Studio Rock" &#128269;'
+                  onChange={handleChangeName}
+                />
               </div>
               <div className="col-md-2 mx-auto mt-4 text-center">
                 <button
@@ -261,8 +254,8 @@ const Studio = () => {
                   type="button"
                   onClick={handleLoadReset}
                 >
-                  Reset
-                  <FcClearFilters className="studio-icon-search" />
+                  Reset Filter
+                  <FcClearFilters className="studio-icon-filter" />
                 </button>
               </div>
             </div>
