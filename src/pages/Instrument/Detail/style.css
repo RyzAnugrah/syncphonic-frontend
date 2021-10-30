@@ -15,6 +15,7 @@
   border-radius: 20px;
   color: #FFF;
   font-size: 16px;
+  text-transform: capitalize;
 }
 
 .instrument-detail-btn-status:hover {
@@ -24,15 +25,16 @@
   cursor: auto;
 }
 
-.instrument-card-btn-status-close {
+.instrument-detail-btn-status-close {
   background-color: #C6282B;
   width: 100%;
   border-radius: 20px;
   color: #FFF;
   font-size: 16px;
+  text-transform: capitalize;
 }
 
-.instrument-card-btn-status-close:hover {
+.instrument-detail-btn-status-close:hover {
   box-shadow: inset 0 1px 1px #C6282B,
     0 0 8px #C6282B;
   color: #FFF;
@@ -80,7 +82,7 @@
   color: #FFF;
   box-shadow: inset 0 1px 1px #4B4747,
     0 0 8px #4B4747;
-    cursor: auto;
+  cursor: auto;
 }
 
 .instrument-detail-text-list {
@@ -95,11 +97,11 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .instrument-card-btn-status {
+  .instrument-detail-btn-status {
     font-size: 12px;
   }
 
-  .instrument-card-btn-status-close {
+  .instrument-detail-btn-status-close {
     font-size: 12px;
   }
 }

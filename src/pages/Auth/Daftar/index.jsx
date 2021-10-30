@@ -136,10 +136,7 @@ const Daftar = () => {
               <img src={imgLogoTab} alt="logo" className="mb-4 img-footer" />
             </Link>
             <h1 className="login-title">Daftar</h1>
-            <form
-              onSubmit={handleSubmit(handleClickRegister)}
-              disabled={isFetching}
-            >
+            <form onSubmit={handleSubmit(handleClickRegister)}>
               <div className="form-group">
                 <label className="fw-bolder" htmlFor="inputNamaLengkap">
                   Nama Lengkap
@@ -338,7 +335,11 @@ const Daftar = () => {
                 )}
               </div>
               <hr className="divider mt-5" />
-              <button type="submit" className="btn btn-signup py-2">
+              <button
+                type="submit"
+                className="btn btn-signup py-2"
+                disabled={isFetching}
+              >
                 Daftar
               </button>
             </form>

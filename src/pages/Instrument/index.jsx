@@ -240,7 +240,7 @@ const Instrument = () => {
                   type="search"
                   className="form-control form-control-lg form-control-search"
                   id="inputSearch"
-                  placeholder='Cari "Keyboard" &#128269;'
+                  placeholder='Cari "Keyboard" ⌨'
                   onChange={handleChangeName}
                 />
               </div>
@@ -311,7 +311,7 @@ const Instrument = () => {
                           <div className="row">
                             <div className="col-md-12">
                               <p className="instrument-card-desc-price">
-                                {`Rp.${instrument.instrument_price}/Jam`}
+                                {`Rp.${instrument.instrument_price}/Hari`}
                               </p>
                             </div>
                           </div>

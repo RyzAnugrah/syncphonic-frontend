@@ -15,7 +15,9 @@ import imgAlatBanner from "../../assets/images/alat-banner.png";
 // import imgStudioCard from "../../assets/images/studio-card-3.png";
 
 const Studio = () => {
-  const studios = useSelector((state) => state.studio.allStudio);
+  const studios = useSelector(
+    (state) => state.studio && state.studio.allStudio
+  );
   const dispatch = useDispatch();
   const [spinner, setSpinner] = useState(true);
   const [results, setResults] = useState(studios);
@@ -244,7 +246,7 @@ const Studio = () => {
                   type="search"
                   className="form-control form-control-lg form-control-search"
                   id="inputSearch"
-                  placeholder='Cari "Studio Rock" &#128269;'
+                  placeholder='Cari "Studio Rock" ⌨'
                   onChange={handleChangeName}
                 />
               </div>
@@ -346,7 +348,7 @@ const Studio = () => {
         </div>
         <div className="row mt-4 studio-list-container">
           <div className="col-md-2 mx-auto text-center">
-            {count < results.length && (
+            {results && count < results.length && (
               <button
                 className="btn studio-load-more py-3"
                 type="button"

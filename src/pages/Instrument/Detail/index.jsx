@@ -57,8 +57,8 @@ const Detail = () => {
                     instrument.instrument_status.toLowerCase() === "available") ||
                   (instrument &&
                     instrument.instrument_status.toLowerCase() === "tersedia")
-                    ? "instrument-card-btn-status"
-                    : "instrument-card-btn-status-close"
+                    ? "instrument-detail-btn-status"
+                    : "instrument-detail-btn-status-close"
                 }`}
               >
                 {instrument && instrument.instrument_status}
@@ -84,7 +84,7 @@ const Detail = () => {
               <div className="row">
                 <div className="col-md-12">
                   <p className="instrument-detail-text-title margin-up">
-                    {`Rp.${instrument && instrument.instrument_price}/Jam`}
+                    {`Rp.${instrument && instrument.instrument_price}/Hari`}
                   </p>
                 </div>
               </div>
@@ -93,7 +93,7 @@ const Detail = () => {
               <div className="row">
                 <div className="col-md-12">
                   <p className="instrument-detail-text-desc">
-                    Tersedia setiap hari
+                    Kategori
                   </p>
                 </div>
               </div>
@@ -127,7 +127,7 @@ const Detail = () => {
                       : "instrument-detail-btn-sewa-close"
                   }`}
                 >
-                  Sewa instrument
+                  Sewa Instrument
                 </button>
               </Link>
             </div>

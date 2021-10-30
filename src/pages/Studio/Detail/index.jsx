@@ -53,8 +53,8 @@ const Detail = () => {
                 className={`btn ${
                   (studio && studio.studio_status.toLowerCase() === "open") ||
                   (studio && studio.studio_status.toLowerCase() === "buka")
-                    ? "studio-card-btn-status"
-                    : "studio-card-btn-status-close"
+                    ? "studio-detail-btn-status"
+                    : "studio-detail-btn-status-close"
                 }`}
               >
                 {studio && studio.studio_status}

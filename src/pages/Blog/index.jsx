@@ -8,7 +8,7 @@ import Spinner from "../../components/Spinner";
 
 import "./style.css";
 import { FcClearFilters } from "react-icons/fc";
-import imgBlogBanner from "../../assets/images/blog-banner.png";
+// import imgBlogBanner from "../../assets/images/blog-banner.png";
 // import imgStudioBanner from "../../assets/images/studio-banner.png";
 // import imgAlatBanner from "../../assets/images/alat-banner.png";
 // import imgStudioCard1 from "../../assets/images/studio-card-1.png";
@@ -16,7 +16,7 @@ import imgBlogBanner from "../../assets/images/blog-banner.png";
 // import imgStudioCard from "../../assets/images/studio-card-3.png";
 
 const Blog = () => {
-  const blogs = useSelector((state) => state.blog.allBlog);
+  const blogs = useSelector((state) => state.blog && state.blog.allBlog);
   const dispatch = useDispatch();
   const [spinner, setSpinner] = useState(true);
   const [results, setResults] = useState(blogs);
@@ -27,9 +27,8 @@ const Blog = () => {
     if (e.target.value) {
       setResults(
         results &&
-          results.filter(
-            (result) =>
-              result.category.toLowerCase() === e.target.value.toLowerCase()
+          results.filter((result) =>
+            result.category.toLowerCase().includes(e.target.value.toLowerCase())
           )
       );
     } else {
@@ -99,24 +98,31 @@ const Blog = () => {
           <div className="col-md-12">
             <div className="row">
               <div className="col-md-7 my-auto">
-                <p className="blog-hero-category">Belajar Bareng</p>
-                <p className="blog-hero-title">Tips Bermain Gitar Pemula</p>
+                <p className="blog-hero-category">
+                  {results && results[0] && results[0].category}
+                </p>
+                <p className="blog-hero-title">
+                  {results && results[0] && results[0].title_blog}
+                </p>
                 <p className="blog-hero-content">
-                  Alat musik gitar memang sangat populer dan disukai banyak
-                  kalangan, baik tua maupun muda. Alat musik ini dapat
-                  menghasilkan berbagai musik populer yang tentunya sudah tidak
-                  asing di telinga kita.
+                  {results && results[0] && results[0].content.substring(0, 20)}
                   <span className="blog-hero-content-link">
-                    <Link to={`/syncphonic-frontend/blog/1`}>
+                    <Link
+                      to={`/syncphonic-frontend/blog/${
+                        results && results[0] && results[0].id
+                      }`}
+                    >
                       &nbsp; Selengkapnya
                     </Link>
                   </span>
                 </p>
-                <p className="blog-hero-date">Rabu, 20 Oktober 2021</p>
+                <p className="blog-hero-date">
+                  {results && results[0] && results[0].date}
+                </p>
               </div>
               <div className="col-md-5">
                 <img
-                  src={imgBlogBanner}
+                  src={results && results[0] && results[0].image}
                   alt="card"
                   className="img-fluid blog-banner-img"
                 />
@@ -138,8 +144,8 @@ const Blog = () => {
                     <option defaultValue value="">
                       Semua
                     </option>
-                    <option value="Belajar bareng">Belajar bareng</option>
-                    <option value="Tips dan trick">Tips dan trick</option>
+                    <option value="belajar">Belajar bareng</option>
+                    <option value="tips">Tips dan trick</option>
                   </select>
                   <label htmlFor="blogCategory">Pilih Kategori</label>
                 </div>
@@ -149,7 +155,7 @@ const Blog = () => {
                   type="search"
                   className="form-control form-control-lg form-control-search"
                   id="inputSearch"
-                  placeholder='Coba cari "Tips melatih vokal" &#128269;'
+                  placeholder='Coba cari "Tips melatih vokal" ⌨'
                   onChange={handleChangeTitle}
                 />
               </div>

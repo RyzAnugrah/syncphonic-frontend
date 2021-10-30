@@ -83,6 +83,7 @@
   border-radius: 20px;
   color: #FFF;
   font-size: 16px;
+  text-transform: capitalize;
 }
 
 .studio-card-btn-status:hover {
@@ -98,6 +99,7 @@
   border-radius: 20px;
   color: #FFF;
   font-size: 16px;
+  text-transform: capitalize;
 }
 
 .studio-card-btn-status-close:hover {
