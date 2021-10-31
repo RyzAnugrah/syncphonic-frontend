@@ -27,6 +27,10 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
   const dispatch = useDispatch();
   let history = useHistory();
 
+  const dropdownMenu = {
+    backgroundColor: "#242323",
+  };
+
   const handleClickLogout = (e) => {
     e.preventDefault();
     Swal.fire({
@@ -91,15 +95,17 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
               </MobileNavbarLink>
               <MobileNavbarLink
                 light={light}
-                to="/syncphonic-frontend/alat"
+                to="/syncphonic-frontend/instrument"
                 onClick={toggle}
                 className={
-                  window.location.href.includes("/syncphonic-frontend/alat")
+                  window.location.href.includes(
+                    "/syncphonic-frontend/instrument"
+                  )
                     ? "active"
                     : ""
                 }
               >
-                Sewa Alat
+                Sewa Instrument
               </MobileNavbarLink>
               <MobileNavbarLink
                 light={light}
@@ -145,19 +151,51 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
                 </MobileBtnWrap>
               </>
             ) : (
-              <MobileBtnWrap>
-                <MobileNavButton
-                  theme={{
-                    bgColor: theme.colors.accent,
-                    color: theme.colors.light,
-                    hoverColor: theme.colors.hover,
-                  }}
-                  to="#"
-                  onClick={handleClickLogout}
+              <div className="dropdown">
+                <MobileBtnWrap
+                  id="dropdownUser"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
                 >
-                  Keluar
-                </MobileNavButton>
-              </MobileBtnWrap>
+                  <MobileNavButton
+                    theme={{
+                      bgColor: theme.colors.accent,
+                      color: theme.colors.light,
+                      hoverColor: theme.colors.hover,
+                    }}
+                    className="btn dropdown-toggle"
+                    type="button"
+                    to="#"
+                  >
+                    {`Hallo, ${user && user.users && user.users.name}`}
+                  </MobileNavButton>
+                </MobileBtnWrap>
+                <ul
+                  className="dropdown-menu"
+                  style={dropdownMenu}
+                  aria-labelledby="dropdownUser"
+                >
+                  <li>
+                    <MobileNavbarLink
+                      light={light}
+                      to="/syncphonic-frontend/dashboard"
+                      className="dropdown-item mt-2"
+                    >
+                      Dashboard
+                    </MobileNavbarLink>
+                  </li>
+                  <li>
+                    <MobileNavbarLink
+                      light={light}
+                      to="#"
+                      className="dropdown-item mt-2"
+                      onClick={handleClickLogout}
+                    >
+                      Keluar
+                    </MobileNavbarLink>
+                  </li>
+                </ul>
+              </div>
             )}
           </MobileNavbarWrapper>
         </MobileNavbarContainer>

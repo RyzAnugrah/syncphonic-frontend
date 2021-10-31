@@ -5,7 +5,11 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 import { publicRequest } from "../../../requestMethods";
-import { registerStart, registerFailure } from "../../../redux/userRedux";
+import {
+  registerStart,
+  registerFailure,
+  registerAccepted,
+} from "../../../redux/userRedux";
 
 import "./style.css";
 import imgLogoTab from "../../../logo-light.svg";
@@ -19,7 +23,7 @@ const eye = <FontAwesomeIcon icon={faEye} />;
 const Daftar = () => {
   const [passwordShown, setPasswordShown] = useState(false);
   const [passwordConfirmShown, setPasswordConfirmShown] = useState(false);
-  
+
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
@@ -46,17 +50,20 @@ const Daftar = () => {
     try {
       const res = await publicRequest.post("/register", user);
       // dispatch(registerSuccess(res.data));
+      dispatch(registerAccepted());
       console.log(res.data);
       Swal.fire({
         icon: "success",
-        title: "Yes...",
-        text: "Berhasil daftar akun!",
-        confirmButtonColor: "#A6711F",
-        confirmButtonText: "Silahkan masuk",
+        title: "Berhasil daftar akun!",
+        text: "Silahkan masuk",
+        showConfirmButton: false,
         timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+        reset();
       });
-      reset();
-      history.push("/syncphonic-frontend/masuk");
     } catch (err) {
       dispatch(registerFailure());
       console.log(err.message);
@@ -320,7 +327,11 @@ const Daftar = () => {
                   <p className="error">Pernyataan tersebut harus disetujui</p>
                 )}
               </div>
-              <button type="submit" className="btn btn-signup py-2">
+              <button
+                type="submit"
+                className="btn btn-signup py-2"
+                disabled={isFetching}
+              >
                 Daftar
               </button>
             </form>

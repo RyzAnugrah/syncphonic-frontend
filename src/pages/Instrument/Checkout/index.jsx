@@ -7,9 +7,9 @@ import qs from "qs";
 
 import { publicRequest, bookingRequest } from "../../../requestMethods";
 import {
-  studioDetailStart,
-  studioBookingStart,
-} from "../../../redux/studioRedux";
+  instrumentDetailStart,
+  instrumentBookingStart,
+} from "../../../redux/instrumentRedux";
 import Spinner from "../../../components/Spinner";
 
 import "./style.css";
@@ -30,11 +30,11 @@ const Checkout = () => {
     (state) =>
       state.user && state.user.currentUser && state.user.currentUser.users
   );
-  const studio = useSelector(
+  const instrument = useSelector(
     (state) =>
-      state.studio &&
-      state.studio.detailStudio &&
-      state.studio.detailStudio.result
+      state.instrument &&
+      state.instrument.detailInstrument &&
+      state.instrument.detailInstrument.result
   );
   const dispatch = useDispatch();
   let history = useHistory();
@@ -44,16 +44,16 @@ const Checkout = () => {
     console.log(data);
     try {
       const res = await bookingRequest.post(
-        "/booking/studio/add",
+        "/booking/instrument/add",
         qs.stringify(data)
       );
       console.log(qs.stringify(data));
-      dispatch(studioBookingStart(res.data));
+      dispatch(instrumentBookingStart(res.data));
       console.log(res.data);
       Swal.fire({
         icon: "success",
         title: "Yes...",
-        text: "Berhasil booking studio!",
+        text: "Berhasil sewa instrument!",
         confirmButtonColor: "#A6711F",
         confirmButtonText: "Ke home",
         timer: 1500,
@@ -65,7 +65,7 @@ const Checkout = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Gagal booking!",
+        text: "Gagal sewa instrument!",
         confirmButtonColor: "#A6711F",
         confirmButtonText: "Coba lagi",
         timer: 3000,
@@ -75,23 +75,25 @@ const Checkout = () => {
 
   const handleClickBooking = ({
     name = user.name,
-    studio_name = studio.studio_name,
-    studio_price = studio.studio_price,
+    instrument_name = instrument.instrument_name,
+    instrument_price = instrument.instrument_price,
     date,
     duration,
-    studio_id = studio.id,
+    instrument_id = instrument.id,
     user_id = user.id,
-    total = studio.studio_price * durationSelector,
+    total = instrument.instrument_price * durationSelector,
+    email = user.email,
   }) => {
     booked(dispatch, {
       name,
-      studio_name,
-      studio_price,
+      instrument_name,
+      instrument_price,
       date,
       duration,
-      studio_id,
+      instrument_id,
       user_id,
       total,
+      email,
     });
   };
 
@@ -115,15 +117,15 @@ const Checkout = () => {
   }, [history, user]);
 
   useEffect(() => {
-    const getStudioDetail = async (dispatch) => {
+    const getInstrumentDetail = async (dispatch) => {
       try {
-        const res = await publicRequest.get(`/studio/${id}`);
-        dispatch(studioDetailStart(res.data));
+        const res = await publicRequest.get(`/instrument/${id}`);
+        dispatch(instrumentDetailStart(res.data));
       } catch (err) {
         console.log(err.message);
       }
     };
-    getStudioDetail(dispatch);
+    getInstrumentDetail(dispatch);
   }, [dispatch, id]);
 
   return spinner ? (
@@ -141,7 +143,7 @@ const Checkout = () => {
               />
             </div>
             <div className="col-md-6 p-4">
-              <p className="checkout-title">Sewa Studio</p>
+              <p className="checkout-title">Sewa Instrument</p>
               <form onSubmit={handleSubmit(handleClickBooking)}>
                 <div className="form-group">
                   <label htmlFor="inputNamaLengkap">Nama Lengkap</label>
@@ -153,25 +155,34 @@ const Checkout = () => {
                     value={(user && user.name) || ""}
                   />
                 </div>
-                <div className="form-group mt-3">
-                  <label htmlFor="inputNamaStudio">Nama Studio</label>
+                <div className="form-group">
+                  <label htmlFor="inputEmail">Email</label>
                   <input
                     type="text"
                     className="form-control form-control-checkout"
-                    id="inputNamaStudio"
-                    name="studio_name"
+                    id="inputEmail"
                     disabled
-                    value={(studio && studio.studio_name) || ""}
+                    value={(user && user.email) || ""}
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label htmlFor="inputNamaStudio">Harga Studio</label>
+                  <label htmlFor="inputNamaInstrument">Nama Instrument</label>
                   <input
                     type="text"
                     className="form-control form-control-checkout"
-                    id="inputNamaStudio"
+                    id="inputNamaInstrument"
                     disabled
-                    value={(studio && studio.studio_price) || ""}
+                    value={(instrument && instrument.instrument_name) || ""}
+                  />
+                </div>
+                <div className="form-group mt-3">
+                  <label htmlFor="inputHargaInstrument">Harga Instrument</label>
+                  <input
+                    type="text"
+                    className="form-control form-control-checkout"
+                    id="inputHargaInstrument"
+                    disabled
+                    value={(instrument && instrument.instrument_price) || ""}
                   />
                 </div>
                 <div className="form-group mt-3">
@@ -198,30 +209,30 @@ const Checkout = () => {
                     onChange={(e) => setDurationSelector(e.target.value)}
                   >
                     <option defaultChecked value="1">
-                      1 jam
+                      1 hari
                     </option>
-                    <option value="2">2 jam</option>
-                    <option value="3">3 jam</option>
-                    <option value="24">1 hari</option>
-                    <option value="168">1 minggu</option>
+                    <option value="2">2 hari</option>
+                    <option value="3">3 hari</option>
                   </select>
                 </div>
                 <div className="form-group mt-3">
-                  <label htmlFor="inputNamaStudio">Total</label>
+                  <label htmlFor="inputTotal">Total</label>
                   <input
                     type="text"
                     className="form-control form-control-checkout"
-                    id="inputNamaStudio"
+                    id="inputTotal"
                     name="total"
                     disabled
                     value={
-                      (studio && studio.studio_price * durationSelector) || ""
+                      (instrument &&
+                        instrument.instrument_price * durationSelector) ||
+                      ""
                     }
                   />
                 </div>
                 <div className="row mt-3">
                   <div className="col-md-6">
-                    <Link to="/syncphonic-frontend/studio/1">
+                    <Link to={`/syncphonic-frontend/instrument/${id}`}>
                       <button type="button" className="btn btn-batal py-2">
                         Batal
                       </button>

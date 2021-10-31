@@ -7,11 +7,14 @@ import { studioDetailStart } from "../../../redux/studioRedux";
 import Spinner from "../../../components/Spinner";
 
 import "./style.css";
-import imgStudioDetailBanner from "../../../assets/images/studio-detail-banner.png";
+// import imgStudioDetailBanner from "../../../assets/images/studio-detail-banner.png";
 
 const Detail = () => {
   const studio = useSelector(
-    (state) => state.studio.detailStudio && state.studio.detailStudio.result
+    (state) =>
+      state.studio &&
+      state.studio.detailStudio &&
+      state.studio.detailStudio.result
   );
   const dispatch = useDispatch();
   let { id } = useParams();
@@ -64,7 +67,7 @@ const Detail = () => {
           <div className="row">
             <div className="col-md-12 px-0 pt-3">
               <img
-                src={imgStudioDetailBanner}
+                src={studio && studio.studio_img.replace('"', "")}
                 alt="studio"
                 className="img-fluid studio-detail-img-banner"
               />

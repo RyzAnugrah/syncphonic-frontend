@@ -102,6 +102,7 @@ export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  text-transform: capitalize;
 
   @media only screen and (max-width: 767.98px) {
     display: none;

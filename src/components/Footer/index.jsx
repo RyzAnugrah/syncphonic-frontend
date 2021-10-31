@@ -42,10 +42,10 @@ const Footer = () => {
               </li>
               <li className="mt-3">
                 <Link
-                  to="/syncphonic-frontend/alat"
+                  to="/syncphonic-frontend/instrument"
                   className="footer-menu-list"
                 >
-                  Sewa Alat
+                  Sewa Instrument
                 </Link>
               </li>
               <li className="mt-3">

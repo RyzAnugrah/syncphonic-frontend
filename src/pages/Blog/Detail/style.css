@@ -1,76 +1,60 @@
-.bg-color-studio-detail {
+.bg-color-blog-detail {
   background-color: #191A19;
   color: #FFF;
 }
 
-.studio-detail-list-container {
-  padding: 1.5rem 0 1.5rem 0;
-  max-width: 1200px;
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.studio-detail-text-title {
+.blog-detail-text-title {
   color: #FFF;
-  font-size: 25.63px;
+  font-size: 30px;
   font-weight: 600;
 }
 
-.studio-detail-btn-status {
+.blog-detail-btn-status {
   background-color: #00897B;
   width: 100%;
   border-radius: 20px;
   color: #FFF;
   font-size: 16px;
-  text-transform: capitalize;
 }
 
-.studio-detail-btn-status:hover {
+.blog-detail-btn-status:hover {
   box-shadow: inset 0 1px 1px #00897B,
     0 0 8px #00897B;
   color: #FFF;
   cursor: auto;
 }
 
-.studio-detail-btn-status-close {
+.blog-card-btn-status-close {
   background-color: #C6282B;
   width: 100%;
   border-radius: 20px;
   color: #FFF;
   font-size: 16px;
-  text-transform: capitalize;
 }
 
-.studio-detail-btn-status-close:hover {
+.blog-card-btn-status-close:hover {
   box-shadow: inset 0 1px 1px #C6282B,
     0 0 8px #C6282B;
   color: #FFF;
   cursor: auto;
 }
 
-.studio-detail-img-banner {
+.blog-detail-img-banner {
   width: 100%;
   border-radius: 20px;
 }
 
-.studio-detail-text-title {
+.blog-detail-text-desc {
   color: #FFF;
-  font-size: 20.25px;
-}
-
-.studio-detail-text-desc {
-  color: #FFF;
-  font-size: 14.22px;
+  font-size: 16px;
   white-space: pre-wrap;
-  line-height: 1;
 }
 
 .margin-up {
   margin-top: -10px;
 }
 
-.studio-detail-btn-sewa {
+.blog-detail-btn-sewa {
   width: 100%;
   background-color: #A6711F;
   color: #FFF;
@@ -78,13 +62,13 @@
   font-weight: 600;
 }
 
-.studio-detail-btn-sewa:hover {
+.blog-detail-btn-sewa:hover {
   color: #FFF;
   box-shadow: inset 0 1px 1px #A6711F,
     0 0 8px #A6711F;
 }
 
-.studio-detail-btn-sewa-close {
+.blog-detail-btn-sewa-close {
   width: 100%;
   background-color: #4B4747;
   color: #FFF;
@@ -92,30 +76,30 @@
   font-weight: 600;
 }
 
-.studio-detail-btn-sewa-close:hover {
+.blog-detail-btn-sewa-close:hover {
   color: #FFF;
   box-shadow: inset 0 1px 1px #4B4747,
     0 0 8px #4B4747;
     cursor: auto;
 }
 
-.studio-detail-text-list {
+.blog-detail-text-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.studio-detail-text-list>li {
+.blog-detail-text-list>li {
   color: #FFF;
   font-size: 16px;
 }
 
 @media only screen and (max-width: 768px) {
-  .studio-card-btn-status {
+  .blog-card-btn-status {
     font-size: 12px;
   }
 
-  .studio-card-btn-status-close {
+  .blog-card-btn-status-close {
     font-size: 12px;
   }
 }
