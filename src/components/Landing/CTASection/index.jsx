@@ -18,9 +18,6 @@ const CTASection = ({
         <div className="row justify-content-center h-100">
           <div
             className="col-md-10 my-auto text-center"
-            data-aos="zoom-in"
-            data-aos-duration="2000"
-            data-aos-delay="300"
           >
             <Heading className="row justify-content-center" lightBg={lightBg}>
               {headline}

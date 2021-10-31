@@ -8,13 +8,24 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import "./assets/styles/index.css";
 
+// jQuery
+import "jquery/dist/jquery.min.js";
+import "jquery.easing/jquery.easing.min.js";
+import "./vendor/jquery/jquery.min.js";
+import "./vendor/jquery-easing/jquery.easing.min.js";
+
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.js";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "./vendor/bootstrap/js/bootstrap.bundle.min.js";
 
 // Slick CSS
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+// Font Awesome
+import "./vendor/fontawesome-free/css/all.min.css"
 
 // AOS
 import AOS from "aos";

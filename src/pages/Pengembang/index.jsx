@@ -12,14 +12,9 @@ const Pengembang = () => {
 
   return (
     <div>
-      <div className="container-fluid bg-color-pengembang p-4">
-        <div className="row justify-content-center">
-          <div
-            className="col-md-10 text-center"
-            data-aos="zoom-in"
-            data-aos-duration="2000"
-            data-aos-delay="300"
-          >
+      <div className="bg-color-pengembang">
+        <div className="row justify-content-center g-0 px-3 py-4 container-content">
+          <div>
             <p className="pengembang-title">Tim Pengembang</p>
             <ul
               className="nav nav-pills nav-justified my-4"
@@ -37,7 +32,7 @@ const Pengembang = () => {
                   aria-controls="pills-general"
                   aria-selected="true"
                 >
-                  Umum
+                  Pengembang Umum
                 </button>
               </li>
               <li className="nav-item" role="presentation">
@@ -91,7 +86,7 @@ const Pengembang = () => {
                 aria-labelledby="pills-general-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionGeneral">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -114,9 +109,9 @@ const Pengembang = () => {
                         >
                           <div className="accordion-body">
                             Tim pengembang website Syncphonic adalah tiga orang
-                            mahasiswa Universitas Padjadjaran Fakultas
-                            Matematika dan Ilmu Pengetahuan Alam prodi Teknik
-                            Informatika semester 7. Tim pengembang melakukan
+                            mahasiswa semester 7 Universitas Padjadjaran
+                            Fakultas Matematika dan Ilmu Pengetahuan Alam prodi
+                            Teknik Informatika. Tim pengembang melakukan
                             pengembangan website ini sebagai tugas atau project
                             dari mata kuliah Proyek Perangkat Lunak II.
                           </div>
@@ -162,7 +157,7 @@ const Pengembang = () => {
                 aria-labelledby="pills-product-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionProduct">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -210,7 +205,7 @@ const Pengembang = () => {
                 aria-labelledby="pills-frontend-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionFrontend">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -258,7 +253,7 @@ const Pengembang = () => {
                 aria-labelledby="pills-backend-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionBackend">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">

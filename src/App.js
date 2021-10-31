@@ -51,7 +51,14 @@ const ProtectedAuth = ({ name, component: Component, ...rest }) => {
     <Route
       {...rest}
       render={() =>
-        name !== "masuk" && name !== "daftar" ? (
+        name !== "masuk" &&
+        name !== "daftar" &&
+        name !== "dashboard" &&
+        name !== "edit-studio" &&
+        name !== "edit-instrument" &&
+        name !== "edit-blog" &&
+        name !== "edit-user" &&
+        name !== "edit-profil" ? (
           <>
             <Navbar light={LightTheme ? 1 : 0} name={name} toggle={toggle} />
             <MobileNavbar

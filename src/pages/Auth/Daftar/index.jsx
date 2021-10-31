@@ -101,34 +101,24 @@ const Daftar = () => {
 
   return (
     <div id="main-container">
-      <section
-        className="auth-sidebar"
-        data-aos="zoom-in"
-        data-aos-duration="2000"
-        data-aos-delay="300"
-      >
+      <section className="auth-sidebar">
         <main className="auth-form-sidebar">
           <div className="auth-sidebar-content">
             <img
               src={imgSignUp}
-              alt="login"
+              alt="daftar"
               className="img-fluid img-sidebar"
             />
           </div>
         </main>
       </section>
-      <section
-        className="auth-form"
-        data-aos="zoom-in"
-        data-aos-duration="2000"
-        data-aos-delay="300"
-      >
+      <section className="auth-form">
         <main className="auth-form-main">
           <div className="auth-form-content">
             <Link to="/syncphonic-frontend/">
               <img src={imgLogoTab} alt="logo" className="mb-4 img-footer" />
             </Link>
-            <h1 className="login-title">Daftar</h1>
+            <h1 className="signup-title">Daftar</h1>
             <form
               onSubmit={handleSubmit(handleClickRegister)}
               disabled={isFetching}
@@ -207,9 +197,12 @@ const Daftar = () => {
                     validate: (value) => value === watch("password"),
                   })}
                 />
-                {errors.password_confirm && errors.password_confirm.type === "validate" && (
-                  <p className="error">Konfirmasi password wajib sama dengan password</p>
-                )}
+                {errors.password_confirm &&
+                  errors.password_confirm.type === "validate" && (
+                    <p className="error">
+                      Konfirmasi password wajib sama dengan password
+                    </p>
+                  )}
               </div>
               <div className="form-group mt-3">
                 <label className="fw-bolder" htmlFor="inputNomorTelepon">
@@ -327,18 +320,17 @@ const Daftar = () => {
                   <p className="error">Pernyataan tersebut harus disetujui</p>
                 )}
               </div>
-              <hr className="divider mt-5" />
               <button type="submit" className="btn btn-signup py-2">
                 Daftar
               </button>
             </form>
-            <p className="login-desc-text text-left mt-4">
+            <p className="signup-desc-text text-left mt-4">
               Sudah punya akun?
               <Link
                 style={{ textDecoration: "none" }}
                 to="/syncphonic-frontend/masuk"
               >
-                <span className="login-desc-text-signup">&#00; Masuk</span>
+                <span className="signup-desc-text-signup">&#00; Masuk</span>
               </Link>
             </p>
           </div>

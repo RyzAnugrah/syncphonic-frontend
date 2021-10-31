@@ -123,18 +123,18 @@ const Studio = () => {
     <Spinner />
   ) : (
     <div>
-      <div className="container-fluid bg-color-studio py-4">
+      <div className="bg-color-studio">
         {studios && console.log(results)}
         {/* {studios && console.log(results.length)}
         {studios && console.log(count)} */}
-        <div className="row">
+        <div className="row justify-content-center g-0 px-3 py-4 studio-list-container">
           <div className="col-md-12">
             <div
               id="carouselCaption"
               className="carousel slide"
               data-bs-ride="carousel"
             >
-              <div className="carousel-inner">
+              <div className="carousel-inner carousel-border">
                 <div className="carousel-item active">
                   <img
                     src={imgStudioBanner}
@@ -177,7 +177,10 @@ const Studio = () => {
             </div>
           </div>
         </div>
-        <div className="row mt-4 studio-list-container">
+        <div className="mt-3 g-0 px-3 py-0 studio-list-container">
+          <h1 className="page-title">Sewa Studio</h1>
+        </div>
+        <div className="row mt-0 justify-content-center g-0 px-3 py-0 studio-list-container">
           <div className="col-md-12">
             <div className="row">
               <div className="col-md-2 mx-auto mt-4 text-center">
@@ -283,7 +286,7 @@ const Studio = () => {
                         </div>
                       </div>
                       <div className="row px-2">
-                        <div className="col-4">
+                        <div className="col-lg-4 col-md-6 col-6">
                           <button
                             className={`btn ${
                               studio.studio_status.toLowerCase() === "open" ||
@@ -295,7 +298,7 @@ const Studio = () => {
                             {studio.studio_status}
                           </button>
                         </div>
-                        <div className="col-8 text-end">
+                        <div className="col-lg-8 col-md-6 col-6 text-end">
                           <p className="studio-card-capacity">
                             {`Kapasitas ${studio.studio_capacity} Orang`}
                           </p>
@@ -311,7 +314,7 @@ const Studio = () => {
                         </div>
                       </div>
                       <div className="row px-2 mt-2">
-                        <div className="col-7">
+                        <div className="col-lg-7 col-sm-6">
                           <div className="row">
                             <div className="col-md-12">
                               <p className="studio-card-capacity">Harga</p>
@@ -325,7 +328,7 @@ const Studio = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-5 text-end">
+                        <div className="col-lg-5 col-sm-6 text-end">
                           <Link to={`/syncphonic-frontend/studio/${studio.id}`}>
                             <button
                               className="btn studio-card-btn-detail"
@@ -340,10 +343,10 @@ const Studio = () => {
                   </div>
                 ))
               ) : (
-                <div className="col">
+                <div className="col-md-12">
                   <div className="row">
                     <div className="col-md-12 text-center">
-                      <p className="studio-data-null">Tidak ada data</p>
+                      <p className="studio-data-null text-center">Tidak ada data</p>
                     </div>
                   </div>
                 </div>
@@ -352,10 +355,10 @@ const Studio = () => {
           </div>
         </div>
         <div className="row mt-4 studio-list-container">
-          <div className="col-md-2 mx-auto text-center">
+          <div className="col-md-3 mx-auto px-3 text-center">
             {count < results.length && (
               <button
-                className="btn studio-load-more py-3"
+                className="btn studio-load-more py-3 mb-4"
                 type="button"
                 onClick={handleLoadMore}
               >

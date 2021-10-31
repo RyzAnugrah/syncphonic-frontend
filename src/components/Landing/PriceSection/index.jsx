@@ -43,12 +43,7 @@ const PriceSection = ({
               data-aos-delay="300"
             >
               <Heading lightBg={lightBg}>{headline}</Heading>
-              <Column3
-                className="col-md-6"
-                data-aos="zoom-in"
-                data-aos-duration="2000"
-                data-aos-delay="300"
-              >
+              <Column3 className="col-md-6">
                 <div className="column">
                   <div className="float-center">
                     <PriceButton1 className="btn py-1" type="button">

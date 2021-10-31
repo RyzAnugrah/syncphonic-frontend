@@ -10,12 +10,7 @@ const FAQ = () => {
     <div>
       <div className="bg-color-faq">
         <div className="row justify-content-center g-0 px-3 py-4 container-content">
-          <div
-            className="text-center"
-            data-aos="zoom-in"
-            data-aos-duration="2000"
-            data-aos-delay="300"
-          >
+          <div>
             <p className="faq-title">FAQ</p>
             <ul
               className="nav nav-pills nav-justified my-4"
@@ -113,11 +108,11 @@ const FAQ = () => {
                             one yang akan memenuhi berbagai kebutuhan
                             orang-orang akan dunia musik, karena website ini
                             dapat memfasilitasi orang-orang yang ingin menyewa
-                            alat musik, menyewa studio musik, dan blog
-                            memainkan alat musik. Hanya dalam satu platform,
-                            tentunya website ini juga memberikan banyak
-                            kemudahan baik bagi pengelola studio musik maupun
-                            para pengguna/pelanggan karena dapat diakses dengan
+                            alat musik, menyewa studio musik, dan blog memainkan
+                            alat musik. Hanya dalam satu platform, tentunya
+                            website ini juga memberikan banyak kemudahan baik
+                            bagi pengelola studio musik maupun para
+                            pengguna/pelanggan karena dapat diakses dengan
                             berbagai perangkat dan dapat diakses dimana saja dan
                             kapan saja.
                           </div>
@@ -275,11 +270,10 @@ const FAQ = () => {
                           <div className="accordion-body">
                             Di fitur ini pengguna juga wajib sudah terdaftar
                             menjadi member studio, di dalam fitur ini pengguna
-                            dapat mendaftar untuk mengikuti blog yang
-                            disediakan studio, bentuk blog tersebut dapat
-                            berupa pelatihan offline maupun online melalui
-                            website, hal itu bergantung pada ketersedian dari
-                            studio itu sendiri.
+                            dapat mendaftar untuk mengikuti blog yang disediakan
+                            studio, bentuk blog tersebut dapat berupa pelatihan
+                            offline maupun online melalui website, hal itu
+                            bergantung pada ketersedian dari studio itu sendiri.
                           </div>
                         </div>
                       </div>

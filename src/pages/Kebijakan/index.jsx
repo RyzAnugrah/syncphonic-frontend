@@ -10,12 +10,7 @@ const Kebijakan = () => {
     <div>
       <div className="bg-color-kebijakan">
         <div className="row justify-content-center g-0 px-3 py-4 container-content">
-          <div
-            className="text-center"
-            data-aos="zoom-in"
-            data-aos-duration="2000"
-            data-aos-delay="300"
-          >
+          <div>
             <p className="kebijakan-title">Kebijakan Pengguna</p>
             <ul
               className="nav nav-pills nav-justified my-4"

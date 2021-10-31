@@ -32,7 +32,14 @@ const TestimonialSection = ({
     <ThemeProvider theme={theme}>
       <TestimonialContainer id={id} lightBg={lightBg}>
         <TestimonialWrapper className="container-fluid g-0">
-          <Heading className="container-fluid">{headline}</Heading>
+          <Heading
+            className="container-fluid"
+            data-aos="zoom-in"
+            data-aos-duration="2000"
+            data-aos-delay="300"
+          >
+            {headline}
+          </Heading>
           <TestimonialRow className="row container-fluid g-0 justify-content-center">
             <TestimonialContentRow className="row container-fluid g-0 justify-content-center">
               <div className="row mt-4">

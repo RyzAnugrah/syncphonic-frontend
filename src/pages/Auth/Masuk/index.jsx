@@ -90,9 +90,6 @@ const Masuk = () => {
     <div id="main-container">
       <section
         className="auth-sidebar"
-        data-aos="zoom-in"
-        data-aos-duration="2000"
-        data-aos-delay="300"
       >
         <main className="auth-form-sidebar">
           <div className="auth-sidebar-content">
@@ -102,9 +99,6 @@ const Masuk = () => {
       </section>
       <section
         className="auth-form"
-        data-aos="zoom-in"
-        data-aos-duration="2000"
-        data-aos-delay="300"
       >
         <main className="auth-form-main">
           <div className="auth-form-content">
@@ -162,7 +156,6 @@ const Masuk = () => {
                   <span className="login-desc-text-login">Lupa password?</span>
                 </Link>
               </div>
-              <hr className="divider mt-5" />
               <button
                 type="submit"
                 className="btn btn-login py-2"

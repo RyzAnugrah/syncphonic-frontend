@@ -41,7 +41,7 @@ const ServicesSection = ({
             </Column1>
             <Column2
               className="col-md-6"
-              data-aos="zoom-in"
+              data-aos="fade-right"
               data-aos-duration="2000"
               data-aos-delay="300"
             >

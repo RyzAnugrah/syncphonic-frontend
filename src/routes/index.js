@@ -61,6 +61,42 @@ const AppRoutes = [
     component: lazy(() => import("../pages/Pengembang")),
     exact: true,
   },
+  {
+    name: "dashboard",
+    path: "/syncphonic-frontend/dashboard",
+    component: lazy(() => import("../pages/Dashboard")),
+    exact: true,
+  },
+  {
+    name: "edit-studio",
+    path: "/syncphonic-frontend/dashboard/studio",
+    component: lazy(() => import("../pages/Dashboard/Studio")),
+    exact: true,
+  },
+  {
+    name: "edit-instrument",
+    path: "/syncphonic-frontend/dashboard/instrument",
+    component: lazy(() => import("../pages/Dashboard/Instrument")),
+    exact: true,
+  },
+  {
+    name: "edit-blog",
+    path: "/syncphonic-frontend/dashboard/blog",
+    component: lazy(() => import("../pages/Dashboard/Blog")),
+    exact: true,
+  },
+  {
+    name: "edit-user",
+    path: "/syncphonic-frontend/dashboard/user",
+    component: lazy(() => import("../pages/Dashboard/User")),
+    exact: true,
+  },
+  {
+    name: "edit-profil",
+    path: "/syncphonic-frontend/dashboard/profil",
+    component: lazy(() => import("../pages/Dashboard/Profil")),
+    exact: true,
+  },
 ];
 
 export { AppRoutes };

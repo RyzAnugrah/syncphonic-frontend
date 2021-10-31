@@ -64,9 +64,7 @@ const ContactSection = ({ lightBg, id, imgStart, headline, description }) => {
             </Column1>
             <Column2
               className="col-md-6"
-              data-aos="zoom-in"
-              data-aos-duration="2000"
-              data-aos-delay="300"
+              
             >
               <Img src={ImgContact} alt="Contact" />
             </Column2>

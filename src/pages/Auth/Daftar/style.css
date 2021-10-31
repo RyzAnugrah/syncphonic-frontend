@@ -37,7 +37,7 @@
 .signup-title {
   color: #FFF;
   font-size: 28.83px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .agreement {
@@ -52,24 +52,6 @@
 
 .agreement a:hover {
   color: #DD911A;
-}
-
-hr.divider {
-  margin-bottom: 10px;
-  padding: 0;
-  overflow: visible;
-  border: none;
-  text-align: center;
-}
-
-hr.divider:after {
-  content: 'ATAU DAFTAR DENGAN';
-  display: inline-block;
-  position: relative;
-  top: -12px;
-  padding: 0 16px;
-  background: #191A19;
-  font-size: 16px;
 }
 
 .form-control-signup {
@@ -103,7 +85,7 @@ hr.divider:after {
   color: #FFF;
   font-size: 16px;
   font-weight: 600;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .btn-signup:hover {
@@ -127,17 +109,17 @@ hr.divider:after {
   color: #DD911A;
 }
 
-.login-desc-text {
+.signup-desc-text {
   color: #FFF;
   font-size: 16px;
 }
 
-.login-desc-text-signup {
+.signup-desc-text-signup {
   color: #A6711F;
   font-size: 16px;
 }
 
-.login-desc-text-signup:hover {
+.signup-desc-text-signup:hover {
   color: #DD911A;
 }
 
@@ -199,7 +181,7 @@ hr.divider:after {
   content: "⚠ ";
 }
 
-.signup-desc-text-login {
+.signup-desc-text-signup {
   color: #A6711F;
   font-size: 14.22px;
 }

@@ -39,22 +39,22 @@ const Detail = () => {
     <Spinner />
   ) : (
     <div>
-      <div className="container-fluid bg-color-studio-detail py-4">
-        <div className="container">
+      <div className="bg-color-studio-detail">
+        <div className="row justify-content-center g-0 px-1 py-4 studio-detail-list-container">
           {studio && console.log(studio)}
           <div className="row justify-content-between">
-            <div className="col-8 col-md-3">
-              <p className="studio-detail-text-title">
+            <div className="align-items-center col-8 col-md-3 px-0 my-auto">
+              <h1 className="align-items-center my-auto studio-detail-text-title">
                 {studio && studio.studio_name}
-              </p>
+              </h1>
             </div>
-            <div className="col-4 col-md-2 text-end">
+            <div className="col-4 col-md-2 text-end px-0">
               <button
                 className={`btn ${
                   (studio && studio.studio_status.toLowerCase() === "open") ||
                   (studio && studio.studio_status.toLowerCase() === "buka")
-                    ? "studio-card-btn-status"
-                    : "studio-card-btn-status-close"
+                    ? "studio-detail-btn-status"
+                    : "studio-detail-btn-status-close"
                 }`}
               >
                 {studio && studio.studio_status}
@@ -62,7 +62,7 @@ const Detail = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12 px-0 pt-3">
               <img
                 src={imgStudioDetailBanner}
                 alt="studio"
@@ -126,6 +126,7 @@ const Detail = () => {
           </div>
           <div className="row my-4">
             <div className="col-md-12">
+              <p className="studio-detail-text-title mb-3">Deskripsi</p>
               <p className="studio-detail-text-desc">
                 {studio && studio.studio_desc}
               </p>

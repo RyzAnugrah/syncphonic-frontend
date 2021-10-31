@@ -34,7 +34,6 @@ const HeroSection = ({
               className="col-md-6"
               data-aos="zoom-in"
               data-aos-duration="2000"
-              data-aos-delay="300"
             >
               <Heading lightBg={lightBg}>{headline}</Heading>
               <Subtitle className="my-4" lightBg={lightBg}>
@@ -55,9 +54,8 @@ const HeroSection = ({
             </Column1>
             <Column2
               className="col-md-6"
-              data-aos="zoom-in"
+              data-aos="fade-left"
               data-aos-duration="2000"
-              data-aos-delay="300"
             >
               <Img src={ImgHero} alt="hero" />
             </Column2>
