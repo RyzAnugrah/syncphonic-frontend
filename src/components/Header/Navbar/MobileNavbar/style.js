@@ -85,4 +85,5 @@ export const MobileNavbarLink = styled(RouterLink)`
 export const MobileBtnWrap = styled.div`
   display: flex;
   justify-content: center;
+  text-transform: capitalize;
 `;

@@ -24,9 +24,13 @@ import logo from "../../../../logo-light.svg";
 export const LightTheme = false;
 
 const Navbar = ({ toggle, light }) => {
-  const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector((state) => state.user && state.user.currentUser);
   const dispatch = useDispatch();
   let history = useHistory();
+
+  const dropdownMenu = {
+    backgroundColor: "#242323",
+  };
 
   const handleClickLogout = (e) => {
     e.preventDefault();
@@ -94,7 +98,9 @@ const Navbar = ({ toggle, light }) => {
                 light={light}
                 to="/syncphonic-frontend/instrument"
                 className={
-                  window.location.href.includes("/syncphonic-frontend/instrument")
+                  window.location.href.includes(
+                    "/syncphonic-frontend/instrument"
+                  )
                     ? "active"
                     : ""
                 }
@@ -135,21 +141,51 @@ const Navbar = ({ toggle, light }) => {
               </NavButton>
             </NavBtn>
           ) : (
-            <NavBtn>
-              <NavButton
-                theme={{
-                  bgColor: theme.colors.accent,
-                  color: theme.colors.light,
-                  hoverColor: theme.colors.hover,
-                }}
-                className="btn"
-                type="button"
-                to="#"
-                onClick={handleClickLogout}
+            <div className="dropdown">
+              <NavBtn
+                id="dropdownUser"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
               >
-                Keluar
-              </NavButton>
-            </NavBtn>
+                <NavButton
+                  theme={{
+                    bgColor: theme.colors.accent,
+                    color: theme.colors.light,
+                    hoverColor: theme.colors.hover,
+                  }}
+                  className="btn dropdown-toggle"
+                  type="button"
+                  to="#"
+                >
+                  {`Hallo, ${user && user.users && user.users.name}`}
+                </NavButton>
+              </NavBtn>
+              <ul
+                className="dropdown-menu"
+                style={dropdownMenu}
+                aria-labelledby="dropdownUser"
+              >
+                <li>
+                  <NavLink
+                    light={light}
+                    to="/syncphonic-frontend/dashboard"
+                    className="dropdown-item mt-2"
+                  >
+                    Dashboard
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    light={light}
+                    to="#"
+                    className="dropdown-item mt-2"
+                    onClick={handleClickLogout}
+                  >
+                    Keluar
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
           )}
         </NavbarContainer>
       </Nav>
