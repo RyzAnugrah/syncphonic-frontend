@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-const FAQ = () => {
+const Faq = () => {
   return (
     <div>
       <div className="bg-color-faq">
@@ -286,4 +286,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default Faq;
