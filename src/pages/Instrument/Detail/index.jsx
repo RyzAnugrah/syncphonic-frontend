@@ -12,6 +12,7 @@ import "./style.css";
 const Detail = () => {
   const instrument = useSelector(
     (state) =>
+      state.instrument &&
       state.instrument.detailInstrument &&
       state.instrument.detailInstrument.result
   );
@@ -54,7 +55,8 @@ const Detail = () => {
               <button
                 className={`btn ${
                   (instrument &&
-                    instrument.instrument_status.toLowerCase() === "available") ||
+                    instrument.instrument_status.toLowerCase() ===
+                      "available") ||
                   (instrument &&
                     instrument.instrument_status.toLowerCase() === "tersedia")
                     ? "instrument-detail-btn-status"
@@ -92,9 +94,7 @@ const Detail = () => {
             <div className="col-md-4">
               <div className="row">
                 <div className="col-md-12">
-                  <p className="instrument-detail-text-desc">
-                    Kategori
-                  </p>
+                  <p className="instrument-detail-text-desc">Kategori</p>
                 </div>
               </div>
               <div className="row">
@@ -109,7 +109,8 @@ const Detail = () => {
               <Link
                 to={`${
                   (instrument &&
-                    instrument.instrument_status.toLowerCase() === "available") ||
+                    instrument.instrument_status.toLowerCase() ===
+                      "available") ||
                   (instrument &&
                     instrument.instrument_status.toLowerCase() === "tersedia")
                     ? `/syncphonic-frontend/instrument/checkout/${id}`
@@ -120,7 +121,8 @@ const Detail = () => {
                   type="button"
                   className={`btn py-3 ${
                     (instrument &&
-                      instrument.instrument_status.toLowerCase() === "available") ||
+                      instrument.instrument_status.toLowerCase() ===
+                        "available") ||
                     (instrument &&
                       instrument.instrument_status.toLowerCase() === "tersedia")
                       ? "instrument-detail-btn-sewa"

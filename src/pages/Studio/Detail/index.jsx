@@ -11,7 +11,10 @@ import "./style.css";
 
 const Detail = () => {
   const studio = useSelector(
-    (state) => state.studio.detailStudio && state.studio.detailStudio.result
+    (state) =>
+      state.studio &&
+      state.studio.detailStudio &&
+      state.studio.detailStudio.result
   );
   const dispatch = useDispatch();
   let { id } = useParams();

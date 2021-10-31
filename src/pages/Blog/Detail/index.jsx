@@ -11,7 +11,8 @@ import "./style.css";
 
 const Detail = () => {
   const blog = useSelector(
-    (state) => state.blog.detailBlog && state.blog.detailBlog.result
+    (state) =>
+      state.blog && state.blog.detailBlog && state.blog.detailBlog.result
   );
   const dispatch = useDispatch();
   let { id } = useParams();
@@ -76,9 +77,7 @@ const Detail = () => {
             <div className="col-md-6">
               <div className="row">
                 <div className="col-md-12">
-                  <p className="blog-detail-text-desc">
-                    Tanggal Publikasi
-                  </p>
+                  <p className="blog-detail-text-desc">Tanggal Publikasi</p>
                 </div>
               </div>
               <div className="row">
@@ -92,9 +91,7 @@ const Detail = () => {
           </div>
           <div className="row my-4">
             <div className="col-md-12">
-              <p className="blog-detail-text-desc">
-                {blog && blog.content}
-              </p>
+              <p className="blog-detail-text-desc">{blog && blog.content}</p>
             </div>
           </div>
         </div>

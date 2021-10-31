@@ -27,10 +27,14 @@ const Checkout = () => {
   const [spinner, setSpinner] = useState(true);
 
   const user = useSelector(
-    (state) => state.user.currentUser && state.user.currentUser.users
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
   );
   const studio = useSelector(
-    (state) => state.studio.detailStudio && state.studio.detailStudio.result
+    (state) =>
+      state.studio &&
+      state.studio.detailStudio &&
+      state.studio.detailStudio.result
   );
   const dispatch = useDispatch();
   let history = useHistory();

@@ -27,10 +27,12 @@ const Checkout = () => {
   const [spinner, setSpinner] = useState(true);
 
   const user = useSelector(
-    (state) => state.user.currentUser && state.user.currentUser.users
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
   );
   const instrument = useSelector(
     (state) =>
+      state.instrument &&
       state.instrument.detailInstrument &&
       state.instrument.detailInstrument.result
   );
