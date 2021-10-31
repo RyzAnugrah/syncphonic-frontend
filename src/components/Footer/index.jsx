@@ -52,7 +52,9 @@ const Footer = () => {
                   to="/syncphonic-frontend/instrument"
                   className={
                     "footer-menu-list " +
-                    (window.location.href.includes("/syncphonic-frontend/instrument")
+                    (window.location.href.includes(
+                      "/syncphonic-frontend/instrument"
+                    )
                       ? "footer-menu-list-active"
                       : "")
                   }
@@ -143,7 +145,7 @@ const Footer = () => {
               <p className="footer-menu">Hubungi Kami</p>
               <ul className="footer-list-ul mt-4">
                 <li className="mt-3">
-                  <a href="mailto:support@syncphonic.id">
+                  <a href="mailto:syncphonictrial@gmail.com">
                     <SiMaildotru
                       alt="iconEmail"
                       className="img-fluid footer-contact-icon"
@@ -152,9 +154,9 @@ const Footer = () => {
                   </a>
                   <a
                     className="footer-menu-list"
-                    href="mailto:support@syncphonic.id"
+                    href="mailto:syncphonictrial@gmail.com"
                   >
-                    info@syncphonic.id
+                    syncphonictrial@gmail.com
                   </a>
                 </li>
                 <li className="mt-3">
@@ -189,28 +191,28 @@ const Footer = () => {
             <div className="col-hide mt-5">
               <p className="footer-menu">Ikuti Kami</p>
               <p className="mt-4">
-                <a href="https://instagram.com">
+                <a href="https://www.instagram.com/syncphonictrial/">
                   <FaInstagram
                     alt="iconInstagram"
                     className="img-fluid footer-contact-icon"
                     style={{ color: "#A6711F" }}
                   />
                 </a>
-                <a href="https://youtube.com">
+                <a href="https://www.youtube.com/channel/UCSIjJzT-fFLKsImjRG_gVBg">
                   <FiYoutube
                     alt="iconYoutube"
                     className="img-fluid footer-contact-icon"
                     style={{ color: "#A6711F" }}
                   />
                 </a>
-                <a href="https://facebook.com">
+                <a href="https://web.facebook.com/profile.php?id=100074331225066">
                   <FiFacebook
                     alt="iconFacebook"
                     className="img-fluid footer-contact-icon"
                     style={{ color: "#A6711F" }}
                   />
                 </a>
-                <a href="https://twitter.com">
+                <a href="https://twitter.com/SyncphonicTRIAL">
                   <FiTwitter
                     alt="iconTwitter"
                     className="img-fluid footer-contact-icon"
@@ -224,28 +226,28 @@ const Footer = () => {
             <div className="">
               <p className="footer-menu">Ikuti Kami</p>
               <p className="mt-4">
-                <a href="https://instagram.com">
+                <a href="https://www.instagram.com/syncphonictrial/">
                   <FaInstagram
                     alt="iconInstagram"
                     className="img-fluid footer-contact-icon"
                     style={{ color: "#A6711F" }}
                   />
                 </a>
-                <a href="https://youtube.com">
+                <a href="https://www.youtube.com/channel/UCSIjJzT-fFLKsImjRG_gVBg">
                   <FiYoutube
                     alt="iconYoutube"
                     className="img-fluid footer-contact-icon"
                     style={{ color: "#A6711F" }}
                   />
                 </a>
-                <a href="https://facebook.com">
+                <a href="https://web.facebook.com/profile.php?id=100074331225066">
                   <FiFacebook
                     alt="iconFacebook"
                     className="img-fluid footer-contact-icon"
                     style={{ color: "#A6711F" }}
                   />
                 </a>
-                <a href="https://twitter.com">
+                <a href="https://twitter.com/SyncphonicTRIAL">
                   <FiTwitter
                     alt="iconTwitter"
                     className="img-fluid footer-contact-icon"
