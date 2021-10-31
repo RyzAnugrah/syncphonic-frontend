@@ -27,9 +27,9 @@ import profilePicture from "../../../assets/images/undraw_profile.svg";
   "use strict";
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
-      $("body").toggleClass("sidebar-toggled");
-      $(".sidebar").toggleClass("toggled");
-      if ($(".sidebar").hasClass("toggled")) {
+      $("body").toggleclassName("sidebar-toggled");
+      $(".sidebar").toggleclassName("toggled");
+      if ($(".sidebar").hasclassName("toggled")) {
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -39,9 +39,9 @@ import profilePicture from "../../../assets/images/undraw_profile.svg";
         $(".sidebar .collapse").collapse("hide");
       }
 
-      if ($(window).width() < 480 && !$(".sidebar").hasClass("toggled")) {
-        $("body").addClass("sidebar-toggled");
-        $(".sidebar").addClass("toggled");
+      if ($(window).width() < 480 && !$(".sidebar").hasclassName("toggled")) {
+        $("body").addclassName("sidebar-toggled");
+        $(".sidebar").addclassName("toggled");
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -176,18 +176,18 @@ const Profil = () => {
             </div>
             <div className="row">
               <div className="col-md-4 mb-4">
-                <div class="container">
-                  <div class="picture-container">
-                    <div class="picture">
+                <div className="container">
+                  <div className="picture-container">
+                    <div className="picture">
                       <img
                         src={profilePicture}
-                        class="picture-src"
+                        className="picture-src"
                         id="wizardPicturePreview"
                         title=""
                       />
-                      <input type="file" id="wizard-picture" class="" />
+                      <input type="file" id="wizard-picture" className="" />
                     </div>
-                    <button class="btn-picture">Ubah Foto Profil</button>
+                    <button className="btn-picture">Ubah Foto Profil</button>
                   </div>
                 </div>
               </div>

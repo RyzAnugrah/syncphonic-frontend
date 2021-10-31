@@ -3,17 +3,33 @@
   color: #FFF;
 }
 
-.instrument-carousel-img {
-  width: 90vw;
+.carousel-border {
+  border-radius: 15px;
 }
 
-.carousel-control-prev-icon,
+.instrument-carousel-img {
+  width: 100%;
+}
+
+.carousel-control-prev-icon{
+  margin-right: 80px;
+}
+
 .carousel-control-next-icon {
-  visibility: hidden;
+  margin-left: 80px;
 }
 
 .instrument-list-container {
-  padding: 1.5rem;
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.page-title {
+  font-weight: 600;
+  font-size: 28.83px;
+  margin-bottom: 0;
 }
 
 .form-select {
@@ -41,6 +57,12 @@
   border: 2px solid #4B4747;
   color: #FFF;
   margin-top: 5px;
+  font-size: 14.22px;
+}
+
+::placeholder {
+  color: #FFF !important;
+  opacity: .65 !important;
 }
 
 .form-control-search:hover,
@@ -73,7 +95,7 @@
 
 .instrument-card-title {
   color: #FFF;
-  font-size: 24px;
+  font-size: 20.25px;
   font-weight: 600;
 }
 
@@ -122,8 +144,9 @@
 
 .instrument-card-desc-price {
   color: #FFF;
-  font-size: 20px;
+  font-size: 16px;
   margin-top: -20px;
+  font-weight: 600;
 }
 
 .instrument-card-btn-detail {
@@ -131,8 +154,9 @@
   border: 2px solid #A6711F;
   color: #FFF;
   width: 100%;
-  border-radius: 8px;
-  margin-top: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  font-weight: 600;
 }
 
 .instrument-card-btn-detail:hover {
@@ -165,25 +189,45 @@ select:focus>option:checked {
   font-weight: 600;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1199.98px) {
   .instrument-list-container {
     padding: 0rem;
   }
 
   .instrument-card-btn-status {
-    font-size: 12px;
+    font-size: 12.64px;
   }
 
   .instrument-card-btn-status-close {
-    font-size: 12px;
+    font-size: 12.64px;
   }
 
   .instrument-card-capacity {
-    font-size: 12px;
+    font-size: 12.64px;
   }
 
   .instrument-card-desc-price {
-    font-size: 14px;
+    font-size: 14.22px;
+    margin-top: -10px;
+  }
+}
+
+@media only screen and (max-width: 991.98px) {
+  .instrument-card-btn-detail {
+    font-size: 11.24px;
+  }
+  .instrument-card-desc-price {
+    font-size: 12.64px;
+    margin-top: -10px;
+  }
+}
+
+@media only screen and (max-width: 767.98px) {
+  .instrument-card-btn-detail {
+    font-size: 14.22px;
+  }
+  .instrument-card-desc-price {
+    font-size: 14.22px;
     margin-top: -10px;
   }
 }

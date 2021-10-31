@@ -123,18 +123,18 @@ const Instrument = () => {
     <Spinner />
   ) : (
     <div>
-      <div className="container-fluid bg-color-instrument py-4">
+      <div className="bg-color-instrument">
         {instruments && console.log(results)}
         {/* {instruments && console.log(results.length)}
         {instruments && console.log(count)} */}
-        <div className="row">
+        <div className="row justify-content-center g-0 px-3 py-4 instrument-list-container">
           <div className="col-md-12">
             <div
               id="carouselCaption"
               className="carousel slide"
               data-bs-ride="carousel"
             >
-              <div className="carousel-inner">
+              <div className="carousel-inner carousel-border">
                 <div className="carousel-item active" data-bs-interval="1500">
                   <img
                     src={imgAlatBanner}
@@ -177,7 +177,10 @@ const Instrument = () => {
             </div>
           </div>
         </div>
-        <div className="row mt-4 instrument-list-container">
+        <div className="mt-3 g-0 px-3 py-0 instrument-list-container">
+          <h1 className="page-title">Sewa Instrument</h1>
+        </div>
+        <div className="row mt-0 justify-content-center g-0 px-3 py-0 instrument-list-container">
           <div className="col-md-12">
             <div className="row">
               <div className="col-md-2 mx-auto mt-4 text-center">
@@ -272,7 +275,7 @@ const Instrument = () => {
                         </div>
                       </div>
                       <div className="row px-2">
-                        <div className="col-4">
+                        <div className="col-7">
                           <button
                             className={`btn ${
                               instrument.instrument_status.toLowerCase() ===
@@ -286,7 +289,7 @@ const Instrument = () => {
                             {instrument.instrument_status}
                           </button>
                         </div>
-                        <div className="col-8 text-end">
+                        <div className="col-5 text-end">
                           <p className="instrument-card-capacity">
                             {`Tersisa ${instrument.instrument_count}`}
                           </p>
@@ -302,7 +305,7 @@ const Instrument = () => {
                         </div>
                       </div>
                       <div className="row px-2 mt-2">
-                        <div className="col-7">
+                        <div className="col-lg-7 col-sm-6">
                           <div className="row">
                             <div className="col-md-12">
                               <p className="instrument-card-capacity">Harga</p>
@@ -316,7 +319,7 @@ const Instrument = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="col-5 text-end">
+                        <div className="col-lg-5 col-sm-6 text-end">
                           <Link
                             to={`/syncphonic-frontend/instrument/${instrument.id}`}
                           >
@@ -333,7 +336,7 @@ const Instrument = () => {
                   </div>
                 ))
               ) : (
-                <div className="col">
+                <div className="col-md-12">
                   <div className="row">
                     <div className="col-md-12 text-center">
                       <p className="instrument-data-null">Tidak ada data</p>
@@ -348,7 +351,7 @@ const Instrument = () => {
           <div className="col-md-2 mx-auto text-center">
             {results && count < results.length && (
               <button
-                className="btn instrument-load-more py-3"
+                className="btn instrument-load-more py-3 mb-4"
                 type="button"
                 onClick={handleLoadMore}
               >

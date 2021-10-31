@@ -3,9 +3,17 @@
   color: #FFF;
 }
 
+.instrument-detail-list-container {
+  padding: 1.5rem 0 1.5rem 0;
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .instrument-detail-text-title {
   color: #FFF;
-  font-size: 30px;
+  font-size: 25.63px;
   font-weight: 600;
 }
 
@@ -46,9 +54,14 @@
   border-radius: 20px;
 }
 
+.instrument-detail-text-title {
+  color: #FFF;
+  font-size: 20.25px;
+}
+
 .instrument-detail-text-desc {
   color: #FFF;
-  font-size: 16px;
+  font-size: 14.22px;
   white-space: pre-wrap;
 }
 

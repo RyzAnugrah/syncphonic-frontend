@@ -42,16 +42,16 @@ const Detail = () => {
     <Spinner />
   ) : (
     <div>
-      <div className="container-fluid bg-color-instrument-detail py-4">
-        <div className="container">
+      <div className="bg-color-instrument-detail">
+        <div className="row justify-content-center g-0 px-1 py-4 instrument-detail-list-container">
           {instrument && console.log(instrument)}
           <div className="row justify-content-between">
-            <div className="col-8 col-md-3">
-              <p className="instrument-detail-text-title">
+            <div className="align-items-center col-8 col-md-3 px-0 my-auto">
+              <h1 className="align-items-center my-auto instrument-detail-text-title">
                 {instrument && instrument.instrument_name}
-              </p>
+              </h1>
             </div>
-            <div className="col-4 col-md-2 text-end">
+            <div className="col-4 col-md-2 text-end px-0">
               <button
                 className={`btn ${
                   (instrument &&
@@ -136,6 +136,7 @@ const Detail = () => {
           </div>
           <div className="row my-4">
             <div className="col-md-12">
+              <p className="studio-detail-text-title mb-3">Deskripsi</p>
               <p className="instrument-detail-text-desc">
                 {instrument && instrument.instrument_desc}
               </p>

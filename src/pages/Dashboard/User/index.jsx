@@ -16,9 +16,9 @@ import "../style.css";
   "use strict";
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
-      $("body").toggleClass("sidebar-toggled");
-      $(".sidebar").toggleClass("toggled");
-      if ($(".sidebar").hasClass("toggled")) {
+      $("body").toggleClassName("sidebar-toggled");
+      $(".sidebar").toggleClassName("toggled");
+      if ($(".sidebar").hasClassName("toggled")) {
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -28,9 +28,9 @@ import "../style.css";
         $(".sidebar .collapse").collapse("hide");
       }
 
-      if ($(window).width() < 480 && !$(".sidebar").hasClass("toggled")) {
-        $("body").addClass("sidebar-toggled");
-        $(".sidebar").addClass("toggled");
+      if ($(window).width() < 480 && !$(".sidebar").hasClassName("toggled")) {
+        $("body").addClassName("sidebar-toggled");
+        $(".sidebar").addClassName("toggled");
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -78,7 +78,7 @@ function User() {
                     </div>
                     <a
                       href="/syncphonic-frontend/dashboard"
-                      class="stretched-link"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -100,7 +100,7 @@ function User() {
                     </div>
                     <a
                       href="/syncphonic-frontend/dashboard/studio"
-                      class="stretched-link"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -122,7 +122,7 @@ function User() {
                     </div>
                     <a
                       href="/syncphonic-frontend/dashboard/instrument"
-                      class="stretched-link"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -144,7 +144,7 @@ function User() {
                     </div>
                     <a
                       href="/syncphonic-frontend/dashboard/blog"
-                      class="stretched-link"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -153,39 +153,39 @@ function User() {
             <div className="row">
               <div>
                 <div className="table-wrapper">
-                  <div class="table-title">
-                    <div class="row">
-                      <div class="col-md-5 col-sm-6 col-6 my-auto">
-                        <h2 class="h-100 my-auto">List User</h2>
+                  <div className="table-title">
+                    <div className="row">
+                      <div className="col-md-5 col-sm-6 col-6 my-auto">
+                        <h2 className="h-100 my-auto">List Member</h2>
                       </div>
                     </div>
                   </div>
-                  <table class="table table-striped table-hover">
+                  <table className="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th class="table-column-text">Nama</th>
-                        <th class="table-column-text">Email</th>
-                        <th class="table-column-text">Password</th>
-                        <th class="table-column-text">Jenis Kelamin</th>
-                        <th class="table-column-text">No. Telp</th>
-                        <th class="table-column-text">Alamat</th>
-                        <th class="table-column-text">Aksi</th>
+                        <th className="table-column-text">Nama</th>
+                        <th className="table-column-text">Email</th>
+                        <th className="table-column-text">Password</th>
+                        <th className="table-column-text">Jenis Kelamin</th>
+                        <th className="table-column-text">No. Telp</th>
+                        <th className="table-column-text">Alamat</th>
+                        <th className="table-column-text">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="table-column-text">
+                        <td className="table-column-text">
                           Alvin
                         </td>
-                        <td class="table-column-text">alvin@gmail.com</td>
-                        <td class="table-column-text">alvin123</td>
-                        <td class="table-column-text">Laki-Laki</td>
-                        <td class="table-column-text">081314726492</td>
-                        <td class="table-column-text">Cirebon</td>
+                        <td className="table-column-text">alvin@gmail.com</td>
+                        <td className="table-column-text">alvin123</td>
+                        <td className="table-column-text">Laki-Laki</td>
+                        <td className="table-column-text">081314726492</td>
+                        <td className="table-column-text">Cirebon</td>
                         <td>
                           <a
                             href="#deleteUserModal"
-                            class="delete"
+                            className="delete"
                             data-toggle="modal"
                           >
                             <i data-toggle="tooltip" title="Hapus">
@@ -196,8 +196,8 @@ function User() {
                       </tr>
                     </tbody>
                   </table>
-                  <div class="clearfix">
-                    <div class="hint-text">
+                  <div className="clearfix">
+                    <div className="hint-text">
                       Menampilkan <b>1</b> dari <b>1</b> data
                     </div>
                   </div>
@@ -205,37 +205,37 @@ function User() {
               </div>
             </div>
           </div>
-          <div id="deleteUserModal" class="modal fade">
-            <div class="modal-dialog mx-auto align-items-center">
-              <div class="modal-content">
+          <div id="deleteUserModal" className="modal fade">
+            <div className="modal-dialog mx-auto align-items-center">
+              <div className="modal-content">
                 <form>
-                  <div class="modal-header">
-                    <h4 class="modal-title">Hapus User</h4>
+                  <div className="modal-header">
+                    <h4 className="modal-title">Hapus User</h4>
                     <button
                       type="button"
-                      class="close"
+                      className="close"
                       data-dismiss="modal"
                       aria-hidden="true"
                     >
                       &times;
                     </button>
                   </div>
-                  <div class="modal-body">
+                  <div className="modal-body">
                     <p>Apakah Anda yakin ingin menghapus data ini?</p>
-                    <p class="text-warning">
+                    <p className="text-warning">
                       <small>Tindakan ini tidak bisa dibatalkan.</small>
                     </p>
                   </div>
-                  <div class="modal-footer">
+                  <div className="modal-footer">
                     <input
                       type="button"
-                      class="btn btn-cancel"
+                      className="btn btn-cancel"
                       data-dismiss="modal"
                       value="Batal"
                     />
                     <input
                       type="submit"
-                      class="btn btn-modal-add"
+                      className="btn btn-modal-add"
                       value="Hapus"
                     />
                   </div>

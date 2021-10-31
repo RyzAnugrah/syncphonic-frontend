@@ -40,18 +40,18 @@ const Detail = () => {
     <Spinner />
   ) : (
     <div>
-      <div className="container-fluid bg-color-blog-detail py-4">
-        <div className="container">
+      <div className="bg-color-blog-detail">
+        <div className="row justify-content-center g-0 px-1 py-4 blog-detail-list-container">
           {blog && console.log(blog)}
-          <div className="row justify-content-between">
-            <div className="col-md-12">
+          <div className="px-2">
+            <div className="align-items-center px-1 my-auto">
               <p className="blog-detail-text-title">
                 {blog && blog.title_blog}
               </p>
             </div>
           </div>
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12 px-0">
               <img
                 src={blog && blog.image.replace('"', "")}
                 alt="blog"
@@ -62,12 +62,12 @@ const Detail = () => {
           <div className="row mt-4">
             <div className="col-md-6">
               <div className="row">
-                <div className="col-md-12">
+                <div className="col-md-12 px-0">
                   <p className="blog-detail-text-desc">Kategori</p>
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-12">
+                <div className="col-md-12 px-0">
                   <p className="blog-detail-text-title margin-up">
                     {blog.category}
                   </p>
@@ -76,12 +76,12 @@ const Detail = () => {
             </div>
             <div className="col-md-6">
               <div className="row">
-                <div className="col-md-12">
+                <div className="col-md-12 px-0">
                   <p className="blog-detail-text-desc">Tanggal Publikasi</p>
                 </div>
               </div>
               <div className="row">
-                <div className="col-md-12">
+                <div className="col-md-12 px-0">
                   <p className="blog-detail-text-title margin-up">
                     {blog && blog.date}
                   </p>
@@ -90,7 +90,7 @@ const Detail = () => {
             </div>
           </div>
           <div className="row my-4">
-            <div className="col-md-12">
+            <div className="col-md-12 px-0">
               <p className="blog-detail-text-desc">{blog && blog.content}</p>
             </div>
           </div>

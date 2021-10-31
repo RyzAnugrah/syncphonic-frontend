@@ -1,6 +1,20 @@
 .bg-color-blog {
   background-color: #191A19;
   color: #FFF;
+  padding-top: 1.5rem;
+}
+
+.blog-list-container {
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.page-title {
+  font-weight: 600;
+  font-size: 28.83px;
+  margin-bottom: 0;
 }
 
 .bg-color-header {
@@ -11,14 +25,13 @@
 
 .blog-hero-category {
   color: #FFF;
-  font-size: 30px;
-  font-weight: 600;
+  font-size: 25.63px;
   text-transform: capitalize;
 }
 
 .blog-hero-title {
   color: #FFF;
-  font-size: 60px;
+  font-size: 32.44px;
   font-weight: 600;
   line-height: 1.2em;
 }
@@ -64,10 +77,21 @@
     0 0 8px #A6711F;
 }
 
+.form-floating>label {
+  width: 100%;
+}
+
 .form-control-search {
   background-color: #4B4747;
   border: 2px solid #4B4747;
   color: #FFF;
+  margin-top: 5px;
+  font-size: 14.22px;
+}
+
+::placeholder {
+  color: #FFF !important;
+  opacity: .65 !important;
 }
 
 .form-control-search:hover,
@@ -101,11 +125,12 @@
 .blog-card-category {
   color: #FFF;
   font-size: 18px;
+  text-transform: capitalize;
 }
 
 .blog-card-title {
   color: #FFF;
-  font-size: 32px;
+  font-size: 20.25px;
   font-weight: 600;
   line-height: 1.2em;
 }
@@ -169,7 +194,7 @@ select:focus>option:checked {
   }
 
   .blog-hero-title {
-    font-size: 34px;
+    font-size: 18px;
     line-height: 1.2em;
   }
 

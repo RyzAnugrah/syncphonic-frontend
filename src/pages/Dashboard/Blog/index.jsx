@@ -18,9 +18,9 @@ import "../style.css";
   "use strict";
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
-      $("body").toggleClass("sidebar-toggled");
-      $(".sidebar").toggleClass("toggled");
-      if ($(".sidebar").hasClass("toggled")) {
+      $("body").toggleclassName("sidebar-toggled");
+      $(".sidebar").toggleclassName("toggled");
+      if ($(".sidebar").hasclassName("toggled")) {
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -30,9 +30,9 @@ import "../style.css";
         $(".sidebar .collapse").collapse("hide");
       }
 
-      if ($(window).width() < 480 && !$(".sidebar").hasClass("toggled")) {
-        $("body").addClass("sidebar-toggled");
-        $(".sidebar").addClass("toggled");
+      if ($(window).width() < 480 && !$(".sidebar").hasclassName("toggled")) {
+        $("body").addclassName("sidebar-toggled");
+        $(".sidebar").addclassName("toggled");
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -80,7 +80,7 @@ function Instrument() {
                     </div>
                     <a
                       href="/syncphonic-frontend/dashboard"
-                      class="stretched-link"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -102,7 +102,7 @@ function Instrument() {
                     </div>
                     <a
                       href="/syncphonic-frontend/dashboard/studio"
-                      class="stretched-link"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -124,7 +124,7 @@ function Instrument() {
                     </div>
                     <a
                       href="/syncphonic-frontend/dashboard/instrument"
-                      class="stretched-link"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -146,7 +146,7 @@ function Instrument() {
                     </div>
                     <a
                       href="/syncphonic-frontend/dashboard/user"
-                      class="stretched-link"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -155,15 +155,15 @@ function Instrument() {
             <div className="row">
               <div>
                 <div className="table-wrapper">
-                  <div class="table-title">
-                    <div class="row">
-                      <div class="col-md-5 col-sm-6 col-6 my-auto">
-                        <h2 class="h-100 my-auto">List Blog</h2>
+                  <div className="table-title">
+                    <div className="row">
+                      <div className="col-md-5 col-sm-6 col-6 my-auto">
+                        <h2 className="h-100 my-auto">List Blog</h2>
                       </div>
-                      <div class="col-md-7 col-sm-6 col-6">
+                      <div className="col-md-7 col-sm-6 col-6">
                         <a
                           href="#addBlogModal"
-                          class="btn btn-add"
+                          className="btn btn-add"
                           data-toggle="modal"
                         >
                           <i>
@@ -174,30 +174,30 @@ function Instrument() {
                       </div>
                     </div>
                   </div>
-                  <table class="table table-striped table-hover">
+                  <table className="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th class="table-column-text">Judul</th>
-                        <th class="table-column-text">Kategori</th>
-                        <th class="table-column-text">Tanggal</th>
-                        <th class="table-column-text">Gambar</th>
-                        <th class="table-column-text">Konten</th>
-                        <th class="table-column-text">Aksi</th>
+                        <th className="table-column-text">Judul</th>
+                        <th className="table-column-text">Kategori</th>
+                        <th className="table-column-text">Tanggal</th>
+                        <th className="table-column-text">Gambar</th>
+                        <th className="table-column-text">Konten</th>
+                        <th className="table-column-text">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="table-column-text">
+                        <td className="table-column-text">
                           Kiat Kiat Kompak Dengan Teman Band
                         </td>
-                        <td class="table-column-text">tips</td>
-                        <td class="table-column-text">2021-10-27</td>
-                        <td class="table-column-text"></td>
-                        <td class="table-column-text">haihihaihihhhihihi</td>
+                        <td className="table-column-text">tips</td>
+                        <td className="table-column-text">2021-10-27</td>
+                        <td className="table-column-text"></td>
+                        <td className="table-column-text">haihihaihihhhihihi</td>
                         <td>
                           <a
                             href="#editBlogModal"
-                            class="edit"
+                            className="edit"
                             data-toggle="modal"
                           >
                             <i data-toggle="tooltip" title="Edit">
@@ -206,7 +206,7 @@ function Instrument() {
                           </a>
                           <a
                             href="#deleteBlogModal"
-                            class="delete"
+                            className="delete"
                             data-toggle="modal"
                           >
                             <i data-toggle="tooltip" title="Hapus">
@@ -217,8 +217,8 @@ function Instrument() {
                       </tr>
                     </tbody>
                   </table>
-                  <div class="clearfix">
-                    <div class="hint-text">
+                  <div className="clearfix">
+                    <div className="hint-text">
                       Menampilkan <b>1</b> dari <b>1</b> data
                     </div>
                   </div>
@@ -230,58 +230,58 @@ function Instrument() {
             <div className="modal-dialog mx-auto align-items-center">
               <div className="modal-content">
                 <form>
-                  <div class="modal-header">
-                    <h4 class="modal-title">Tambah Blog</h4>
+                  <div className="modal-header">
+                    <h4 className="modal-title">Tambah Blog</h4>
                     <button
                       type="button"
-                      class="close"
+                      className="close"
                       data-dismiss="modal"
                       aria-hidden="true"
                     >
                       &times;
                     </button>
                   </div>
-                  <div class="modal-body">
-                    <div class="form-group">
+                  <div className="modal-body">
+                    <div className="form-group">
                       <label>Judul</label>
                       <input
                         type="text"
-                        class="form-control form-control-dashboard"
+                        className="form-control form-control-dashboard"
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <label>Kategori</label>
                       <input
                         type="text"
-                        class="form-control form-control-dashboard"
+                        className="form-control form-control-dashboard"
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <label>Tanggal</label>
                       <input
                         type="text"
-                        class="form-control form-control-dashboard"
+                        className="form-control form-control-dashboard"
                         required
                       />
                     </div>
-                    <div class="form-group">
-                      <label class="form-label" for="customFile">
+                    <div className="form-group">
+                      <label className="form-label" for="customFile">
                         Gambar
                       </label>
                       <input
                         type="file"
-                        class="form-control form-control-dashboard"
+                        className="form-control form-control-dashboard"
                         id="customFile"
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <label>Konten</label>
                       <input
                         type="text"
-                        class="form-control form-control-dashboard"
+                        className="form-control form-control-dashboard"
                         required
                       />
                     </div>
@@ -289,13 +289,13 @@ function Instrument() {
                   <div className="modal-footer">
                     <input
                       type="button"
-                      class="btn btn-cancel"
+                      className="btn btn-cancel"
                       data-dismiss="modal"
                       value="Batal"
                     />
                     <input
                       type="submit"
-                      class="btn btn-modal-add"
+                      className="btn btn-modal-add"
                       value="Tambah"
                     />
                   </div>
@@ -303,62 +303,62 @@ function Instrument() {
               </div>
             </div>
           </div>
-          <div id="editBlogModal" class="modal fade">
-            <div class="modal-dialog mx-auto align-items-center">
-              <div class="modal-content">
+          <div id="editBlogModal" className="modal fade">
+            <div className="modal-dialog mx-auto align-items-center">
+              <div className="modal-content">
                 <form>
-                  <div class="modal-header">
-                    <h4 class="modal-title">Edit Blog</h4>
+                  <div className="modal-header">
+                    <h4 className="modal-title">Edit Blog</h4>
                     <button
                       type="button"
-                      class="close"
+                      className="close"
                       data-dismiss="modal"
                       aria-hidden="true"
                     >
                       &times;
                     </button>
                   </div>
-                  <div class="modal-body">
-                    <div class="form-group">
+                  <div className="modal-body">
+                    <div className="form-group">
                       <label>Judul</label>
                       <input
                         type="text"
-                        class="form-control form-control-dashboard"
+                        className="form-control form-control-dashboard"
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <label>Kategori</label>
                       <input
                         type="text"
-                        class="form-control form-control-dashboard"
+                        className="form-control form-control-dashboard"
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <label>Tanggal</label>
                       <input
                         type="text"
-                        class="form-control form-control-dashboard"
+                        className="form-control form-control-dashboard"
                         required
                       />
                     </div>
-                    <div class="form-group">
-                      <label class="form-label" for="customFile">
+                    <div className="form-group">
+                      <label className="form-label" for="customFile">
                         Gambar
                       </label>
                       <input
                         type="file"
-                        class="form-control form-control-dashboard"
+                        className="form-control form-control-dashboard"
                         id="customFile"
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <label>Konten</label>
                       <input
                         type="text"
-                        class="form-control form-control-dashboard"
+                        className="form-control form-control-dashboard"
                         required
                       />
                     </div>
@@ -366,13 +366,13 @@ function Instrument() {
                   <div className="modal-footer">
                     <input
                       type="button"
-                      class="btn btn-cancel"
+                      className="btn btn-cancel"
                       data-dismiss="modal"
                       value="Batal"
                     />
                     <input
                       type="submit"
-                      class="btn btn-modal-add"
+                      className="btn btn-modal-add"
                       value="Edit"
                     />
                   </div>
@@ -380,37 +380,37 @@ function Instrument() {
               </div>
             </div>
           </div>
-          <div id="deleteBlogModal" class="modal fade">
-            <div class="modal-dialog mx-auto align-items-center">
-              <div class="modal-content">
+          <div id="deleteBlogModal" className="modal fade">
+            <div className="modal-dialog mx-auto align-items-center">
+              <div className="modal-content">
                 <form>
-                  <div class="modal-header">
-                    <h4 class="modal-title">Hapus Blog</h4>
+                  <div className="modal-header">
+                    <h4 className="modal-title">Hapus Blog</h4>
                     <button
                       type="button"
-                      class="close"
+                      className="close"
                       data-dismiss="modal"
                       aria-hidden="true"
                     >
                       &times;
                     </button>
                   </div>
-                  <div class="modal-body">
+                  <div className="modal-body">
                     <p>Apakah Anda yakin ingin menghapus data ini?</p>
-                    <p class="text-warning">
+                    <p className="text-warning">
                       <small>Tindakan ini tidak bisa dibatalkan.</small>
                     </p>
                   </div>
-                  <div class="modal-footer">
+                  <div className="modal-footer">
                     <input
                       type="button"
-                      class="btn btn-cancel"
+                      className="btn btn-cancel"
                       data-dismiss="modal"
                       value="Batal"
                     />
                     <input
                       type="submit"
-                      class="btn btn-modal-add"
+                      className="btn btn-modal-add"
                       value="Hapus"
                     />
                   </div>

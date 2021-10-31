@@ -3,9 +3,17 @@
   color: #FFF;
 }
 
+.blog-detail-list-container {
+  padding: 1.5rem 0 1.5rem 0;
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .blog-detail-text-title {
   color: #FFF;
-  font-size: 30px;
+  font-size: 28.83px;
   font-weight: 600;
 }
 
@@ -46,7 +54,7 @@
 
 .blog-detail-text-desc {
   color: #FFF;
-  font-size: 16px;
+  font-size: 14.22px;
   white-space: pre-wrap;
 }
 
@@ -102,4 +110,10 @@
   .blog-card-btn-status-close {
     font-size: 12px;
   }
+}
+
+@media only screen and (max-width: 768px) {
+  .blog-detail-text-title {
+  font-size: 18px;
+}
 }
