@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import jQuery from "jquery";
 import Sidebar from "../../../components/Dashboard/Sidebar/index";
 import Navbar from "../../../components/Dashboard/Navbar/index";
@@ -16,7 +17,6 @@ import {
 import "../style.css";
 
 (function ($) {
-  "use strict";
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
       $("body").toggleclassName("sidebar-toggled");
@@ -79,8 +79,8 @@ function Instrument() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard"
+                    <Link
+                      to="/syncphonic-frontend/dashboard"
                       className="stretched-link"
                     />
                   </div>
@@ -101,8 +101,8 @@ function Instrument() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/studio"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/studio"
                       className="stretched-link"
                     />
                   </div>
@@ -123,8 +123,8 @@ function Instrument() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/blog"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/blog"
                       className="stretched-link"
                     />
                   </div>
@@ -145,8 +145,8 @@ function Instrument() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/user"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/user"
                       className="stretched-link"
                     />
                   </div>
@@ -169,7 +169,7 @@ function Instrument() {
                         >
                           <i>
                             <FaPlus />
-                          </i>{" "}
+                          </i>
                           <span>Tambah</span>
                         </a>
                       </div>
@@ -338,7 +338,7 @@ function Instrument() {
                       />
                     </div>
                     <div className="form-group">
-                      <label className="form-label" for="customFile">
+                      <label className="form-label" htmlFor="customFile">
                         Gambar
                       </label>
                       <input
@@ -468,7 +468,7 @@ function Instrument() {
                       />
                     </div>
                     <div className="form-group">
-                      <label className="form-label" for="customFile">
+                      <label className="form-label" htmlFor="customFile">
                         Gambar
                       </label>
                       <input

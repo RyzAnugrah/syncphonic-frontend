@@ -1,18 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import jQuery from "jquery";
 import Sidebar from "../../components/Dashboard/Sidebar/index";
 import Navbar from "../../components/Dashboard/Navbar/index";
 import Footer from "../../components/Dashboard/Footer/index";
-import {
-  FaUserEdit,
-  FaWarehouse,
-  FaBlog,
-} from "react-icons/fa";
+import { FaUserEdit, FaWarehouse, FaBlog } from "react-icons/fa";
 import { GiGuitarHead } from "react-icons/gi";
 import "./style.css";
 
 (function ($) {
-  "use strict";
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
       $("body").toggleClass("sidebar-toggled");
@@ -75,9 +71,9 @@ function Dashboard() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/studio"
-                      class="stretched-link"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/studio"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -97,9 +93,9 @@ function Dashboard() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/instrument"
-                      class="stretched-link"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/instrument"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -119,9 +115,9 @@ function Dashboard() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/blog"
-                      class="stretched-link"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/blog"
+                      className="stretched-link"
                     />
                   </div>
                 </div>
@@ -141,9 +137,9 @@ function Dashboard() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/user"
-                      class="stretched-link"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/user"
+                      className="stretched-link"
                     />
                   </div>
                 </div>

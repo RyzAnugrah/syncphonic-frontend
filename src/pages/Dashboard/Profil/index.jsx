@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -11,20 +11,19 @@ import jQuery from "jquery";
 import Sidebar from "../../../components/Dashboard/Sidebar/index";
 import Navbar from "../../../components/Dashboard/Navbar/index";
 import Footer from "../../../components/Dashboard/Footer/index";
-import { FaWarehouse, FaTachometerAlt, FaBlog, FaTrash } from "react-icons/fa";
-import { GiGuitarHead } from "react-icons/gi";
+// import { FaWarehouse, FaTachometerAlt, FaBlog, FaTrash } from "react-icons/fa";
+// import { GiGuitarHead } from "react-icons/gi";
 import "./style.css";
 import "../style.css";
 
-import imgLogoTab from "../../../logo-light.svg";
-import imgSignUp from "../../../assets/images/daftar.png";
+// import imgLogoTab from "../../../logo-light.svg";
+// import imgSignUp from "../../../assets/images/daftar.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import profilePicture from "../../../assets/images/undraw_profile.svg";
 
 (function ($) {
-  "use strict";
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
       $("body").toggleclassName("sidebar-toggled");
@@ -183,7 +182,7 @@ const Profil = () => {
                         src={profilePicture}
                         className="picture-src"
                         id="wizardPicturePreview"
-                        title=""
+                        alt="profile"
                       />
                       <input type="file" id="wizard-picture" className="" />
                     </div>

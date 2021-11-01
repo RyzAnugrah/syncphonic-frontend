@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import jQuery from "jquery";
 import Sidebar from "../../../components/Dashboard/Sidebar/index";
 import Navbar from "../../../components/Dashboard/Navbar/index";
@@ -15,7 +16,6 @@ import { GiGuitarHead } from "react-icons/gi";
 import "../style.css";
 
 (function ($) {
-  "use strict";
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
       $("body").toggleclassName("sidebar-toggled");
@@ -78,8 +78,8 @@ function Instrument() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard"
+                    <Link
+                      to="/syncphonic-frontend/dashboard"
                       className="stretched-link"
                     />
                   </div>
@@ -100,8 +100,8 @@ function Instrument() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/studio"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/studio"
                       className="stretched-link"
                     />
                   </div>
@@ -122,8 +122,8 @@ function Instrument() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/instrument"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/instrument"
                       className="stretched-link"
                     />
                   </div>
@@ -144,8 +144,8 @@ function Instrument() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/user"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/user"
                       className="stretched-link"
                     />
                   </div>
@@ -168,7 +168,7 @@ function Instrument() {
                         >
                           <i>
                             <FaPlus />
-                          </i>{" "}
+                          </i>
                           <span>Tambah</span>
                         </a>
                       </div>
@@ -193,7 +193,9 @@ function Instrument() {
                         <td className="table-column-text">tips</td>
                         <td className="table-column-text">2021-10-27</td>
                         <td className="table-column-text"></td>
-                        <td className="table-column-text">haihihaihihhhihihi</td>
+                        <td className="table-column-text">
+                          haihihaihihhhihihi
+                        </td>
                         <td>
                           <a
                             href="#editBlogModal"
@@ -267,7 +269,7 @@ function Instrument() {
                       />
                     </div>
                     <div className="form-group">
-                      <label className="form-label" for="customFile">
+                      <label className="form-label" htmlFor="customFile">
                         Gambar
                       </label>
                       <input
@@ -344,7 +346,7 @@ function Instrument() {
                       />
                     </div>
                     <div className="form-group">
-                      <label className="form-label" for="customFile">
+                      <label className="form-label" htmlFor="customFile">
                         Gambar
                       </label>
                       <input

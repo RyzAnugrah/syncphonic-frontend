@@ -1,19 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import jQuery from "jquery";
 import Sidebar from "../../../components/Dashboard/Sidebar/index";
 import Navbar from "../../../components/Dashboard/Navbar/index";
 import Footer from "../../../components/Dashboard/Footer/index";
-import {
-  FaWarehouse,
-  FaTachometerAlt,
-  FaBlog,
-  FaTrash,
-} from "react-icons/fa";
+import { FaWarehouse, FaTachometerAlt, FaBlog, FaTrash } from "react-icons/fa";
 import { GiGuitarHead } from "react-icons/gi";
 import "../style.css";
 
 (function ($) {
-  "use strict";
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
       $("body").toggleClassName("sidebar-toggled");
@@ -76,8 +71,8 @@ function User() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard"
+                    <Link
+                      to="/syncphonic-frontend/dashboard"
                       className="stretched-link"
                     />
                   </div>
@@ -98,8 +93,8 @@ function User() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/studio"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/studio"
                       className="stretched-link"
                     />
                   </div>
@@ -120,8 +115,8 @@ function User() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/instrument"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/instrument"
                       className="stretched-link"
                     />
                   </div>
@@ -142,8 +137,8 @@ function User() {
                         </i>
                       </div>
                     </div>
-                    <a
-                      href="/syncphonic-frontend/dashboard/blog"
+                    <Link
+                      to="/syncphonic-frontend/dashboard/blog"
                       className="stretched-link"
                     />
                   </div>
@@ -174,9 +169,7 @@ function User() {
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="table-column-text">
-                          Alvin
-                        </td>
+                        <td className="table-column-text">Alvin</td>
                         <td className="table-column-text">alvin@gmail.com</td>
                         <td className="table-column-text">alvin123</td>
                         <td className="table-column-text">Laki-Laki</td>
