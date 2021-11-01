@@ -3,18 +3,18 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import jQuery from "jquery";
 import Swal from "sweetalert2";
-
-import Spinner from "../../../components/Spinner";
 import Sidebar from "../../../components/Dashboard/User/Sidebar/index";
 import Navbar from "../../../components/Dashboard/User/Navbar/index";
 import Footer from "../../../components/Dashboard/User/Footer/index";
-import { FaUserEdit, FaWarehouse, FaBlog } from "react-icons/fa";
+import { FaCalendarAlt, FaUserAlt } from "react-icons/fa";
 import { GiGuitarHead } from "react-icons/gi";
 import "./style.css";
 
 (function ($) {
+  "use strict";
+
   $(function () {
-    $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
+    $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
       $("body").toggleClass("sidebar-toggled");
       $(".sidebar").toggleClass("toggled");
       if ($(".sidebar").hasClass("toggled")) {
@@ -49,8 +49,6 @@ import "./style.css";
 })(jQuery);
 
 const Dashboard = () => {
-  const [spinner, setSpinner] = useState(true);
-
   const user = useSelector(
     (state) =>
       state.user && state.user.currentUser && state.user.currentUser.users
@@ -88,14 +86,11 @@ const Dashboard = () => {
         });
       } else {
         window.scrollTo(0, 0);
-        setTimeout(() => setSpinner(false), 1000);
       }
     }
   }, [history, user]);
 
-  return spinner ? (
-    <Spinner />
-  ) : (
+  return (
     <div id="wrapper">
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
@@ -106,89 +101,45 @@ const Dashboard = () => {
               <h1 className="h3 mb-0 dashboard-title">Dashboard</h1>
             </div>
             <div className="row">
-              <div className="col-xl-3 col-md-6 mb-4">
+              <div className="col-md-6 mb-4">
                 <div className="card border-left-card shadow h-100 py-2">
                   <div className="card-body">
                     <div className="row no-gutters my-auto h-100">
                       <div className="col mr-2 align-items-center my-auto">
                         <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
-                          List Studio
+                          Profil
                         </div>
                       </div>
                       <div className="col-auto align-items-center my-auto">
                         <i className="fa-2x card-dashboard-title">
-                          <FaWarehouse />
+                          <FaUserAlt />
                         </i>
                       </div>
                     </div>
                     <Link
-                      to="/syncphonic-frontend/dashboard/studio"
+                      to="/syncphonic-frontend/dashboard/profil"
                       className="stretched-link"
                     />
                   </div>
                 </div>
               </div>
-              <div className="col-xl-3 col-md-6 mb-4">
+              <div className="col-md-6 mb-4">
                 <div className="card border-left-card shadow h-100 py-2">
                   <div className="card-body">
                     <div className="row no-gutters my-auto h-100">
                       <div className="col mr-2 align-items-center my-auto">
                         <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
-                          List Instrument
+                          Riwayat Pesanan
                         </div>
                       </div>
                       <div className="col-auto align-items-center my-auto">
                         <i className="fa-2x card-dashboard-title">
-                          <GiGuitarHead />
+                          <FaCalendarAlt />
                         </i>
                       </div>
                     </div>
                     <Link
-                      to="/syncphonic-frontend/dashboard/instrument"
-                      className="stretched-link"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-card shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters my-auto h-100">
-                      <div className="col mr-2 align-items-center my-auto">
-                        <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
-                          List Blog
-                        </div>
-                      </div>
-                      <div className="col-auto align-items-center my-auto">
-                        <i className="fa-2x card-dashboard-title">
-                          <FaBlog />
-                        </i>
-                      </div>
-                    </div>
-                    <Link
-                      to="/syncphonic-frontend/dashboard/blog"
-                      className="stretched-link"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-card shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters my-auto h-100">
-                      <div className="col mr-2 align-items-center my-auto">
-                        <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
-                          List Member
-                        </div>
-                      </div>
-                      <div className="col-auto align-items-center my-auto">
-                        <i className="fa-2x card-dashboard-title">
-                          <FaUserEdit />
-                        </i>
-                      </div>
-                    </div>
-                    <Link
-                      to="/syncphonic-frontend/dashboard/user"
+                      to="/syncphonic-frontend/dashboard/pesanan"
                       className="stretched-link"
                     />
                   </div>

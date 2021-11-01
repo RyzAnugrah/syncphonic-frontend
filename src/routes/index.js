@@ -98,6 +98,18 @@ const AppRoutes = [
     exact: true,
   },
   {
+    name: "pesanan-user",
+    path: "/syncphonic-frontend/dashboard/pesanan",
+    component: lazy(() => import("../pages/Dashboard/User/Pesanan")),
+    exact: true,
+  },
+  {
+    name: "edit-profil-user",
+    path: "/syncphonic-frontend/dashboard/profil",
+    component: lazy(() => import("../pages/Dashboard/Admin/Profil")),
+    exact: true,
+  },
+  {
     name: "dashboard-admin",
     path: "/syncphonic-frontend/dashboard/admin",
     component: lazy(() => import("../pages/Dashboard/Admin")),

@@ -54,7 +54,8 @@ export const Column2 = styled.div`
   text-align: left;
 
   @media screen and (max-width: 767.98px) {
-    display: none;
+    padding: 0 16px 24px 0;
+    margin-top: -12px;
   }
 `;
 

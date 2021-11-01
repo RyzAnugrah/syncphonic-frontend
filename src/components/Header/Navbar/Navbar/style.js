@@ -84,7 +84,7 @@ export const NavLink = styled(RouterLink)`
     light ? colors.dark : colors.light};
   display: flex;
   align-items: center;
-  text-decoration: none;
+  text-decoration: none !important;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;

@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import {
-  FaTachometerAlt,
-  FaUserEdit,
-  FaWarehouse,
-  FaBlog,
-} from "react-icons/fa";
-import { GiGuitarHead } from "react-icons/gi";
+import { FaTachometerAlt, FaCalendarAlt } from "react-icons/fa";
 
 import logo from "../../../../logo-light.svg";
 import logoMobile from "../../../../logo-favicon-light.svg";
@@ -37,48 +31,16 @@ const Sidebar = () => {
           </Link>
         </div>
       </li>
-      <hr className="sidebar-divider my-2" />
-      <li className="nav-item">
-        <div className="nav-item-link">
-          <Link className="nav-link" to="/syncphonic-frontend/dashboard/studio">
-            <i>
-              <FaWarehouse />
-            </i>
-            <span>Studio</span>
-          </Link>
-        </div>
-      </li>
       <li className="nav-item">
         <div className="nav-item-link">
           <Link
             className="nav-link"
-            to="/syncphonic-frontend/dashboard/instrument"
+            to="/syncphonic-frontend/dashboard/pesanan"
           >
             <i>
-              <GiGuitarHead />
+              <FaCalendarAlt />
             </i>
-            <span>Instrument</span>
-          </Link>
-        </div>
-      </li>
-      <li className="nav-item">
-        <div className="nav-item-link">
-          <Link className="nav-link" to="/syncphonic-frontend/dashboard/blog">
-            <i>
-              <FaBlog />
-            </i>
-            <span>Blog</span>
-          </Link>
-        </div>
-      </li>
-      <hr className="sidebar-divider my-2" />
-      <li className="nav-item">
-        <div className="nav-item-link">
-          <Link className="nav-link" to="/syncphonic-frontend/dashboard/user">
-            <i>
-              <FaUserEdit />
-            </i>
-            <span>Member</span>
+            <span>Riwayat Pesanan</span>
           </Link>
         </div>
       </li>

@@ -10,8 +10,8 @@ const Footer = () => {
   return (
     <div className="container-footer">
       <div className="container-fluid bg-footer py-1">
-        <div className="row justify-content-between py-3">
-          <div className="col-md-4 col-footer mt-4 px-3">
+        <div className="row justify-content-between py-3 gx-0">
+          <div className="col-md-4 col-footer mt-4 px-1">
             <p>
               <Link to="/syncphonic-frontend/">
                 <img src={imgLogoTab} alt="logo" className="img-footer" />
@@ -29,7 +29,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="col-md-2 col-6 mt-4 px-3">
+          <div className="col-md-2 col-6 mt-4 px-1">
             <p className="footer-menu">Pelayanan</p>
             <ul className="footer-list-ul mt-4">
               <li className="mt-3">
@@ -58,7 +58,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="col-md-2 col-6 mt-4 px-3">
+          <div className="col-md-2 col-6 mt-4 px-1">
             <p className="footer-menu">Lainnya</p>
             <ul className="footer-list-ul mt-4">
               <li className="mt-3">
@@ -95,7 +95,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="col-md-3 col-6 mt-4 px-3">
+          <div className="col-md-3 col-6 mt-4 px-1">
             <div>
               <p className="footer-menu">Hubungi Kami</p>
               <ul className="footer-list-ul mt-4">
