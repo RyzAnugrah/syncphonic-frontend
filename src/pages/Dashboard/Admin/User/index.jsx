@@ -310,7 +310,9 @@ const User = () => {
                   </table>
                   <div className="clearfix">
                     <div className="hint-text">
-                      Menampilkan <b>{count}</b> dari &nbsp;
+                      Menampilkan &nbsp;
+                      <b>{count && count < results.length ? count : results.length}</b> dari
+                      &nbsp;
                       <b>{results && results.length}</b> data
                       {results && count < results.length && (
                         <span
