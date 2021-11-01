@@ -47,3 +47,10 @@ export const bookingRequest = axios.create({
     "Content-Type": "application/x-www-form-urlencoded",
   },
 });
+
+export const adminRequest = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+  },
+});

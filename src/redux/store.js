@@ -3,6 +3,7 @@ import userReducer from "./userRedux";
 import studioReducer from "./studioRedux";
 import blogReducer from "./blogRedux";
 import instrumentReducer from "./instrumentRedux";
+import memberReducer from "./memberRedux";
 import {
   persistStore,
   persistReducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   studio: studioReducer,
   blog: blogReducer,
   instrument: instrumentReducer,
+  member: memberReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

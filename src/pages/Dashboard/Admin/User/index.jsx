@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import jQuery from "jquery";
+import Swal from "sweetalert2";
+
+import { adminRequest } from "../../../../requestMethods";
+import { memberStart } from "../../../../redux/memberRedux";
+import Spinner from "../../../../components/Spinner";
+
 import Sidebar from "../../../../components/Dashboard/Admin/Sidebar/index";
 import Navbar from "../../../../components/Dashboard/Admin/Navbar/index";
 import Footer from "../../../../components/Dashboard/Admin/Footer/index";
 import { FaWarehouse, FaTachometerAlt, FaBlog, FaTrash } from "react-icons/fa";
 import { GiGuitarHead } from "react-icons/gi";
 import "../style.css";
+
+import profilePicture from "../../../../assets/images/undraw_profile.svg";
 
 (function ($) {
   $(function () {
@@ -44,16 +53,99 @@ import "../style.css";
   });
 })(jQuery);
 
-function User() {
-  return (
+const User = () => {
+  const members = useSelector(
+    (state) => state.member && state.member.allMember
+  );
+  const dispatch = useDispatch();
+  const [spinner, setSpinner] = useState(true);
+  const [results, setResults] = useState(members);
+  const countPerPage = 10;
+  const [count, setCount] = useState(countPerPage);
+  const [memberId, setMemberId] = useState();
+
+  const getMember = async (dispatch) => {
+    try {
+      const res = await adminRequest.get("/userAll");
+      dispatch(memberStart(res.data));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleLoadMore = () => {
+    setCount(members && count < results.length && count + countPerPage);
+  };
+
+  const handleDeleteConfirm = (member) => {
+    setMemberId(member);
+  };
+
+  const handleDeleteMember = async (member) => {
+    console.log(member);
+    try {
+      const res = await adminRequest.delete(`/user/${member}`);
+      console.log(res.data);
+      if (res.data === 1) {
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Berhasil menghapus member!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          getMember(dispatch);
+          setResults(members && members);
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
+        });
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Gagal!",
+          text: "Gagal menghapus member!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (err) {
+      console.log(err.message);
+      Swal.fire({
+        icon: "warning",
+        title: "Gagal!",
+        text: "Gagal menghapus member!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
+  useEffect(() => {
+    getMember(dispatch);
+  }, [dispatch]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setTimeout(() => setSpinner(false), 1000);
+  }, []);
+
+  useEffect(() => {
+    setResults(members && members);
+  }, [members]);
+
+  return spinner ? (
+    <Spinner />
+  ) : (
     <div id="wrapper">
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
+        {/* {console.log(members)} */}
+        {console.log(results)}
         <div id="content">
           <Navbar />
           <div className="dashboard-container">
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 className="h3 mb-0 dashboard-title">Blog</h1>
+              <h1 className="h3 mb-0 dashboard-title">Member</h1>
             </div>
             <div className="row">
               <div className="col-xl-3 col-md-6 mb-4">
@@ -160,7 +252,7 @@ function User() {
                       <tr>
                         <th className="table-column-text">Nama</th>
                         <th className="table-column-text">Email</th>
-                        <th className="table-column-text">Password</th>
+                        <th className="table-column-text">Foto Profile</th>
                         <th className="table-column-text">Jenis Kelamin</th>
                         <th className="table-column-text">No. Telp</th>
                         <th className="table-column-text">Alamat</th>
@@ -168,30 +260,67 @@ function User() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td className="table-column-text">Alvin</td>
-                        <td className="table-column-text">alvin@gmail.com</td>
-                        <td className="table-column-text">alvin123</td>
-                        <td className="table-column-text">Laki-Laki</td>
-                        <td className="table-column-text">081314726492</td>
-                        <td className="table-column-text">Cirebon</td>
-                        <td>
-                          <a
-                            href="#deleteUserModal"
-                            className="delete"
-                            data-toggle="modal"
-                          >
-                            <i data-toggle="tooltip" title="Hapus">
-                              <FaTrash />
-                            </i>
-                          </a>
-                        </td>
-                      </tr>
+                      {results && results.length !== 0 ? (
+                        results.slice(0, count).map((member) => (
+                          <tr key={member.id}>
+                            <td className="table-column-text">{member.name}</td>
+                            <td className="table-column-text">
+                              {member.email}
+                            </td>
+                            <td className="table-column-text">
+                              <img
+                                src={
+                                  member.photo_profile.includes("http")
+                                    ? member.photo_profile
+                                    : profilePicture
+                                }
+                                alt="profile"
+                                className="d-block img-fluid"
+                              />
+                            </td>
+                            <td className="table-column-text">
+                              {member.gender}
+                            </td>
+                            <td className="table-column-text">
+                              {member.telp_number}
+                            </td>
+                            <td className="table-column-text">
+                              {member.address}
+                            </td>
+                            <td>
+                              <a
+                                href="#deleteUserModal"
+                                className="delete"
+                                data-toggle="modal"
+                                onClick={() => handleDeleteConfirm(member.id)}
+                              >
+                                <i data-toggle="tooltip" title="Hapus">
+                                  <FaTrash />
+                                </i>
+                              </a>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td className="table-column-text">Tidak ada data</td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                   <div className="clearfix">
                     <div className="hint-text">
-                      Menampilkan <b>1</b> dari <b>1</b> data
+                      Menampilkan <b>{count}</b> dari &nbsp;
+                      <b>{results && results.length}</b> data
+                      {results && count < results.length && (
+                        <span
+                          className="px-3"
+                          type="button"
+                          onClick={handleLoadMore}
+                        >
+                          Load more
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -227,9 +356,11 @@ function User() {
                       value="Batal"
                     />
                     <input
-                      type="submit"
+                      type="button"
                       className="btn btn-modal-add"
                       value="Hapus"
+                      onClick={() => handleDeleteMember(memberId)}
+                      data-dismiss="modal"
                     />
                   </div>
                 </form>
@@ -241,6 +372,6 @@ function User() {
       </div>
     </div>
   );
-}
+};
 
 export default User;

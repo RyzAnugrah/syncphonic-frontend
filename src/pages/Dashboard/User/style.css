@@ -12623,3 +12623,12 @@ table.table .avatar {
     margin-left: auto;
   }
 }
+
+/* Additional */
+.navbar-title {
+  text-transform: capitalize;
+}
+
+.profile-name {
+  text-transform: capitalize;
+}

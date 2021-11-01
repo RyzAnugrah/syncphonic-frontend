@@ -1,6 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import jQuery from "jquery";
+import Swal from "sweetalert2";
+
+import Spinner from "../../../components/Spinner";
 import Sidebar from "../../../components/Dashboard/Admin/Sidebar/index";
 import Navbar from "../../../components/Dashboard/Admin/Navbar/index";
 import Footer from "../../../components/Dashboard/Admin/Footer/index";
@@ -44,8 +48,54 @@ import "./style.css";
   });
 })(jQuery);
 
-function Dashboard() {
-  return (
+const Dashboard = () => {
+  const [spinner, setSpinner] = useState(true);
+
+  const user = useSelector(
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
+  );
+
+  let history = useHistory();
+
+  useEffect(() => {
+    if (!user) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Akses terbatas",
+        text: "Hanya admin yang boleh masuk!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+      });
+    }
+
+    if (user) {
+      if (user && user.name.toLowerCase() !== "admin") {
+        Swal.fire({
+          icon: "warning",
+          title: "Oops ... Akses terbatas",
+          text: "Hanya admin yang boleh masuk!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          setTimeout(() => {
+            history.push("/syncphonic-frontend/dashboard");
+          }, 100);
+        });
+      } else {
+        window.scrollTo(0, 0);
+        setTimeout(() => setSpinner(false), 1000);
+      }
+    }
+  }, [history, user]);
+
+  return spinner ? (
+    <Spinner />
+  ) : (
     <div id="wrapper">
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
