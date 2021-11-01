@@ -47,10 +47,9 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
       if (result.isConfirmed) {
         Swal.fire({
           icon: "success",
-          title: "Yes...",
-          text: "Berhasil keluar akun!",
-          confirmButtonColor: "#A6711F",
-          confirmButtonText: "Sampai jumpa",
+          title: "Berhasil keluar akun!",
+          text: "Sampai jumpa",
+          showConfirmButton: false,
           timer: 1500,
         });
         logout(dispatch);

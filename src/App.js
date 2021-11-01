@@ -53,12 +53,13 @@ const ProtectedAuth = ({ name, component: Component, ...rest }) => {
       render={() =>
         name !== "masuk" &&
         name !== "daftar" &&
-        name !== "dashboard" &&
-        name !== "edit-studio" &&
-        name !== "edit-instrument" &&
-        name !== "edit-blog" &&
-        name !== "edit-user" &&
-        name !== "edit-profil" ? (
+        name !== "dashboard-user" &&
+        name !== "dashboard-admin" &&
+        name !== "edit-studio-admin" &&
+        name !== "edit-instrument-admin" &&
+        name !== "edit-blog-admin" &&
+        name !== "edit-user-admin" &&
+        name !== "edit-profil-admin" ? (
           <>
             <Navbar light={LightTheme ? 1 : 0} name={name} toggle={toggle} />
             <MobileNavbar

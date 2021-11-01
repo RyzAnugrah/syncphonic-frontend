@@ -1,19 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import jQuery from "jquery";
-import Sidebar from "../../../components/Dashboard/Sidebar/index";
-import Navbar from "../../../components/Dashboard/Navbar/index";
-import Footer from "../../../components/Dashboard/Footer/index";
-import { FaWarehouse, FaTachometerAlt, FaBlog, FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
+
+import Spinner from "../../../components/Spinner";
+import Sidebar from "../../../components/Dashboard/User/Sidebar/index";
+import Navbar from "../../../components/Dashboard/User/Navbar/index";
+import Footer from "../../../components/Dashboard/User/Footer/index";
+import { FaUserEdit, FaWarehouse, FaBlog } from "react-icons/fa";
 import { GiGuitarHead } from "react-icons/gi";
-import "../style.css";
+import "./style.css";
 
 (function ($) {
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
-      $("body").toggleClassName("sidebar-toggled");
-      $(".sidebar").toggleClassName("toggled");
-      if ($(".sidebar").hasClassName("toggled")) {
+      $("body").toggleClass("sidebar-toggled");
+      $(".sidebar").toggleClass("toggled");
+      if ($(".sidebar").hasClass("toggled")) {
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -23,9 +27,9 @@ import "../style.css";
         $(".sidebar .collapse").collapse("hide");
       }
 
-      if ($(window).width() < 480 && !$(".sidebar").hasClassName("toggled")) {
-        $("body").addClassName("sidebar-toggled");
-        $(".sidebar").addClassName("toggled");
+      if ($(window).width() < 480 && !$(".sidebar").hasClass("toggled")) {
+        $("body").addClass("sidebar-toggled");
+        $(".sidebar").addClass("toggled");
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -44,8 +48,54 @@ import "../style.css";
   });
 })(jQuery);
 
-function User() {
-  return (
+const Dashboard = () => {
+  const [spinner, setSpinner] = useState(true);
+
+  const user = useSelector(
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
+  );
+
+  let history = useHistory();
+
+  useEffect(() => {
+    if (!user) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Anda belum masuk",
+        text: "Silahkan masuk terlebih dahulu!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+      });
+    }
+
+    if (user) {
+      if (user && user.name.toLowerCase() === "admin") {
+        Swal.fire({
+          icon: "success",
+          title: "Hallo Admin!",
+          text: "Pergi ke dashboard admin",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          setTimeout(() => {
+            history.push("/syncphonic-frontend/dashboard/admin");
+          }, 100);
+        });
+      } else {
+        window.scrollTo(0, 0);
+        setTimeout(() => setSpinner(false), 1000);
+      }
+    }
+  }, [history, user]);
+
+  return spinner ? (
+    <Spinner />
+  ) : (
     <div id="wrapper">
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
@@ -53,31 +103,9 @@ function User() {
           <Navbar />
           <div className="dashboard-container">
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 className="h3 mb-0 dashboard-title">Blog</h1>
+              <h1 className="h3 mb-0 dashboard-title">Dashboard</h1>
             </div>
             <div className="row">
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-card shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters my-auto h-100">
-                      <div className="col mr-2 align-items-center my-auto">
-                        <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
-                          Dashboard
-                        </div>
-                      </div>
-                      <div className="col-auto align-items-center my-auto">
-                        <i className="fa-2x card-dashboard-title">
-                          <FaTachometerAlt />
-                        </i>
-                      </div>
-                    </div>
-                    <Link
-                      to="/syncphonic-frontend/dashboard"
-                      className="stretched-link"
-                    />
-                  </div>
-                </div>
-              </div>
               <div className="col-xl-3 col-md-6 mb-4">
                 <div className="card border-left-card shadow h-100 py-2">
                   <div className="card-body">
@@ -144,95 +172,27 @@ function User() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="row">
-              <div>
-                <div className="table-wrapper">
-                  <div className="table-title">
-                    <div className="row">
-                      <div className="col-md-5 col-sm-6 col-6 my-auto">
-                        <h2 className="h-100 my-auto">List Member</h2>
+              <div className="col-xl-3 col-md-6 mb-4">
+                <div className="card border-left-card shadow h-100 py-2">
+                  <div className="card-body">
+                    <div className="row no-gutters my-auto h-100">
+                      <div className="col mr-2 align-items-center my-auto">
+                        <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
+                          List Member
+                        </div>
+                      </div>
+                      <div className="col-auto align-items-center my-auto">
+                        <i className="fa-2x card-dashboard-title">
+                          <FaUserEdit />
+                        </i>
                       </div>
                     </div>
-                  </div>
-                  <table className="table table-striped table-hover">
-                    <thead>
-                      <tr>
-                        <th className="table-column-text">Nama</th>
-                        <th className="table-column-text">Email</th>
-                        <th className="table-column-text">Password</th>
-                        <th className="table-column-text">Jenis Kelamin</th>
-                        <th className="table-column-text">No. Telp</th>
-                        <th className="table-column-text">Alamat</th>
-                        <th className="table-column-text">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="table-column-text">Alvin</td>
-                        <td className="table-column-text">alvin@gmail.com</td>
-                        <td className="table-column-text">alvin123</td>
-                        <td className="table-column-text">Laki-Laki</td>
-                        <td className="table-column-text">081314726492</td>
-                        <td className="table-column-text">Cirebon</td>
-                        <td>
-                          <a
-                            href="#deleteUserModal"
-                            className="delete"
-                            data-toggle="modal"
-                          >
-                            <i data-toggle="tooltip" title="Hapus">
-                              <FaTrash />
-                            </i>
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div className="clearfix">
-                    <div className="hint-text">
-                      Menampilkan <b>1</b> dari <b>1</b> data
-                    </div>
+                    <Link
+                      to="/syncphonic-frontend/dashboard/user"
+                      className="stretched-link"
+                    />
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div id="deleteUserModal" className="modal fade">
-            <div className="modal-dialog mx-auto align-items-center">
-              <div className="modal-content">
-                <form>
-                  <div className="modal-header">
-                    <h4 className="modal-title">Hapus User</h4>
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="modal"
-                      aria-hidden="true"
-                    >
-                      &times;
-                    </button>
-                  </div>
-                  <div className="modal-body">
-                    <p>Apakah Anda yakin ingin menghapus data ini?</p>
-                    <p className="text-warning">
-                      <small>Tindakan ini tidak bisa dibatalkan.</small>
-                    </p>
-                  </div>
-                  <div className="modal-footer">
-                    <input
-                      type="button"
-                      className="btn btn-cancel"
-                      data-dismiss="modal"
-                      value="Batal"
-                    />
-                    <input
-                      type="submit"
-                      className="btn btn-modal-add"
-                      value="Hapus"
-                    />
-                  </div>
-                </form>
               </div>
             </div>
           </div>
@@ -241,6 +201,6 @@ function User() {
       </div>
     </div>
   );
-}
+};
 
-export default User;
+export default Dashboard;

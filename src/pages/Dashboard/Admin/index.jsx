@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import jQuery from "jquery";
-import Sidebar from "../../components/Dashboard/Sidebar/index";
-import Navbar from "../../components/Dashboard/Navbar/index";
-import Footer from "../../components/Dashboard/Footer/index";
+import Sidebar from "../../../components/Dashboard/Admin/Sidebar/index";
+import Navbar from "../../../components/Dashboard/Admin/Navbar/index";
+import Footer from "../../../components/Dashboard/Admin/Footer/index";
 import { FaUserEdit, FaWarehouse, FaBlog } from "react-icons/fa";
 import { GiGuitarHead } from "react-icons/gi";
 import "./style.css";
@@ -72,7 +72,7 @@ function Dashboard() {
                       </div>
                     </div>
                     <Link
-                      to="/syncphonic-frontend/dashboard/studio"
+                      to="/syncphonic-frontend/dashboard/admin/studio"
                       className="stretched-link"
                     />
                   </div>
@@ -94,7 +94,7 @@ function Dashboard() {
                       </div>
                     </div>
                     <Link
-                      to="/syncphonic-frontend/dashboard/instrument"
+                      to="/syncphonic-frontend/dashboard/admin/instrument"
                       className="stretched-link"
                     />
                   </div>
@@ -116,7 +116,7 @@ function Dashboard() {
                       </div>
                     </div>
                     <Link
-                      to="/syncphonic-frontend/dashboard/blog"
+                      to="/syncphonic-frontend/dashboard/admin/blog"
                       className="stretched-link"
                     />
                   </div>
@@ -138,7 +138,7 @@ function Dashboard() {
                       </div>
                     </div>
                     <Link
-                      to="/syncphonic-frontend/dashboard/user"
+                      to="/syncphonic-frontend/dashboard/admin/user"
                       className="stretched-link"
                     />
                   </div>

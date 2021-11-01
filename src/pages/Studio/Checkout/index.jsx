@@ -101,11 +101,13 @@ const Checkout = () => {
         icon: "warning",
         title: "Oops ... Anda belum masuk",
         text: "Silahkan masuk terlebih dahulu!",
-        confirmButtonColor: "#A6711F",
-        confirmButtonText: "Masuk",
+        showConfirmButton: false,
         timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
       });
-      history.push("/syncphonic-frontend/masuk");
     }
 
     if (user) {

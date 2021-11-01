@@ -47,7 +47,7 @@ const Masuk = () => {
       Swal.fire({
         icon: "success",
         title: "Berhasil masuk akun!",
-        text: "Pergi ke home",
+        text: "Pergi ke dashboard",
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
@@ -77,7 +77,7 @@ const Masuk = () => {
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        history.push("/syncphonic-frontend");
+        history.push("/syncphonic-frontend/dashboard");
       }, 1500);
     }
   }, [history, user]);

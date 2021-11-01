@@ -1,15 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Swal from "sweetalert2";
-import profilePicture from "../../../assets/images/undraw_profile.svg";
+import profilePicture from "../../../../assets/images/undraw_profile.svg";
 
-import { logout } from "../../../redux/apiCalls";
+import { logout } from "../../../../redux/apiCalls";
 
 const Navbar = () => {
-  // const user = useSelector((state) => state.user && state.user.currentUser);
+  const user = useSelector(
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
+  );
   const dispatch = useDispatch();
   let history = useHistory();
 
@@ -29,10 +32,9 @@ const Navbar = () => {
       if (result.isConfirmed) {
         Swal.fire({
           icon: "success",
-          title: "Yes...",
-          text: "Berhasil keluar akun!",
-          confirmButtonColor: "#A6711F",
-          confirmButtonText: "Sampai jumpa",
+          title: "Berhasil keluar akun!",
+          text: "Sampai jumpa",
+          showConfirmButton: false,
           timer: 1500,
         });
         logout(dispatch);
@@ -60,7 +62,7 @@ const Navbar = () => {
       </button>
       <Link to="/syncphonic-frontend/dashboard">
         <p className="d-none d-md-inline-block justify-content-center my-auto navbar-title">
-          Dashboard Admin
+          {`Hallo, ${user && user.name ? user.name : "Admin"}!`}
         </p>
       </Link>
       <ul className="navbar-nav ml-auto">
@@ -74,7 +76,9 @@ const Navbar = () => {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <span className="mr-3 d-none d-lg-inline profile-name">Admin</span>
+            <span className="mr-3 d-none d-lg-inline profile-name">
+              {user && user.name ? user.name : "Admin"}
+            </span>
             <img
               className="img-profile rounded-circle"
               src={profilePicture}
@@ -88,7 +92,7 @@ const Navbar = () => {
           >
             <Link
               className="dropdown-item"
-              to="/syncphonic-frontend/dashboard/profil"
+              to="/syncphonic-frontend/dashboard/admin/profil"
             >
               <i className="fas fa-user fa-sm fa-fw mr-2 icon-dropdown-profile"></i>
               Profil

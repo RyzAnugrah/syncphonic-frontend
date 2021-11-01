@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-import { publicRequest } from "../../../requestMethods";
-import { registerStart, registerFailure } from "../../../redux/userRedux";
+import { publicRequest } from "../../../../requestMethods";
+import { registerStart, registerFailure } from "../../../../redux/userRedux";
 
 import jQuery from "jquery";
-import Sidebar from "../../../components/Dashboard/Sidebar/index";
-import Navbar from "../../../components/Dashboard/Navbar/index";
-import Footer from "../../../components/Dashboard/Footer/index";
+import Sidebar from "../../../../components/Dashboard/User/Sidebar/index";
+import Navbar from "../../../../components/Dashboard/User/Navbar/index";
+import Footer from "../../../../components/Dashboard/User/Footer/index";
 // import { FaWarehouse, FaTachometerAlt, FaBlog, FaTrash } from "react-icons/fa";
 // import { GiGuitarHead } from "react-icons/gi";
 import "./style.css";
@@ -21,7 +21,7 @@ import "../style.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import profilePicture from "../../../assets/images/undraw_profile.svg";
+import profilePicture from "../../../../assets/images/undraw_profile.svg";
 
 (function ($) {
   $(function () {

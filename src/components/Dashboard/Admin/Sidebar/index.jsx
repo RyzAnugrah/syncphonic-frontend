@@ -9,8 +9,8 @@ import {
 } from "react-icons/fa";
 import { GiGuitarHead } from "react-icons/gi";
 
-import logo from "../../../logo-light.svg";
-import logoMobile from "../../../logo-favicon-light.svg";
+import logo from "../../../../logo-light.svg";
+import logoMobile from "../../../../logo-favicon-light.svg";
 
 const Sidebar = () => {
   return (
@@ -29,7 +29,7 @@ const Sidebar = () => {
       <hr className="sidebar-divider my-2" />
       <li className="nav-item">
         <div className="nav-item-link">
-          <Link className="nav-link" to="/syncphonic-frontend/dashboard">
+          <Link className="nav-link" to="/syncphonic-frontend/dashboard/admin">
             <i>
               <FaTachometerAlt />
             </i>
@@ -40,7 +40,10 @@ const Sidebar = () => {
       <hr className="sidebar-divider my-2" />
       <li className="nav-item">
         <div className="nav-item-link">
-          <Link className="nav-link" to="/syncphonic-frontend/dashboard/studio">
+          <Link
+            className="nav-link"
+            to="/syncphonic-frontend/dashboard/admin/studio"
+          >
             <i>
               <FaWarehouse />
             </i>
@@ -52,7 +55,7 @@ const Sidebar = () => {
         <div className="nav-item-link">
           <Link
             className="nav-link"
-            to="/syncphonic-frontend/dashboard/instrument"
+            to="/syncphonic-frontend/dashboard/admin/instrument"
           >
             <i>
               <GiGuitarHead />
@@ -63,7 +66,10 @@ const Sidebar = () => {
       </li>
       <li className="nav-item">
         <div className="nav-item-link">
-          <Link className="nav-link" to="/syncphonic-frontend/dashboard/blog">
+          <Link
+            className="nav-link"
+            to="/syncphonic-frontend/dashboard/admin/blog"
+          >
             <i>
               <FaBlog />
             </i>
@@ -74,7 +80,10 @@ const Sidebar = () => {
       <hr className="sidebar-divider my-2" />
       <li className="nav-item">
         <div className="nav-item-link">
-          <Link className="nav-link" to="/syncphonic-frontend/dashboard/user">
+          <Link
+            className="nav-link"
+            to="/syncphonic-frontend/dashboard/admin/user"
+          >
             <i>
               <FaUserEdit />
             </i>

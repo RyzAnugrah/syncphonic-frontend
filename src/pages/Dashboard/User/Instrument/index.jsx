@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import jQuery from "jquery";
-import Sidebar from "../../../components/Dashboard/Sidebar/index";
-import Navbar from "../../../components/Dashboard/Navbar/index";
-import Footer from "../../../components/Dashboard/Footer/index";
+import Sidebar from "../../../../components/Dashboard/User/Sidebar/index";
+import Navbar from "../../../../components/Dashboard/User/Navbar/index";
+import Footer from "../../../../components/Dashboard/User/Footer/index";
 import {
   FaUserEdit,
   FaWarehouse,
