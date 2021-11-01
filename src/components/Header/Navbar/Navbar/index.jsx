@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaTachometerAlt, FaSignOutAlt } from "react-icons/fa";
 import { ThemeProvider } from "styled-components";
 import Swal from "sweetalert2";
 
@@ -144,7 +144,7 @@ const Navbar = ({ toggle, light }) => {
             <div className="dropdown">
               <NavBtn
                 id="dropdownUser"
-                data-bs-toggle="dropdown"
+                data-toggle="dropdown"
                 aria-expanded="false"
               >
                 <NavButton
@@ -171,7 +171,7 @@ const Navbar = ({ toggle, light }) => {
                     to="/syncphonic-frontend/dashboard"
                     className="dropdown-item mt-2"
                   >
-                    Dashboard
+                    <FaTachometerAlt /> &ensp;Dashboard
                   </NavLink>
                 </li>
                 <li>
@@ -181,7 +181,7 @@ const Navbar = ({ toggle, light }) => {
                     className="dropdown-item mt-2"
                     onClick={handleClickLogout}
                   >
-                    Keluar
+                    <FaSignOutAlt /> &ensp;Keluar
                   </NavLink>
                 </li>
               </ul>
