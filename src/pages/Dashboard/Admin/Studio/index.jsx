@@ -13,13 +13,14 @@ import {
 } from "../../../../requestMethods";
 import {
   studioStart,
+  studioDetailStart,
+  studioAllBookingStart,
   studioPostStart,
   studioPostAccepted,
   studioPostFailure,
   studioPutStart,
   studioPutAccepted,
   studioPutFailure,
-  studioDetailStart,
 } from "../../../../redux/studioRedux";
 import Spinner from "../../../../components/Spinner";
 
@@ -86,6 +87,12 @@ const Studio = () => {
       state.studio.detailStudio &&
       state.studio.detailStudio.result
   );
+  const studiosBooking = useSelector(
+    (state) =>
+      state.studio &&
+      state.studio.allBookingStudio &&
+      state.studio.allBookingStudio["List booking"]
+  );
   const isFetching = useSelector(
     (state) => state.studio && state.studio.isFetching
   );
@@ -101,30 +108,33 @@ const Studio = () => {
   const countPerPage = 10;
   const [spinner, setSpinner] = useState(true);
   const [resultsList, setResultsList] = useState(studiosList);
-  const [resultsDetailList, setResultsDetailList] = useState(studioDetailList);
+  const [resultDetailList, setResultDetailList] = useState(studioDetailList);
   const [countList, setCountList] = useState(countPerPage);
   const [studioListId, setStudioListId] = useState();
+  const [resultsBooking, setResultsBooking] = useState(studiosBooking);
+  const [countBooking, setCountBooking] = useState(countPerPage);
+  const [studioBookingId, setStudioBookingId] = useState();
 
   const [studioNameUpdate, setStudioNameUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_name
+    resultDetailList && resultDetailList.studio_name
   );
   const [studioCapacityUpdate, setStudioCapacityUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_capacity
+    resultDetailList && resultDetailList.studio_capacity
   );
   const [studioPriceUpdate, setStudioPriceUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_price
+    resultDetailList && resultDetailList.studio_price
   );
   const [studioImgUpdate, setStudioImgUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_img
+    resultDetailList && resultDetailList.studio_img
   );
   const [studioAvailableDayUpdate, setStudioAvailableDayUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_available_day
+    resultDetailList && resultDetailList.studio_available_day
   );
   const [studioStatusUpdate, setStudioStatusUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_status
+    resultDetailList && resultDetailList.studio_status
   );
   const [studioDescUpdate, setStudioDescUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_desc
+    resultDetailList && resultDetailList.studio_desc
   );
 
   const getStudioList = async (dispatch) => {
@@ -298,6 +308,109 @@ const Studio = () => {
     }
   };
 
+  const getStudioBooking = async (dispatch) => {
+    try {
+      const res = await adminRequest.get("/booking/studio/all");
+      dispatch(studioAllBookingStart(res.data));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleLoadMoreBooking = () => {
+    setCountBooking(
+      studiosBooking &&
+        countBooking < resultsBooking.length &&
+        countBooking + countPerPage
+    );
+  };
+
+  const handleStudioBookingConfirm = (studioIdBooking) => {
+    setStudioBookingId(studioIdBooking);
+  };
+
+  const handleApprovedStudioBooking = async (studioIdBooking) => {
+    // console.log(studioBooking);
+    try {
+      const res = await adminRequest.put(
+        `/booking/studio/approved/${studioIdBooking}`
+      );
+      console.log(res.data);
+      if (res.data && res.data.message !== null) {
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Berhasil mengapprove booking studio!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          getStudioBooking(dispatch);
+          setResultsBooking(studiosBooking && studiosBooking);
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
+        });
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Gagal!",
+          text: "Gagal mengapprove booking studio!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (err) {
+      console.log(err.message);
+      Swal.fire({
+        icon: "warning",
+        title: "Gagal...",
+        text: "Gagal mengapprove booking studio!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
+  const handleDeleteStudioBooking = async (studioIdBooking) => {
+    // console.log(studioBooking);
+    try {
+      const res = await adminRequest.delete(
+        `/booking/studio/delete/${studioIdBooking}`
+      );
+      console.log(res.data);
+      if (res.data && res.data.message !== null) {
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Berhasil menghapus booking studio!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          getStudioBooking(dispatch);
+          setResultsBooking(studiosBooking && studiosBooking);
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
+        });
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Gagal!",
+          text: "Gagal menghapus booking studio!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (err) {
+      console.log(err.message);
+      Swal.fire({
+        icon: "warning",
+        title: "Gagal...",
+        text: "Gagal menghapus booking studio!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
   useEffect(() => {
     getStudioList(dispatch);
 
@@ -311,6 +424,8 @@ const Studio = () => {
       }
     };
     getStudioDetailList(dispatch);
+
+    getStudioBooking(dispatch);
   }, [dispatch, studioListId]);
 
   useEffect(() => {
@@ -320,19 +435,21 @@ const Studio = () => {
 
   useEffect(() => {
     setResultsList(studiosList && studiosList);
-    setResultsDetailList(studioDetailList && studioDetailList);
-    setStudioNameUpdate(resultsDetailList && resultsDetailList.studio_name);
+    setResultDetailList(studioDetailList && studioDetailList);
+    setStudioNameUpdate(resultDetailList && resultDetailList.studio_name);
     setStudioCapacityUpdate(
-      resultsDetailList && resultsDetailList.studio_capacity
+      resultDetailList && resultDetailList.studio_capacity
     );
-    setStudioPriceUpdate(resultsDetailList && resultsDetailList.studio_price);
-    setStudioImgUpdate(resultsDetailList && resultsDetailList.studio_img);
+    setStudioPriceUpdate(resultDetailList && resultDetailList.studio_price);
+    setStudioImgUpdate(resultDetailList && resultDetailList.studio_img);
     setStudioAvailableDayUpdate(
-      resultsDetailList && resultsDetailList.studio_available_day
+      resultDetailList && resultDetailList.studio_available_day
     );
-    setStudioStatusUpdate(resultsDetailList && resultsDetailList.studio_status);
-    setStudioDescUpdate(resultsDetailList && resultsDetailList.studio_desc);
-  }, [studiosList, studioDetailList, resultsDetailList]);
+    setStudioStatusUpdate(resultDetailList && resultDetailList.studio_status);
+    setStudioDescUpdate(resultDetailList && resultDetailList.studio_desc);
+
+    setResultsBooking(studiosBooking && studiosBooking);
+  }, [studiosList, studioDetailList, resultDetailList, studiosBooking]);
 
   return spinner ? (
     <Spinner />
@@ -340,6 +457,7 @@ const Studio = () => {
     <div id="wrapper">
       {console.log(resultsList)}
       {console.log(studioDetailList)}
+      {console.log(resultsBooking)}
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
@@ -579,51 +697,98 @@ const Studio = () => {
                   <table className="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th className="table-column-text">Nama Studio</th>
-                        <th className="table-column-text">Harga</th>
-                        <th className="table-column-text">Ketersediaan</th>
                         <th className="table-column-text">Nama Pemesan</th>
-                        <th className="table-column-text">Email</th>
-                        <th className="table-column-text">No. Telp</th>
-                        <th className="table-column-text">Alamat</th>
+                        <th className="table-column-text">Nama Studio</th>
+                        <th className="table-column-text">Harga Studio</th>
+                        <th className="table-column-text">Tanggal</th>
+                        <th className="table-column-text">Durasi</th>
+                        <th className="table-column-text">Total</th>
+                        <th className="table-column-text">Status Booking</th>
                         <th className="table-column-text">Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td className="table-column-text">Studio Jazz</td>
-                        <td className="table-column-text">700000</td>
-                        <td className="table-column-text">Rabu</td>
-                        <td className="table-column-text">Alvin</td>
-                        <td className="table-column-text">alvin@gmail.com</td>
-                        <td className="table-column-text">084146172644</td>
-                        <td className="table-column-text">Cirebon</td>
-                        <td>
-                          <a
-                            href="#confirmStudioModal"
-                            className="confirm"
-                            data-toggle="modal"
-                          >
-                            <i data-toggle="tooltip" title="Konfirmasi">
-                              <FaCheck />
-                            </i>
-                          </a>
-                          <a
-                            href="#deleteBookingModal"
-                            className="delete"
-                            data-toggle="modal"
-                          >
-                            <i data-toggle="tooltip" title="Hapus">
-                              <FaTrash />
-                            </i>
-                          </a>
-                        </td>
-                      </tr>
+                      {resultsBooking && resultsBooking.length !== 0 ? (
+                        resultsBooking
+                          .slice(0, countBooking)
+                          .map((studioBooking) => (
+                            <tr key={studioBooking.id}>
+                              <td className="table-column-text">
+                                {studioBooking.name}
+                              </td>
+                              <td className="table-column-text">
+                                {studioBooking.studio_name}
+                              </td>
+                              <td className="table-column-text">
+                                {studioBooking.studio_price}
+                              </td>
+                              <td className="table-column-text">
+                                {studioBooking.date}
+                              </td>
+                              <td className="table-column-text">
+                                {studioBooking.duration}
+                              </td>
+                              <td className="table-column-text">
+                                {studioBooking.total}
+                              </td>
+                              <td className="table-column-text">
+                                {studioBooking.status_booking}
+                              </td>
+                              <td>
+                                <a
+                                  href="#confirmStudioModal"
+                                  className="confirm"
+                                  data-toggle="modal"
+                                  onClick={() =>
+                                    handleStudioBookingConfirm(studioBooking.id)
+                                  }
+                                >
+                                  <i data-toggle="tooltip" title="Konfirmasi">
+                                    <FaCheck />
+                                  </i>
+                                </a>
+                                <a
+                                  href="#deleteBookingModal"
+                                  className="delete"
+                                  data-toggle="modal"
+                                  onClick={() =>
+                                    handleStudioBookingConfirm(studioBooking.id)
+                                  }
+                                >
+                                  <i data-toggle="tooltip" title="Hapus">
+                                    <FaTrash />
+                                  </i>
+                                </a>
+                              </td>
+                            </tr>
+                          ))
+                      ) : (
+                        <tr>
+                          <td className="table-column-text">Tidak ada data</td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                   <div className="clearfix">
                     <div className="hint-text">
-                      Menampilkan <b>1</b> dari <b>1</b> data
+                      Menampilkan &nbsp;
+                      <b>
+                        {countBooking && countBooking < resultsBooking.length
+                          ? countBooking
+                          : resultsBooking.length}
+                      </b>
+                      &nbsp; dari &nbsp;
+                      <b>{resultsBooking && resultsBooking.length}</b>
+                      &nbsp; data &nbsp;
+                      {resultsBooking && countBooking < resultsBooking.length && (
+                        <span
+                          className="px-3 handle-load-more"
+                          type="button"
+                          onClick={handleLoadMoreBooking}
+                        >
+                          Load more
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -819,6 +984,8 @@ const Studio = () => {
                       type="submit"
                       className="btn btn-modal-add"
                       value="Konfirmasi"
+                      data-dismiss="modal"
+                      onClick={() => handleApprovedStudioBooking(studioBookingId)}
                     />
                   </div>
                 </form>
@@ -1008,6 +1175,8 @@ const Studio = () => {
                       type="submit"
                       className="btn btn-modal-add"
                       value="Hapus"
+                      data-dismiss="modal"
+                      onClick={() => handleDeleteStudioBooking(studioBookingId)}
                     />
                   </div>
                 </form>
