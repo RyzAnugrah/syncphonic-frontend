@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import jQuery from "jquery";
@@ -7,12 +7,9 @@ import Sidebar from "../../../components/Dashboard/User/Sidebar/index";
 import Navbar from "../../../components/Dashboard/User/Navbar/index";
 import Footer from "../../../components/Dashboard/User/Footer/index";
 import { FaCalendarAlt, FaUserAlt } from "react-icons/fa";
-import { GiGuitarHead } from "react-icons/gi";
 import "./style.css";
 
 (function ($) {
-  "use strict";
-
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
       $("body").toggleClass("sidebar-toggled");

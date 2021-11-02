@@ -41,8 +41,6 @@ import "../style.css";
 import profilePicture from "../../../../assets/images/undraw_profile.svg";
 
 (function ($) {
-  "use strict";
-
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
       $("body").toggleClass("sidebar-toggled");

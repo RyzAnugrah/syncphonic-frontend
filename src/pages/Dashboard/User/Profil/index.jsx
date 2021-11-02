@@ -24,8 +24,6 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import profilePicture from "../../../../assets/images/undraw_profile.svg";
 
 (function ($) {
-  "use strict";
-
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
       $("body").toggleClass("sidebar-toggled");

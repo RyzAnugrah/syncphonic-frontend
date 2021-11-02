@@ -7,16 +7,11 @@ import Footer from "../../../../components/Dashboard/User/Footer/index";
 import {
   FaUserAlt,
   FaTachometerAlt,
-  FaPlus,
-  FaTrash,
-  FaPen,
   FaTimes,
 } from "react-icons/fa";
 import "../style.css";
 
 (function ($) {
-  "use strict";
-
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
       $("body").toggleClass("sidebar-toggled");
@@ -52,7 +47,7 @@ import "../style.css";
   });
 })(jQuery);
 
-function Studio() {
+const Pesanan = () => {
   return (
     <div id="wrapper">
       <Sidebar />
@@ -293,6 +288,6 @@ function Studio() {
       </div>
     </div>
   );
-}
+};
 
-export default Studio;
+export default Pesanan;

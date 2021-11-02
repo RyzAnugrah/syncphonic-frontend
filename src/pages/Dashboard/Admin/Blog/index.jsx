@@ -16,8 +16,6 @@ import { GiGuitarHead } from "react-icons/gi";
 import "../style.css";
 
 (function ($) {
-  "use strict";
-
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
       $("body").toggleClass("sidebar-toggled");
@@ -53,7 +51,7 @@ import "../style.css";
   });
 })(jQuery);
 
-function Instrument() {
+const Blog = () => {
   return (
     <div id="wrapper">
       <Sidebar />
@@ -427,6 +425,6 @@ function Instrument() {
       </div>
     </div>
   );
-}
+};
 
-export default Instrument;
+export default Blog;

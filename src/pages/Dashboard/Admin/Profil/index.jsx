@@ -24,8 +24,6 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import profilePicture from "../../../../assets/images/undraw_profile.svg";
 
 (function ($) {
-  "use strict";
-
   $(function () {
     $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
       $("body").toggleClass("sidebar-toggled");
@@ -65,7 +63,7 @@ import profilePicture from "../../../../assets/images/undraw_profile.svg";
         readURL(this);
       });
     });
-    
+
     function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
