@@ -80,22 +80,52 @@ const Studio = () => {
   const studiosList = useSelector(
     (state) => state.studio && state.studio.allStudio
   );
-  const isFetching = useSelector(
-    (state) => state.studio && state.studio.isFetching
-  );
   const studioDetailList = useSelector(
     (state) =>
       state.studio &&
       state.studio.detailStudio &&
       state.studio.detailStudio.result
   );
+  const isFetching = useSelector(
+    (state) => state.studio && state.studio.isFetching
+  );
   const dispatch = useDispatch();
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
+  const countPerPage = 10;
   const [spinner, setSpinner] = useState(true);
   const [resultsList, setResultsList] = useState(studiosList);
-  const countPerPage = 10;
+  const [resultsDetailList, setResultsDetailList] = useState(studioDetailList);
   const [countList, setCountList] = useState(countPerPage);
   const [studioListId, setStudioListId] = useState();
-  const [resultsDetailList, setResultsDetailList] = useState(studioDetailList);
+
+  const [studioNameUpdate, setStudioNameUpdate] = useState(
+    resultsDetailList && resultsDetailList.studio_name
+  );
+  const [studioCapacityUpdate, setStudioCapacityUpdate] = useState(
+    resultsDetailList && resultsDetailList.studio_capacity
+  );
+  const [studioPriceUpdate, setStudioPriceUpdate] = useState(
+    resultsDetailList && resultsDetailList.studio_price
+  );
+  const [studioImgUpdate, setStudioImgUpdate] = useState(
+    resultsDetailList && resultsDetailList.studio_img
+  );
+  const [studioAvailableDayUpdate, setStudioAvailableDayUpdate] = useState(
+    resultsDetailList && resultsDetailList.studio_available_day
+  );
+  const [studioStatusUpdate, setStudioStatusUpdate] = useState(
+    resultsDetailList && resultsDetailList.studio_status
+  );
+  const [studioDescUpdate, setStudioDescUpdate] = useState(
+    resultsDetailList && resultsDetailList.studio_desc
+  );
 
   const getStudioList = async (dispatch) => {
     try {
@@ -112,61 +142,15 @@ const Studio = () => {
     );
   };
 
-  const handleStudioListConfirm = (studioList) => {
-    setStudioListId(studioList);
+  const handleStudioListConfirm = (studioIdList) => {
+    setStudioListId(studioIdList);
   };
 
-  const handleDeleteStudioList = async (studioList) => {
-    // console.log(studioList);
-    try {
-      const res = await adminRequest.delete(`/studio/${studioList}`);
-      console.log(res.data);
-      if (res.data && res.data.message !== null) {
-        Swal.fire({
-          icon: "success",
-          title: "Berhasil!",
-          text: "Berhasil menghapus studio!",
-          showConfirmButton: false,
-          timer: 1500,
-        }).then(() => {
-          getStudioList(dispatch);
-          setResultsList(studiosList && studiosList);
-          setSpinner(true);
-          setTimeout(() => setSpinner(false), 1000);
-        });
-      } else {
-        Swal.fire({
-          icon: "warning",
-          title: "Gagal!",
-          text: "Gagal menghapus studio!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    } catch (err) {
-      console.log(err.message);
-      Swal.fire({
-        icon: "warning",
-        title: "Gagal...",
-        text: "Gagal menghapus studio!",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
-  };
-
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    reset,
-  } = useForm();
-
-  const studioPosted = async (dispatch, studioList) => {
+  const studioPosted = async (dispatch, studioDataList) => {
     dispatch(studioPostStart());
-    console.log(studioList);
+    console.log(studioDataList);
     try {
-      const res = await adminRequest.post("/studio", studioList);
+      const res = await adminRequest.post("/studio", studioDataList);
       dispatch(studioPostAccepted());
       console.log(res.data);
       Swal.fire({
@@ -217,16 +201,16 @@ const Studio = () => {
     studioPosted(dispatch, dataStudio);
   };
 
-  const studioUpdated = async (dispatch, studioList) => {
+  const studioUpdated = async (dispatch, studioDataList) => {
     dispatch(studioPutStart());
-    console.log(studioList);
+    // console.log(studioDataList);
+    console.log(qs.stringify(studioDataList));
     try {
       const res = await adminRequestPut.put(
         `/studio/${studioListId}`,
-        qs.stringify(studioList)
+        qs.stringify(studioDataList)
       );
       dispatch(studioPutAccepted());
-      console.log(qs.stringify(studioList));
       console.log(res.data);
       Swal.fire({
         icon: "success",
@@ -238,8 +222,6 @@ const Studio = () => {
         setTimeout(() => {
           getStudioList(dispatch);
           setResultsList(studiosList && studiosList);
-          setSpinner(true);
-          setTimeout(() => setSpinner(false), 1000);
         }, 100);
       });
     } catch (err) {
@@ -255,28 +237,6 @@ const Studio = () => {
       });
     }
   };
-
-  const [studioNameUpdate, setStudioNameUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_name
-  );
-  const [studioCapacityUpdate, setStudioCapacityUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_capacity
-  );
-  const [studioPriceUpdate, setStudioPriceUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_price
-  );
-  const [studioImgUpdate, setStudioImgUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_img
-  );
-  const [studioAvailableDayUpdate, setStudioAvailableDayUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_available_day
-  );
-  const [studioStatusUpdate, setStudioStatusUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_status
-  );
-  const [studioDescUpdate, setStudioDescUpdate] = useState(
-    resultsDetailList && resultsDetailList.studio_desc
-  );
 
   const handleClickStudioUpdate = (e) => {
     e.preventDefault();
@@ -297,6 +257,45 @@ const Studio = () => {
       studio_status,
       studio_desc,
     });
+  };
+
+  const handleDeleteStudioList = async (studioIdList) => {
+    // console.log(studioList);
+    try {
+      const res = await adminRequest.delete(`/studio/${studioIdList}`);
+      console.log(res.data);
+      if (res.data && res.data.message !== null) {
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Berhasil menghapus studio!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          getStudioList(dispatch);
+          setResultsList(studiosList && studiosList);
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
+        });
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Gagal!",
+          text: "Gagal menghapus studio!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (err) {
+      console.log(err.message);
+      Swal.fire({
+        icon: "warning",
+        title: "Gagal...",
+        text: "Gagal menghapus studio!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
 
   useEffect(() => {
