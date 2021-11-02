@@ -54,3 +54,11 @@ export const adminRequest = axios.create({
     Authorization: `Bearer ${TOKEN}`,
   },
 });
+
+export const adminRequestPut = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+});

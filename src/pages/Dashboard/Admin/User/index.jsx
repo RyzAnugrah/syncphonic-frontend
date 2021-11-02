@@ -82,7 +82,7 @@ const User = () => {
   };
 
   const handleDeleteMember = async (member) => {
-    console.log(member);
+    // console.log(member);
     try {
       const res = await adminRequest.delete(`/user/${member}`);
       console.log(res.data);
@@ -112,7 +112,7 @@ const User = () => {
       console.log(err.message);
       Swal.fire({
         icon: "warning",
-        title: "Gagal!",
+        title: "Gagal...",
         text: "Gagal menghapus member!",
         showConfirmButton: false,
         timer: 1500,
@@ -311,12 +311,17 @@ const User = () => {
                   <div className="clearfix">
                     <div className="hint-text">
                       Menampilkan &nbsp;
-                      <b>{count && count < results.length ? count : results.length}</b> dari
-                      &nbsp;
-                      <b>{results && results.length}</b> data
+                      <b>
+                        {count && count < results.length
+                          ? count
+                          : results.length}
+                      </b>
+                      &nbsp; dari &nbsp;
+                      <b>{results && results.length}</b>
+                      &nbsp; data &nbsp;
                       {results && count < results.length && (
                         <span
-                          className="px-3"
+                          className="px-3 handle-load-more"
                           type="button"
                           onClick={handleLoadMore}
                         >
@@ -361,8 +366,8 @@ const User = () => {
                       type="button"
                       className="btn btn-modal-add"
                       value="Hapus"
-                      onClick={() => handleDeleteMember(memberId)}
                       data-dismiss="modal"
+                      onClick={() => handleDeleteMember(memberId)}
                     />
                   </div>
                 </form>

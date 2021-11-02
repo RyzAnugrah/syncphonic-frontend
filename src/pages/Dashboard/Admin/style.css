@@ -12632,3 +12632,22 @@ table.table .avatar {
 .profile-name {
   text-transform: capitalize;
 }
+
+.handle-load-more {
+  color: #A6711F;
+  cursor: pointer;
+}
+
+.handle-load-more:hover {
+  color: #DD911A;
+  cursor: pointer;
+}
+
+.error {
+  color: #bf1650;
+}
+
+.error::before {
+  display: inline;
+  content: "⚠ ";
+}
