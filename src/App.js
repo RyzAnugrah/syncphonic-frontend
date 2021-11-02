@@ -54,6 +54,8 @@ const ProtectedAuth = ({ name, component: Component, ...rest }) => {
         name !== "masuk" &&
         name !== "daftar" &&
         name !== "dashboard-user" &&
+        name !== "pesanan-user" &&
+        name !== "edit-profil-user" &&
         name !== "dashboard-admin" &&
         name !== "edit-studio-admin" &&
         name !== "edit-instrument-admin" &&

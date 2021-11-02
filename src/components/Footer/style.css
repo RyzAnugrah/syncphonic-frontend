@@ -38,6 +38,7 @@
   color: #FFF;
   text-decoration: none;
   font-size: 14px;
+  word-wrap: break-word;
 }
 
 .footer-menu-list:hover {
@@ -49,7 +50,7 @@
 }
 
 .footer-contact-icon {
-  width: 15%;
+  width: 30px;
   margin-right: 10px;
 }
 
@@ -73,7 +74,7 @@
   }
 
   .footer-contact-icon {
-    width: 13%;
+    width: 20px;
   }
 
   .footer-menu-list {
@@ -103,7 +104,7 @@
   }
 
   .footer-contact-icon {
-    width: 10%;
+    width: 20px;
     margin-right: 10px;
   }
 }

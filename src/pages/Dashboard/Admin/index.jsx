@@ -13,8 +13,10 @@ import { GiGuitarHead } from "react-icons/gi";
 import "./style.css";
 
 (function ($) {
+  "use strict";
+
   $(function () {
-    $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
+    $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
       $("body").toggleClass("sidebar-toggled");
       $(".sidebar").toggleClass("toggled");
       if ($(".sidebar").hasClass("toggled")) {
@@ -201,6 +203,6 @@ const Dashboard = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;

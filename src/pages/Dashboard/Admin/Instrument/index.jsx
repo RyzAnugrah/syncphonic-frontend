@@ -17,11 +17,13 @@ import {
 import "../style.css";
 
 (function ($) {
+  "use strict";
+
   $(function () {
-    $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
-      $("body").toggleclassName("sidebar-toggled");
-      $(".sidebar").toggleclassName("toggled");
-      if ($(".sidebar").hasclassName("toggled")) {
+    $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
+      $("body").toggleClass("sidebar-toggled");
+      $(".sidebar").toggleClass("toggled");
+      if ($(".sidebar").hasClass("toggled")) {
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -31,9 +33,9 @@ import "../style.css";
         $(".sidebar .collapse").collapse("hide");
       }
 
-      if ($(window).width() < 480 && !$(".sidebar").hasclassName("toggled")) {
-        $("body").addclassName("sidebar-toggled");
-        $(".sidebar").addclassName("toggled");
+      if ($(window).width() < 480 && !$(".sidebar").hasClass("toggled")) {
+        $("body").addClass("sidebar-toggled");
+        $(".sidebar").addClass("toggled");
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -179,7 +181,7 @@ function Instrument() {
                     <thead>
                       <tr>
                         <th className="table-column-text">Nama</th>
-                        <th className="table-column-text">Brand</th>
+                        <th className="table-column-text">Kategori</th>
                         <th className="table-column-text">Harga</th>
                         <th className="table-column-text">Gambar</th>
                         <th className="table-column-text">Jumlah</th>
@@ -322,7 +324,7 @@ function Instrument() {
                       />
                     </div>
                     <div className="form-group">
-                      <label>Brand</label>
+                      <label>Kategori</label>
                       <input
                         type="text"
                         className="form-control form-control-dashboard"
@@ -452,7 +454,7 @@ function Instrument() {
                       />
                     </div>
                     <div className="form-group">
-                      <label>Brand</label>
+                      <label>Kategori</label>
                       <input
                         type="text"
                         className="form-control form-control-dashboard"

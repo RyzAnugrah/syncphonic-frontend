@@ -24,11 +24,13 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import profilePicture from "../../../../assets/images/undraw_profile.svg";
 
 (function ($) {
+  "use strict";
+
   $(function () {
-    $("#sidebarToggle, #sidebarToggleTop").on("click", function () {
-      $("body").toggleclassName("sidebar-toggled");
-      $(".sidebar").toggleclassName("toggled");
-      if ($(".sidebar").hasclassName("toggled")) {
+    $("#sidebarToggle, #sidebarToggleTop").on("click", function (e) {
+      $("body").toggleClass("sidebar-toggled");
+      $(".sidebar").toggleClass("toggled");
+      if ($(".sidebar").hasClass("toggled")) {
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -38,9 +40,9 @@ import profilePicture from "../../../../assets/images/undraw_profile.svg";
         $(".sidebar .collapse").collapse("hide");
       }
 
-      if ($(window).width() < 480 && !$(".sidebar").hasclassName("toggled")) {
-        $("body").addclassName("sidebar-toggled");
-        $(".sidebar").addclassName("toggled");
+      if ($(window).width() < 480 && !$(".sidebar").hasClass("toggled")) {
+        $("body").addClass("sidebar-toggled");
+        $(".sidebar").addClass("toggled");
         $(".sidebar .collapse").collapse("hide");
       }
     });
@@ -63,6 +65,7 @@ import profilePicture from "../../../../assets/images/undraw_profile.svg";
         readURL(this);
       });
     });
+    
     function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
