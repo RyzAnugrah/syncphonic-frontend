@@ -133,9 +133,7 @@ const User = () => {
     setResults(members && members);
   }, [members]);
 
-  return spinner ? (
-    <Spinner />
-  ) : (
+  return (
     <div id="wrapper">
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
@@ -247,67 +245,75 @@ const User = () => {
                       </div>
                     </div>
                   </div>
-                  <table className="table table-striped table-hover">
-                    <thead>
-                      <tr>
-                        <th className="table-column-text">Nama</th>
-                        <th className="table-column-text">Email</th>
-                        <th className="table-column-text">Foto Profile</th>
-                        <th className="table-column-text">Jenis Kelamin</th>
-                        <th className="table-column-text">No. Telp</th>
-                        <th className="table-column-text">Alamat</th>
-                        <th className="table-column-text">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {results && results.length !== 0 ? (
-                        results.slice(0, count).map((member) => (
-                          <tr key={member.id}>
-                            <td className="table-column-text">{member.name}</td>
+                  {spinner ? (
+                    <Spinner />
+                  ) : (
+                    <table className="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th className="table-column-text">Nama</th>
+                          <th className="table-column-text">Email</th>
+                          <th className="table-column-text">Foto Profile</th>
+                          <th className="table-column-text">Jenis Kelamin</th>
+                          <th className="table-column-text">No. Telp</th>
+                          <th className="table-column-text">Alamat</th>
+                          <th className="table-column-text">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {results && results.length !== 0 ? (
+                          results.slice(0, count).map((member) => (
+                            <tr key={member.id}>
+                              <td className="table-column-text">
+                                {member.name}
+                              </td>
+                              <td className="table-column-text">
+                                {member.email}
+                              </td>
+                              <td className="table-column-text">
+                                <img
+                                  src={
+                                    member.photo_profile.includes("http")
+                                      ? member.photo_profile
+                                      : profilePicture
+                                  }
+                                  alt="profile"
+                                  className="d-block img-fluid"
+                                />
+                              </td>
+                              <td className="table-column-text">
+                                {member.gender}
+                              </td>
+                              <td className="table-column-text">
+                                {member.telp_number}
+                              </td>
+                              <td className="table-column-text">
+                                {member.address}
+                              </td>
+                              <td>
+                                <a
+                                  href="#deleteUserModal"
+                                  className="delete"
+                                  data-toggle="modal"
+                                  onClick={() => handleDeleteConfirm(member.id)}
+                                >
+                                  <i data-toggle="tooltip" title="Hapus">
+                                    <FaTrash />
+                                  </i>
+                                </a>
+                              </td>
+                            </tr>
+                          ))
+                        ) : (
+                          <tr>
                             <td className="table-column-text">
-                              {member.email}
-                            </td>
-                            <td className="table-column-text">
-                              <img
-                                src={
-                                  member.photo_profile.includes("http")
-                                    ? member.photo_profile
-                                    : profilePicture
-                                }
-                                alt="profile"
-                                className="d-block img-fluid"
-                              />
-                            </td>
-                            <td className="table-column-text">
-                              {member.gender}
-                            </td>
-                            <td className="table-column-text">
-                              {member.telp_number}
-                            </td>
-                            <td className="table-column-text">
-                              {member.address}
-                            </td>
-                            <td>
-                              <a
-                                href="#deleteUserModal"
-                                className="delete"
-                                data-toggle="modal"
-                                onClick={() => handleDeleteConfirm(member.id)}
-                              >
-                                <i data-toggle="tooltip" title="Hapus">
-                                  <FaTrash />
-                                </i>
-                              </a>
+                              Tidak ada data
                             </td>
                           </tr>
-                        ))
-                      ) : (
-                        <tr>
-                          <td className="table-column-text">Tidak ada data</td>
-                        </tr>
-                      )}
-                    </tbody>
-                  </table>
+                        )}
+                      </tbody>
+                    </table>
+                  )}
                   <div className="clearfix">
                     <div className="hint-text">
                       Menampilkan &nbsp;

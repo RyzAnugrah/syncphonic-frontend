@@ -93,9 +93,7 @@ const Dashboard = () => {
     }
   }, [history, user]);
 
-  return spinner ? (
-    <Spinner />
-  ) : (
+  return (
     <div id="wrapper">
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
@@ -105,96 +103,100 @@ const Dashboard = () => {
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 className="h3 mb-0 dashboard-title">Dashboard</h1>
             </div>
-            <div className="row">
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-card shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters my-auto h-100">
-                      <div className="col mr-2 align-items-center my-auto">
-                        <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
-                          List Studio
+            {spinner ? (
+              <Spinner />
+            ) : (
+              <div className="row">
+                <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="card border-left-card shadow h-100 py-2">
+                    <div className="card-body">
+                      <div className="row no-gutters my-auto h-100">
+                        <div className="col mr-2 align-items-center my-auto">
+                          <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
+                            List Studio
+                          </div>
+                        </div>
+                        <div className="col-auto align-items-center my-auto">
+                          <i className="fa-2x card-dashboard-title">
+                            <FaWarehouse />
+                          </i>
                         </div>
                       </div>
-                      <div className="col-auto align-items-center my-auto">
-                        <i className="fa-2x card-dashboard-title">
-                          <FaWarehouse />
-                        </i>
-                      </div>
+                      <Link
+                        to="/syncphonic-frontend/dashboard/admin/studio"
+                        className="stretched-link"
+                      />
                     </div>
-                    <Link
-                      to="/syncphonic-frontend/dashboard/admin/studio"
-                      className="stretched-link"
-                    />
+                  </div>
+                </div>
+                <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="card border-left-card shadow h-100 py-2">
+                    <div className="card-body">
+                      <div className="row no-gutters my-auto h-100">
+                        <div className="col mr-2 align-items-center my-auto">
+                          <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
+                            List Instrument
+                          </div>
+                        </div>
+                        <div className="col-auto align-items-center my-auto">
+                          <i className="fa-2x card-dashboard-title">
+                            <GiGuitarHead />
+                          </i>
+                        </div>
+                      </div>
+                      <Link
+                        to="/syncphonic-frontend/dashboard/admin/instrument"
+                        className="stretched-link"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="card border-left-card shadow h-100 py-2">
+                    <div className="card-body">
+                      <div className="row no-gutters my-auto h-100">
+                        <div className="col mr-2 align-items-center my-auto">
+                          <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
+                            List Blog
+                          </div>
+                        </div>
+                        <div className="col-auto align-items-center my-auto">
+                          <i className="fa-2x card-dashboard-title">
+                            <FaBlog />
+                          </i>
+                        </div>
+                      </div>
+                      <Link
+                        to="/syncphonic-frontend/dashboard/admin/blog"
+                        className="stretched-link"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xl-3 col-md-6 mb-4">
+                  <div className="card border-left-card shadow h-100 py-2">
+                    <div className="card-body">
+                      <div className="row no-gutters my-auto h-100">
+                        <div className="col mr-2 align-items-center my-auto">
+                          <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
+                            List Member
+                          </div>
+                        </div>
+                        <div className="col-auto align-items-center my-auto">
+                          <i className="fa-2x card-dashboard-title">
+                            <FaUserEdit />
+                          </i>
+                        </div>
+                      </div>
+                      <Link
+                        to="/syncphonic-frontend/dashboard/admin/user"
+                        className="stretched-link"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-card shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters my-auto h-100">
-                      <div className="col mr-2 align-items-center my-auto">
-                        <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
-                          List Instrument
-                        </div>
-                      </div>
-                      <div className="col-auto align-items-center my-auto">
-                        <i className="fa-2x card-dashboard-title">
-                          <GiGuitarHead />
-                        </i>
-                      </div>
-                    </div>
-                    <Link
-                      to="/syncphonic-frontend/dashboard/admin/instrument"
-                      className="stretched-link"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-card shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters my-auto h-100">
-                      <div className="col mr-2 align-items-center my-auto">
-                        <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
-                          List Blog
-                        </div>
-                      </div>
-                      <div className="col-auto align-items-center my-auto">
-                        <i className="fa-2x card-dashboard-title">
-                          <FaBlog />
-                        </i>
-                      </div>
-                    </div>
-                    <Link
-                      to="/syncphonic-frontend/dashboard/admin/blog"
-                      className="stretched-link"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-3 col-md-6 mb-4">
-                <div className="card border-left-card shadow h-100 py-2">
-                  <div className="card-body">
-                    <div className="row no-gutters my-auto h-100">
-                      <div className="col mr-2 align-items-center my-auto">
-                        <div className="text-md font-weight-bold text-uppercase card-dashboard-title">
-                          List Member
-                        </div>
-                      </div>
-                      <div className="col-auto align-items-center my-auto">
-                        <i className="fa-2x card-dashboard-title">
-                          <FaUserEdit />
-                        </i>
-                      </div>
-                    </div>
-                    <Link
-                      to="/syncphonic-frontend/dashboard/admin/user"
-                      className="stretched-link"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
         <Footer />

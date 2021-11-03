@@ -174,6 +174,8 @@ const Studio = () => {
           reset();
           getStudioList(dispatch);
           setResultsList(studiosList && studiosList);
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
         }, 100);
       });
     } catch (err) {
@@ -206,7 +208,6 @@ const Studio = () => {
     dataStudio.append("studio_img", studio_img[0]);
     dataStudio.append("studio_available_day", studio_available_day);
     dataStudio.append("studio_status", studio_status);
-    dataStudio.append("studio_name", studio_name);
     dataStudio.append("studio_desc", studio_desc);
     studioPosted(dispatch, dataStudio);
   };
@@ -232,6 +233,8 @@ const Studio = () => {
         setTimeout(() => {
           getStudioList(dispatch);
           setResultsList(studiosList && studiosList);
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
         }, 100);
       });
     } catch (err) {
@@ -451,9 +454,7 @@ const Studio = () => {
     setResultsBooking(studiosBooking && studiosBooking);
   }, [studiosList, studioDetailList, resultDetailList, studiosBooking]);
 
-  return spinner ? (
-    <Spinner />
-  ) : (
+  return (
     <div id="wrapper">
       {console.log(resultsList)}
       {console.log(studioDetailList)}
@@ -578,87 +579,93 @@ const Studio = () => {
                       </div>
                     </div>
                   </div>
-                  <table className="table table-striped table-hover">
-                    <thead>
-                      <tr>
-                        <th className="table-column-text">Nama</th>
-                        <th className="table-column-text">Kapasitas</th>
-                        <th className="table-column-text">Harga</th>
-                        <th className="table-column-text">Gambar</th>
-                        <th className="table-column-text">Ketersediaan</th>
-                        <th className="table-column-text">Status</th>
-                        <th className="table-column-text">Deskripsi</th>
-                        <th className="table-column-text">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {resultsList && resultsList.length !== 0 ? (
-                        resultsList.slice(0, countList).map((studioList) => (
-                          <tr key={studioList.id}>
+                  {spinner ? (
+                    <Spinner />
+                  ) : (
+                    <table className="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th className="table-column-text">Nama</th>
+                          <th className="table-column-text">Kapasitas</th>
+                          <th className="table-column-text">Harga</th>
+                          <th className="table-column-text">Gambar</th>
+                          <th className="table-column-text">Ketersediaan</th>
+                          <th className="table-column-text">Status</th>
+                          <th className="table-column-text">Deskripsi</th>
+                          <th className="table-column-text">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {resultsList && resultsList.length !== 0 ? (
+                          resultsList.slice(0, countList).map((studioList) => (
+                            <tr key={studioList.id}>
+                              <td className="table-column-text">
+                                {studioList.studio_name}
+                              </td>
+                              <td className="table-column-text">
+                                {studioList.studio_capacity}
+                              </td>
+                              <td className="table-column-text">
+                                {`Rp.${studioList.studio_price}`}
+                              </td>
+                              <td className="table-column-text">
+                                <img
+                                  src={
+                                    studioList.studio_img.includes("http")
+                                      ? studioList.studio_img.replace('"', "")
+                                      : profilePicture
+                                  }
+                                  alt="profile"
+                                  className="d-block img-fluid"
+                                />
+                              </td>
+                              <td className="table-column-text">
+                                {studioList.studio_available_day}
+                              </td>
+                              <td className="table-column-text">
+                                {studioList.studio_status}
+                              </td>
+                              <td className="table-column-text">
+                                {studioList.studio_desc}
+                              </td>
+                              <td>
+                                <a
+                                  href="#editStudioModal"
+                                  className="edit"
+                                  data-toggle="modal"
+                                  onClick={() =>
+                                    handleStudioListConfirm(studioList.id)
+                                  }
+                                >
+                                  <i data-toggle="tooltip" title="Edit">
+                                    <FaPen />
+                                  </i>
+                                </a>
+                                <a
+                                  href="#deleteStudioModal"
+                                  className="delete"
+                                  data-toggle="modal"
+                                  onClick={() =>
+                                    handleStudioListConfirm(studioList.id)
+                                  }
+                                >
+                                  <i data-toggle="tooltip" title="Hapus">
+                                    <FaTrash />
+                                  </i>
+                                </a>
+                              </td>
+                            </tr>
+                          ))
+                        ) : (
+                          <tr>
                             <td className="table-column-text">
-                              {studioList.studio_name}
-                            </td>
-                            <td className="table-column-text">
-                              {studioList.studio_capacity}
-                            </td>
-                            <td className="table-column-text">
-                              {`Rp.${studioList.studio_price}`}
-                            </td>
-                            <td className="table-column-text">
-                              <img
-                                src={
-                                  studioList.studio_img.includes("http")
-                                    ? studioList.studio_img.replace('"', "")
-                                    : profilePicture
-                                }
-                                alt="profile"
-                                className="d-block img-fluid"
-                              />
-                            </td>
-                            <td className="table-column-text">
-                              {studioList.studio_available_day}
-                            </td>
-                            <td className="table-column-text">
-                              {studioList.studio_status}
-                            </td>
-                            <td className="table-column-text">
-                              {studioList.studio_desc}
-                            </td>
-                            <td>
-                              <a
-                                href="#editStudioModal"
-                                className="edit"
-                                data-toggle="modal"
-                                onClick={() =>
-                                  handleStudioListConfirm(studioList.id)
-                                }
-                              >
-                                <i data-toggle="tooltip" title="Edit">
-                                  <FaPen />
-                                </i>
-                              </a>
-                              <a
-                                href="#deleteStudioModal"
-                                className="delete"
-                                data-toggle="modal"
-                                onClick={() =>
-                                  handleStudioListConfirm(studioList.id)
-                                }
-                              >
-                                <i data-toggle="tooltip" title="Hapus">
-                                  <FaTrash />
-                                </i>
-                              </a>
+                              Tidak ada data
                             </td>
                           </tr>
-                        ))
-                      ) : (
-                        <tr>
-                          <td className="table-column-text">Tidak ada data</td>
-                        </tr>
-                      )}
-                    </tbody>
-                  </table>
+                        )}
+                      </tbody>
+                    </table>
+                  )}
                   <div className="clearfix">
                     <div className="hint-text">
                       Menampilkan &nbsp;
@@ -694,81 +701,91 @@ const Studio = () => {
                       </div>
                     </div>
                   </div>
-                  <table className="table table-striped table-hover">
-                    <thead>
-                      <tr>
-                        <th className="table-column-text">Nama Pemesan</th>
-                        <th className="table-column-text">Nama Studio</th>
-                        <th className="table-column-text">Harga Studio</th>
-                        <th className="table-column-text">Tanggal</th>
-                        <th className="table-column-text">Durasi</th>
-                        <th className="table-column-text">Total</th>
-                        <th className="table-column-text">Status Booking</th>
-                        <th className="table-column-text">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {resultsBooking && resultsBooking.length !== 0 ? (
-                        resultsBooking
-                          .slice(0, countBooking)
-                          .map((studioBooking) => (
-                            <tr key={studioBooking.id}>
-                              <td className="table-column-text">
-                                {studioBooking.name}
-                              </td>
-                              <td className="table-column-text">
-                                {studioBooking.studio_name}
-                              </td>
-                              <td className="table-column-text">
-                                {studioBooking.studio_price}
-                              </td>
-                              <td className="table-column-text">
-                                {studioBooking.date}
-                              </td>
-                              <td className="table-column-text">
-                                {studioBooking.duration}
-                              </td>
-                              <td className="table-column-text">
-                                {studioBooking.total}
-                              </td>
-                              <td className="table-column-text">
-                                {studioBooking.status_booking}
-                              </td>
-                              <td>
-                                <a
-                                  href="#confirmStudioModal"
-                                  className="confirm"
-                                  data-toggle="modal"
-                                  onClick={() =>
-                                    handleStudioBookingConfirm(studioBooking.id)
-                                  }
-                                >
-                                  <i data-toggle="tooltip" title="Konfirmasi">
-                                    <FaCheck />
-                                  </i>
-                                </a>
-                                <a
-                                  href="#deleteBookingModal"
-                                  className="delete"
-                                  data-toggle="modal"
-                                  onClick={() =>
-                                    handleStudioBookingConfirm(studioBooking.id)
-                                  }
-                                >
-                                  <i data-toggle="tooltip" title="Hapus">
-                                    <FaTrash />
-                                  </i>
-                                </a>
-                              </td>
-                            </tr>
-                          ))
-                      ) : (
+                  {spinner ? (
+                    <Spinner />
+                  ) : (
+                    <table className="table table-striped table-hover">
+                      <thead>
                         <tr>
-                          <td className="table-column-text">Tidak ada data</td>
+                          <th className="table-column-text">Nama Pemesan</th>
+                          <th className="table-column-text">Nama Studio</th>
+                          <th className="table-column-text">Harga Studio</th>
+                          <th className="table-column-text">Tanggal</th>
+                          <th className="table-column-text">Durasi</th>
+                          <th className="table-column-text">Total</th>
+                          <th className="table-column-text">Status Booking</th>
+                          <th className="table-column-text">Aksi</th>
                         </tr>
-                      )}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody>
+                        {resultsBooking && resultsBooking.length !== 0 ? (
+                          resultsBooking
+                            .slice(0, countBooking)
+                            .map((studioBooking) => (
+                              <tr key={studioBooking.id}>
+                                <td className="table-column-text">
+                                  {studioBooking.name}
+                                </td>
+                                <td className="table-column-text">
+                                  {studioBooking.studio_name}
+                                </td>
+                                <td className="table-column-text">
+                                  {studioBooking.studio_price}
+                                </td>
+                                <td className="table-column-text">
+                                  {studioBooking.date}
+                                </td>
+                                <td className="table-column-text">
+                                  {studioBooking.duration}
+                                </td>
+                                <td className="table-column-text">
+                                  {studioBooking.total}
+                                </td>
+                                <td className="table-column-text">
+                                  {studioBooking.status_booking}
+                                </td>
+                                <td>
+                                  <a
+                                    href="#confirmStudioModal"
+                                    className="confirm"
+                                    data-toggle="modal"
+                                    onClick={() =>
+                                      handleStudioBookingConfirm(
+                                        studioBooking.id
+                                      )
+                                    }
+                                  >
+                                    <i data-toggle="tooltip" title="Konfirmasi">
+                                      <FaCheck />
+                                    </i>
+                                  </a>
+                                  <a
+                                    href="#deleteBookingModal"
+                                    className="delete"
+                                    data-toggle="modal"
+                                    onClick={() =>
+                                      handleStudioBookingConfirm(
+                                        studioBooking.id
+                                      )
+                                    }
+                                  >
+                                    <i data-toggle="tooltip" title="Hapus">
+                                      <FaTrash />
+                                    </i>
+                                  </a>
+                                </td>
+                              </tr>
+                            ))
+                        ) : (
+                          <tr>
+                            <td className="table-column-text">
+                              Tidak ada data
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  )}
                   <div className="clearfix">
                     <div className="hint-text">
                       Menampilkan &nbsp;
@@ -985,7 +1002,9 @@ const Studio = () => {
                       className="btn btn-modal-add"
                       value="Konfirmasi"
                       data-dismiss="modal"
-                      onClick={() => handleApprovedStudioBooking(studioBookingId)}
+                      onClick={() =>
+                        handleApprovedStudioBooking(studioBookingId)
+                      }
                     />
                   </div>
                 </form>

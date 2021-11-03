@@ -5,7 +5,10 @@ const instrumentSlice = createSlice({
   initialState: {
     allInstrument: [],
     detailInstrument: {},
+    allBookingInstrument: {},
     bookingInstrument: {},
+    isFetching: false,
+    error: false,
   },
   reducers: {
     instrumentStart: (state, action) => {
@@ -14,8 +17,31 @@ const instrumentSlice = createSlice({
     instrumentDetailStart: (state, action) => {
       state.detailInstrument = action.payload;
     },
+    instrumentAllBookingStart: (state, action) => {
+      state.allBookingInstrument = action.payload;
+    },
     instrumentBookingStart: (state, action) => {
       state.bookingInstrument = action.payload;
+    },
+    instrumentPostStart: (state) => {
+      state.isFetching = true;
+    },
+    instrumentPostAccepted: (state) => {
+      state.isFetching = false;
+    },
+    instrumentPostFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
+    instrumentPutStart: (state) => {
+      state.isFetching = true;
+    },
+    instrumentPutAccepted: (state) => {
+      state.isFetching = false;
+    },
+    instrumentPutFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
     },
   },
 });
@@ -23,6 +49,13 @@ const instrumentSlice = createSlice({
 export const {
   instrumentStart,
   instrumentDetailStart,
+  instrumentAllBookingStart,
   instrumentBookingStart,
+  instrumentPostStart,
+  instrumentPostAccepted,
+  instrumentPostFailure,
+  instrumentPutStart,
+  instrumentPutAccepted,
+  instrumentPutFailure,
 } = instrumentSlice.actions;
 export default instrumentSlice.reducer;
