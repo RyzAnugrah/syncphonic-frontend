@@ -457,7 +457,7 @@ const Studio = () => {
   return (
     <div id="wrapper">
       {console.log(resultsList)}
-      {console.log(studioDetailList)}
+      {console.log(resultDetailList)}
       {console.log(resultsBooking)}
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
@@ -821,8 +821,8 @@ const Studio = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -956,12 +956,13 @@ const Studio = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"
                       className="btn btn-modal-add"
+                      value="Kirim"
                       disabled={isFetching}
                     />
                   </div>
@@ -978,8 +979,8 @@ const Studio = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -994,8 +995,8 @@ const Studio = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"
@@ -1020,8 +1021,8 @@ const Studio = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -1039,11 +1040,12 @@ const Studio = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label>Kapasitas</label>
+                      <label htmlFor="updateStudioCapacity">Kapasitas</label>
                       <input
                         type="number"
                         className="form-control form-control-dashboard"
                         required
+                        id="updateStudioCapacity"
                         value={studioCapacityUpdate}
                         onChange={(e) =>
                           setStudioCapacityUpdate(e.target.value)
@@ -1051,11 +1053,12 @@ const Studio = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label>Harga</label>
+                      <label htmlFor="updateStudioPrice">Harga</label>
                       <input
                         type="number"
                         className="form-control form-control-dashboard"
                         required
+                        id="updateStudioPrice"
                         value={studioPriceUpdate}
                         onChange={(e) => setStudioPriceUpdate(e.target.value)}
                       />
@@ -1074,11 +1077,14 @@ const Studio = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label>Ketersediaan</label>
+                      <label htmlFor="updateStudioAvailableDay">
+                        Ketersediaan
+                      </label>
                       <input
                         type="text"
                         className="form-control form-control-dashboard"
                         required
+                        id="updateStudioAvailableDay"
                         value={studioAvailableDayUpdate}
                         onChange={(e) =>
                           setStudioAvailableDayUpdate(e.target.value)
@@ -1086,20 +1092,22 @@ const Studio = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label>Status</label>
+                      <label htmlFor="updateStudioStatus">Status</label>
                       <input
                         type="text"
                         className="form-control form-control-dashboard"
                         required
+                        id="updateStudioStatus"
                         value={studioStatusUpdate}
                         onChange={(e) => setStudioStatusUpdate(e.target.value)}
                       />
                     </div>
                     <div className="form-group">
-                      <label>Deskripsi</label>
+                      <label htmlFor="updateStudioDesc">Deskripsi</label>
                       <textarea
                         className="form-control form-control-dashboard"
                         required
+                        id="updateStudioDesc"
                         value={studioDescUpdate}
                         onChange={(e) => setStudioDescUpdate(e.target.value)}
                       />
@@ -1109,12 +1117,13 @@ const Studio = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"
                       className="btn btn-modal-add"
+                      value="Edit"
                       disabled={isFetching}
                     />
                   </div>
@@ -1131,8 +1140,8 @@ const Studio = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -1147,8 +1156,8 @@ const Studio = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="button"
@@ -1171,8 +1180,8 @@ const Studio = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -1187,8 +1196,8 @@ const Studio = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"

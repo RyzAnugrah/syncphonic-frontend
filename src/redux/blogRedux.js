@@ -5,6 +5,8 @@ const blogSlice = createSlice({
   initialState: {
     allBlog: [],
     detailBlog: {},
+    isFetching: false,
+    error: false,
   },
   reducers: {
     blogStart: (state, action) => {
@@ -13,8 +15,37 @@ const blogSlice = createSlice({
     blogDetailStart: (state, action) => {
       state.detailBlog = action.payload;
     },
+    blogPostStart: (state) => {
+      state.isFetching = true;
+    },
+    blogPostAccepted: (state) => {
+      state.isFetching = false;
+    },
+    blogPostFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
+    blogPutStart: (state) => {
+      state.isFetching = true;
+    },
+    blogPutAccepted: (state) => {
+      state.isFetching = false;
+    },
+    blogPutFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
   },
 });
 
-export const { blogStart, blogDetailStart } = blogSlice.actions;
+export const {
+  blogStart,
+  blogDetailStart,
+  blogPostStart,
+  blogPostAccepted,
+  blogPostFailure,
+  blogPutStart,
+  blogPutAccepted,
+  blogPutFailure,
+} = blogSlice.actions;
 export default blogSlice.reducer;

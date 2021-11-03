@@ -473,7 +473,7 @@ const Instrument = () => {
   return (
     <div id="wrapper">
       {console.log(resultsList)}
-      {console.log(instrumentDetailList)}
+      {console.log(resultDetailList)}
       {console.log(resultsBooking)}
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
@@ -852,8 +852,8 @@ const Instrument = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -992,12 +992,13 @@ const Instrument = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"
                       className="btn btn-modal-add"
+                      value="Kirim"
                       disabled={isFetching}
                     />
                   </div>
@@ -1014,8 +1015,8 @@ const Instrument = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -1030,8 +1031,8 @@ const Instrument = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"
@@ -1056,8 +1057,8 @@ const Instrument = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -1155,12 +1156,13 @@ const Instrument = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"
                       className="btn btn-modal-add"
+                      value="Edit"
                       disabled={isFetching}
                     />
                   </div>
@@ -1177,8 +1179,8 @@ const Instrument = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -1193,8 +1195,8 @@ const Instrument = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"
@@ -1219,8 +1221,8 @@ const Instrument = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -1235,8 +1237,8 @@ const Instrument = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"

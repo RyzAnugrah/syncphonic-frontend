@@ -1,6 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
 import jQuery from "jquery";
+import Swal from "sweetalert2";
+import qs from "qs";
+
+import {
+  publicRequest,
+  adminRequest,
+  adminRequestPut,
+} from "../../../../requestMethods";
+import {
+  blogStart,
+  blogDetailStart,
+  blogPostStart,
+  blogPostAccepted,
+  blogPostFailure,
+  blogPutStart,
+  blogPutAccepted,
+  blogPutFailure,
+} from "../../../../redux/blogRedux";
+import Spinner from "../../../../components/Spinner";
+
 import Sidebar from "../../../../components/Dashboard/Admin/Sidebar/index";
 import Navbar from "../../../../components/Dashboard/Admin/Navbar/index";
 import Footer from "../../../../components/Dashboard/Admin/Footer/index";
@@ -14,6 +36,8 @@ import {
 } from "react-icons/fa";
 import { GiGuitarHead } from "react-icons/gi";
 import "../style.css";
+
+import profilePicture from "../../../../assets/images/undraw_profile.svg";
 
 (function ($) {
   $(function () {
@@ -52,8 +76,246 @@ import "../style.css";
 })(jQuery);
 
 const Blog = () => {
+  const blogsList = useSelector((state) => state.blog && state.blog.allBlog);
+  const blogDetailList = useSelector(
+    (state) =>
+      state.blog && state.blog.detailBlog && state.blog.detailBlog.result
+  );
+  const isFetching = useSelector(
+    (state) => state.blog && state.blog.isFetching
+  );
+  const dispatch = useDispatch();
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
+  const countPerPage = 10;
+  const [spinner, setSpinner] = useState(true);
+  const [resultsList, setResultsList] = useState(blogsList);
+  const [resultDetailList, setResultDetailList] = useState(blogDetailList);
+  const [countList, setCountList] = useState(countPerPage);
+  const [blogListId, setBlogListId] = useState();
+
+  const [blogTitleUpdate, setBlogTitleUpdate] = useState(
+    resultDetailList && resultDetailList.title_blog
+  );
+  const [blogCategoryUpdate, setBlogCategoryUpdate] = useState(
+    resultDetailList && resultDetailList.category
+  );
+  const [blogImgUpdate, setBlogImgUpdate] = useState(
+    resultDetailList && resultDetailList.image
+  );
+  const [blogDateUpdate, setBlogDateUpdate] = useState(
+    resultDetailList && resultDetailList.date
+  );
+  const [blogContentUpdate, setBlogContentUpdate] = useState(
+    resultDetailList && resultDetailList.content
+  );
+
+  const getBlogList = async (dispatch) => {
+    try {
+      const res = await publicRequest.get("/blog");
+      dispatch(blogStart(res.data));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleLoadMoreList = () => {
+    setCountList(
+      blogsList && countList < resultsList.length && countList + countPerPage
+    );
+  };
+
+  const handleBlogListConfirm = (blogIdList) => {
+    setBlogListId(blogIdList);
+  };
+
+  const blogPosted = async (dispatch, blogDataList) => {
+    dispatch(blogPostStart());
+    console.log(blogDataList);
+    try {
+      const res = await adminRequest.post("/blog/post", blogDataList);
+      dispatch(blogPostAccepted());
+      console.log(res.data);
+      Swal.fire({
+        icon: "success",
+        title: "Berhasil",
+        text: "Berhasil tambah blog!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          reset();
+          getBlogList(dispatch);
+          setResultsList(blogsList && blogsList);
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
+        }, 100);
+      });
+    } catch (err) {
+      dispatch(blogPostFailure());
+      console.log(err.message);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Gagal tambah blog!",
+        confirmButtonColor: "#A6711F",
+        confirmButtonText: "Coba lagi",
+        timer: 3000,
+      });
+    }
+  };
+
+  const handleClickBlogPost = ({
+    title_blog,
+    category,
+    image,
+    date,
+    content,
+  }) => {
+    const dataBlog = new FormData();
+    dataBlog.append("title_blog", title_blog);
+    dataBlog.append("category", category);
+    dataBlog.append("image", image[0]);
+    dataBlog.append("date", date);
+    dataBlog.append("content", content);
+    blogPosted(dispatch, dataBlog);
+  };
+
+  const blogUpdated = async (dispatch, blogDataList) => {
+    dispatch(blogPutStart());
+    // console.log(blogDataList);
+    console.log(qs.stringify(blogDataList));
+    try {
+      const res = await adminRequestPut.put(
+        `/blog/${blogListId}`,
+        qs.stringify(blogDataList)
+      );
+      dispatch(blogPutAccepted());
+      console.log(res.data);
+      Swal.fire({
+        icon: "success",
+        title: "Berhasil",
+        text: "Berhasil update blog!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          getBlogList(dispatch);
+          setResultsList(blogsList && blogsList);
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
+        }, 100);
+      });
+    } catch (err) {
+      dispatch(blogPutFailure());
+      console.log(err.message);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Gagal update blog!",
+        confirmButtonColor: "#A6711F",
+        confirmButtonText: "Coba lagi",
+        timer: 3000,
+      });
+    }
+  };
+
+  const handleClickBlogUpdate = (e) => {
+    e.preventDefault();
+    const title_blog = blogTitleUpdate;
+    const category = blogCategoryUpdate;
+    const image = blogImgUpdate;
+    const date = blogDateUpdate;
+    const content = blogContentUpdate;
+
+    blogUpdated(dispatch, {
+      title_blog,
+      category,
+      image,
+      date,
+      content,
+    });
+  };
+
+  const handleDeleteBlogList = async (blogIdList) => {
+    // console.log(blogList);
+    try {
+      const res = await adminRequest.delete(`/blog/${blogIdList}`);
+      console.log(res.data);
+      if (res.data && res.data.message !== null) {
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Berhasil menghapus blog!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          getBlogList(dispatch);
+          setResultsList(blogsList && blogsList);
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
+        });
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Gagal!",
+          text: "Gagal menghapus blog!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (err) {
+      console.log(err.message);
+      Swal.fire({
+        icon: "warning",
+        title: "Gagal...",
+        text: "Gagal menghapus blog!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
+  useEffect(() => {
+    getBlogList(dispatch);
+
+    const getBlogDetailList = async (dispatch) => {
+      try {
+        const res = await publicRequest.get(`/blog/${blogListId}`);
+        dispatch(blogDetailStart(res.data));
+        // console.log(res.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getBlogDetailList(dispatch);
+  }, [dispatch, blogListId]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setTimeout(() => setSpinner(false), 1000);
+  }, []);
+
+  useEffect(() => {
+    setResultsList(blogsList && blogsList);
+    setResultDetailList(blogDetailList && blogDetailList);
+    setBlogTitleUpdate(resultDetailList && resultDetailList.title_blog);
+    setBlogCategoryUpdate(resultDetailList && resultDetailList.category);
+    setBlogImgUpdate(resultDetailList && resultDetailList.image);
+    setBlogDateUpdate(resultDetailList && resultDetailList.date);
+    setBlogContentUpdate(resultDetailList && resultDetailList.content);
+  }, [blogsList, blogDetailList, resultDetailList]);
+
   return (
     <div id="wrapper">
+      {console.log(resultsList)}
+      {console.log(resultDetailList)}
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
@@ -174,54 +436,105 @@ const Blog = () => {
                       </div>
                     </div>
                   </div>
-                  <table className="table table-striped table-hover">
-                    <thead>
-                      <tr>
-                        <th className="table-column-text">Judul</th>
-                        <th className="table-column-text">Kategori</th>
-                        <th className="table-column-text">Tanggal</th>
-                        <th className="table-column-text">Gambar</th>
-                        <th className="table-column-text">Konten</th>
-                        <th className="table-column-text">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="table-column-text">
-                          Kiat Kiat Kompak Dengan Teman Band
-                        </td>
-                        <td className="table-column-text">tips</td>
-                        <td className="table-column-text">2021-10-27</td>
-                        <td className="table-column-text"></td>
-                        <td className="table-column-text">
-                          haihihaihihhhihihi
-                        </td>
-                        <td>
-                          <a
-                            href="#editBlogModal"
-                            className="edit"
-                            data-toggle="modal"
-                          >
-                            <i data-toggle="tooltip" title="Edit">
-                              <FaPen />
-                            </i>
-                          </a>
-                          <a
-                            href="#deleteBlogModal"
-                            className="delete"
-                            data-toggle="modal"
-                          >
-                            <i data-toggle="tooltip" title="Hapus">
-                              <FaTrash />
-                            </i>
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  {spinner ? (
+                    <Spinner />
+                  ) : (
+                    <table className="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th className="table-column-text">Judul</th>
+                          <th className="table-column-text">Kategori</th>
+                          <th className="table-column-text">Gambar</th>
+                          <th className="table-column-text">Tanggal</th>
+                          <th className="table-column-text">Konten</th>
+                          <th className="table-column-text">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {resultsList && resultsList.length !== 0 ? (
+                          resultsList.slice(0, countList).map((blogList) => (
+                            <tr key={blogList.id}>
+                              <td className="table-column-text">
+                                {blogList.title_blog}
+                              </td>
+                              <td className="table-column-text">
+                                {blogList.category}
+                              </td>
+                              <td className="table-column-text">
+                                <img
+                                  src={
+                                    blogList.image.includes("http")
+                                      ? blogList.image.replace('"', "")
+                                      : profilePicture
+                                  }
+                                  alt="profile"
+                                  className="d-block img-fluid"
+                                />
+                              </td>
+                              <td className="table-column-text">
+                                {blogList.date}
+                              </td>
+                              <td className="table-column-text">
+                                {blogList.content}
+                              </td>
+                              <td>
+                                <a
+                                  href="#editBlogModal"
+                                  className="edit"
+                                  data-toggle="modal"
+                                  onClick={() =>
+                                    handleBlogListConfirm(blogList.id)
+                                  }
+                                >
+                                  <i data-toggle="tooltip" title="Edit">
+                                    <FaPen />
+                                  </i>
+                                </a>
+                                <a
+                                  href="#deleteBlogModal"
+                                  className="delete"
+                                  data-toggle="modal"
+                                  onClick={() =>
+                                    handleBlogListConfirm(blogList.id)
+                                  }
+                                >
+                                  <i data-toggle="tooltip" title="Hapus">
+                                    <FaTrash />
+                                  </i>
+                                </a>
+                              </td>
+                            </tr>
+                          ))
+                        ) : (
+                          <tr>
+                            <td className="table-column-text">
+                              Tidak ada data
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  )}
                   <div className="clearfix">
                     <div className="hint-text">
-                      Menampilkan <b>1</b> dari <b>1</b> data
+                      Menampilkan &nbsp;
+                      <b>
+                        {countList && countList < resultsList.length
+                          ? countList
+                          : resultsList.length}
+                      </b>
+                      &nbsp; dari &nbsp;
+                      <b>{resultsList && resultsList.length}</b>
+                      &nbsp; data &nbsp;
+                      {resultsList && countList < resultsList.length && (
+                        <span
+                          className="px-3 handle-load-more"
+                          type="button"
+                          onClick={handleLoadMoreList}
+                        >
+                          Load more
+                        </span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -231,61 +544,104 @@ const Blog = () => {
           <div id="addBlogModal" className="modal fade">
             <div className="modal-dialog mx-auto align-items-center">
               <div className="modal-content">
-                <form>
+                <form onSubmit={handleSubmit(handleClickBlogPost)}>
                   <div className="modal-header">
                     <h4 className="modal-title">Tambah Blog</h4>
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
                   </div>
                   <div className="modal-body">
                     <div className="form-group">
-                      <label>Judul</label>
+                      <label htmlFor="inputBlogTitle">Judul Blog</label>
                       <input
                         type="text"
                         className="form-control form-control-dashboard"
-                        required
+                        id="inputBlogTitle"
+                        {...register("title_blog", {
+                          required: true,
+                          pattern:
+                            /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/i,
+                          maxLength: 100,
+                        })}
                       />
+                      {errors.title_blog &&
+                        errors.title_blog.type === "required" && (
+                          <p className="error">Judul blog wajib diisi</p>
+                        )}
+                      {errors.title_blog &&
+                        errors.title_blog.type === "pattern" && (
+                          <p className="error">Judul blog hanya berisi huruf</p>
+                        )}
+                      {errors.title_blog &&
+                        errors.title_blog.type === "maxLength" && (
+                          <p className="error">
+                            Judul blog maksimal 100 karakter
+                          </p>
+                        )}
                     </div>
                     <div className="form-group">
-                      <label>Kategori</label>
+                      <label htmlFor="inputBlogCategory">Kategori</label>
                       <input
                         type="text"
                         className="form-control form-control-dashboard"
-                        required
+                        id="inputBlogCategory"
+                        {...register("category", {
+                          required: true,
+                        })}
                       />
+                      {errors.category &&
+                        errors.category.type === "required" && (
+                          <p className="error">Kategori wajib diisi</p>
+                        )}
                     </div>
                     <div className="form-group">
-                      <label>Tanggal</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label" htmlFor="customFile">
+                      <label className="form-label" htmlFor="inputStudioImg">
                         Gambar
                       </label>
                       <input
                         type="file"
                         className="form-control form-control-dashboard"
-                        id="customFile"
-                        required
+                        id="inputStudioImg"
+                        {...register("image", {
+                          required: true,
+                        })}
                       />
+                      {errors.image && errors.image.type === "required" && (
+                        <p className="error">Gambar wajib diisi</p>
+                      )}
                     </div>
                     <div className="form-group">
-                      <label>Konten</label>
+                      <label htmlFor="inputBlogDate">Tanggal</label>
                       <input
-                        type="text"
+                        type="date"
                         className="form-control form-control-dashboard"
-                        required
+                        id="inputBlogDate"
+                        {...register("date", {
+                          required: true,
+                        })}
                       />
+                      {errors.date && errors.date.type === "required" && (
+                        <p className="error">Tanggal wajib diisi</p>
+                      )}
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="inputBlogContent">Konten</label>
+                      <textarea
+                        className="form-control form-control-dashboard"
+                        id="inputBlogContent"
+                        {...register("content", {
+                          required: true,
+                        })}
+                      />
+                      {errors.content && errors.content.type === "required" && (
+                        <p className="error">Konten wajib diisi</p>
+                      )}
                     </div>
                   </div>
                   <div className="modal-footer">
@@ -298,7 +654,8 @@ const Blog = () => {
                     <input
                       type="submit"
                       className="btn btn-modal-add"
-                      value="Tambah"
+                      value="Kirim"
+                      disabled={isFetching}
                     />
                   </div>
                 </form>
@@ -308,60 +665,73 @@ const Blog = () => {
           <div id="editBlogModal" className="modal fade">
             <div className="modal-dialog mx-auto align-items-center">
               <div className="modal-content">
-                <form>
+                <form onSubmit={handleClickBlogUpdate}>
                   <div className="modal-header">
                     <h4 className="modal-title">Edit Blog</h4>
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
                   </div>
                   <div className="modal-body">
                     <div className="form-group">
-                      <label>Judul</label>
+                      <label htmlFor="updateBlogTitle">Judul Blog</label>
                       <input
                         type="text"
                         className="form-control form-control-dashboard"
                         required
+                        id="updateBlogTitle"
+                        value={blogTitleUpdate}
+                        onChange={(e) => setBlogTitleUpdate(e.target.value)}
                       />
                     </div>
                     <div className="form-group">
-                      <label>Kategori</label>
+                      <label htmlFor="updateBlogCategory">Kategori</label>
                       <input
                         type="text"
                         className="form-control form-control-dashboard"
                         required
+                        id="updateBlogCategory"
+                        value={blogCategoryUpdate}
+                        onChange={(e) => setBlogCategoryUpdate(e.target.value)}
                       />
                     </div>
                     <div className="form-group">
-                      <label>Tanggal</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label className="form-label" htmlFor="customFile">
+                      <label className="form-label" htmlFor="updateImg">
                         Gambar
                       </label>
                       <input
-                        type="file"
+                        type="text"
                         className="form-control form-control-dashboard"
-                        id="customFile"
+                        id="updateImg"
                         required
+                        value={blogImgUpdate}
+                        onChange={(e) => setBlogImgUpdate(e.target.value)}
                       />
                     </div>
                     <div className="form-group">
-                      <label>Konten</label>
+                      <label htmlFor="updateBlogDate">Tanggal</label>
                       <input
-                        type="text"
+                        type="date"
                         className="form-control form-control-dashboard"
                         required
+                        id="updateBlogDate"
+                        value={blogDateUpdate}
+                        onChange={(e) => setBlogDateUpdate(e.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="updateBlogContent">Konten</label>
+                      <textarea
+                        className="form-control form-control-dashboard"
+                        required
+                        id="updateBlogContent"
+                        value={blogContentUpdate}
+                        onChange={(e) => setBlogContentUpdate(e.target.value)}
                       />
                     </div>
                   </div>
@@ -369,13 +739,14 @@ const Blog = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"
                       className="btn btn-modal-add"
                       value="Edit"
+                      disabled={isFetching}
                     />
                   </div>
                 </form>
@@ -391,8 +762,8 @@ const Blog = () => {
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -414,6 +785,8 @@ const Blog = () => {
                       type="submit"
                       className="btn btn-modal-add"
                       value="Hapus"
+                      data-dismiss="modal"
+                      onClick={() => handleDeleteBlogList(blogListId)}
                     />
                   </div>
                 </form>
