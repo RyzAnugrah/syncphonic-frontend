@@ -106,7 +106,7 @@ const AppRoutes = [
   {
     name: "edit-profil-user",
     path: "/syncphonic-frontend/dashboard/profil",
-    component: lazy(() => import("../pages/Dashboard/Admin/Profil")),
+    component: lazy(() => import("../pages/Dashboard/User/Profil")),
     exact: true,
   },
   {

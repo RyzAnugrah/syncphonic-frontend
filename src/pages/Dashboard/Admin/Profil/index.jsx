@@ -2,22 +2,22 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import Swal from "sweetalert2";
-
-import { publicRequest } from "../../../../requestMethods";
-import { registerStart, registerFailure } from "../../../../redux/userRedux";
-
 import jQuery from "jquery";
+import Swal from "sweetalert2";
+import qs from "qs";
+
+import { adminRequestPut } from "../../../../requestMethods";
+import {
+  profilePutStart,
+  profilePutAccepted,
+  profilePutFailure,
+} from "../../../../redux/userRedux";
+
 import Sidebar from "../../../../components/Dashboard/Admin/Sidebar/index";
 import Navbar from "../../../../components/Dashboard/Admin/Navbar/index";
 import Footer from "../../../../components/Dashboard/Admin/Footer/index";
-// import { FaWarehouse, FaTachometerAlt, FaBlog, FaTrash } from "react-icons/fa";
-// import { GiGuitarHead } from "react-icons/gi";
 import "./style.css";
 import "../style.css";
-
-// import imgLogoTab from "../../../logo-light.svg";
-// import imgSignUp from "../../../assets/images/daftar.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
@@ -96,39 +96,46 @@ const Profil = () => {
     register,
     formState: { errors },
     handleSubmit,
-    reset,
     watch,
   } = useForm();
 
-  const user = useSelector((state) => state.user.currentUser);
-  const isFetching = useSelector((state) => state.user.isFetching);
+  const user = useSelector(
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
+  );
+  const isFetching = useSelector(
+    (state) => state.user && state.user.isFetching
+  );
   const dispatch = useDispatch();
   let history = useHistory();
 
-  const registered = async (dispatch, user) => {
-    dispatch(registerStart());
-    console.log(user);
+  const [resultUser, setResultUser] = useState(user);
+
+  const updated = async (dispatch, userData) => {
+    dispatch(profilePutStart());
+    console.log(userData);
     try {
-      const res = await publicRequest.post("/register", user);
-      // dispatch(registerSuccess(res.data));
+      const res = await adminRequestPut.put(
+        `/user/${user.id}`,
+        qs.stringify(userData)
+      );
+      dispatch(profilePutAccepted());
       console.log(res.data);
       Swal.fire({
         icon: "success",
         title: "Yes...",
-        text: "Berhasil daftar akun!",
+        text: "Berhasil update akun!",
         confirmButtonColor: "#A6711F",
         confirmButtonText: "Silahkan masuk",
         timer: 1500,
       });
-      reset();
-      history.push("/syncphonic-frontend/masuk");
     } catch (err) {
-      dispatch(registerFailure());
+      dispatch(profilePutFailure());
       console.log(err.message);
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Gagal daftar akun!",
+        text: "Gagal update akun!",
         confirmButtonColor: "#A6711F",
         confirmButtonText: "Coba lagi",
         timer: 3000,
@@ -136,36 +143,40 @@ const Profil = () => {
     }
   };
 
-  const handleClickRegister = ({
+  const handleClickUpdate = ({
     name,
     email,
-    password,
     gender,
     telp_number,
     address,
+    photo_profile,
+    password,
   }) => {
-    registered(dispatch, {
+    updated(dispatch, {
       name,
       email,
-      password,
       gender,
       telp_number,
       address,
+      photo_profile,
+      password,
     });
   };
 
   useEffect(() => {
-    if (user) {
+    if (!user) {
       history.push("/syncphonic-frontend");
     }
+    window.scrollTo(0, 0);
   }, [history, user]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    setResultUser(user && user);
+  }, [user]);
 
   return (
     <div id="wrapper">
+      {console.log(resultUser)}
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
@@ -187,17 +198,14 @@ const Profil = () => {
                       />
                       <input type="file" id="wizard-picture" className="" />
                     </div>
-                    <button className="btn-picture">Ubah Foto Profil</button>
+                    {/* <button className="btn-picture">Ubah Foto Profil</button> */}
                   </div>
                 </div>
               </div>
               <div className="col-md-8 mb-4">
                 <main className="auth-form-main mx-auto">
                   <div className="auth-form-content">
-                    <form
-                      onSubmit={handleSubmit(handleClickRegister)}
-                      disabled={isFetching}
-                    >
+                    <form onSubmit={handleSubmit(handleClickUpdate)}>
                       <div className="form-group">
                         <label className="fw-bolder" htmlFor="inputNamaLengkap">
                           Nama Lengkap
@@ -208,6 +216,7 @@ const Profil = () => {
                           id="inputNamaLengkap"
                           {...register("name", {
                             required: true,
+                            value: resultUser.name,
                             pattern:
                               /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/i,
                             maxLength: 100,
@@ -401,7 +410,11 @@ const Profil = () => {
                             </p>
                           )}
                       </div>
-                      <button type="submit" className="btn-signup py-2">
+                      <button
+                        type="submit"
+                        className="btn-signup py-2"
+                        disabled={isFetching}
+                      >
                         Edit Profil
                       </button>
                     </form>

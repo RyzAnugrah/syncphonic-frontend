@@ -12632,3 +12632,9 @@ table.table .avatar {
 .profile-name {
   text-transform: capitalize;
 }
+
+.error {
+  color: #bf1650;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}

@@ -40,6 +40,14 @@ export const userRequest = axios.create({
   },
 });
 
+export const userRequestPut = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${TOKEN}`,
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+});
+
 export const bookingRequest = axios.create({
   baseURL: BASE_URL,
   headers: {

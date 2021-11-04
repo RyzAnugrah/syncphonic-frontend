@@ -4,6 +4,7 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     currentUser: null,
+    detailUser: {},
     isFetching: false,
     error: false,
   },
@@ -36,6 +37,19 @@ const userSlice = createSlice({
       state.isFetching = false;
       state.error = true;
     },
+    userDetailStart: (state, action) => {
+      state.detailUser = action.payload;
+    },
+    profilePutStart: (state) => {
+      state.isFetching = true;
+    },
+    profilePutAccepted: (state) => {
+      state.isFetching = false;
+    },
+    profilePutFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
   },
 });
 
@@ -48,5 +62,9 @@ export const {
   registerAccepted,
   registerSuccess,
   registerFailure,
+  userDetailStart,
+  profilePutStart,
+  profilePutAccepted,
+  profilePutFailure,
 } = userSlice.actions;
 export default userSlice.reducer;
