@@ -507,7 +507,10 @@ const Blog = () => {
                           ))
                         ) : (
                           <tr>
-                            <td className="table-column-text">
+                            <td
+                              colSpan="6"
+                              className="table-column-text text-center"
+                            >
                               Tidak ada data
                             </td>
                           </tr>
@@ -519,9 +522,11 @@ const Blog = () => {
                     <div className="hint-text">
                       Menampilkan &nbsp;
                       <b>
-                        {countList && countList < resultsList.length
+                        {countList &&
+                        resultsList &&
+                        countList < resultsList.length
                           ? countList
-                          : resultsList.length}
+                          : resultsList && resultsList.length}
                       </b>
                       &nbsp; dari &nbsp;
                       <b>{resultsList && resultsList.length}</b>

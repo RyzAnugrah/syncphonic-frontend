@@ -7,8 +7,9 @@ import Footer from "../../../../components/Dashboard/User/Footer/index";
 import {
   FaUserAlt,
   FaTachometerAlt,
-  FaTimes,
+  // FaTimes,
 } from "react-icons/fa";
+import { FcCancel } from "react-icons/fc";
 import "../style.css";
 
 (function ($) {
@@ -139,7 +140,7 @@ const Pesanan = () => {
                             data-toggle="modal"
                           >
                             <i data-toggle="tooltip" title="Batal">
-                              <FaTimes />
+                              <FcCancel />
                             </i>
                           </a>
                         </td>
@@ -191,7 +192,7 @@ const Pesanan = () => {
                             data-toggle="modal"
                           >
                             <i data-toggle="tooltip" title="Batal">
-                              <FaTimes />
+                              <FcCancel />
                             </i>
                           </a>
                         </td>

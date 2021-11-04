@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -6,9 +6,9 @@ import Swal from "sweetalert2";
 
 import { publicRequest } from "../../../../requestMethods";
 import {
-  loginFailure,
-  loginStart,
-  loginSuccess,
+  forgotPasswordStart,
+  forgotPasswordAccepted,
+  forgotPasswordFailure,
 } from "../../../../redux/userRedux";
 
 import "./style.css";
@@ -23,17 +23,19 @@ const Masuk = () => {
     reset,
   } = useForm();
 
-  const user = useSelector((state) => state.user.currentUser);
-  const isFetching = useSelector((state) => state.user.isFetching);
+  const user = useSelector((state) => state.user && state.user.currentUser);
+  const isFetching = useSelector(
+    (state) => state.user && state.user.isFetching
+  );
   const dispatch = useDispatch();
   let history = useHistory();
 
-  const login = async (dispatch, user) => {
-    dispatch(loginStart());
-    console.log(user);
+  const forgoted = async (dispatch, emailData) => {
+    dispatch(forgotPasswordStart());
+    console.log(emailData);
     try {
-      const res = await publicRequest.post("/login", user);
-      dispatch(loginSuccess(res.data));
+      const res = await publicRequest.post("/password/email", emailData);
+      dispatch(forgotPasswordAccepted(res.data));
       // console.log(res.data);
       Swal.fire({
         icon: "success",
@@ -43,12 +45,12 @@ const Masuk = () => {
         timer: 1500,
       }).then(() => {
         setTimeout(() => {
-          window.location.reload();
+          history.push("/syncphonic-frontend");
         }, 100);
         reset();
       });
     } catch (err) {
-      dispatch(loginFailure());
+      dispatch(forgotPasswordFailure());
       console.log(err.message);
       Swal.fire({
         icon: "error",
@@ -61,14 +63,14 @@ const Masuk = () => {
     }
   };
 
-  const handleClickLogin = ({ email }) => {
-    login(dispatch, { email });
+  const handleClickForgot = ({ email }) => {
+    forgoted(dispatch, { email });
   };
 
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        history.push("/syncphonic-frontend//auth/password/email/reset");
+        history.push("/syncphonic-frontend/auth/password/email/reset");
       }, 1500);
     }
   }, [history, user]);
@@ -97,7 +99,7 @@ const Masuk = () => {
               Masukkan email anda di bawah untuk mendapatkan instruksi untuk
               merubah password anda.
             </p>
-            <form onSubmit={handleSubmit(handleClickLogin)}>
+            <form onSubmit={handleSubmit(handleClickForgot)}>
               <div className="form-group">
                 <label className="fw-bolder" htmlFor="emailInput">
                   Email
@@ -125,10 +127,10 @@ const Masuk = () => {
               >
                 Kirim
               </button>
-              <a href="/syncphonic-frontend//auth/password/email/reset">
+              {/* <a href="/syncphonic-frontend//auth/password/email/reset">
                 ini buat ke page reset pass (hapus aja klo udah bisa lewat
                 tombol yg atas)
-              </a>
+              </a> */}
             </form>
           </div>
         </main>

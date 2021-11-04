@@ -306,7 +306,7 @@ const User = () => {
                           ))
                         ) : (
                           <tr>
-                            <td className="table-column-text">
+                            <td colSpan="7" className="table-column-text text-center">
                               Tidak ada data
                             </td>
                           </tr>

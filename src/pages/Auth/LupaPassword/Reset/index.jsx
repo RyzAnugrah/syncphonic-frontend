@@ -6,9 +6,9 @@ import Swal from "sweetalert2";
 
 import { publicRequest } from "../../../../requestMethods";
 import {
-  registerStart,
-  registerFailure,
-  registerAccepted,
+  resetPasswordStart,
+  resetPasswordAccepted,
+  resetPasswordFailure,
 } from "../../../../redux/userRedux";
 
 import "./style.css";
@@ -36,21 +36,29 @@ const Daftar = () => {
     formState: { errors },
     handleSubmit,
     reset,
-    watch,
   } = useForm();
 
-  const user = useSelector((state) => state.user.currentUser);
-  const isFetching = useSelector((state) => state.user.isFetching);
+  const user = useSelector((state) => state.user && state.user.currentUser);
+  const isFetching = useSelector(
+    (state) => state.user && state.user.isFetching
+  );
   const dispatch = useDispatch();
   let history = useHistory();
 
-  const registered = async (dispatch, user) => {
-    dispatch(registerStart());
-    console.log(user);
+  const queryParams = new URLSearchParams(window.location.search);
+  const tokenPassword = queryParams.get("token");
+
+  const reseted = async (
+    dispatch,
+    { email, password, password_confirmation }
+  ) => {
+    dispatch(resetPasswordStart());
+    console.log({ email, password, password_confirmation });
     try {
-      const res = await publicRequest.post("/register", user);
-      // dispatch(registerSuccess(res.data));
-      dispatch(registerAccepted());
+      const res = await publicRequest.post(
+        `https://server-syncphonic.herokuapp.com/api/password/reset?token=${tokenPassword}&email=${email}&password=${password}&password_confirmation=${password_confirmation}`
+      );
+      dispatch(resetPasswordAccepted());
       console.log(res.data);
       Swal.fire({
         icon: "success",
@@ -65,7 +73,7 @@ const Daftar = () => {
         reset();
       });
     } catch (err) {
-      dispatch(registerFailure());
+      dispatch(resetPasswordFailure());
       console.log(err.message);
       Swal.fire({
         icon: "error",
@@ -78,21 +86,11 @@ const Daftar = () => {
     }
   };
 
-  const handleClickRegister = ({
-    name,
-    email,
-    password,
-    gender,
-    telp_number,
-    address,
-  }) => {
-    registered(dispatch, {
-      name,
+  const handleClickReset = ({ email, password, password_confirmation }) => {
+    reseted(dispatch, {
       email,
       password,
-      gender,
-      telp_number,
-      address,
+      password_confirmation,
     });
   };
 
@@ -108,6 +106,7 @@ const Daftar = () => {
 
   return (
     <div id="main-container">
+      {console.log(tokenPassword)}
       <section className="auth-sidebar">
         <main className="auth-form-sidebar">
           <div className="auth-sidebar-content">
@@ -127,12 +126,30 @@ const Daftar = () => {
             </Link>
             <h1 className="signup-title">Reset Password</h1>
             <p className="agreement">
-              Masukkan password baru anda di bawah, pastikan untuk selalu mengingat password baru anda.
+              Masukkan password baru anda di bawah, pastikan untuk selalu
+              mengingat password baru anda.
             </p>
-            <form
-              onSubmit={handleSubmit(handleClickRegister)}
-              disabled={isFetching}
-            >
+            <form onSubmit={handleSubmit(handleClickReset)}>
+              <div className="form-group mt-3">
+                <label className="fw-bolder" htmlFor="inputEmail">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="form-control form-control-signup"
+                  id="inputEmail"
+                  {...register("email", {
+                    required: true,
+                    pattern: /^\S+@\S+$/i,
+                  })}
+                />
+                {errors.email && errors.email.type === "required" && (
+                  <p className="error">Email wajib diisi</p>
+                )}
+                {errors.email && errors.email.type === "pattern" && (
+                  <p className="error">Email tidak valid</p>
+                )}
+              </div>
               <div className="form-group mt-3">
                 <label className="fw-bolder" htmlFor="inputPassword">
                   Password Baru &nbsp;
@@ -159,12 +176,12 @@ const Daftar = () => {
                   type={passwordConfirmShown ? "text" : "password"}
                   className="form-control form-control-signup"
                   id="inputPasswordConfirm"
-                  {...register("password_confirm", {
-                    validate: (value) => value === watch("password"),
+                  {...register("password_confirmation", {
+                    required: true,
                   })}
                 />
-                {errors.password_confirm &&
-                  errors.password_confirm.type === "validate" && (
+                {errors.password_confirmation &&
+                  errors.password_confirmation.type === "validate" && (
                     <p className="error">
                       Konfirmasi password baru wajib sama dengan password
                     </p>

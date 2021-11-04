@@ -147,7 +147,7 @@ const Masuk = () => {
                 )}
                 <Link
                   style={{ textDecoration: "none" }}
-                  to="/syncphonic-frontend//auth/password/lupa"
+                  to="/syncphonic-frontend/auth/password/lupa"
                 >
                   <span className="login-desc-text-login">Lupa password?</span>
                 </Link>

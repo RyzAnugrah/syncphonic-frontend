@@ -323,6 +323,7 @@ const Studio = () => {
   const handleLoadMoreBooking = () => {
     setCountBooking(
       studiosBooking &&
+        resultsBooking &&
         countBooking < resultsBooking.length &&
         countBooking + countPerPage
     );
@@ -658,7 +659,10 @@ const Studio = () => {
                           ))
                         ) : (
                           <tr>
-                            <td className="table-column-text">
+                            <td
+                              colSpan="8"
+                              className="table-column-text text-center"
+                            >
                               Tidak ada data
                             </td>
                           </tr>
@@ -670,9 +674,11 @@ const Studio = () => {
                     <div className="hint-text">
                       Menampilkan &nbsp;
                       <b>
-                        {countList && countList < resultsList.length
+                        {countList &&
+                        resultsList &&
+                        countList < resultsList.length
                           ? countList
-                          : resultsList.length}
+                          : resultsList && resultsList.length}
                       </b>
                       &nbsp; dari &nbsp;
                       <b>{resultsList && resultsList.length}</b>
@@ -778,7 +784,10 @@ const Studio = () => {
                             ))
                         ) : (
                           <tr>
-                            <td className="table-column-text">
+                            <td
+                              colSpan="8"
+                              className="table-column-text text-center"
+                            >
                               Tidak ada data
                             </td>
                           </tr>
@@ -790,22 +799,26 @@ const Studio = () => {
                     <div className="hint-text">
                       Menampilkan &nbsp;
                       <b>
-                        {countBooking && countBooking < resultsBooking.length
+                        {countBooking &&
+                        resultsBooking &&
+                        countBooking < resultsBooking.length
                           ? countBooking
-                          : resultsBooking.length}
+                          : resultsBooking && resultsBooking.length}
                       </b>
                       &nbsp; dari &nbsp;
                       <b>{resultsBooking && resultsBooking.length}</b>
                       &nbsp; data &nbsp;
-                      {resultsBooking && countBooking < resultsBooking.length && (
-                        <span
-                          className="px-3 handle-load-more"
-                          type="button"
-                          onClick={handleLoadMoreBooking}
-                        >
-                          Load more
-                        </span>
-                      )}
+                      {countBooking &&
+                        resultsBooking &&
+                        countBooking < resultsBooking.length && (
+                          <span
+                            className="px-3 handle-load-more"
+                            type="button"
+                            onClick={handleLoadMoreBooking}
+                          >
+                            Load more
+                          </span>
+                        )}
                     </div>
                   </div>
                 </div>

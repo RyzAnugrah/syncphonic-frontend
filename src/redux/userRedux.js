@@ -50,6 +50,26 @@ const userSlice = createSlice({
       state.isFetching = false;
       state.error = true;
     },
+    forgotPasswordStart: (state) => {
+      state.isFetching = true;
+    },
+    forgotPasswordAccepted: (state) => {
+      state.isFetching = false;
+    },
+    forgotPasswordFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
+    resetPasswordStart: (state) => {
+      state.isFetching = true;
+    },
+    resetPasswordAccepted: (state) => {
+      state.isFetching = false;
+    },
+    resetPasswordFailure: (state) => {
+      state.isFetching = false;
+      state.error = true;
+    },
   },
 });
 
@@ -66,5 +86,11 @@ export const {
   profilePutStart,
   profilePutAccepted,
   profilePutFailure,
+  forgotPasswordStart,
+  forgotPasswordAccepted,
+  forgotPasswordFailure,
+  resetPasswordStart,
+  resetPasswordAccepted,
+  resetPasswordFailure,
 } = userSlice.actions;
 export default userSlice.reducer;

@@ -222,7 +222,7 @@ const Profil = () => {
           <Navbar />
           <div className="dashboard-container">
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
-              <h1 className="h3 mb-0 dashboard-title">Edit Profil</h1>
+              <h1 className="h3 mb-0 dashboard-title">Profil</h1>
             </div>
             {spinner ? (
               <Spinner />

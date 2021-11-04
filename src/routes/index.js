@@ -21,13 +21,13 @@ const AppRoutes = [
   },
   {
     name: "lupa-password",
-    path: "/syncphonic-frontend//auth/password/lupa",
+    path: "/syncphonic-frontend/auth/password/lupa",
     component: lazy(() => import("../pages/Auth/LupaPassword/Lupa")),
     exact: true,
   },
   {
     name: "reset-password",
-    path: "/syncphonic-frontend//auth/password/email/reset",
+    path: "/syncphonic-frontend/auth/password/email/reset",
     component: lazy(() => import("../pages/Auth/LupaPassword/Reset")),
     exact: true,
   },
