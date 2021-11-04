@@ -53,6 +53,8 @@ const ProtectedAuth = ({ name, component: Component, ...rest }) => {
       render={() =>
         name !== "masuk" &&
         name !== "daftar" &&
+        name !== "lupa-password" &&
+        name !== "reset-password" &&
         name !== "dashboard-user" &&
         name !== "pesanan-user" &&
         name !== "edit-profil-user" &&

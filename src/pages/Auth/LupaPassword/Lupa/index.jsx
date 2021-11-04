@@ -4,27 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-import { publicRequest } from "../../../requestMethods";
+import { publicRequest } from "../../../../requestMethods";
 import {
   loginFailure,
   loginStart,
   loginSuccess,
-} from "../../../redux/userRedux";
+} from "../../../../redux/userRedux";
 
 import "./style.css";
-import imgLogoTab from "../../../logo-light.svg";
-import imgLogin from "../../../assets/images/masuk.png";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-const eye = <FontAwesomeIcon icon={faEye} />;
+import imgLogoTab from "../../../../logo-light.svg";
+import imgLogin from "../../../../assets/images/reset.png";
 
 const Masuk = () => {
-  const [passwordShown, setPasswordShown] = useState(false);
-  const togglePasswordVisiblity = () => {
-    setPasswordShown(passwordShown ? false : true);
-  };
-
   const {
     register,
     formState: { errors },
@@ -46,8 +37,8 @@ const Masuk = () => {
       // console.log(res.data);
       Swal.fire({
         icon: "success",
-        title: "Berhasil masuk akun!",
-        text: "Pergi ke dashboard",
+        title: "Berhasil!",
+        text: "Silakan cek email anda.",
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
@@ -61,8 +52,8 @@ const Masuk = () => {
       console.log(err.message);
       Swal.fire({
         icon: "error",
-        title: "Gagal masuk akun!",
-        text: "Email dan password tidak cocok",
+        title: "Gagal!",
+        text: "Masukkan email dengan benar.",
         confirmButtonColor: "#A6711F",
         confirmButtonText: "Coba lagi",
         timer: 3000,
@@ -70,14 +61,14 @@ const Masuk = () => {
     }
   };
 
-  const handleClickLogin = ({ email, password }) => {
-    login(dispatch, { email, password });
+  const handleClickLogin = ({ email }) => {
+    login(dispatch, { email });
   };
 
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        history.push("/syncphonic-frontend/dashboard");
+        history.push("/syncphonic-frontend//auth/password/email/reset");
       }, 1500);
     }
   }, [history, user]);
@@ -101,13 +92,10 @@ const Masuk = () => {
             <Link to="/syncphonic-frontend/">
               <img src={imgLogoTab} alt="logo" className="my-4 img-footer" />
             </Link>
-            <h1 className="login-title">Masuk</h1>
+            <h1 className="login-title">Lupa Password</h1>
             <p className="agreement">
-              Dengan melanjutkan, Anda menyetujui&nbsp;
-              <a href="/syncphonic-frontend/kebijakan">
-                Perjanjian Pengguna dan Kebijakan Privasi&nbsp;
-              </a>
-              kami.
+              Masukkan email anda di bawah untuk mendapatkan instruksi untuk
+              merubah password anda.
             </p>
             <form onSubmit={handleSubmit(handleClickLogin)}>
               <div className="form-group">
@@ -130,45 +118,18 @@ const Masuk = () => {
                   <p className="error">Email tidak valid</p>
                 )}
               </div>
-              <div className="form-group mt-4">
-                <label className="fw-bolder" htmlFor="passwordInput">
-                  Password &nbsp; <i onClick={togglePasswordVisiblity}>{eye}</i>
-                </label>
-                <input
-                  type={passwordShown ? "text" : "password"}
-                  className="form-control form-control-login mb-2"
-                  id="passwordInput"
-                  {...register("password", {
-                    required: true,
-                  })}
-                />
-                {errors.password && errors.password.type === "required" && (
-                  <p className="error">Password wajib diisi</p>
-                )}
-                <Link
-                  style={{ textDecoration: "none" }}
-                  to="/syncphonic-frontend//auth/password/lupa"
-                >
-                  <span className="login-desc-text-login">Lupa password?</span>
-                </Link>
-              </div>
               <button
                 type="submit"
                 className="btn btn-login py-2"
                 disabled={isFetching}
               >
-                Masuk
+                Kirim
               </button>
+              <a href="/syncphonic-frontend//auth/password/email/reset">
+                ini buat ke page reset pass (hapus aja klo udah bisa lewat
+                tombol yg atas)
+              </a>
             </form>
-            <p className="login-desc-text text-left mt-4">
-              Belum punya akun?
-              <Link
-                style={{ textDecoration: "none" }}
-                to="/syncphonic-frontend/daftar"
-              >
-                <span className="login-desc-text-login">&#00; Daftar</span>
-              </Link>
-            </p>
           </div>
         </main>
       </section>
