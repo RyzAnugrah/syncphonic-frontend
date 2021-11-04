@@ -7,6 +7,7 @@ const instrumentSlice = createSlice({
     detailInstrument: {},
     allBookingInstrument: {},
     bookingInstrument: {},
+    myBookingInstrument: {},
     isFetching: false,
     error: false,
   },
@@ -22,6 +23,9 @@ const instrumentSlice = createSlice({
     },
     instrumentBookingStart: (state, action) => {
       state.bookingInstrument = action.payload;
+    },
+    instrumentMyBookingStart: (state, action) => {
+      state.myBookingInstrument = action.payload;
     },
     instrumentPostStart: (state) => {
       state.isFetching = true;
@@ -51,6 +55,7 @@ export const {
   instrumentDetailStart,
   instrumentAllBookingStart,
   instrumentBookingStart,
+  instrumentMyBookingStart,
   instrumentPostStart,
   instrumentPostAccepted,
   instrumentPostFailure,

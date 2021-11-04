@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import jQuery from "jquery";
+import Swal from "sweetalert2";
+
+import { userRequest } from "../../../../requestMethods";
+import { studioMyBookingStart } from "../../../../redux/studioRedux";
+import { instrumentMyBookingStart } from "../../../../redux/instrumentRedux";
+import Spinner from "../../../../components/Spinner";
+
 import Sidebar from "../../../../components/Dashboard/User/Sidebar/index";
 import Navbar from "../../../../components/Dashboard/User/Navbar/index";
 import Footer from "../../../../components/Dashboard/User/Footer/index";
-import {
-  FaUserAlt,
-  FaTachometerAlt,
-  // FaTimes,
-} from "react-icons/fa";
+import { FaUserAlt, FaTachometerAlt } from "react-icons/fa";
 import { FcCancel } from "react-icons/fc";
 import "../style.css";
 
@@ -49,8 +53,205 @@ import "../style.css";
 })(jQuery);
 
 const Pesanan = () => {
+  const user = useSelector(
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
+  );
+  const myBookingStudiosList = useSelector(
+    (state) =>
+      state.studio &&
+      state.studio.myBookingStudio &&
+      state.studio.myBookingStudio.booking
+  );
+  const myBookingInstrumentsList = useSelector(
+    (state) =>
+      state.instrument &&
+      state.instrument.myBookingInstrument &&
+      state.instrument.myBookingInstrument.booking
+  );
+  const dispatch = useDispatch();
+
+  const countPerPage = 10;
+  const [spinner, setSpinner] = useState(true);
+  const [resultsBookingStudiosList, setResultsBookingStudiosList] =
+    useState(myBookingStudiosList);
+  const [countBookingStudiosList, setCountBookingStudiosList] =
+    useState(countPerPage);
+  const [bookingStudioListId, setBookingStudioListId] = useState();
+  const [resultsBookingInstrumentsList, setResultsBookingInstrumentsList] =
+    useState(myBookingInstrumentsList);
+  const [countBookingInstrumentsList, setCountBookingInstrumentsList] =
+    useState(countPerPage);
+  const [bookingInstrumentListId, setBookingInstrumentListId] = useState();
+
+  const getBookingStudioList = async (dispatch) => {
+    try {
+      const res = await userRequest.get(`/mystudio/${user.id}`);
+      dispatch(studioMyBookingStart(res.data));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleLoadMoreStudiosList = () => {
+    setCountBookingStudiosList(
+      myBookingStudiosList &&
+        resultsBookingStudiosList &&
+        countBookingStudiosList < resultsBookingStudiosList.length &&
+        countBookingStudiosList + countPerPage
+    );
+  };
+
+  const handleBookingStudioListConfirm = (bookingStudioIdList) => {
+    setBookingStudioListId(bookingStudioIdList);
+  };
+
+  const handleCancelBookingStudio = async (bookingStudioIdList) => {
+    // console.log(studioBooking);
+    try {
+      const res = await userRequest.put(
+        `/booking/studio/cancel/${bookingStudioIdList}`
+      );
+      console.log(res.data);
+      if (res.data && res.data.message !== null) {
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Berhasil membatalkan booking studio!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          getBookingStudioList(dispatch);
+          setResultsBookingStudiosList(
+            myBookingStudiosList && myBookingStudiosList
+          );
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
+        });
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Gagal!",
+          text: "Gagal membatalkan booking studio!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (err) {
+      console.log(err.message);
+      Swal.fire({
+        icon: "warning",
+        title: "Gagal...",
+        text: "Gagal membatalkan booking studio!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
+  const getBookingInstrumentList = async (dispatch) => {
+    try {
+      const res = await userRequest.get(`/myinstrument/${user.id}`);
+      dispatch(instrumentMyBookingStart(res.data));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  const handleLoadMoreInstrumentsList = () => {
+    setCountBookingInstrumentsList(
+      myBookingInstrumentsList &&
+        resultsBookingInstrumentsList &&
+        countBookingInstrumentsList < resultsBookingInstrumentsList.length &&
+        countBookingInstrumentsList + countPerPage
+    );
+  };
+
+  const handleBookingInstrumentListConfirm = (bookingInstrumentIdList) => {
+    setBookingInstrumentListId(bookingInstrumentIdList);
+  };
+
+  const handleCancelBookingInstrument = async (bookingInstrumentIdList) => {
+    // console.log(instrumentBooking);
+    try {
+      const res = await userRequest.put(
+        `/booking/instrument/cancel/${bookingInstrumentIdList}`
+      );
+      console.log(res.data);
+      if (res.data && res.data.message !== null) {
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Berhasil membatalkan booking instrument!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          getBookingInstrumentList(dispatch);
+          setResultsBookingInstrumentsList(
+            myBookingInstrumentsList && myBookingInstrumentsList
+          );
+          setSpinner(true);
+          setTimeout(() => setSpinner(false), 1000);
+        });
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Gagal!",
+          text: "Gagal membatalkan booking instrument!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (err) {
+      console.log(err.message);
+      Swal.fire({
+        icon: "warning",
+        title: "Gagal...",
+        text: "Gagal membatalkan booking instrument!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
+  useEffect(() => {
+    const getBookingStudioListFirst = async (dispatch) => {
+      try {
+        const res = await userRequest.get(`/mystudio/${user.id}`);
+        dispatch(studioMyBookingStart(res.data));
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getBookingStudioListFirst(dispatch);
+
+    const getBookingInstrumentListFirst = async (dispatch) => {
+      try {
+        const res = await userRequest.get(`/myinstrument/${user.id}`);
+        dispatch(instrumentMyBookingStart(res.data));
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getBookingInstrumentListFirst(dispatch);
+  }, [dispatch, user]);
+
+  useEffect(() => {
+    setResultsBookingStudiosList(myBookingStudiosList && myBookingStudiosList);
+    setResultsBookingInstrumentsList(
+      myBookingInstrumentsList && myBookingInstrumentsList
+    );
+  }, [myBookingStudiosList, myBookingInstrumentsList]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setTimeout(() => setSpinner(false), 1000);
+  }, []);
+
   return (
     <div id="wrapper">
+      {console.log(resultsBookingStudiosList)}
+      {console.log(resultsBookingInstrumentsList)}
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
@@ -115,41 +316,114 @@ const Pesanan = () => {
                       </div>
                     </div>
                   </div>
-                  <table className="table table-striped table-hover">
-                    <thead>
-                      <tr>
-                        <th className="table-column-text">Nama</th>
-                        <th className="table-column-text">Kapasitas</th>
-                        <th className="table-column-text">Harga</th>
-                        <th className="table-column-text">Ketersediaan</th>
-                        <th className="table-column-text">Status Pesanan</th>
-                        <th className="table-column-text">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="table-column-text">Studio Jazz</td>
-                        <td className="table-column-text">20</td>
-                        <td className="table-column-text">700000</td>
-                        <td className="table-column-text">Rabu</td>
-                        <td className="table-column-text">Pending</td>
-                        <td>
-                          <a
-                            href="#cancelStudioModal"
-                            className="delete"
-                            data-toggle="modal"
-                          >
-                            <i data-toggle="tooltip" title="Batal">
-                              <FcCancel />
-                            </i>
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  {spinner ? (
+                    <Spinner />
+                  ) : (
+                    <table className="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th className="table-column-text">Nama</th>
+                          <th className="table-column-text">Email</th>
+                          <th className="table-column-text">Nama Studio</th>
+                          <th className="table-column-text">Harga Studio</th>
+                          <th className="table-column-text">Tanggal</th>
+                          <th className="table-column-text">Durasi</th>
+                          <th className="table-column-text">Total</th>
+                          <th className="table-column-text">Status Pesanan</th>
+                          <th className="table-column-text">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {resultsBookingStudiosList &&
+                        resultsBookingStudiosList.length !== 0 ? (
+                          resultsBookingStudiosList
+                            .slice(0, countBookingStudiosList)
+                            .map((bookingStudioList) => (
+                              <tr key={bookingStudioList.id}>
+                                <td className="table-column-text">
+                                  {bookingStudioList.name}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingStudioList.email}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingStudioList.studio_name}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingStudioList.studio_price}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingStudioList.date}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingStudioList.duration}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingStudioList.total}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingStudioList.status_booking}
+                                </td>
+                                <td>
+                                  <a
+                                    href="#cancelStudioModal"
+                                    className="delete"
+                                    data-toggle="modal"
+                                    onClick={() =>
+                                      handleBookingStudioListConfirm(
+                                        bookingStudioList.id
+                                      )
+                                    }
+                                  >
+                                    <i data-toggle="tooltip" title="Batal">
+                                      <FcCancel />
+                                    </i>
+                                  </a>
+                                </td>
+                              </tr>
+                            ))
+                        ) : (
+                          <tr>
+                            <td
+                              colSpan="9"
+                              className="table-column-text text-center"
+                            >
+                              Tidak ada data
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  )}
                   <div className="clearfix">
                     <div className="hint-text">
-                      Menampilkan <b>1</b> dari <b>1</b> data
+                      Menampilkan &nbsp;
+                      <b>
+                        {countBookingStudiosList &&
+                        resultsBookingStudiosList &&
+                        countBookingStudiosList <
+                          resultsBookingStudiosList.length
+                          ? countBookingStudiosList
+                          : resultsBookingStudiosList &&
+                            resultsBookingStudiosList.length}
+                      </b>
+                      &nbsp; dari &nbsp;
+                      <b>
+                        {resultsBookingStudiosList &&
+                          resultsBookingStudiosList.length}
+                      </b>
+                      &nbsp; data &nbsp;
+                      {resultsBookingStudiosList &&
+                        countBookingStudiosList <
+                          resultsBookingStudiosList.length && (
+                          <span
+                            className="px-3 handle-load-more"
+                            type="button"
+                            onClick={handleLoadMoreStudiosList}
+                          >
+                            Load more
+                          </span>
+                        )}
                     </div>
                   </div>
                 </div>
@@ -167,41 +441,116 @@ const Pesanan = () => {
                       </div>
                     </div>
                   </div>
-                  <table className="table table-striped table-hover">
-                    <thead>
-                      <tr>
-                        <th className="table-column-text">Nama</th>
-                        <th className="table-column-text">Kategori</th>
-                        <th className="table-column-text">Harga</th>
-                        <th className="table-column-text">Jumlah</th>
-                        <th className="table-column-text">Status Pesanan</th>
-                        <th className="table-column-text">Aksi</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="table-column-text">Keyboardz</td>
-                        <td className="table-column-text">Elektrik</td>
-                        <td className="table-column-text">200000</td>
-                        <td className="table-column-text">0</td>
-                        <td className="table-column-text">pending</td>
-                        <td>
-                          <a
-                            href="#cancelStudioModal"
-                            className="delete"
-                            data-toggle="modal"
-                          >
-                            <i data-toggle="tooltip" title="Batal">
-                              <FcCancel />
-                            </i>
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  {spinner ? (
+                    <Spinner />
+                  ) : (
+                    <table className="table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th className="table-column-text">Nama</th>
+                          <th className="table-column-text">Email</th>
+                          <th className="table-column-text">Nama Instrument</th>
+                          <th className="table-column-text">
+                            Harga Instrument
+                          </th>
+                          <th className="table-column-text">Tanggal</th>
+                          <th className="table-column-text">Durasi</th>
+                          <th className="table-column-text">Total</th>
+                          <th className="table-column-text">Status Pesanan</th>
+                          <th className="table-column-text">Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {resultsBookingInstrumentsList &&
+                        resultsBookingInstrumentsList.length !== 0 ? (
+                          resultsBookingInstrumentsList
+                            .slice(0, countBookingInstrumentsList)
+                            .map((bookingInstrumentList) => (
+                              <tr key={bookingInstrumentList.id}>
+                                <td className="table-column-text">
+                                  {bookingInstrumentList.name}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingInstrumentList.email}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingInstrumentList.instrument_name}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingInstrumentList.instrument_price}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingInstrumentList.date}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingInstrumentList.duration}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingInstrumentList.total}
+                                </td>
+                                <td className="table-column-text">
+                                  {bookingInstrumentList.status_booking}
+                                </td>
+                                <td>
+                                  <a
+                                    href="#cancelInstrumentModal"
+                                    className="delete"
+                                    data-toggle="modal"
+                                    onClick={() =>
+                                      handleBookingInstrumentListConfirm(
+                                        bookingInstrumentList.id
+                                      )
+                                    }
+                                  >
+                                    <i data-toggle="tooltip" title="Batal">
+                                      <FcCancel />
+                                    </i>
+                                  </a>
+                                </td>
+                              </tr>
+                            ))
+                        ) : (
+                          <tr>
+                            <td
+                              colSpan="9"
+                              className="table-column-text text-center"
+                            >
+                              Tidak ada data
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  )}
                   <div className="clearfix">
                     <div className="hint-text">
-                      Menampilkan <b>1</b> dari <b>1</b> data
+                      Menampilkan &nbsp;
+                      <b>
+                        {countBookingInstrumentsList &&
+                        resultsBookingInstrumentsList &&
+                        countBookingInstrumentsList <
+                          resultsBookingInstrumentsList.length
+                          ? countBookingInstrumentsList
+                          : resultsBookingInstrumentsList &&
+                            resultsBookingInstrumentsList.length}
+                      </b>
+                      &nbsp; dari &nbsp;
+                      <b>
+                        {resultsBookingInstrumentsList &&
+                          resultsBookingInstrumentsList.length}
+                      </b>
+                      &nbsp; data &nbsp;
+                      {resultsBookingInstrumentsList &&
+                        countBookingInstrumentsList <
+                          resultsBookingInstrumentsList.length && (
+                          <span
+                            className="px-3 handle-load-more"
+                            type="button"
+                            onClick={handleLoadMoreInstrumentsList}
+                          >
+                            Load more
+                          </span>
+                        )}
                     </div>
                   </div>
                 </div>
@@ -213,12 +562,12 @@ const Pesanan = () => {
               <div className="modal-content">
                 <form>
                   <div className="modal-header">
-                    <h4 className="modal-title">Batalkan Pesanan</h4>
+                    <h4 className="modal-title">Batalkan Pesanan Studio</h4>
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
@@ -233,36 +582,40 @@ const Pesanan = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"
                       className="btn btn-modal-add"
-                      value="Hapus"
+                      value="Yakin"
+                      data-dismiss="modal"
+                      onClick={() =>
+                        handleCancelBookingStudio(bookingStudioListId)
+                      }
                     />
                   </div>
                 </form>
               </div>
             </div>
           </div>
-          <div id="deleteBookingModal" className="modal fade">
+          <div id="cancelInstrumentModal" className="modal fade">
             <div className="modal-dialog mx-auto align-items-center">
               <div className="modal-content">
                 <form>
                   <div className="modal-header">
-                    <h4 className="modal-title">Hapus Pesanan</h4>
+                    <h4 className="modal-title">Batalkan Pesanan Instrument</h4>
                     <button
                       type="button"
                       className="close"
-                      data-dismiss="modal"
                       aria-hidden="true"
+                      data-dismiss="modal"
                     >
                       &times;
                     </button>
                   </div>
                   <div className="modal-body">
-                    <p>Apakah Anda yakin ingin menghapus pesanan ini?</p>
+                    <p>Apakah Anda yakin ingin membatalkan pesanan ini?</p>
                     <p className="text-warning">
                       <small>Tindakan ini tidak bisa dibatalkan.</small>
                     </p>
@@ -271,13 +624,17 @@ const Pesanan = () => {
                     <input
                       type="button"
                       className="btn btn-cancel"
-                      data-dismiss="modal"
                       value="Batal"
+                      data-dismiss="modal"
                     />
                     <input
                       type="submit"
                       className="btn btn-modal-add"
-                      value="Hapus"
+                      value="Yakin"
+                      data-dismiss="modal"
+                      onClick={() =>
+                        handleCancelBookingInstrument(bookingInstrumentListId)
+                      }
                     />
                   </div>
                 </form>

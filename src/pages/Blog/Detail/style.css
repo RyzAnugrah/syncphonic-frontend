@@ -50,6 +50,8 @@
 .blog-detail-img-banner {
   width: 100%;
   border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .blog-detail-text-desc {
@@ -88,7 +90,7 @@
   color: #FFF;
   box-shadow: inset 0 1px 1px #4B4747,
     0 0 8px #4B4747;
-    cursor: auto;
+  cursor: auto;
 }
 
 .blog-detail-text-list {
@@ -114,6 +116,6 @@
 
 @media only screen and (max-width: 768px) {
   .blog-detail-text-title {
-  font-size: 18px;
-}
+    font-size: 18px;
+  }
 }

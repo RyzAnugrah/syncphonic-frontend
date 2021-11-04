@@ -127,7 +127,7 @@ const Blog = () => {
 
   const handleLoadMoreList = () => {
     setCountList(
-      blogsList && countList < resultsList.length && countList + countPerPage
+      blogsList && resultsList && countList < resultsList.length && countList + countPerPage
     );
   };
 
@@ -690,7 +690,7 @@ const Blog = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateBlogTitle"
-                        value={blogTitleUpdate}
+                        value={blogTitleUpdate || ""}
                         onChange={(e) => setBlogTitleUpdate(e.target.value)}
                       />
                     </div>
@@ -701,7 +701,7 @@ const Blog = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateBlogCategory"
-                        value={blogCategoryUpdate}
+                        value={blogCategoryUpdate || ""}
                         onChange={(e) => setBlogCategoryUpdate(e.target.value)}
                       />
                     </div>
@@ -714,7 +714,7 @@ const Blog = () => {
                         className="form-control form-control-dashboard"
                         id="updateImg"
                         required
-                        value={blogImgUpdate}
+                        value={blogImgUpdate || ""}
                         onChange={(e) => setBlogImgUpdate(e.target.value)}
                       />
                     </div>
@@ -725,7 +725,7 @@ const Blog = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateBlogDate"
-                        value={blogDateUpdate}
+                        value={blogDateUpdate || ""}
                         onChange={(e) => setBlogDateUpdate(e.target.value)}
                       />
                     </div>
@@ -735,7 +735,7 @@ const Blog = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateBlogContent"
-                        value={blogContentUpdate}
+                        value={blogContentUpdate || ""}
                         onChange={(e) => setBlogContentUpdate(e.target.value)}
                       />
                     </div>

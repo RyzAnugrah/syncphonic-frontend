@@ -7,6 +7,7 @@ const studioSlice = createSlice({
     detailStudio: {},
     allBookingStudio: {},
     bookingStudio: {},
+    myBookingStudio: {},
     isFetching: false,
     error: false,
   },
@@ -22,6 +23,9 @@ const studioSlice = createSlice({
     },
     studioBookingStart: (state, action) => {
       state.bookingStudio = action.payload;
+    },
+    studioMyBookingStart: (state, action) => {
+      state.myBookingStudio = action.payload;
     },
     studioPostStart: (state) => {
       state.isFetching = true;
@@ -51,6 +55,7 @@ export const {
   studioDetailStart,
   studioAllBookingStart,
   studioBookingStart,
+  studioMyBookingStart,
   studioPostStart,
   studioPostAccepted,
   studioPostFailure,

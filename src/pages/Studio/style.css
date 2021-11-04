@@ -85,6 +85,7 @@
   background-color: #4B4747;
   color: #FFF;
   border-radius: 8px;
+  height: 100%;
 }
 
 .studio-card-title {
@@ -133,6 +134,7 @@
 
 .studio-card-img {
   width: 100%;
+  height: 12em;
   border-radius: 20px;
 }
 

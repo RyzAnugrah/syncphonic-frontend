@@ -148,7 +148,10 @@ const Studio = () => {
 
   const handleLoadMoreList = () => {
     setCountList(
-      studiosList && countList < resultsList.length && countList + countPerPage
+      studiosList &&
+        resultsList &&
+        countList < resultsList.length &&
+        countList + countPerPage
     );
   };
 
@@ -937,14 +940,18 @@ const Studio = () => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputStudioStatus">Status</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
+                      <select
+                        className="form-select form-control-dashboard"
                         id="inputStudioStatus"
                         {...register("studio_status", {
                           required: true,
                         })}
-                      />
+                      >
+                        <option defaultChecked value="Buka">
+                          Buka
+                        </option>
+                        <option value="Tutup">Tutup</option>
+                      </select>
                       {errors.studio_status &&
                         errors.studio_status.type === "required" && (
                           <p className="error">Status wajib diisi</p>
@@ -1048,7 +1055,7 @@ const Studio = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateStudioName"
-                        value={studioNameUpdate}
+                        value={studioNameUpdate || ""}
                         onChange={(e) => setStudioNameUpdate(e.target.value)}
                       />
                     </div>
@@ -1059,7 +1066,7 @@ const Studio = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateStudioCapacity"
-                        value={studioCapacityUpdate}
+                        value={studioCapacityUpdate || ""}
                         onChange={(e) =>
                           setStudioCapacityUpdate(e.target.value)
                         }
@@ -1072,7 +1079,7 @@ const Studio = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateStudioPrice"
-                        value={studioPriceUpdate}
+                        value={studioPriceUpdate || ""}
                         onChange={(e) => setStudioPriceUpdate(e.target.value)}
                       />
                     </div>
@@ -1085,7 +1092,7 @@ const Studio = () => {
                         className="form-control form-control-dashboard"
                         id="updateImg"
                         required
-                        value={studioImgUpdate}
+                        value={studioImgUpdate || ""}
                         onChange={(e) => setStudioImgUpdate(e.target.value)}
                       />
                     </div>
@@ -1098,7 +1105,7 @@ const Studio = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateStudioAvailableDay"
-                        value={studioAvailableDayUpdate}
+                        value={studioAvailableDayUpdate || ""}
                         onChange={(e) =>
                           setStudioAvailableDayUpdate(e.target.value)
                         }
@@ -1106,14 +1113,15 @@ const Studio = () => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="updateStudioStatus">Status</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
-                        required
+                      <select
+                        className="form-select form-control-dashboard"
                         id="updateStudioStatus"
-                        value={studioStatusUpdate}
+                        value={studioStatusUpdate || ""}
                         onChange={(e) => setStudioStatusUpdate(e.target.value)}
-                      />
+                      >
+                        <option value="Buka">Buka</option>
+                        <option value="Tutup">Tutup</option>
+                      </select>
                     </div>
                     <div className="form-group">
                       <label htmlFor="updateStudioDesc">Deskripsi</label>
@@ -1121,7 +1129,7 @@ const Studio = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateStudioDesc"
-                        value={studioDescUpdate}
+                        value={studioDescUpdate || ""}
                         onChange={(e) => setStudioDescUpdate(e.target.value)}
                       />
                     </div>
@@ -1136,7 +1144,7 @@ const Studio = () => {
                     <input
                       type="submit"
                       className="btn btn-modal-add"
-                      value="Edit"
+                      value="Kirim"
                       disabled={isFetching}
                     />
                   </div>

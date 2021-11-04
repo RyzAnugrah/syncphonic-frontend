@@ -54,12 +54,14 @@ const Checkout = () => {
         icon: "success",
         title: "Yes...",
         text: "Berhasil booking studio!",
-        confirmButtonColor: "#A6711F",
-        confirmButtonText: "Ke home",
+        showConfirmButton: false,
         timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          reset();
+          history.push("/syncphonic-frontend/dashboard/pesanan");
+        }, 100);
       });
-      reset();
-      history.push("/syncphonic-frontend");
     } catch (err) {
       console.log(err.message);
       Swal.fire({
@@ -82,6 +84,7 @@ const Checkout = () => {
     studio_id = studio.id,
     user_id = user.id,
     total = studio.studio_price * durationSelector,
+    email = user.email,
   }) => {
     booked(dispatch, {
       name,
@@ -92,6 +95,7 @@ const Checkout = () => {
       studio_id,
       user_id,
       total,
+      email,
     });
   };
 
@@ -153,6 +157,16 @@ const Checkout = () => {
                     id="inputNamaLengkap"
                     disabled
                     value={(user && user.name) || ""}
+                  />
+                </div>
+                <div className="form-group mt-3">
+                  <label htmlFor="inputEmail">Email</label>
+                  <input
+                    type="text"
+                    className="form-control form-control-checkout"
+                    id="inputEmail"
+                    disabled
+                    value={(user && user.email) || ""}
                   />
                 </div>
                 <div className="form-group mt-3">

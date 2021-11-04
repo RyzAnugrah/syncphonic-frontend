@@ -24,6 +24,7 @@ import "../style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import profilePicture from "../../../../assets/images/undraw_profile.svg";
+import { IoReloadCircle } from "react-icons/io5";
 
 (function ($) {
   $(function () {
@@ -185,11 +186,17 @@ const Profil = () => {
     });
   };
 
+  const handleReloadPage = () => {
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
+  };
+
   useEffect(() => {
     if (!user) {
       history.push("/syncphonic-frontend");
     }
-    if (user && user.name === "admin") {
+    if (user && user.name !== "admin") {
       history.push("/syncphonic-frontend/dashboard");
     }
   }, [history, user]);
@@ -226,6 +233,10 @@ const Profil = () => {
           <div className="dashboard-container">
             <div className="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 className="h3 mb-0 dashboard-title">Profil</h1>
+              <IoReloadCircle
+                className="icon-reload"
+                onClick={handleReloadPage}
+              />
             </div>
             {spinner ? (
               <Spinner />
@@ -234,22 +245,18 @@ const Profil = () => {
                 <div className="col-md-4 mb-4">
                   <div className="container">
                     <div className="picture-container">
-                      <div className="picture">
-                        <img
-                          src={
-                            resultDetailUser &&
-                            resultDetailUser.photo_profile &&
-                            resultDetailUser.photo_profile.includes("http")
-                              ? resultDetailUser.photo_profile.replace('"', "")
-                              : profilePicture
-                          }
-                          alt="profile"
-                          className="picture-src"
-                          id="wizardPicturePreview"
-                        />
-                        {/* <input type="file" id="wizard-picture" className="" /> */}
-                      </div>
-                      {/* <button className="btn-picture">Ubah Foto Profil</button> */}
+                      <img
+                        src={
+                          resultDetailUser &&
+                          resultDetailUser.photo_profile &&
+                          resultDetailUser.photo_profile.includes("http")
+                            ? resultDetailUser.photo_profile.replace('"', "")
+                            : profilePicture
+                        }
+                        alt="profile"
+                        className="picture-src"
+                        id="wizardPicturePreview"
+                      />
                     </div>
                   </div>
                 </div>

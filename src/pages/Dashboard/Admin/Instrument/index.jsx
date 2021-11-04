@@ -150,6 +150,7 @@ const Instrument = () => {
   const handleLoadMoreList = () => {
     setCountList(
       instrumentsList &&
+        resultsList &&
         countList < resultsList.length &&
         countList + countPerPage
     );
@@ -683,7 +684,10 @@ const Instrument = () => {
                             ))
                         ) : (
                           <tr>
-                            <td colSpan="8" className="table-column-text text-center">
+                            <td
+                              colSpan="8"
+                              className="table-column-text text-center"
+                            >
                               Tidak ada data
                             </td>
                           </tr>
@@ -811,7 +815,10 @@ const Instrument = () => {
                             ))
                         ) : (
                           <tr>
-                            <td colSpan="9" className="table-column-text text-center">
+                            <td
+                              colSpan="9"
+                              className="table-column-text text-center"
+                            >
                               Tidak ada data
                             </td>
                           </tr>
@@ -964,14 +971,18 @@ const Instrument = () => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputInstrumentStatus">Status</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
+                      <select
+                        className="form-select form-control-dashboard"
                         id="inputInstrumentStatus"
                         {...register("instrument_status", {
                           required: true,
                         })}
-                      />
+                      >
+                        <option defaultChecked value="Tersedia">
+                          Tersedia
+                        </option>
+                        <option value="Kosong">Kosong</option>
+                      </select>
                       {errors.instrument_status &&
                         errors.instrument_status.type === "required" && (
                           <p className="error">Status wajib diisi</p>
@@ -1077,7 +1088,7 @@ const Instrument = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateInstrumentName"
-                        value={instrumentNameUpdate}
+                        value={instrumentNameUpdate || ""}
                         onChange={(e) =>
                           setInstrumentNameUpdate(e.target.value)
                         }
@@ -1089,7 +1100,7 @@ const Instrument = () => {
                         type="number"
                         className="form-control form-control-dashboard"
                         required
-                        value={instrumentCountUpdate}
+                        value={instrumentCountUpdate || ""}
                         onChange={(e) =>
                           setInstrumentCountUpdate(e.target.value)
                         }
@@ -1101,7 +1112,7 @@ const Instrument = () => {
                         type="number"
                         className="form-control form-control-dashboard"
                         required
-                        value={instrumentPriceUpdate}
+                        value={instrumentPriceUpdate || ""}
                         onChange={(e) =>
                           setInstrumentPriceUpdate(e.target.value)
                         }
@@ -1116,7 +1127,7 @@ const Instrument = () => {
                         className="form-control form-control-dashboard"
                         id="updateImg"
                         required
-                        value={instrumentImgUpdate}
+                        value={instrumentImgUpdate || ""}
                         onChange={(e) => setInstrumentImgUpdate(e.target.value)}
                       />
                     </div>
@@ -1126,30 +1137,32 @@ const Instrument = () => {
                         type="text"
                         className="form-control form-control-dashboard"
                         required
-                        value={instrumentBrandUpdate}
+                        value={instrumentBrandUpdate || ""}
                         onChange={(e) =>
                           setInstrumentBrandUpdate(e.target.value)
                         }
                       />
                     </div>
                     <div className="form-group">
-                      <label>Status</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
-                        required
-                        value={instrumentStatusUpdate}
+                      <label htmlFor="updateStatus">Status</label>
+                      <select
+                        className="form-select form-control-dashboard"
+                        id="updateStatus"
+                        value={instrumentStatusUpdate || ""}
                         onChange={(e) =>
                           setInstrumentStatusUpdate(e.target.value)
                         }
-                      />
+                      >
+                        <option value="Tersedia">Tersedia</option>
+                        <option value="Kosong">Kosong</option>
+                      </select>
                     </div>
                     <div className="form-group">
                       <label>Deskripsi</label>
                       <textarea
                         className="form-control form-control-dashboard"
                         required
-                        value={instrumentDescUpdate}
+                        value={instrumentDescUpdate || ""}
                         onChange={(e) =>
                           setInstrumentDescUpdate(e.target.value)
                         }
@@ -1166,7 +1179,7 @@ const Instrument = () => {
                     <input
                       type="submit"
                       className="btn btn-modal-add"
-                      value="Edit"
+                      value="Kirim"
                       disabled={isFetching}
                     />
                   </div>

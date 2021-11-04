@@ -8,7 +8,7 @@ import Spinner from "../../components/Spinner";
 
 import "./style.css";
 import { FcClearFilters } from "react-icons/fc";
-// import imgBlogBanner from "../../assets/images/blog-banner.png";
+import imgBlogBanner from "../../assets/images/blog-banner.png";
 // import imgStudioBanner from "../../assets/images/studio-banner.png";
 // import imgAlatBanner from "../../assets/images/alat-banner.png";
 // import imgStudioCard1 from "../../assets/images/studio-card-1.png";
@@ -122,7 +122,11 @@ const Blog = () => {
               </div>
               <div className="col-md-5">
                 <img
-                  src={results && results[0] && results[0].image}
+                  src={
+                    results && results[0] && results[0].image
+                      ? results[0].image
+                      : imgBlogBanner
+                  }
                   alt="card"
                   className="img-fluid blog-banner-img"
                 />

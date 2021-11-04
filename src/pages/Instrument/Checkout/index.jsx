@@ -54,12 +54,14 @@ const Checkout = () => {
         icon: "success",
         title: "Yes...",
         text: "Berhasil sewa instrument!",
-        confirmButtonColor: "#A6711F",
-        confirmButtonText: "Ke home",
+        showConfirmButton: false,
         timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          reset();
+          history.push("/syncphonic-frontend/dashboard/pesanan");
+        }, 100);
       });
-      reset();
-      history.push("/syncphonic-frontend");
     } catch (err) {
       console.log(err.message);
       Swal.fire({
@@ -158,7 +160,7 @@ const Checkout = () => {
                     value={(user && user.name) || ""}
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group mt-3">
                   <label htmlFor="inputEmail">Email</label>
                   <input
                     type="text"

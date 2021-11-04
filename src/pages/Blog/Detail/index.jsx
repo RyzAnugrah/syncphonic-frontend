@@ -69,7 +69,7 @@ const Detail = () => {
               <div className="row">
                 <div className="col-md-12 px-0">
                   <p className="blog-detail-text-title margin-up">
-                    {blog.category}
+                    {blog && blog.category}
                   </p>
                 </div>
               </div>

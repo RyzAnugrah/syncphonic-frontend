@@ -291,7 +291,7 @@ const Instrument = () => {
                         </div>
                         <div className="col-5 text-end">
                           <p className="instrument-card-capacity">
-                            {`Tersisa ${instrument.instrument_count}`}
+                            {instrument.instrument_brand}
                           </p>
                         </div>
                       </div>
