@@ -138,7 +138,7 @@ const Checkout = () => {
     <div>
       <div className="container-fluid bg-color-checkout py-2">
         <div className="container py-4">
-          <div className="row bg-color-checkout-row p-2">
+          <div className="row bg-color-checkout-row p-3">
             <div className="col-md-6">
               <img
                 src={imgStudioCheckoutBanner}
