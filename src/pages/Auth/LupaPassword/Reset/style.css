@@ -177,11 +177,6 @@
   color: #bf1650;
 }
 
-.error::before {
-  display: inline;
-  content: "⚠ ";
-}
-
 .signup-desc-text-signup {
   color: #A6711F;
   font-size: 14.22px;
