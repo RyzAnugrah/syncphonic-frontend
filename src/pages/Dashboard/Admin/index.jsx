@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import jQuery from "jquery";
 import Swal from "sweetalert2";
 
+import { publicRequest } from "../../../requestMethods";
+
 import Spinner from "../../../components/Spinner";
 import Sidebar from "../../../components/Dashboard/Admin/Sidebar/index";
 import Navbar from "../../../components/Dashboard/Admin/Navbar/index";
@@ -58,6 +60,53 @@ const Dashboard = () => {
 
   let history = useHistory();
 
+  const [totalUser, setTotalUser] = useState(true);
+  const [totalStudio, setTotalStudio] = useState(true);
+  const [totalInstrument, setTotalInstrument] = useState(true);
+  const [totalBlog, setTotalBlog] = useState(true);
+
+  useEffect(() => {
+    const getTotalUser = async () => {
+      try {
+        const res = await publicRequest.get("/total/user");
+        setTotalUser(res.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getTotalUser();
+
+    const getTotalStudio = async () => {
+      try {
+        const res = await publicRequest.get("/total/studio");
+        setTotalStudio(res.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getTotalStudio();
+
+    const getTotalInstrument = async () => {
+      try {
+        const res = await publicRequest.get("/total/instrument");
+        setTotalInstrument(res.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getTotalInstrument();
+
+    const getTotalBlog = async () => {
+      try {
+        const res = await publicRequest.get("/total/blog");
+        setTotalBlog(res.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getTotalBlog();
+  }, []);
+
   useEffect(() => {
     if (!user) {
       Swal.fire({
@@ -95,6 +144,7 @@ const Dashboard = () => {
 
   return (
     <div id="wrapper">
+      {/* {console.log(totalUser)} */}
       <Sidebar />
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
@@ -192,6 +242,106 @@ const Dashboard = () => {
                         to="/syncphonic-frontend/dashboard/admin/user"
                         className="stretched-link"
                       />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xl-6 col-md-6 mb-4">
+                  <div className="card border-left-card shadow h-100 py-2">
+                    <div className="card-body">
+                      <div className="row no-gutters my-auto h-100">
+                        <div className="col mr-2 align-items-center my-auto">
+                          <div className="row">
+                            <div className="col-md-12">
+                              <div className="text-md font-weight-bold text-uppercase card-dashboard-title text-center">
+                                Jumlah User
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row mt-4">
+                            <div className="col-md-12">
+                              <div className="text-md font-weight-bold text-uppercase card-dashboard-title text-center">
+                                {totalUser && totalUser.Total}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <Link to="#" className="stretched-link pointer-default" />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xl-6 col-md-6 mb-4">
+                  <div className="card border-left-card shadow h-100 py-2">
+                    <div className="card-body">
+                      <div className="row no-gutters my-auto h-100">
+                        <div className="col mr-2 align-items-center my-auto">
+                          <div className="row">
+                            <div className="col-md-12">
+                              <div className="text-md font-weight-bold text-uppercase card-dashboard-title text-center">
+                                Jumlah Studio
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row mt-4">
+                            <div className="col-md-12">
+                              <div className="text-md font-weight-bold text-uppercase card-dashboard-title text-center">
+                                {totalStudio && totalStudio.Total}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <Link to="#" className="stretched-link pointer-default" />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xl-6 col-md-6 mb-4">
+                  <div className="card border-left-card shadow h-100 py-2">
+                    <div className="card-body">
+                      <div className="row no-gutters my-auto h-100">
+                        <div className="col mr-2 align-items-center my-auto">
+                          <div className="row">
+                            <div className="col-md-12">
+                              <div className="text-md font-weight-bold text-uppercase card-dashboard-title text-center">
+                                Jumlah Instrument
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row mt-4">
+                            <div className="col-md-12">
+                              <div className="text-md font-weight-bold text-uppercase card-dashboard-title text-center">
+                                {totalInstrument && totalInstrument.Total}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <Link to="#" className="stretched-link pointer-default" />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-xl-6 col-md-6 mb-4">
+                  <div className="card border-left-card shadow h-100 py-2">
+                    <div className="card-body">
+                      <div className="row no-gutters my-auto h-100">
+                        <div className="col mr-2 align-items-center my-auto">
+                          <div className="row">
+                            <div className="col-md-12">
+                              <div className="text-md font-weight-bold text-uppercase card-dashboard-title text-center">
+                                Jumlah Blog
+                              </div>
+                            </div>
+                          </div>
+                          <div className="row mt-4">
+                            <div className="col-md-12">
+                              <div className="text-md font-weight-bold text-uppercase card-dashboard-title text-center">
+                                {totalBlog && totalBlog.Total}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <Link to="#" className="stretched-link pointer-default" />
                     </div>
                   </div>
                 </div>
