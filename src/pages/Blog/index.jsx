@@ -131,7 +131,7 @@ const Blog = () => {
         </div>
       </div> */}
       <div className="mt-3 g-0 px-3 py-0 blog-list-container">
-        <h1 className="page-title">Sewa Studio</h1>
+        <h1 className="page-title">Blog</h1>
       </div>
       <div className="row mt-0 justify-content-center g-0 px-3 py-0 blog-list-container">
         <div className="col-md-12">
