@@ -7,7 +7,6 @@ import { instrumentDetailStart } from "../../../redux/instrumentRedux";
 import Spinner from "../../../components/Spinner";
 
 import "./style.css";
-// import imgStudioDetailBanner from "../../../assets/images/instrument-detail-banner.png";
 
 const Detail = () => {
   const instrument = useSelector(
@@ -68,7 +67,7 @@ const Detail = () => {
             </div>
           </div>
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12 px-0 pt-3">
               <img
                 src={instrument && instrument.instrument_img.replace('"', "")}
                 alt="instrument"
@@ -77,7 +76,7 @@ const Detail = () => {
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-md-5">
+            <div className="col-md-5 col-6 px-0">
               <div className="row">
                 <div className="col-md-12">
                   <p className="instrument-detail-text-desc">Harga</p>
@@ -91,7 +90,7 @@ const Detail = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 col-6 px-0">
               <div className="row">
                 <div className="col-md-12">
                   <p className="instrument-detail-text-desc">Kategori</p>
@@ -105,7 +104,7 @@ const Detail = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 px-0">
               <Link
                 to={`${
                   (instrument &&
@@ -135,8 +134,8 @@ const Detail = () => {
             </div>
           </div>
           <div className="row my-4">
-            <div className="col-md-12">
-              <p className="studio-detail-text-title mb-3">Deskripsi</p>
+            <div className="col-md-12 px-0">
+              <p className="instrument-detail-text-title mb-3">Deskripsi</p>
               <p className="instrument-detail-text-desc">
                 {instrument && instrument.instrument_desc}
               </p>

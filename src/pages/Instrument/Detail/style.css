@@ -1,6 +1,6 @@
 .bg-color-instrument-detail {
-  background-color: #191A19;
-  color: #FFF;
+  background-color: #191a19;
+  color: #fff;
 }
 
 .instrument-detail-list-container {
@@ -12,52 +12,50 @@
 }
 
 .instrument-detail-text-title {
-  color: #FFF;
+  color: #fff;
   font-size: 25.63px;
   font-weight: 600;
 }
 
 .instrument-detail-btn-status {
-  background-color: #00897B;
+  background-color: #00897b;
   width: 100%;
   border-radius: 20px;
-  color: #FFF;
+  color: #fff;
   font-size: 16px;
   text-transform: capitalize;
 }
 
 .instrument-detail-btn-status:hover {
-  box-shadow: inset 0 1px 1px #00897B,
-    0 0 8px #00897B;
-  color: #FFF;
+  box-shadow: inset 0 1px 1px #00897b, 0 0 8px #00897b;
+  color: #fff;
   cursor: auto;
 }
 
 .instrument-detail-btn-status-close {
-  background-color: #C6282B;
+  background-color: #c6282b;
   width: 100%;
   border-radius: 20px;
-  color: #FFF;
+  color: #fff;
   font-size: 16px;
   text-transform: capitalize;
 }
 
 .instrument-detail-btn-status-close:hover {
-  box-shadow: inset 0 1px 1px #C6282B,
-    0 0 8px #C6282B;
-  color: #FFF;
+  box-shadow: inset 0 1px 1px #c6282b, 0 0 8px #c6282b;
+  color: #fff;
   cursor: auto;
 }
 
 .instrument-detail-img-banner {
   width: 100%;
   border-radius: 20px;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
 .instrument-detail-text-desc {
-  color: #FFF;
+  color: #fff;
   font-size: 14.22px;
   white-space: pre-wrap;
 }
@@ -68,30 +66,29 @@
 
 .instrument-detail-btn-sewa {
   width: 100%;
-  background-color: #A6711F;
-  color: #FFF;
-  font-size: 20px;
+  background-color: #a6711f;
+  color: #fff;
+  font-size: 16px;
   font-weight: 600;
 }
 
 .instrument-detail-btn-sewa:hover {
-  color: #FFF;
-  box-shadow: inset 0 1px 1px #A6711F,
-    0 0 8px #A6711F;
+  color: #fff;
+  background-color: #dd911a;
+  box-shadow: inset 0 1px 1px #dd911a, 0 0 8px #dd911a;
 }
 
 .instrument-detail-btn-sewa-close {
   width: 100%;
-  background-color: #4B4747;
-  color: #FFF;
+  background-color: #4b4747;
+  color: #fff;
   font-size: 20px;
   font-weight: 600;
 }
 
 .instrument-detail-btn-sewa-close:hover {
-  color: #FFF;
-  box-shadow: inset 0 1px 1px #4B4747,
-    0 0 8px #4B4747;
+  color: #fff;
+  box-shadow: inset 0 1px 1px #4b4747, 0 0 8px #4b4747;
   cursor: auto;
 }
 
@@ -101,17 +98,21 @@
   margin: 0;
 }
 
-.instrument-detail-text-list>li {
-  color: #FFF;
+.instrument-detail-text-list > li {
+  color: #fff;
   font-size: 16px;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767.98px) {
   .instrument-detail-btn-status {
     font-size: 12px;
   }
 
   .instrument-detail-btn-status-close {
     font-size: 12px;
+  }
+
+  .instrument-detail-text-title {
+    font-size: 16px;
   }
 }

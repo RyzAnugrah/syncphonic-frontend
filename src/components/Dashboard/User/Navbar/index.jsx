@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { FaChevronDown } from "react-icons/fa";
 
 import Swal from "sweetalert2";
-import profilePicture from "../../../../assets/images/undraw_profile.svg";
 
 import { logout } from "../../../../redux/apiCalls";
 
@@ -76,14 +76,10 @@ const Navbar = () => {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <span className="mr-3 d-none d-lg-inline profile-name">
-              {user && user.name ? user.name : "User"}
+            <span className="mr-2 profile-name">
+              Akun Saya
             </span>
-            <img
-              className="img-profile rounded-circle"
-              src={profilePicture}
-              alt="profile"
-            />
+            <FaChevronDown />
           </Link>
 
           <div
@@ -100,7 +96,7 @@ const Navbar = () => {
             <div className="dropdown-divider"></div>
             <Link className="dropdown-item" to="/syncphonic-frontend">
               <i className="fas fa-home fa-sm fa-fw mr-2 icon-dropdown-profile"></i>
-              Home
+              Beranda
             </Link>
             <div className="dropdown-divider"></div>
             <Link className="dropdown-item" to="#" onClick={handleClickLogout}>

@@ -104,6 +104,12 @@ export const NavBtn = styled.nav`
   justify-content: flex-end;
   text-transform: capitalize;
 
+  &:focus {
+    text-decoration: none;
+    outline: none;
+    border: none;
+  }
+
   @media only screen and (max-width: 767.98px) {
     display: none;
   }

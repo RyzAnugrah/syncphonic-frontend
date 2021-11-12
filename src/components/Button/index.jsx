@@ -25,6 +25,12 @@ export const NavButton = styled(Link)`
     box-shadow: inset 0 1px 1px ${({ theme }) => theme.hoverColor},
       0 0 8px ${({ theme }) => theme.hoverColor};
   }
+
+  &:focus {
+    text-decoration: none;
+    outline: none;
+    border: none;
+  }
 `;
 
 export const MobileNavButton = styled(Link)`

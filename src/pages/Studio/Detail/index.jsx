@@ -7,7 +7,6 @@ import { studioDetailStart } from "../../../redux/studioRedux";
 import Spinner from "../../../components/Spinner";
 
 import "./style.css";
-// import imgStudioDetailBanner from "../../../assets/images/studio-detail-banner.png";
 
 const Detail = () => {
   const studio = useSelector(
@@ -74,7 +73,7 @@ const Detail = () => {
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-md-5">
+            <div className="col-md-5 col-6 px-0">
               <div className="row">
                 <div className="col-md-12">
                   <p className="studio-detail-text-desc">Harga</p>
@@ -88,7 +87,7 @@ const Detail = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 col-6 px-0">
               <div className="row">
                 <div className="col-md-12">
                   <p className="studio-detail-text-desc">
@@ -104,7 +103,7 @@ const Detail = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 px-0">
               <Link
                 to={`${
                   (studio && studio.studio_status.toLowerCase() === "open") ||
@@ -128,7 +127,7 @@ const Detail = () => {
             </div>
           </div>
           <div className="row my-4">
-            <div className="col-md-12">
+            <div className="col-md-12 px-0">
               <p className="studio-detail-text-title mb-3">Deskripsi</p>
               <p className="studio-detail-text-desc">
                 {studio && studio.studio_desc}

@@ -10,9 +10,6 @@ import "./style.css";
 import { FcClearFilters } from "react-icons/fc";
 import imgStudioBanner from "../../assets/images/studio-banner.png";
 import imgAlatBanner from "../../assets/images/alat-banner.png";
-// import imgStudioCard1 from "../../assets/images/studio-card-1.png";
-// import imgStudioCard from "../../assets/images/studio-card-2.png";
-// import imgStudioCard from "../../assets/images/studio-card-3.png";
 
 const Studio = () => {
   const studios = useSelector(
@@ -136,14 +133,14 @@ const Studio = () => {
               data-bs-ride="carousel"
             >
               <div className="carousel-inner carousel-border">
-                <div className="carousel-item active" data-bs-interval="1500">
+                <div className="carousel-item active" data-bs-interval="5000">
                   <img
                     src={imgStudioBanner}
                     alt="carousel"
                     className="d-block studio-carousel-img mx-auto"
                   />
                 </div>
-                <div className="carousel-item" data-bs-interval="1500">
+                <div className="carousel-item" data-bs-interval="5000">
                   <img
                     src={imgAlatBanner}
                     alt="carousel"
@@ -184,10 +181,10 @@ const Studio = () => {
         <div className="row mt-0 justify-content-center g-0 px-3 py-0 studio-list-container">
           <div className="col-md-12">
             <div className="row">
-              <div className="col-md-2 mx-auto mt-4 text-center">
-                <div className="form-floating">
+              <div className="col-md-4 mx-auto mt-4 text-center">
+                <div className="form-floating h-100">
                   <select
-                    className="form-select text-center"
+                    className="form-select h-100 text-center"
                     id="studioStatus"
                     aria-label="studio-status"
                     onChange={handleChangeStatus}
@@ -201,10 +198,10 @@ const Studio = () => {
                   <label htmlFor="studioStatus">Pilih Status Studio</label>
                 </div>
               </div>
-              <div className="col-md-3 mx-auto mt-4 text-center">
-                <div className="form-floating">
+              <div className="col-md-4 mx-auto mt-4 text-center">
+                <div className="form-floating h-100">
                   <select
-                    className="form-select text-center"
+                    className="form-select h-100 text-center"
                     id="studioDay"
                     aria-label="studio-day"
                     onChange={handleChangeDay}
@@ -223,10 +220,10 @@ const Studio = () => {
                   <label htmlFor="studioDay">Pilih Ketersediaan Hari</label>
                 </div>
               </div>
-              <div className="col-md-2 mx-auto mt-4 text-center">
-                <div className="form-floating">
+              <div className="col-md-4 mx-auto mt-4 text-center">
+                <div className="form-floating h-100">
                   <select
-                    className="form-select text-center"
+                    className="form-select h-100 text-center"
                     id="studioCapacity"
                     aria-label="studio-capacity"
                     onChange={handleChangeCapacity}
@@ -244,18 +241,18 @@ const Studio = () => {
                   <label htmlFor="studioCapacity">Pilih Kapasitas</label>
                 </div>
               </div>
-              <div className="col-md-3 mx-auto mt-4 text-center">
+              <div className="col-md-6 mx-auto mt-4 text-center">
                 <input
                   type="search"
-                  className="form-control form-control-lg form-control-search"
+                  className="form-control form-control-lg form-control-search h-100"
                   id="inputSearch"
                   placeholder='Cari "Studio Rock" ⌨'
                   onChange={handleChangeName}
                 />
               </div>
-              <div className="col-md-2 mx-auto mt-4 text-center">
+              <div className="col-md-6 mx-auto mt-4 text-center">
                 <button
-                  className="btn studio-load-more py-3"
+                  className="btn studio-load-more py-3 h-100"
                   type="button"
                   onClick={handleLoadReset}
                 >
@@ -272,7 +269,7 @@ const Studio = () => {
               {results && results.length !== 0 ? (
                 results.slice(0, count).map((studio) => (
                   <div className="col" key={studio.id}>
-                    <div className="card studio-card p-2 m-2">
+                    <div className="card studio-card p-2 m-1 my-auto">
                       <div className="row px-2 mt-2">
                         <div className="col-md-12">
                           <p className="studio-card-title">
@@ -281,7 +278,7 @@ const Studio = () => {
                         </div>
                       </div>
                       <div className="row px-2">
-                        <div className="col-lg-4 col-md-6 col-6">
+                        <div className="col-lg-4 col-md-6 col-6 my-auto">
                           <button
                             className={`btn ${
                               studio.studio_status.toLowerCase() === "open" ||
@@ -293,13 +290,13 @@ const Studio = () => {
                             {studio.studio_status}
                           </button>
                         </div>
-                        <div className="col-lg-8 col-md-6 col-6 text-end">
-                          <p className="studio-card-capacity">
+                        <div className="col-lg-8 col-md-6 col-6 text-end my-auto">
+                          <p className="studio-card-capacity my-auto">
                             {`Kapasitas ${studio.studio_capacity} Orang`}
                           </p>
                         </div>
                       </div>
-                      <div className="row px-2 mt-2">
+                      <div className="row px-2 mt-3">
                         <div className="col-md-12">
                           <img
                             src={studio.studio_img.replace('"', "")}
@@ -341,7 +338,9 @@ const Studio = () => {
                 <div className="col-md-12">
                   <div className="row">
                     <div className="col-md-12 text-center">
-                      <p className="studio-data-null text-center">Tidak ada data</p>
+                      <p className="studio-data-null text-center">
+                        Tidak ada data
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -350,7 +349,7 @@ const Studio = () => {
           </div>
         </div>
         <div className="row mt-4 studio-list-container">
-          <div className="col-md-2 mx-auto text-center">
+          <div className="col-md-3 mx-auto px-3 text-center">
             {results && count < results.length && (
               <button
                 className="btn studio-load-more py-3 mb-4"

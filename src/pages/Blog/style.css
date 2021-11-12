@@ -85,7 +85,6 @@
   background-color: #4B4747;
   border: 2px solid #4B4747;
   color: #FFF;
-  margin-top: 5px;
   font-size: 14.22px;
 }
 
@@ -125,7 +124,7 @@
 
 .blog-card-category {
   color: #FFF;
-  font-size: 18px;
+  font-size: 16px;
   text-transform: capitalize;
 }
 
@@ -182,11 +181,11 @@ select:focus>option:checked {
 
 .blog-data-null {
   color: #FFF;
-  font-size: 30px;
+  font-size: 25.63px;
   font-weight: 600;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767.98px) {
   .bg-color-header {
     margin: 5px !important;
   }

@@ -7,7 +7,6 @@ import { blogDetailStart } from "../../../redux/blogRedux";
 import Spinner from "../../../components/Spinner";
 
 import "./style.css";
-// import imgStudioDetailBanner from "../../../assets/images/blog-detail-banner.png";
 
 const Detail = () => {
   const blog = useSelector(
@@ -60,7 +59,7 @@ const Detail = () => {
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-md-6">
+            <div className="col-md-6 col-6">
               <div className="row">
                 <div className="col-md-12 px-0">
                   <p className="blog-detail-text-desc">Kategori</p>
@@ -74,7 +73,7 @@ const Detail = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 col-6">
               <div className="row">
                 <div className="col-md-12 px-0">
                   <p className="blog-detail-text-desc">Tanggal Publikasi</p>

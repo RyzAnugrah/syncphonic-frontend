@@ -136,21 +136,23 @@ const Checkout = () => {
     <Spinner />
   ) : (
     <div>
-      <div className="container-fluid bg-color-checkout py-2">
-        <div className="container py-4">
-          <div className="row bg-color-checkout-row p-3">
-            <div className="col-md-6">
+      <div className="bg-color-checkout py-2">
+        <div className="justify-content-center g-0 py-4 checkout-container">
+          <div className="row bg-color-checkout-row m-3">
+            <div className="col-md-5 px-0">
               <img
                 src={imgStudioCheckoutBanner}
                 alt="checkout"
                 className="img-fluid img-hero-checkout"
               />
             </div>
-            <div className="col-md-6 p-4">
+            <div className="col-md-7 px-3 py-4">
               <p className="checkout-title">Sewa Studio</p>
               <form onSubmit={handleSubmit(handleClickBooking)}>
                 <div className="form-group">
-                  <label htmlFor="inputNamaLengkap">Nama Lengkap</label>
+                  <label className="fw-bolder" htmlFor="inputNamaLengkap">
+                    Nama Lengkap
+                  </label>
                   <input
                     type="text"
                     className="form-control form-control-checkout"
@@ -160,7 +162,9 @@ const Checkout = () => {
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label htmlFor="inputEmail">Email</label>
+                  <label className="fw-bolder" htmlFor="inputEmail">
+                    Email
+                  </label>
                   <input
                     type="text"
                     className="form-control form-control-checkout"
@@ -170,7 +174,9 @@ const Checkout = () => {
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label htmlFor="inputNamaStudio">Nama Studio</label>
+                  <label className="fw-bolder" htmlFor="inputNamaStudio">
+                    Nama Studio
+                  </label>
                   <input
                     type="text"
                     className="form-control form-control-checkout"
@@ -181,7 +187,9 @@ const Checkout = () => {
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label htmlFor="inputNamaStudio">Harga Studio</label>
+                  <label className="fw-bolder" htmlFor="inputNamaStudio">
+                    Harga Studio
+                  </label>
                   <input
                     type="text"
                     className="form-control form-control-checkout"
@@ -191,7 +199,9 @@ const Checkout = () => {
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label htmlFor="inputTanggal">Tanggal Sewa</label>
+                  <label className="fw-bolder" htmlFor="inputTanggal">
+                    Tanggal Sewa
+                  </label>
                   <input
                     type="date"
                     className="form-control form-control-checkout"
@@ -205,7 +215,9 @@ const Checkout = () => {
                   )}
                 </div>
                 <div className="form-group mt-3">
-                  <label htmlFor="inputDurasi">Durasi</label>
+                  <label className="fw-bolder" htmlFor="inputDurasi">
+                    Durasi
+                  </label>
                   <select
                     className="form-select form-control-checkout"
                     aria-label="durasi-label"
@@ -223,7 +235,9 @@ const Checkout = () => {
                   </select>
                 </div>
                 <div className="form-group mt-3">
-                  <label htmlFor="inputNamaStudio">Total</label>
+                  <label className="fw-bolder" htmlFor="inputNamaStudio">
+                    Total
+                  </label>
                   <input
                     type="text"
                     className="form-control form-control-checkout"

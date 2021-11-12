@@ -8,12 +8,7 @@ import Spinner from "../../components/Spinner";
 
 import "./style.css";
 import { FcClearFilters } from "react-icons/fc";
-import imgBlogBanner from "../../assets/images/blog-banner.png";
-// import imgStudioBanner from "../../assets/images/studio-banner.png";
-// import imgAlatBanner from "../../assets/images/alat-banner.png";
-// import imgStudioCard1 from "../../assets/images/studio-card-1.png";
-// import imgStudioCard from "../../assets/images/studio-card-2.png";
-// import imgStudioCard from "../../assets/images/studio-card-3.png";
+// import imgBlogBanner from "../../assets/images/blog-banner.png";
 
 const Blog = () => {
   const blogs = useSelector((state) => state.blog && state.blog.allBlog);
@@ -93,7 +88,7 @@ const Blog = () => {
       {blogs && console.log(results)}
       {/* {blogs && console.log(results.length)}
         {blogs && console.log(count)} */}
-      <div className="blog-list-container px-3">
+      {/* <div className="blog-list-container px-3">
         <div className="row justify-content-center g-0 px-3 py-4 bg-color-header">
           <div className="col-md-12">
             <div className="row">
@@ -134,14 +129,17 @@ const Blog = () => {
             </div>
           </div>
         </div>
+      </div> */}
+      <div className="mt-3 g-0 px-3 py-0 blog-list-container">
+        <h1 className="page-title">Sewa Studio</h1>
       </div>
       <div className="row mt-0 justify-content-center g-0 px-3 py-0 blog-list-container">
         <div className="col-md-12">
-          <div className="row justify-content-center">
-            <div className="col-md-3 mt-4 text-center">
-              <div className="form-floating">
+          <div className="row">
+            <div className="col-lg-4 col-md-4 mx-auto mt-4 text-center">
+              <div className="form-floating h-100">
                 <select
-                  className="form-select text-center"
+                  className="form-select h-100 text-center"
                   id="blogCategory"
                   aria-label="blog-category"
                   onChange={handleChangeCategory}
@@ -155,18 +153,18 @@ const Blog = () => {
                 <label htmlFor="blogCategory">Pilih Kategori</label>
               </div>
             </div>
-            <div className="col-md-4 mt-4 text-center">
+            <div className="col-lg-6 col-md-4 mx-auto mt-4 text-center">
               <input
                 type="search"
-                className="form-control form-control-lg form-control-search"
+                className="form-control form-control-lg form-control-search h-100"
                 id="inputSearch"
                 placeholder='Coba cari "Tips melatih vokal" ⌨'
                 onChange={handleChangeTitle}
               />
             </div>
-            <div className="col-md-3 mt-4 text-center">
+            <div className="col-lg-2 col-md-4 mx-auto mt-4 text-center">
               <button
-                className="btn blog-load-more py-3"
+                className="btn blog-load-more py-3 h-100"
                 type="button"
                 onClick={handleLoadReset}
               >
@@ -183,23 +181,23 @@ const Blog = () => {
             {results && results.length !== 0 ? (
               results.slice(0, count).map((blog) => (
                 <div className="col" key={blog.id}>
-                  <div className="card blog-card p-2 m-2">
-                    <div className="row px-2 mt-2">
-                      <div className="col-md-12">
-                        <p className="blog-card-category">{blog.category}</p>
-                      </div>
-                    </div>
+                  <div className="card blog-card p-2 m-1 my-auto">
                     <div className="row px-2 mt-2">
                       <div className="col-md-12">
                         <p className="blog-card-title">{blog.title_blog}</p>
                       </div>
                     </div>
                     <div className="row px-2">
-                      <div className="col-md-12">
-                        <p className="blog-card-date">{blog.date}</p>
+                      <div className="col-md-5 col-6 my-auto">
+                        <p className="blog-card-category my-auto">
+                          {blog.category}
+                        </p>
+                      </div>
+                      <div className="col-md-7 col-6 my-auto">
+                        <p className="blog-card-date my-auto text-end">{blog.date}</p>
                       </div>
                     </div>
-                    <div className="row px-2 mt-2">
+                    <div className="row px-2 mt-3">
                       <div className="col-md-12">
                         <img
                           src={blog.image.replace('"', "")}
@@ -224,10 +222,10 @@ const Blog = () => {
                 </div>
               ))
             ) : (
-              <div className="col">
+              <div className="col-md-12">
                 <div className="row">
                   <div className="col-md-12 text-center">
-                    <p className="blog-data-null">Tidak ada data</p>
+                    <p className="blog-data-null text-center">Tidak ada data</p>
                   </div>
                 </div>
               </div>

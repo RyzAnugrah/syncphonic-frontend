@@ -27,8 +27,22 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
   const dispatch = useDispatch();
   let history = useHistory();
 
+  const dropdownButton = {
+    fontSize: "16px",
+  };
+
   const dropdownMenu = {
     backgroundColor: "#242323",
+    border: "1px solid rgba(255, 255, 255, 0.15)",
+    margin: "0 0.5rem 0 0.5rem",
+    width: "89%",
+  };
+
+  const dropdownDivider = {
+    height: "0",
+    margin: "0.5rem 0",
+    overflow: "hidden",
+    borderTop: "1px solid rgba(255, 255, 255, 0.15)",
   };
 
   const handleClickLogout = (e) => {
@@ -165,8 +179,9 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
                     className="btn dropdown-toggle"
                     type="button"
                     to="#"
+                    style={dropdownButton}
                   >
-                    {`Hallo, ${user && user.users && user.users.name}`}
+                    {`Akun Saya`}
                   </MobileNavButton>
                 </MobileBtnWrap>
                 <ul
@@ -183,6 +198,7 @@ const MobileNavbar = ({ isOpen, toggle, light }) => {
                       <FaTachometerAlt /> &ensp;Dashboard
                     </MobileNavbarLink>
                   </li>
+                  <div style={dropdownDivider}></div>
                   <li>
                     <MobileNavbarLink
                       light={light}

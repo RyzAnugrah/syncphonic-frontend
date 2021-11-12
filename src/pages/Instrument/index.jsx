@@ -10,9 +10,6 @@ import "./style.css";
 import { FcClearFilters } from "react-icons/fc";
 import imgStudioBanner from "../../assets/images/studio-banner.png";
 import imgAlatBanner from "../../assets/images/alat-banner.png";
-// import imgStudioCard1 from "../../assets/images/instrument-card-1.png";
-// import imgStudioCard from "../../assets/images/instrument-card-2.png";
-// import imgStudioCard from "../../assets/images/instrument-card-3.png";
 
 const Instrument = () => {
   const instruments = useSelector(
@@ -135,14 +132,14 @@ const Instrument = () => {
               data-bs-ride="carousel"
             >
               <div className="carousel-inner carousel-border">
-                <div className="carousel-item active" data-bs-interval="1500">
+                <div className="carousel-item active" data-bs-interval="5000">
                   <img
                     src={imgAlatBanner}
                     alt="carousel"
                     className="d-block instrument-carousel-img mx-auto"
                   />
                 </div>
-                <div className="carousel-item" data-bs-interval="1500">
+                <div className="carousel-item" data-bs-interval="5000">
                   <img
                     src={imgStudioBanner}
                     alt="carousel"
@@ -183,10 +180,10 @@ const Instrument = () => {
         <div className="row mt-0 justify-content-center g-0 px-3 py-0 instrument-list-container">
           <div className="col-md-12">
             <div className="row">
-              <div className="col-md-2 mx-auto mt-4 text-center">
-                <div className="form-floating">
+              <div className="col-md-4 mx-auto mt-4 text-center">
+                <div className="form-floating h-100">
                   <select
-                    className="form-select text-center"
+                    className="form-select h-100 text-center"
                     id="instrumentStatus"
                     aria-label="instrument-status"
                     onChange={handleChangeStatus}
@@ -200,10 +197,10 @@ const Instrument = () => {
                   <label htmlFor="instrumentStatus">Pilih Status</label>
                 </div>
               </div>
-              <div className="col-md-3 mx-auto mt-4 text-center">
-                <div className="form-floating">
+              <div className="col-md-4 mx-auto mt-4 text-center">
+                <div className="form-floating h-100">
                   <select
-                    className="form-select text-center"
+                    className="form-select h-100 text-center"
                     id="instrumentCategory"
                     aria-label="instrument-category"
                     onChange={handleChangeCategory}
@@ -217,10 +214,10 @@ const Instrument = () => {
                   <label htmlFor="instrumentCategory">Pilih Kategori</label>
                 </div>
               </div>
-              <div className="col-md-2 mx-auto mt-4 text-center">
-                <div className="form-floating">
+              <div className="col-md-4 mx-auto mt-4 text-center">
+                <div className="form-floating h-100">
                   <select
-                    className="form-select text-center"
+                    className="form-select h-100 text-center"
                     id="instrumentCapacity"
                     aria-label="instrument-capacity"
                     onChange={handleChangeCapacity}
@@ -238,18 +235,18 @@ const Instrument = () => {
                   <label htmlFor="instrumentCapacity">Pilih Sisa Barang</label>
                 </div>
               </div>
-              <div className="col-md-3 mx-auto mt-4 text-center">
+              <div className="col-md-6 mx-auto mt-4 text-center">
                 <input
                   type="search"
-                  className="form-control form-control-lg form-control-search"
+                  className="form-control form-control-lg form-control-search h-100"
                   id="inputSearch"
                   placeholder='Cari "Keyboard" ⌨'
                   onChange={handleChangeName}
                 />
               </div>
-              <div className="col-md-2 mx-auto mt-4 text-center">
+              <div className="col-md-6 mx-auto mt-4 text-center">
                 <button
-                  className="btn instrument-load-more py-3"
+                  className="btn instrument-load-more py-3 h-100"
                   type="button"
                   onClick={handleLoadReset}
                 >
@@ -266,7 +263,7 @@ const Instrument = () => {
               {results && results.length !== 0 ? (
                 results.slice(0, count).map((instrument) => (
                   <div className="col" key={instrument.id}>
-                    <div className="card instrument-card p-2 m-2">
+                    <div className="card instrument-card p-2 m-1 my-auto">
                       <div className="row px-2 mt-2">
                         <div className="col-md-12">
                           <p className="instrument-card-title">
@@ -275,7 +272,7 @@ const Instrument = () => {
                         </div>
                       </div>
                       <div className="row px-2">
-                        <div className="col-7">
+                        <div className="col-lg-6 col-md-6 col-6 my-auto">
                           <button
                             className={`btn ${
                               instrument.instrument_status.toLowerCase() ===
@@ -289,13 +286,13 @@ const Instrument = () => {
                             {instrument.instrument_status}
                           </button>
                         </div>
-                        <div className="col-5 text-end">
-                          <p className="instrument-card-capacity">
+                        <div className="col-lg-6 col-md-6 col-6 text-end my-auto">
+                          <p className="instrument-card-capacity my-auto">
                             {instrument.instrument_brand}
                           </p>
                         </div>
                       </div>
-                      <div className="row px-2 mt-2">
+                      <div className="row px-2 mt-3">
                         <div className="col-md-12">
                           <img
                             src={instrument.instrument_img.replace('"', "")}
@@ -339,7 +336,9 @@ const Instrument = () => {
                 <div className="col-md-12">
                   <div className="row">
                     <div className="col-md-12 text-center">
-                      <p className="instrument-data-null">Tidak ada data</p>
+                      <p className="instrument-data-null text-center">
+                        Tidak ada data
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -348,7 +347,7 @@ const Instrument = () => {
           </div>
         </div>
         <div className="row mt-4 instrument-list-container">
-          <div className="col-md-2 mx-auto text-center">
+          <div className="col-md-3 mx-auto text-center">
             {results && count < results.length && (
               <button
                 className="btn instrument-load-more py-3 mb-4"

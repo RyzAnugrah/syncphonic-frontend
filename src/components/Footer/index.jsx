@@ -177,7 +177,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div className="col-md-3 col-6 col-mobile mt-4 px-3">
+          <div className="col-md-3 col-6 col-mobile mt-4 px-1">
             <div className="">
               <p className="footer-menu">Ikuti Kami</p>
               <p className="mt-4">

@@ -56,7 +56,12 @@
   background-color: #4B4747;
   border: 2px solid #4B4747;
   color: #FFF;
-  margin-top: 5px;
+  font-size: 14.22px;
+}
+
+::placeholder {
+  color: #FFF !important;
+  opacity: .65 !important;
 }
 
 .form-control-search:hover,
@@ -156,9 +161,9 @@
 }
 
 .studio-card-btn-detail:hover {
-  box-shadow: inset 0 1px 1px #4B4747,
-    0 0 8px #A6711F;
   color: #FFF;
+  background-color: #dd911a !important;
+  box-shadow: inset 0 1px 1px #dd911a, 0 0 8px #dd911a !important;
 }
 
 .studio-load-more {
@@ -181,7 +186,7 @@ select:focus>option:checked {
 
 .studio-data-null {
   color: #FFF;
-  font-size: 30px;
+  font-size: 25.63px;
   font-weight: 600;
 }
 

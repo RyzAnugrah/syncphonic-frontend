@@ -84,10 +84,6 @@ export const Heading = styled.h1`
   }
 
   @media screen and (max-width: 991.98px) {
-    font-size: 46.18px;
-  }
-
-  @media screen and (max-width: 767.98px) {
     font-size: 41.05px;
   }
 
@@ -101,9 +97,8 @@ export const Subtitle = styled.p`
   color: ${({ lightBg, theme: { colors } }) =>
     lightBg ? colors.dark : colors.light};
 
-  @media screen and (max-width: 575.98px) {
+  @media screen and (max-width: 991.98px) {
     font-size: 18px;
-    text-align: left;
   }
 `;
 
