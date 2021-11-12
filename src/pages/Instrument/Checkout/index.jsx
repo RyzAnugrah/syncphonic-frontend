@@ -163,7 +163,9 @@ const Checkout = () => {
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label htmlFor="inputEmail">Email</label>
+                  <label className="fw-bolder" htmlFor="inputEmail">
+                    Email
+                  </label>
                   <input
                     type="text"
                     className="form-control form-control-checkout"

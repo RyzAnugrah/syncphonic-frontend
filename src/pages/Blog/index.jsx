@@ -88,48 +88,6 @@ const Blog = () => {
       {blogs && console.log(results)}
       {/* {blogs && console.log(results.length)}
         {blogs && console.log(count)} */}
-      {/* <div className="blog-list-container px-3">
-        <div className="row justify-content-center g-0 px-3 py-4 bg-color-header">
-          <div className="col-md-12">
-            <div className="row">
-              <div className="col-md-7 my-auto">
-                <p className="blog-hero-category">
-                  {results && results[0] && results[0].category}
-                </p>
-                <p className="blog-hero-title">
-                  {results && results[0] && results[0].title_blog}
-                </p>
-                <p className="blog-hero-content">
-                  {results && results[0] && results[0].content.substring(0, 20)}
-                  <span className="blog-hero-content-link">
-                    <Link
-                      to={`/syncphonic-frontend/blog/${
-                        results && results[0] && results[0].id
-                      }`}
-                    >
-                      &nbsp; Selengkapnya
-                    </Link>
-                  </span>
-                </p>
-                <p className="blog-hero-date">
-                  {results && results[0] && results[0].date}
-                </p>
-              </div>
-              <div className="col-md-5">
-                <img
-                  src={
-                    results && results[0] && results[0].image
-                      ? results[0].image
-                      : imgBlogBanner
-                  }
-                  alt="card"
-                  className="img-fluid blog-banner-img"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div className="mt-3 g-0 px-3 py-0 blog-list-container">
         <h1 className="page-title">Blog</h1>
       </div>
@@ -237,7 +195,7 @@ const Blog = () => {
         <div className="col-md-2 mx-auto text-center">
           {count < results.length && (
             <button
-              className="btn blog-load-more py-3"
+              className="btn blog-load-more py-3 mb-4"
               type="button"
               onClick={handleLoadMore}
             >
