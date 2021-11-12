@@ -1,86 +1,137 @@
-import React from "react";
-// import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { publicRequest } from "../../../requestMethods";
+import { studioDetailStart } from "../../../redux/studioRedux";
+import Spinner from "../../../components/Spinner";
+
 import "./style.css";
 
-import imgCta from "../../../assets/images/bg-landing-cta.png";
+const Detail = () => {
+  const studio = useSelector(
+    (state) =>
+      state.studio &&
+      state.studio.detailStudio &&
+      state.studio.detailStudio.result
+  );
+  const dispatch = useDispatch();
+  let { id } = useParams();
 
-const index = () => {
-  return (
+  const [spinner, setSpinner] = useState(true);
+
+  useEffect(() => {
+    const getStudioDetail = async (dispatch) => {
+      try {
+        const res = await publicRequest.get(`/studio/${id}`);
+        dispatch(studioDetailStart(res.data));
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getStudioDetail(dispatch);
+  }, [dispatch, id]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setTimeout(() => setSpinner(false), 1000);
+  }, []);
+
+  return spinner ? (
+    <Spinner />
+  ) : (
     <div>
-      <div className="container-fluid bg-color-studio-detail py-4">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <p className="studio-detail-text-title">Studio Jazz</p>
+      <div className="bg-color-studio-detail">
+        <div className="row justify-content-center g-0 px-1 py-4 studio-detail-list-container">
+          {studio && console.log(studio)}
+          <div className="row justify-content-between">
+            <div className="align-items-center col-8 col-md-3 px-0 my-auto">
+              <h1 className="align-items-center my-auto studio-detail-text-title">
+                {studio && studio.studio_name}
+              </h1>
             </div>
-            <div className="col-md-12">
-              <img src={imgCta} alt="studio" className="img-fluid" />
-            </div>
-          </div>
-          <div className="row mt-4">
-            <div className="col-md-2 my-auto">
-              <button className="btn studio-detail-btn-user">10 Orang</button>
-            </div>
-            <div className="col-md-2 my-auto">
-              <button className="btn studio-detail-btn-status">
-                Available
+            <div className="col-4 col-md-2 text-end px-0">
+              <button
+                className={`btn ${
+                  (studio && studio.studio_status.toLowerCase() === "open") ||
+                  (studio && studio.studio_status.toLowerCase() === "buka")
+                    ? "studio-detail-btn-status"
+                    : "studio-detail-btn-status-close"
+                }`}
+              >
+                {studio && studio.studio_status}
               </button>
             </div>
-            <div className="col-md-4 my-auto">
-              <p className="studio-detail-desc-price">Rp.500.000/Jam</p>
+          </div>
+          <div className="row">
+            <div className="col-md-12 px-0 pt-3">
+              <img
+                src={studio && studio.studio_img.replace('"', "")}
+                alt="studio"
+                className="img-fluid studio-detail-img-banner"
+              />
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-md-6 mt-4">
-              <p className="studio-detail-desc-spec">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor
-                nunc aenean netus leo placerat iaculis. Feugiat elementum vitae
-                facilisis integer ac id donec cursus. Vulputate dolor fermentum
-                scelerisque dui, porta dolor velit. Sit non ut lorem orci
-                lectus. Vivamus tellus amet, integer et elementum lacinia quam
-                convallis arcu. Aliquet non suspendisse odio iaculis donec ut
-                volutpat eu pellentesque. Nec etiam eget congue at etiam purus.
-                Risus diam elementum pellentesque vitae euismod vitae donec
-                orci. Nibh purus libero integer ipsum diam sit nunc. Erat
-                blandit nullam lectus massa nulla non accumsan. Nulla posuere
-                dignissim morbi eget vitae. Elementum varius bibendum ultrices
-                sit convallis. Metus nunc, sapien tempor velit nibh viverra
-                sapien augue. In sit in dui amet fames auctor. Aliquet eu
-                volutpat at non vel. Pulvinar ac id tristique diam in ultricies.
-                Eu odio nulla elit velit. Vitae sollicitudin vel aliquet nibh.
-                Ut molestie augue odio sit tempor. Porttitor dolor ac, nulla
-                integer at id. Proin aliquet fringilla at diam. At sem tortor
-                tempus est risus, mattis porta congue. Aliquet lorem eu nullam
-                donec purus arcu mattis sapien. I
-              </p>
-            </div>
-            <div className="col-md-5 offset-md-1 mt-4">
-              <p className="studio-detail-form-title">Form Sewa</p>
-              <div className="row bg-color-form-row p-4">
+            <div className="col-md-5 col-6 px-0">
+              <div className="row">
                 <div className="col-md-12">
-                  <form>
-                    <div className="form-group">
-                      <label htmlFor="inputPilihHari">Pilih Hari</label>
-                      <input
-                        type="date"
-                        className="form-control form-control-sewa"
-                        id="inputPilihHari"
-                      />
-                    </div>
-                    <div className="form-group mt-4">
-                      <label htmlFor="inputDurasi">Durasi</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-sewa"
-                        id="inputDurasi"
-                      />
-                    </div>
-                    <button type="submit" className="btn btn-sewa">
-                      Sewa
-                    </button>
-                  </form>
+                  <p className="studio-detail-text-desc">Harga</p>
                 </div>
               </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <p className="studio-detail-text-title margin-up">
+                    {`Rp.${studio && studio.studio_price}/Jam`}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4 col-6 px-0">
+              <div className="row">
+                <div className="col-md-12">
+                  <p className="studio-detail-text-desc">
+                    Tersedia setiap hari
+                  </p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <p className="studio-detail-text-title margin-up">
+                    {studio && studio.studio_available_day}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3 px-0">
+              <Link
+                to={`${
+                  (studio && studio.studio_status.toLowerCase() === "open") ||
+                  (studio && studio.studio_status.toLowerCase() === "buka")
+                    ? `/syncphonic-frontend/studio/checkout/${id}`
+                    : `/syncphonic-frontend/studio/${id}`
+                }`}
+              >
+                <button
+                  type="button"
+                  className={`btn py-3 ${
+                    (studio && studio.studio_status.toLowerCase() === "open") ||
+                    (studio && studio.studio_status.toLowerCase() === "buka")
+                      ? "studio-detail-btn-sewa"
+                      : "studio-detail-btn-sewa-close"
+                  }`}
+                >
+                  Sewa Studio
+                </button>
+              </Link>
+            </div>
+          </div>
+          <div className="row my-4">
+            <div className="col-md-12 px-0">
+              <p className="studio-detail-text-title mb-3">Deskripsi</p>
+              <p className="studio-detail-text-desc">
+                {studio && studio.studio_desc}
+              </p>
             </div>
           </div>
         </div>
@@ -89,4 +140,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Detail;

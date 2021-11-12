@@ -1,19 +1,25 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { AppRoutes } from "./routes";
-import { ThemeNavbar } from "./components/Header/Navbar/Navbar/index";
-import Navbar from "./components/Header/Navbar/Navbar/index";
-import MobileNavbar from "./components/Header/Navbar/MobileNavbar/index";
+import { LightTheme } from "./components/Header/Navbar/Navbar";
+import Navbar from "./components/Header/Navbar/Navbar";
+import MobileNavbar from "./components/Header/Navbar/MobileNavbar";
 import Footer from "./components/Footer";
-import "./App.css";
-import "./index.css";
 
 const App = () => {
+  const user = useSelector((state) => state.user.currentUser);
+
+  useEffect(() => {
+    console.log("App.js:");
+    console.log(user && user);
+  }, [user]);
+
   return (
     <Router>
       <Suspense fallback={<></>}>
@@ -34,7 +40,7 @@ const App = () => {
   );
 };
 
-const ProtectedAuth = ({ name, location, component: Component, ...rest }) => {
+const ProtectedAuth = ({ name, component: Component, ...rest }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
@@ -45,24 +51,29 @@ const ProtectedAuth = ({ name, location, component: Component, ...rest }) => {
     <Route
       {...rest}
       render={() =>
-        name !== "differentPage" ? (
+        name !== "masuk" &&
+        name !== "daftar" &&
+        name !== "lupa-password" &&
+        name !== "reset-password" &&
+        name !== "dashboard-user" &&
+        name !== "pesanan-user" &&
+        name !== "edit-profil-user" &&
+        name !== "dashboard-admin" &&
+        name !== "edit-studio-admin" &&
+        name !== "edit-instrument-admin" &&
+        name !== "edit-blog-admin" &&
+        name !== "edit-user-admin" &&
+        name !== "edit-profil-admin" ? (
           <>
-            {location.pathname !== "/syncphonic-frontend/masuk" &&
-              location.pathname !== "/syncphonic-frontend/daftar" && (
-                <Navbar {...ThemeNavbar} name={name} toggle={toggle} />
-              )}
-            {location.pathname !== "/syncphonic-frontend/masuk" &&
-              location.pathname !== "/syncphonic-frontend/daftar" && (
-                <MobileNavbar
-                  {...ThemeNavbar}
-                  name={name}
-                  isOpen={isOpen}
-                  toggle={toggle}
-                />
-              )}
+            <Navbar light={LightTheme ? 1 : 0} name={name} toggle={toggle} />
+            <MobileNavbar
+              light={LightTheme ? 1 : 0}
+              name={name}
+              isOpen={isOpen}
+              toggle={toggle}
+            />
             <Component />
-            {location.pathname !== "/syncphonic-frontend/masuk" &&
-              location.pathname !== "/syncphonic-frontend/daftar" && <Footer />}
+            <Footer />
           </>
         ) : (
           <Component />

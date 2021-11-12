@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 
 const Kebijakan = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <div className="bg-color-kebijakan">
         <div className="row justify-content-center g-0 px-3 py-4 container-content">
-          <div className="text-center">
+          <div>
             <p className="kebijakan-title">Kebijakan Pengguna</p>
             <ul
               className="nav nav-pills nav-justified my-4"
