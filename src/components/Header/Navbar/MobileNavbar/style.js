@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { Link as RouterLink } from 'react-router-dom';
+import styled from "styled-components";
+import { Link as RouterLink } from "react-router-dom";
 
 export const Overlay = styled.div`
   position: fixed;
@@ -8,8 +8,8 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  opacity: ${({ isOpen }) => (isOpen ? '100%' : '100%')};
-  left: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
+  opacity: ${({ isOpen }) => (isOpen ? "100%" : "100%")};
+  left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
   z-index: 100;
 `;
 
@@ -18,8 +18,8 @@ export const MobileNavbarContainer = styled.aside`
   z-index: 999;
   width: 80%;
   height: 100%;
-  background-color: ${({ lightTheme, theme: { backgroundColors } }) =>
-    lightTheme ? "#fff" : backgroundColors.secondary};
+  background-color: ${({ light, theme: { backgroundColors } }) =>
+    light ? "#fff" : backgroundColors.secondary};
   transition: 0.3s ease-in-out;
   opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
   left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
@@ -33,8 +33,8 @@ export const Icon = styled.div`
   font-size: 2rem;
   cursor: pointer;
   outline: none;
-  color: ${({ lightTheme, theme: { colors } }) =>
-    lightTheme ? colors.dark : colors.light};
+  color: ${({ light, theme: { colors } }) =>
+    light ? colors.dark : colors.light};
 `;
 
 export const NavLogo = styled(RouterLink)`
@@ -68,17 +68,22 @@ export const MobileNavbarLink = styled(RouterLink)`
   list-style: none;
   transition: 0.2s ease-in-out;
   text-decoration: none;
-  color: ${({ lightTheme, theme: { colors } }) =>
-    lightTheme ? colors.dark : colors.light};
+  color: ${({ light, theme: { colors } }) =>
+    light ? colors.dark : colors.light};
   cursor: pointer;
 
   &:hover {
     color: ${({ theme: { colors } }) => colors.accent};
     transition: 0.2s ease-in-out;
   }
+
+  &.active {
+    color: #a6711f;
+  }
 `;
 
 export const MobileBtnWrap = styled.div`
   display: flex;
   justify-content: center;
+  text-transform: capitalize;
 `;

@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { Link as RouterLink } from "react-router-dom";
 
 export const Nav = styled.nav`
-  background-color: ${({ lightTheme, theme: { backgroundColors } }) =>
-    lightTheme ? "#fff" : backgroundColors.secondary};
+  background-color: ${({ light, theme: { backgroundColors } }) =>
+    light ? "#fff" : backgroundColors.secondary};
   height: 80px;
   display: flex;
   justify-content: center;
@@ -55,7 +55,8 @@ export const MobileIcon = styled.div`
     right: 0;
     font-size: 2rem;
     cursor: pointer;
-    color: ${({ lightTheme, theme: { colors } }) => (lightTheme ? colors.dark : colors.light)};
+    color: ${({ light, theme: { colors } }) =>
+      light ? colors.dark : colors.light};
   }
 `;
 
@@ -79,11 +80,11 @@ export const NavItem = styled.li`
 `;
 
 export const NavLink = styled(RouterLink)`
-  color: ${({ lightTheme, theme: { colors } }) =>
-    lightTheme ? colors.dark : colors.light};
+  color: ${({ light, theme: { colors } }) =>
+    light ? colors.dark : colors.light};
   display: flex;
   align-items: center;
-  text-decoration: none;
+  text-decoration: none !important;
   padding: 0 1rem;
   height: 100%;
   cursor: pointer;
@@ -91,12 +92,23 @@ export const NavLink = styled(RouterLink)`
   &:hover {
     color: ${({ theme: { colors } }) => colors.accent};
   }
+
+  &.active {
+    color: #a6711f;
+  }
 `;
 
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  text-transform: capitalize;
+
+  &:focus {
+    text-decoration: none;
+    outline: none;
+    border: none;
+  }
 
   @media only screen and (max-width: 767.98px) {
     display: none;

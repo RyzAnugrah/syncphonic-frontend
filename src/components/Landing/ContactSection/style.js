@@ -53,7 +53,8 @@ export const Column2 = styled.div`
   text-align: left;
 
   @media screen and (max-width: 767.98px) {
-    display: none;
+    padding: 0;
+    margin-top: -12px;
   }
 `;
 
@@ -69,10 +70,6 @@ export const Heading = styled.h1`
   }
 
   @media screen and (max-width: 991.98px) {
-    font-size: 46.18px;
-  }
-
-  @media screen and (max-width: 767.98px) {
     font-size: 41.05px;
   }
 
@@ -85,7 +82,7 @@ export const Subtitle = styled.p`
   font-size: 22.78px;
   color: ${({ lightBg }) => (lightBg ? "#000" : "#fff")};
 
-  @media screen and (max-width: 575.98px) {
+  @media screen and (max-width: 991.98px) {
     font-size: 18px;
   }
 `;

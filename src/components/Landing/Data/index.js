@@ -12,7 +12,7 @@ export const Services = {
   lightBg: false,
   headline: "Mulai latih dan kembangkan bakatmu",
   description:
-    "Kami menyediakan beragam pelayanan untuk menunjang bakat musikmu mulai dari sewa studio hingga kursus musik",
+    "Kami menyediakan beragam pelayanan untuk menunjang bakat musikmu mulai dari sewa studio hingga blog musik",
   imgStart: true,
 };
 
@@ -50,7 +50,7 @@ export const Contact = {
   lightBg: false,
   headline: "Syncphonic Studio Musik",
   description:
-    "Penyedia penyewaan studio dan alat musik terlengkap di Cirebon. Menyediakan juga kursus musik bagi pemula",
+    "Penyedia penyewaan studio dan alat musik terlengkap di Cirebon. Menyediakan juga blog musik bagi pemula",
   imgStart: true,
 };
 

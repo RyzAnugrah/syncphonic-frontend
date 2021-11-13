@@ -1,0 +1,60 @@
+.bg-color-blog-detail {
+  background-color: #191A19;
+  color: #FFF;
+}
+
+.blog-detail-list-container {
+  padding: 1.5rem 0 1.5rem 0;
+  max-width: 1200px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.blog-detail-text-title {
+  color: #FFF;
+  font-size: 25.63px;
+  font-weight: 600;
+}
+
+.blog-detail-img-banner {
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.blog-detail-text-desc {
+  color: #FFF;
+  font-size: 14.22px;
+  white-space: pre-wrap;
+}
+
+.margin-up {
+  margin-top: -10px;
+}
+
+.blog-detail-text-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-detail-text-list>li {
+  color: #FFF;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .blog-card-btn-status {
+    font-size: 12px;
+  }
+
+  .blog-card-btn-status-close {
+    font-size: 12px;
+  }
+
+  .blog-detail-text-title {
+  font-size: 16px;
+  }
+}

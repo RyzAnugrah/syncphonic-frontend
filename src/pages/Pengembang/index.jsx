@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 
 import imgProduct from "../../assets/images/pengembang-product.jpg";
 import imgFrontend from "../../assets/images/pengembang-frontend.jpg";
 import imgBackend from "../../assets/images/pengembang-backend.jpg";
 
-const index = () => {
+const Pengembang = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
-      <div className="container-fluid bg-color-pengembang p-4">
-        <div className="row justify-content-center">
-          <div className="col-md-10 text-center">
+      <div className="bg-color-pengembang">
+        <div className="row justify-content-center g-0 px-3 py-4 container-content">
+          <div>
             <p className="pengembang-title">Tim Pengembang</p>
             <ul
               className="nav nav-pills nav-justified my-4"
@@ -28,7 +32,7 @@ const index = () => {
                   aria-controls="pills-general"
                   aria-selected="true"
                 >
-                  Umum
+                  Pengembang Umum
                 </button>
               </li>
               <li className="nav-item" role="presentation">
@@ -82,7 +86,7 @@ const index = () => {
                 aria-labelledby="pills-general-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionGeneral">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -105,9 +109,9 @@ const index = () => {
                         >
                           <div className="accordion-body">
                             Tim pengembang website Syncphonic adalah tiga orang
-                            mahasiswa Universitas Padjadjaran Fakultas
-                            Matematika dan Ilmu Pengetahuan Alam prodi Teknik
-                            Informatika semester 7. Tim pengembang melakukan
+                            mahasiswa semester 7 Universitas Padjadjaran
+                            Fakultas Matematika dan Ilmu Pengetahuan Alam prodi
+                            Teknik Informatika. Tim pengembang melakukan
                             pengembangan website ini sebagai tugas atau project
                             dari mata kuliah Proyek Perangkat Lunak II.
                           </div>
@@ -153,7 +157,7 @@ const index = () => {
                 aria-labelledby="pills-product-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionProduct">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -201,7 +205,7 @@ const index = () => {
                 aria-labelledby="pills-frontend-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionFrontend">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -249,7 +253,7 @@ const index = () => {
                 aria-labelledby="pills-backend-tab"
               >
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-10 mt-4">
+                  <div className="mt-4">
                     <div className="accordion" id="accordionBackend">
                       <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
@@ -298,4 +302,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Pengembang;

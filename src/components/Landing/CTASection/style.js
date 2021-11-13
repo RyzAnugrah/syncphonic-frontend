@@ -85,7 +85,7 @@ export const Subtitle = styled.p`
   color: ${({ lightBg, theme: { colors } }) =>
     lightBg ? colors.dark : colors.light};
 
-  @media screen and (max-width: 575.98px) {
+  @media screen and (max-width: 991.98px) {
     font-size: 18px;
   }
 `;
