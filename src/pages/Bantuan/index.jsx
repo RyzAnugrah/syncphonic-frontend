@@ -10,7 +10,7 @@ const Bantuan = () => {
     <div>
       <div className="bg-color-bantuan">
         <div className="row justify-content-center g-0 px-3 py-4 container-content">
-          <div>
+          <div className="container-bottom">
             <p className="bantuan-title">Bantuan</p>
             <ul
               className="nav nav-pills nav-justified my-4"

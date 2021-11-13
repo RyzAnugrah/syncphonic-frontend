@@ -80,9 +80,9 @@ const AppRoutes = [
     exact: true,
   },
   {
-    name: "FAQ",
+    name: "faq",
     path: "/syncphonic-frontend/faq",
-    component: lazy(() => import("../pages/FAQ")),
+    component: lazy(() => import("../pages/Faq")),
     exact: true,
   },
   {

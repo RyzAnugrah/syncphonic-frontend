@@ -161,10 +161,14 @@ const Daftar = () => {
                   id="inputPassword"
                   {...register("password", {
                     required: true,
+                    minLength: 6,
                   })}
                 />
                 {errors.password && errors.password.type === "required" && (
                   <p className="error">Password wajib diisi</p>
+                )}
+                {errors.password && errors.password.type === "minLength" && (
+                  <p className="error">Password minimal 6 karakter</p>
                 )}
               </div>
               <div className="form-group mt-3">
@@ -178,14 +182,18 @@ const Daftar = () => {
                   id="inputPasswordConfirm"
                   {...register("password_confirmation", {
                     required: true,
+                    minLength: 6,
                   })}
                 />
                 {errors.password_confirmation &&
-                  errors.password_confirmation.type === "validate" && (
-                    <p className="error">
-                      Konfirmasi password baru wajib sama dengan password
-                    </p>
+                  errors.password_confirmation.type === "required" && (
+                    <p className="error">Konfirmasi password wajib diisi</p>
                   )}
+                {errors.password && errors.password.type === "minLength" && (
+                  <p className="error">
+                    Konfirmasi password minimal 6 karakter
+                  </p>
+                )}
               </div>
               <button
                 type="submit"

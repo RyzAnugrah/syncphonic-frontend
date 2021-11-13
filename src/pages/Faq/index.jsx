@@ -6,7 +6,7 @@ const Faq = () => {
     <div>
       <div className="bg-color-faq">
         <div className="row justify-content-center g-0 px-3 py-4 container-content">
-          <div className="text-center">
+          <div className="text-left container-bottom">
             <p className="faq-title">FAQ</p>
             <ul
               className="nav nav-pills nav-justified my-4"
