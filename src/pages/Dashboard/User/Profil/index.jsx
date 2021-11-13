@@ -443,7 +443,7 @@ const Profil = () => {
                               </p>
                             )}
                         </div>
-                        <div className="form-group mt-3">
+                        <div className="form-group mt-3 d-none">
                           <label
                             className="fw-bolder"
                             htmlFor="inputPhotoProfile"

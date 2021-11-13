@@ -782,34 +782,43 @@ const Instrument = () => {
                                   {instrumentBooking.status_booking}
                                 </td>
                                 <td>
-                                  <a
-                                    href="#confirmInstrumentModal"
-                                    className="confirm"
-                                    data-toggle="modal"
-                                    onClick={() =>
-                                      handleInstrumentBookingConfirm(
-                                        instrumentBooking.id
-                                      )
-                                    }
-                                  >
-                                    <i data-toggle="tooltip" title="Konfirmasi">
-                                      <FaCheck />
-                                    </i>
-                                  </a>
-                                  <a
-                                    href="#deleteBookingModal"
-                                    className="delete"
-                                    data-toggle="modal"
-                                    onClick={() =>
-                                      handleInstrumentBookingConfirm(
-                                        instrumentBooking.id
-                                      )
-                                    }
-                                  >
-                                    <i data-toggle="tooltip" title="Hapus">
-                                      <FaTrash />
-                                    </i>
-                                  </a>
+                                  {instrumentBooking.status_booking.toLowerCase() ===
+                                    "pending" && (
+                                    <a
+                                      href="#confirmInstrumentModal"
+                                      className="confirm"
+                                      data-toggle="modal"
+                                      onClick={() =>
+                                        handleInstrumentBookingConfirm(
+                                          instrumentBooking.id
+                                        )
+                                      }
+                                    >
+                                      <i
+                                        data-toggle="tooltip"
+                                        title="Konfirmasi"
+                                      >
+                                        <FaCheck />
+                                      </i>
+                                    </a>
+                                  )}
+                                  {instrumentBooking.status_booking.toLowerCase() ===
+                                    "canceled" && (
+                                    <a
+                                      href="#deleteBookingModal"
+                                      className="delete"
+                                      data-toggle="modal"
+                                      onClick={() =>
+                                        handleInstrumentBookingConfirm(
+                                          instrumentBooking.id
+                                        )
+                                      }
+                                    >
+                                      <i data-toggle="tooltip" title="Hapus">
+                                        <FaTrash />
+                                      </i>
+                                    </a>
+                                  )}
                                 </td>
                               </tr>
                             ))
@@ -908,30 +917,44 @@ const Instrument = () => {
                       </label>
                       <input
                         type="number"
+                        min="0"
+                        step="1"
                         className="form-control form-control-dashboard"
                         id="inputInstrumentCount"
                         {...register("instrument_count", {
                           required: true,
+                          min: 0,
                         })}
                       />
                       {errors.instrument_count &&
                         errors.instrument_count.type === "required" && (
                           <p className="error">Sisa instrument wajib diisi</p>
                         )}
+                      {errors.instrument_count &&
+                        errors.instrument_count.type === "min" && (
+                          <p className="error">Sisa instrument minimal 0</p>
+                        )}
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputInstrumentPrice">Harga</label>
                       <input
                         type="number"
+                        min="0"
+                        step="50000"
                         className="form-control form-control-dashboard"
                         id="inputInstrumentPrice"
                         {...register("instrument_price", {
                           required: true,
+                          min: 50000,
                         })}
                       />
                       {errors.instrument_price &&
                         errors.instrument_price.type === "required" && (
                           <p className="error">Harga wajib diisi</p>
+                        )}
+                      {errors.instrument_price &&
+                        errors.instrument_price.type === "min" && (
+                          <p className="error">Harga minimal 50000</p>
                         )}
                     </div>
                     <div className="form-group">
@@ -956,14 +979,18 @@ const Instrument = () => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputInstrumentBrand">Kategori</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
+                      <select
+                        className="form-select form-control-dashboard"
                         id="inputInstrumentBrand"
                         {...register("instrument_brand", {
                           required: true,
                         })}
-                      />
+                      >
+                        <option defaultChecked value="Elektrik">
+                          Elektrik
+                        </option>
+                        <option value="Digital">Digital</option>
+                      </select>
                       {errors.instrument_brand &&
                         errors.instrument_brand.type === "required" && (
                           <p className="error">Kategori wajib diisi</p>
@@ -993,6 +1020,7 @@ const Instrument = () => {
                       <textarea
                         className="form-control form-control-dashboard"
                         id="inputInstrumentDesc"
+                        rows="10"
                         {...register("instrument_desc", {
                           required: true,
                         })}
@@ -1118,7 +1146,7 @@ const Instrument = () => {
                         }
                       />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group d-none">
                       <label className="form-label" htmlFor="updateImg">
                         Gambar
                       </label>
@@ -1133,15 +1161,17 @@ const Instrument = () => {
                     </div>
                     <div className="form-group">
                       <label>Kategori</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
-                        required
+                      <select
+                        className="form-select form-control-dashboard"
+                        id="updateStatus"
                         value={instrumentBrandUpdate || ""}
                         onChange={(e) =>
                           setInstrumentBrandUpdate(e.target.value)
                         }
-                      />
+                      >
+                        <option value="Elektrik">Elektrik</option>
+                        <option value="Digital">Digital</option>
+                      </select>
                     </div>
                     <div className="form-group">
                       <label htmlFor="updateStatus">Status</label>
@@ -1162,6 +1192,7 @@ const Instrument = () => {
                       <textarea
                         className="form-control form-control-dashboard"
                         required
+                        rows="10"
                         value={instrumentDescUpdate || ""}
                         onChange={(e) =>
                           setInstrumentDescUpdate(e.target.value)

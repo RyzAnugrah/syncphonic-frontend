@@ -127,7 +127,10 @@ const Blog = () => {
 
   const handleLoadMoreList = () => {
     setCountList(
-      blogsList && resultsList && countList < resultsList.length && countList + countPerPage
+      blogsList &&
+        resultsList &&
+        countList < resultsList.length &&
+        countList + countPerPage
     );
   };
 
@@ -592,14 +595,18 @@ const Blog = () => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputBlogCategory">Kategori</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
+                      <select
+                        className="form-select form-control-dashboard"
                         id="inputBlogCategory"
                         {...register("category", {
                           required: true,
                         })}
-                      />
+                      >
+                        <option defaultChecked value="Belajar bareng">
+                          Belajar bareng
+                        </option>
+                        <option value="Tips dan trick">Tips dan trick</option>
+                      </select>
                       {errors.category &&
                         errors.category.type === "required" && (
                           <p className="error">Kategori wajib diisi</p>
@@ -640,6 +647,7 @@ const Blog = () => {
                       <textarea
                         className="form-control form-control-dashboard"
                         id="inputBlogContent"
+                        rows="10"
                         {...register("content", {
                           required: true,
                         })}
@@ -696,16 +704,17 @@ const Blog = () => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="updateBlogCategory">Kategori</label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
-                        required
+                      <select
+                        className="form-select form-control-dashboard"
                         id="updateBlogCategory"
                         value={blogCategoryUpdate || ""}
                         onChange={(e) => setBlogCategoryUpdate(e.target.value)}
-                      />
+                      >
+                        <option value="Belajar bareng">Belajar bareng</option>
+                        <option value="Tips dan trick">Tips dan trick</option>
+                      </select>
                     </div>
-                    <div className="form-group">
+                    <div className="form-group d-none">
                       <label className="form-label" htmlFor="updateImg">
                         Gambar
                       </label>

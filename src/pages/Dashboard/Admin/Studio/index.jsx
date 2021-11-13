@@ -754,34 +754,43 @@ const Studio = () => {
                                   {studioBooking.status_booking}
                                 </td>
                                 <td>
-                                  <a
-                                    href="#confirmStudioModal"
-                                    className="confirm"
-                                    data-toggle="modal"
-                                    onClick={() =>
-                                      handleStudioBookingConfirm(
-                                        studioBooking.id
-                                      )
-                                    }
-                                  >
-                                    <i data-toggle="tooltip" title="Konfirmasi">
-                                      <FaCheck />
-                                    </i>
-                                  </a>
-                                  <a
-                                    href="#deleteBookingModal"
-                                    className="delete"
-                                    data-toggle="modal"
-                                    onClick={() =>
-                                      handleStudioBookingConfirm(
-                                        studioBooking.id
-                                      )
-                                    }
-                                  >
-                                    <i data-toggle="tooltip" title="Hapus">
-                                      <FaTrash />
-                                    </i>
-                                  </a>
+                                  {studioBooking.status_booking.toLowerCase() ===
+                                    "pending" && (
+                                    <a
+                                      href="#confirmStudioModal"
+                                      className="confirm"
+                                      data-toggle="modal"
+                                      onClick={() =>
+                                        handleStudioBookingConfirm(
+                                          studioBooking.id
+                                        )
+                                      }
+                                    >
+                                      <i
+                                        data-toggle="tooltip"
+                                        title="Konfirmasi"
+                                      >
+                                        <FaCheck />
+                                      </i>
+                                    </a>
+                                  )}
+                                  {studioBooking.status_booking.toLowerCase() ===
+                                    "canceled" && (
+                                    <a
+                                      href="#deleteBookingModal"
+                                      className="delete"
+                                      data-toggle="modal"
+                                      onClick={() =>
+                                        handleStudioBookingConfirm(
+                                          studioBooking.id
+                                        )
+                                      }
+                                    >
+                                      <i data-toggle="tooltip" title="Hapus">
+                                        <FaTrash />
+                                      </i>
+                                    </a>
+                                  )}
                                 </td>
                               </tr>
                             ))
@@ -878,30 +887,44 @@ const Studio = () => {
                       <label htmlFor="inputStudioCapacity">Kapasitas</label>
                       <input
                         type="number"
+                        min="0"
+                        step="5"
                         className="form-control form-control-dashboard"
                         id="inputStudioCapacity"
                         {...register("studio_capacity", {
                           required: true,
+                          min: 0,
                         })}
                       />
                       {errors.studio_capacity &&
                         errors.studio_capacity.type === "required" && (
                           <p className="error">Kapasitas wajib diisi</p>
                         )}
+                      {errors.studio_capacity &&
+                        errors.studio_capacity.type === "min" && (
+                          <p className="error">Kapasitas minimal 0</p>
+                        )}
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputStudioPrice">Harga</label>
                       <input
                         type="number"
+                        min="0"
+                        step="50000"
                         className="form-control form-control-dashboard"
                         id="inputStudioPrice"
                         {...register("studio_price", {
                           required: true,
+                          min: 50000,
                         })}
                       />
                       {errors.studio_price &&
                         errors.studio_price.type === "required" && (
                           <p className="error">Harga wajib diisi</p>
+                        )}
+                      {errors.studio_price &&
+                        errors.studio_price.type === "min" && (
+                          <p className="error">Harga minimal 50000</p>
                         )}
                     </div>
                     <div className="form-group">
@@ -925,14 +948,23 @@ const Studio = () => {
                       <label htmlFor="inputStudioAvailableDay">
                         Ketersediaan
                       </label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
+                      <select
+                        className="form-select form-control-dashboard"
                         id="inputStudioAvailableDay"
                         {...register("studio_available_day", {
                           required: true,
                         })}
-                      />
+                      >
+                        <option defaultChecked value="Senin">
+                          Senin
+                        </option>
+                        <option value="Selasa">Selasa</option>
+                        <option value="Rabu">Rabu</option>
+                        <option value="Kamis">Kamis</option>
+                        <option value="Jumat">Jumat</option>
+                        <option value="Sabtu">Sabtu</option>
+                        <option value="Minggu">Minggu</option>
+                      </select>
                       {errors.studio_available_day &&
                         errors.studio_available_day.type === "required" && (
                           <p className="error">Ketersediaan wajib diisi</p>
@@ -962,6 +994,7 @@ const Studio = () => {
                       <textarea
                         className="form-control form-control-dashboard"
                         id="inputStudioDesc"
+                        rows="10"
                         {...register("studio_desc", {
                           required: true,
                         })}
@@ -1063,6 +1096,8 @@ const Studio = () => {
                       <label htmlFor="updateStudioCapacity">Kapasitas</label>
                       <input
                         type="number"
+                        min="0"
+                        step="5"
                         className="form-control form-control-dashboard"
                         required
                         id="updateStudioCapacity"
@@ -1076,6 +1111,8 @@ const Studio = () => {
                       <label htmlFor="updateStudioPrice">Harga</label>
                       <input
                         type="number"
+                        min="0"
+                        step="50000"
                         className="form-control form-control-dashboard"
                         required
                         id="updateStudioPrice"
@@ -1083,7 +1120,7 @@ const Studio = () => {
                         onChange={(e) => setStudioPriceUpdate(e.target.value)}
                       />
                     </div>
-                    <div className="form-group">
+                    <div className="form-group d-none">
                       <label className="form-label" htmlFor="updateImg">
                         Gambar
                       </label>
@@ -1100,16 +1137,22 @@ const Studio = () => {
                       <label htmlFor="updateStudioAvailableDay">
                         Ketersediaan
                       </label>
-                      <input
-                        type="text"
-                        className="form-control form-control-dashboard"
-                        required
+                      <select
+                        className="form-select form-control-dashboard"
                         id="updateStudioAvailableDay"
                         value={studioAvailableDayUpdate || ""}
                         onChange={(e) =>
                           setStudioAvailableDayUpdate(e.target.value)
                         }
-                      />
+                      >
+                        <option value="Senin">Senin</option>
+                        <option value="Selasa">Selasa</option>
+                        <option value="Rabu">Rabu</option>
+                        <option value="Kamis">Kamis</option>
+                        <option value="Jumat">Jumat</option>
+                        <option value="Sabtu">Sabtu</option>
+                        <option value="Minggu">Minggu</option>
+                      </select>
                     </div>
                     <div className="form-group">
                       <label htmlFor="updateStudioStatus">Status</label>
@@ -1129,6 +1172,7 @@ const Studio = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateStudioDesc"
+                        rows="10"
                         value={studioDescUpdate || ""}
                         onChange={(e) => setStudioDescUpdate(e.target.value)}
                       />
