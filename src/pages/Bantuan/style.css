@@ -1,7 +1,7 @@
 .bg-color-bantuan {
   background-color: #191a19;
   color: #fff;
-  height: fit-content;
+  min-height: calc(100vh - 400px);
 }
 
 .container-content {

@@ -1,6 +1,7 @@
 .bg-color-blog-detail {
   background-color: #191A19;
   color: #FFF;
+  min-height: calc(100vh - 400px);
 }
 
 .blog-detail-list-container {

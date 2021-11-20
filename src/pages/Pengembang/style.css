@@ -1,7 +1,7 @@
 .bg-color-pengembang {
   background-color: #191A19;
   color: #FFF;
-  height: fit-content;
+  min-height: calc(100vh - 400px);
 }
 
 .container-content {

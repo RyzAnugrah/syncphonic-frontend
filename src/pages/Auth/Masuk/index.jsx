@@ -140,10 +140,14 @@ const Masuk = () => {
                   id="passwordInput"
                   {...register("password", {
                     required: true,
+                    minLength: 6,
                   })}
                 />
                 {errors.password && errors.password.type === "required" && (
                   <p className="error">Password wajib diisi</p>
+                )}
+                {errors.password && errors.password.type === "minLength" && (
+                  <p className="error">Password minimal 6 karakter</p>
                 )}
                 <Link
                   style={{ textDecoration: "none" }}

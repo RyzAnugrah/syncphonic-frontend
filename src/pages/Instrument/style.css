@@ -1,6 +1,7 @@
 .bg-color-instrument {
   background-color: #191A19;
   color: #FFF;
+  min-height: calc(100vh - 400px);
 }
 
 .carousel-border {

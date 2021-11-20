@@ -1,6 +1,7 @@
 .bg-color-instrument-detail {
   background-color: #191a19;
   color: #fff;
+  min-height: calc(100vh - 400px);
 }
 
 .instrument-detail-list-container {

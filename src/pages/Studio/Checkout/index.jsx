@@ -146,7 +146,7 @@ const Checkout = () => {
                 className="img-fluid img-hero-checkout"
               />
             </div>
-            <div className="col-md-7 px-3 py-4">
+            <div className="col-md-7 px-3 py-4 my-auto">
               <p className="checkout-title">Sewa Studio</p>
               <form onSubmit={handleSubmit(handleClickBooking)}>
                 <div className="form-group">
