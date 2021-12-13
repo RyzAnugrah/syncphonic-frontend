@@ -337,6 +337,10 @@ const Pesanan = () => {
                         {resultsBookingStudiosList &&
                         resultsBookingStudiosList.length !== 0 ? (
                           resultsBookingStudiosList
+                            .filter(
+                              (bookingStudioList) =>
+                                user && bookingStudioList.user_id === user.id
+                            )
                             .slice(0, countBookingStudiosList)
                             .map((bookingStudioList) => (
                               <tr key={bookingStudioList.id}>
@@ -365,20 +369,23 @@ const Pesanan = () => {
                                   {bookingStudioList.status_booking}
                                 </td>
                                 <td>
-                                  <a
-                                    href="#cancelStudioModal"
-                                    className="delete"
-                                    data-toggle="modal"
-                                    onClick={() =>
-                                      handleBookingStudioListConfirm(
-                                        bookingStudioList.id
-                                      )
-                                    }
-                                  >
-                                    <i data-toggle="tooltip" title="Batal">
-                                      <FcCancel />
-                                    </i>
-                                  </a>
+                                  {bookingStudioList.status_booking.toLowerCase() ===
+                                    "pending" && (
+                                    <a
+                                      href="#cancelStudioModal"
+                                      className="delete"
+                                      data-toggle="modal"
+                                      onClick={() =>
+                                        handleBookingStudioListConfirm(
+                                          bookingStudioList.id
+                                        )
+                                      }
+                                    >
+                                      <i data-toggle="tooltip" title="Batal">
+                                        <FcCancel />
+                                      </i>
+                                    </a>
+                                  )}
                                 </td>
                               </tr>
                             ))
@@ -464,6 +471,11 @@ const Pesanan = () => {
                         {resultsBookingInstrumentsList &&
                         resultsBookingInstrumentsList.length !== 0 ? (
                           resultsBookingInstrumentsList
+                            .filter(
+                              (bookingInstrumentList) =>
+                                user &&
+                                bookingInstrumentList.user_id === user.id
+                            )
                             .slice(0, countBookingInstrumentsList)
                             .map((bookingInstrumentList) => (
                               <tr key={bookingInstrumentList.id}>
@@ -492,20 +504,23 @@ const Pesanan = () => {
                                   {bookingInstrumentList.status_booking}
                                 </td>
                                 <td>
-                                  <a
-                                    href="#cancelInstrumentModal"
-                                    className="delete"
-                                    data-toggle="modal"
-                                    onClick={() =>
-                                      handleBookingInstrumentListConfirm(
-                                        bookingInstrumentList.id
-                                      )
-                                    }
-                                  >
-                                    <i data-toggle="tooltip" title="Batal">
-                                      <FcCancel />
-                                    </i>
-                                  </a>
+                                  {bookingInstrumentList.status_booking.toLowerCase() ===
+                                    "pending" && (
+                                    <a
+                                      href="#cancelInstrumentModal"
+                                      className="delete"
+                                      data-toggle="modal"
+                                      onClick={() =>
+                                        handleBookingInstrumentListConfirm(
+                                          bookingInstrumentList.id
+                                        )
+                                      }
+                                    >
+                                      <i data-toggle="tooltip" title="Batal">
+                                        <FcCancel />
+                                      </i>
+                                    </a>
+                                  )}
                                 </td>
                               </tr>
                             ))
