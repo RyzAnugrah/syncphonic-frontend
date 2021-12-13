@@ -100,6 +100,25 @@ const Checkout = () => {
   };
 
   useEffect(() => {
+    if (
+      instrument &&
+      instrument.instrument_status.toLowerCase() !== "tersedia"
+    ) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Instrument Berstatus Kosong",
+        text: "Silahkan pilih instrument yang tersedia!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push(`/syncphonic-frontend/instrument/${id}`);
+        }, 100);
+      });
+    }
+  }, [history, instrument, id]);
+
+  useEffect(() => {
     if (!user) {
       Swal.fire({
         icon: "warning",

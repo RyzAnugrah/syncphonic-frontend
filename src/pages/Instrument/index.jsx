@@ -232,7 +232,7 @@ const Instrument = () => {
                     <option value="50">{"<"} 50 Barang</option>
                     <option value="100">{"<"} 100 Barang</option>
                   </select>
-                  <label htmlFor="instrumentCapacity">Pilih Sisa Barang</label>
+                  <label htmlFor="instrumentCapacity">Pilih Jumlah Ketersediaan Barang</label>
                 </div>
               </div>
               <div className="col-md-6 mx-auto mt-4 text-center">

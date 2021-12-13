@@ -913,7 +913,7 @@ const Instrument = () => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputInstrumentCount">
-                        Sisa Instrument
+                        Jumlah Ketersediaan Instrument
                       </label>
                       <input
                         type="number"
@@ -928,11 +928,11 @@ const Instrument = () => {
                       />
                       {errors.instrument_count &&
                         errors.instrument_count.type === "required" && (
-                          <p className="error">Sisa instrument wajib diisi</p>
+                          <p className="error">Jumlah ketersediaan instrument wajib diisi</p>
                         )}
                       {errors.instrument_count &&
                         errors.instrument_count.type === "min" && (
-                          <p className="error">Sisa instrument minimal 0</p>
+                          <p className="error">Jumlah ketersediaan instrument minimal 0</p>
                         )}
                     </div>
                     <div className="form-group">
@@ -1123,7 +1123,7 @@ const Instrument = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label>Sisa Instrument</label>
+                      <label>Jumlah Ketersediaan Instrument</label>
                       <input
                         type="number"
                         className="form-control form-control-dashboard"

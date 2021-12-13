@@ -100,6 +100,22 @@ const Checkout = () => {
   };
 
   useEffect(() => {
+    if (studio && studio.studio_status.toLowerCase() !== "buka") {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Studio Berstatus Tutup",
+        text: "Silahkan pilih studio yang buka!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push(`/syncphonic-frontend/studio/${id}`);
+        }, 100);
+      });
+    }
+  }, [history, studio, id]);
+
+  useEffect(() => {
     if (!user) {
       Swal.fire({
         icon: "warning",

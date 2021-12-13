@@ -47,7 +47,7 @@ const Masuk = () => {
       Swal.fire({
         icon: "success",
         title: "Berhasil masuk akun!",
-        text: "Pergi ke dashboard",
+        text: "Pergi ke home",
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
@@ -77,7 +77,7 @@ const Masuk = () => {
   useEffect(() => {
     if (user) {
       setTimeout(() => {
-        history.push("/syncphonic-frontend/dashboard");
+        history.push("/syncphonic-frontend");
       }, 1500);
     }
   }, [history, user]);
@@ -140,14 +140,14 @@ const Masuk = () => {
                   id="passwordInput"
                   {...register("password", {
                     required: true,
-                    minLength: 6,
+                    minLength: 8,
                   })}
                 />
                 {errors.password && errors.password.type === "required" && (
                   <p className="error">Password wajib diisi</p>
                 )}
                 {errors.password && errors.password.type === "minLength" && (
-                  <p className="error">Password minimal 6 karakter</p>
+                  <p className="error">Password minimal 8 karakter</p>
                 )}
                 <Link
                   style={{ textDecoration: "none" }}
