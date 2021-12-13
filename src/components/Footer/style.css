@@ -1,7 +1,7 @@
 .container-footer {
   width: 100%;
   background-color: #242323;
-  
+
 }
 
 .bg-footer {
@@ -107,9 +107,5 @@
   .footer-contact-icon {
     width: 20px;
     margin-right: 10px;
-  }
-
-  .footer-menu-list {
-    font-size: 10px;
   }
 }
