@@ -194,10 +194,33 @@ const Profil = () => {
 
   useEffect(() => {
     if (!user) {
-      history.push("/syncphonic-frontend");
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Akses terbatas",
+        text: "Hanya admin yang boleh masuk!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+      });
     }
-    if (user && user.name !== "admin") {
-      history.push("/syncphonic-frontend/dashboard");
+
+    if (user) {
+      if (user && user.isAdmin !== "1") {
+        Swal.fire({
+          icon: "warning",
+          title: "Oops ... Akses terbatas",
+          text: "Hanya admin yang boleh masuk!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          setTimeout(() => {
+            history.push("/syncphonic-frontend/dashboard");
+          }, 100);
+        });
+      }
     }
   }, [history, user]);
 

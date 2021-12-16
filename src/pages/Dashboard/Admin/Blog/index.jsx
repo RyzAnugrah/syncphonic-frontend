@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import jQuery from "jquery";
@@ -76,6 +76,13 @@ import profilePicture from "../../../../assets/images/undraw_profile.svg";
 })(jQuery);
 
 const Blog = () => {
+  const user = useSelector(
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
+  );
+
+  let history = useHistory();
+
   const blogsList = useSelector((state) => state.blog && state.blog.allBlog);
   const blogDetailList = useSelector(
     (state) =>
@@ -299,6 +306,38 @@ const Blog = () => {
     };
     getBlogDetailList(dispatch);
   }, [dispatch, blogListId]);
+
+  useEffect(() => {
+    if (!user) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Akses terbatas",
+        text: "Hanya admin yang boleh masuk!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+      });
+    }
+
+    if (user) {
+      if (user && user.isAdmin !== "1") {
+        Swal.fire({
+          icon: "warning",
+          title: "Oops ... Akses terbatas",
+          text: "Hanya admin yang boleh masuk!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          setTimeout(() => {
+            history.push("/syncphonic-frontend/dashboard");
+          }, 100);
+        });
+      }
+    }
+  }, [history, user]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

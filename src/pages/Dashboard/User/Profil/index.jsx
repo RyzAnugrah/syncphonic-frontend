@@ -194,7 +194,33 @@ const Profil = () => {
 
   useEffect(() => {
     if (!user) {
-      history.push("/syncphonic-frontend");
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Anda belum masuk",
+        text: "Silahkan masuk terlebih dahulu!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+      });
+    }
+
+    if (user) {
+      if (user && user.isAdmin === "1") {
+        Swal.fire({
+          icon: "success",
+          title: "Hallo Admin!",
+          text: "Pergi ke dashboard admin",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          setTimeout(() => {
+            history.push("/syncphonic-frontend/dashboard/admin");
+          }, 100);
+        });
+      }
     }
   }, [history, user]);
 

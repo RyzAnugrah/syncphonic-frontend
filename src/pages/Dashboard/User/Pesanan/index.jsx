@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import jQuery from "jquery";
 import Swal from "sweetalert2";
@@ -70,6 +70,7 @@ const Pesanan = () => {
       state.instrument.myBookingInstrument.booking
   );
   const dispatch = useDispatch();
+  let history = useHistory();
 
   const countPerPage = 10;
   const [spinner, setSpinner] = useState(true);
@@ -242,6 +243,38 @@ const Pesanan = () => {
       myBookingInstrumentsList && myBookingInstrumentsList
     );
   }, [myBookingStudiosList, myBookingInstrumentsList]);
+
+  useEffect(() => {
+    if (!user) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Anda belum masuk",
+        text: "Silahkan masuk terlebih dahulu!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+      });
+    }
+
+    if (user) {
+      if (user && user.isAdmin === "1") {
+        Swal.fire({
+          icon: "success",
+          title: "Hallo Admin!",
+          text: "Pergi ke dashboard admin",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          setTimeout(() => {
+            history.push("/syncphonic-frontend/dashboard/admin");
+          }, 100);
+        });
+      }
+    }
+  }, [history, user]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
