@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import jQuery from "jquery";
@@ -78,6 +78,13 @@ import profilePicture from "../../../../assets/images/undraw_profile.svg";
 })(jQuery);
 
 const Instrument = () => {
+  const user = useSelector(
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
+  );
+
+  let history = useHistory();
+
   const instrumentsList = useSelector(
     (state) => state.instrument && state.instrument.allInstrument
   );
@@ -436,6 +443,38 @@ const Instrument = () => {
   }, [dispatch, instrumentListId]);
 
   useEffect(() => {
+    if (!user) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Akses terbatas",
+        text: "Hanya admin yang boleh masuk!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+      });
+    }
+
+    if (user) {
+      if (user && user.isAdmin !== "1") {
+        Swal.fire({
+          icon: "warning",
+          title: "Oops ... Akses terbatas",
+          text: "Hanya admin yang boleh masuk!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          setTimeout(() => {
+            history.push("/syncphonic-frontend/dashboard");
+          }, 100);
+        });
+      }
+    }
+  }, [history, user]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => setSpinner(false), 1000);
   }, []);
@@ -648,7 +687,12 @@ const Instrument = () => {
                                   {instrumentList.instrument_status}
                                 </td>
                                 <td className="table-column-text">
-                                  {instrumentList.instrument_desc}
+                                  {instrumentList.instrument_desc.length >= 100
+                                    ? `${instrumentList.instrument_desc.substring(
+                                        0,
+                                        100
+                                      )}...`
+                                    : instrumentList.instrument_desc}
                                 </td>
                                 <td>
                                   <a
@@ -913,7 +957,7 @@ const Instrument = () => {
                     </div>
                     <div className="form-group">
                       <label htmlFor="inputInstrumentCount">
-                        Sisa Instrument
+                        Jumlah Ketersediaan Instrument
                       </label>
                       <input
                         type="number"
@@ -928,11 +972,15 @@ const Instrument = () => {
                       />
                       {errors.instrument_count &&
                         errors.instrument_count.type === "required" && (
-                          <p className="error">Sisa instrument wajib diisi</p>
+                          <p className="error">
+                            Jumlah ketersediaan instrument wajib diisi
+                          </p>
                         )}
                       {errors.instrument_count &&
                         errors.instrument_count.type === "min" && (
-                          <p className="error">Sisa instrument minimal 0</p>
+                          <p className="error">
+                            Jumlah ketersediaan instrument minimal 0
+                          </p>
                         )}
                     </div>
                     <div className="form-group">
@@ -1123,7 +1171,7 @@ const Instrument = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label>Sisa Instrument</label>
+                      <label>Jumlah Ketersediaan Instrument</label>
                       <input
                         type="number"
                         className="form-control form-control-dashboard"

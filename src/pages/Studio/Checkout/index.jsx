@@ -40,6 +40,18 @@ const Checkout = () => {
   let history = useHistory();
   let { id } = useParams();
 
+  let minDate = new Date();
+  let dd = minDate.getDate();
+  let mm = minDate.getMonth() + 1;
+  let yyyy = minDate.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  minDate = yyyy + "-" + mm + "-" + dd;
+
   const booked = async (dispatch, data) => {
     console.log(data);
     try {
@@ -98,6 +110,22 @@ const Checkout = () => {
       email,
     });
   };
+
+  useEffect(() => {
+    if (studio && studio.studio_status.toLowerCase() !== "buka") {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Studio Berstatus Tutup",
+        text: "Silahkan pilih studio yang buka!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push(`/syncphonic-frontend/studio/${id}`);
+        }, 100);
+      });
+    }
+  }, [history, studio, id]);
 
   useEffect(() => {
     if (!user) {
@@ -204,6 +232,7 @@ const Checkout = () => {
                   </label>
                   <input
                     type="date"
+                    min={minDate}
                     className="form-control form-control-checkout"
                     id="inputTanggal"
                     {...register("date", {

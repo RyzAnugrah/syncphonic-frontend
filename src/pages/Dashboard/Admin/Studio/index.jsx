@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import jQuery from "jquery";
@@ -78,6 +78,13 @@ import profilePicture from "../../../../assets/images/undraw_profile.svg";
 })(jQuery);
 
 const Studio = () => {
+  const user = useSelector(
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
+  );
+
+  let history = useHistory();
+
   const studiosList = useSelector(
     (state) => state.studio && state.studio.allStudio
   );
@@ -436,6 +443,38 @@ const Studio = () => {
   }, [dispatch, studioListId]);
 
   useEffect(() => {
+    if (!user) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Akses terbatas",
+        text: "Hanya admin yang boleh masuk!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+      });
+    }
+
+    if (user) {
+      if (user && user.isAdmin !== "1") {
+        Swal.fire({
+          icon: "warning",
+          title: "Oops ... Akses terbatas",
+          text: "Hanya admin yang boleh masuk!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          setTimeout(() => {
+            history.push("/syncphonic-frontend/dashboard");
+          }, 100);
+        });
+      }
+    }
+  }, [history, user]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => setSpinner(false), 1000);
   }, []);
@@ -630,7 +669,12 @@ const Studio = () => {
                                 {studioList.studio_status}
                               </td>
                               <td className="table-column-text">
-                                {studioList.studio_desc}
+                                {studioList.studio_desc.length >= 100
+                                  ? `${studioList.studio_desc.substring(
+                                      0,
+                                      100
+                                    )}...`
+                                  : studioList.studio_desc}
                               </td>
                               <td>
                                 <a

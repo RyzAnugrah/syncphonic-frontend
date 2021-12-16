@@ -194,10 +194,33 @@ const Profil = () => {
 
   useEffect(() => {
     if (!user) {
-      history.push("/syncphonic-frontend");
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Akses terbatas",
+        text: "Hanya admin yang boleh masuk!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+      });
     }
-    if (user && user.name !== "admin") {
-      history.push("/syncphonic-frontend/dashboard");
+
+    if (user) {
+      if (user && user.isAdmin !== "1") {
+        Swal.fire({
+          icon: "warning",
+          title: "Oops ... Akses terbatas",
+          text: "Hanya admin yang boleh masuk!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          setTimeout(() => {
+            history.push("/syncphonic-frontend/dashboard");
+          }, 100);
+        });
+      }
     }
   }, [history, user]);
 
@@ -333,7 +356,7 @@ const Profil = () => {
                               required: true,
                               pattern:
                                 /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s/0-9]*$/i,
-                              minLength: 6,
+                              minLength: 8,
                               maxLength: 12,
                               value:
                                 resultDetailUser &&
@@ -353,7 +376,7 @@ const Profil = () => {
                           {errors.telp_number &&
                             errors.telp_number.type === "minLength" && (
                               <p className="error">
-                                Nomor telepon minimal 6 angka
+                                Nomor telepon minimal 8 angka
                               </p>
                             )}
                           {errors.telp_number &&
@@ -480,11 +503,18 @@ const Profil = () => {
                             id="inputPassword"
                             {...register("password", {
                               required: true,
+                              minLength: 8,
                             })}
                           />
                           {errors.password &&
                             errors.password.type === "required" && (
                               <p className="error">Password wajib diisi</p>
+                            )}
+                          {errors.password &&
+                            errors.password.type === "minLength" && (
+                              <p className="error">
+                                Password minimal 8 karakter
+                              </p>
                             )}
                         </div>
                         <div className="form-group mt-3">

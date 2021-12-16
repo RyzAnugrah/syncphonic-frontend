@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import jQuery from "jquery";
@@ -76,6 +76,13 @@ import profilePicture from "../../../../assets/images/undraw_profile.svg";
 })(jQuery);
 
 const Blog = () => {
+  const user = useSelector(
+    (state) =>
+      state.user && state.user.currentUser && state.user.currentUser.users
+  );
+
+  let history = useHistory();
+
   const blogsList = useSelector((state) => state.blog && state.blog.allBlog);
   const blogDetailList = useSelector(
     (state) =>
@@ -85,6 +92,18 @@ const Blog = () => {
     (state) => state.blog && state.blog.isFetching
   );
   const dispatch = useDispatch();
+  
+  let todayDate = new Date();
+  let dd = todayDate.getDate();
+  let mm = todayDate.getMonth() + 1;
+  let yyyy = todayDate.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  todayDate = yyyy + "-" + mm + "-" + dd;
 
   const {
     register,
@@ -301,6 +320,38 @@ const Blog = () => {
   }, [dispatch, blogListId]);
 
   useEffect(() => {
+    if (!user) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops ... Akses terbatas",
+        text: "Hanya admin yang boleh masuk!",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        setTimeout(() => {
+          history.push("/syncphonic-frontend/masuk");
+        }, 100);
+      });
+    }
+
+    if (user) {
+      if (user && user.isAdmin !== "1") {
+        Swal.fire({
+          icon: "warning",
+          title: "Oops ... Akses terbatas",
+          text: "Hanya admin yang boleh masuk!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          setTimeout(() => {
+            history.push("/syncphonic-frontend/dashboard");
+          }, 100);
+        });
+      }
+    }
+  }, [history, user]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
     setTimeout(() => setSpinner(false), 1000);
   }, []);
@@ -478,7 +529,9 @@ const Blog = () => {
                                 {blogList.date}
                               </td>
                               <td className="table-column-text">
-                                {blogList.content}
+                                {blogList.content.length >= 100
+                                  ? `${blogList.content.substring(0, 100)}...`
+                                  : blogList.content}
                               </td>
                               <td>
                                 <a
@@ -632,6 +685,8 @@ const Blog = () => {
                       <label htmlFor="inputBlogDate">Tanggal</label>
                       <input
                         type="date"
+                        min={todayDate}
+                        max={todayDate}
                         className="form-control form-control-dashboard"
                         id="inputBlogDate"
                         {...register("date", {
@@ -731,6 +786,8 @@ const Blog = () => {
                       <label htmlFor="updateBlogDate">Tanggal</label>
                       <input
                         type="date"
+                        min={todayDate}
+                        max={todayDate}
                         className="form-control form-control-dashboard"
                         required
                         id="updateBlogDate"
@@ -744,6 +801,7 @@ const Blog = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateBlogContent"
+                        rows="10"
                         value={blogContentUpdate || ""}
                         onChange={(e) => setBlogContentUpdate(e.target.value)}
                       />

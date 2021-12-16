@@ -51,14 +51,14 @@ import "./style.css";
 })(jQuery);
 
 const Dashboard = () => {
-  const [spinner, setSpinner] = useState(true);
-
   const user = useSelector(
     (state) =>
       state.user && state.user.currentUser && state.user.currentUser.users
   );
 
   let history = useHistory();
+
+  const [spinner, setSpinner] = useState(true);
 
   const [totalUser, setTotalUser] = useState(true);
   const [totalStudio, setTotalStudio] = useState(true);
@@ -123,7 +123,7 @@ const Dashboard = () => {
     }
 
     if (user) {
-      if (user && user.name.toLowerCase() !== "admin") {
+      if (user && user.isAdmin !== "1") {
         Swal.fire({
           icon: "warning",
           title: "Oops ... Akses terbatas",
@@ -135,12 +135,14 @@ const Dashboard = () => {
             history.push("/syncphonic-frontend/dashboard");
           }, 100);
         });
-      } else {
-        window.scrollTo(0, 0);
-        setTimeout(() => setSpinner(false), 1000);
       }
     }
   }, [history, user]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setTimeout(() => setSpinner(false), 1000);
+  }, []);
 
   return (
     <div id="wrapper">
