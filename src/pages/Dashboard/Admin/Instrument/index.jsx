@@ -687,7 +687,12 @@ const Instrument = () => {
                                   {instrumentList.instrument_status}
                                 </td>
                                 <td className="table-column-text">
-                                  {instrumentList.instrument_desc}
+                                  {instrumentList.instrument_desc.length >= 100
+                                    ? `${instrumentList.instrument_desc.substring(
+                                        0,
+                                        100
+                                      )}...`
+                                    : instrumentList.instrument_desc}
                                 </td>
                                 <td>
                                   <a
@@ -967,11 +972,15 @@ const Instrument = () => {
                       />
                       {errors.instrument_count &&
                         errors.instrument_count.type === "required" && (
-                          <p className="error">Jumlah ketersediaan instrument wajib diisi</p>
+                          <p className="error">
+                            Jumlah ketersediaan instrument wajib diisi
+                          </p>
                         )}
                       {errors.instrument_count &&
                         errors.instrument_count.type === "min" && (
-                          <p className="error">Jumlah ketersediaan instrument minimal 0</p>
+                          <p className="error">
+                            Jumlah ketersediaan instrument minimal 0
+                          </p>
                         )}
                     </div>
                     <div className="form-group">

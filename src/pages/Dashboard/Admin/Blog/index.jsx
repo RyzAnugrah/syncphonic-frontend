@@ -517,7 +517,9 @@ const Blog = () => {
                                 {blogList.date}
                               </td>
                               <td className="table-column-text">
-                                {blogList.content}
+                                {blogList.content.length >= 100
+                                  ? `${blogList.content.substring(0, 100)}...`
+                                  : blogList.content}
                               </td>
                               <td>
                                 <a
@@ -783,6 +785,7 @@ const Blog = () => {
                         className="form-control form-control-dashboard"
                         required
                         id="updateBlogContent"
+                        rows="10"
                         value={blogContentUpdate || ""}
                         onChange={(e) => setBlogContentUpdate(e.target.value)}
                       />

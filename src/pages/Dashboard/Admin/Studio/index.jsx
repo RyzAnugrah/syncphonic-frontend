@@ -669,7 +669,12 @@ const Studio = () => {
                                 {studioList.studio_status}
                               </td>
                               <td className="table-column-text">
-                                {studioList.studio_desc}
+                                {studioList.studio_desc.length >= 100
+                                  ? `${studioList.studio_desc.substring(
+                                      0,
+                                      100
+                                    )}...`
+                                  : studioList.studio_desc}
                               </td>
                               <td>
                                 <a
