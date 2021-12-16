@@ -92,6 +92,18 @@ const Blog = () => {
     (state) => state.blog && state.blog.isFetching
   );
   const dispatch = useDispatch();
+  
+  let todayDate = new Date();
+  let dd = todayDate.getDate();
+  let mm = todayDate.getMonth() + 1;
+  let yyyy = todayDate.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  todayDate = yyyy + "-" + mm + "-" + dd;
 
   const {
     register,
@@ -673,6 +685,8 @@ const Blog = () => {
                       <label htmlFor="inputBlogDate">Tanggal</label>
                       <input
                         type="date"
+                        min={todayDate}
+                        max={todayDate}
                         className="form-control form-control-dashboard"
                         id="inputBlogDate"
                         {...register("date", {
@@ -772,6 +786,8 @@ const Blog = () => {
                       <label htmlFor="updateBlogDate">Tanggal</label>
                       <input
                         type="date"
+                        min={todayDate}
+                        max={todayDate}
                         className="form-control form-control-dashboard"
                         required
                         id="updateBlogDate"
