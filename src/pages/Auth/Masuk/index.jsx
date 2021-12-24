@@ -48,7 +48,7 @@ const Masuk = () => {
       Swal.fire({
         icon: "success",
         title: "Berhasil masuk akun!",
-        text: "Pergi ke halaman utama",
+        text: "Pergi ke beranda",
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
