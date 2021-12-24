@@ -15,6 +15,8 @@ import "./style.css";
 import imgLogoTab from "../../../../logo-light.svg";
 import imgLogin from "../../../../assets/images/reset.png";
 
+import { FaArrowCircleLeft } from "react-icons/fa";
+
 const Masuk = () => {
   const {
     register,
@@ -91,6 +93,16 @@ const Masuk = () => {
       <section className="auth-form">
         <main className="auth-form-main">
           <div className="auth-form-content">
+            <p className="login-desc-text text-left mt-4">
+              <Link
+                style={{ textDecoration: "none" }}
+                to="/syncphonic-frontend"
+              >
+                <span className="login-desc-text-login">
+                  <FaArrowCircleLeft /> &#00; Kembali ke Beranda
+                </span>
+              </Link>
+            </p>
             <Link to="/syncphonic-frontend/">
               <img src={imgLogoTab} alt="logo" className="my-4 img-footer" />
             </Link>
